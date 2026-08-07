@@ -1,47 +1,141 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PropertyVerse</title>
+
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f5f5f5;
-    text-align:center;
+background:#f5f5f5;
 }
+
 header{
-    background:#0b1f3a;
-    color:#fff;
-    padding:20px;
+background:#0B1F3A;
+color:white;
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
+
+header h1{
+font-size:28px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:0 10px;
+font-weight:bold;
+}
+
 .hero{
-    padding:80px 20px;
-    background:#d9e9ff;
+background:#dbeafe;
+padding:80px 20px;
+text-align:center;
 }
-button{
-    background:#f4b400;
-    border:none;
-    padding:12px 24px;
-    font-size:18px;
-    border-radius:8px;
+
+.hero h2{
+font-size:40px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:20px;
+margin-bottom:30px;
+}
+
+.btn{
+background:#f59e0b;
+padding:15px 35px;
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-size:20px;
+font-weight:bold;
+}
+
+.section{
+padding:50px 20px;
+text-align:center;
+}
+
+.card{
+background:white;
+padding:25px;
+margin:15px;
+display:inline-block;
+width:260px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+footer{
+background:#0B1F3A;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
 }
 </style>
+
 </head>
 <body>
 
 <header>
-<h1>🏠 PROPERTYVERSE</h1>
-<p>India's No.1 Real Estate Company</p>
+<h1>🏠 PropertyVerse</h1>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">Buy</a>
+<a href="#">Sell</a>
+<a href="#">Rent</a>
+<a href="#">Commercial</a>
+<a href="#">Login</a>
+</nav>
+
 </header>
 
-<section class="hero">
-<h2>Find Your Dream Property</h2>
-<p>Buy • Sell • Rent • Commercial</p>
-<button>Search Property</button>
-</section>
+<div class="hero">
+<h2>India's No.1 Real Estate Platform</h2>
+<p>Buy • Sell • Rent • Commercial Properties</p>
+
+<a class="btn" href="#">Search Property</a>
+
+</div>
+
+<div class="section">
+
+<div class="card">
+<h3>🏡 Buy Property</h3>
+<p>Find your dream home.</p>
+</div>
+
+<div class="card">
+<h3>🏢 Sell Property</h3>
+<p>Sell faster with PropertyVerse.</p>
+</div>
+
+<div class="card">
+<h3>🏬 Rent Property</h3>
+<p>Find rental homes easily.</p>
+</div>
+
+</div>
+
+<footer>
+
+© 2026 PropertyVerse | All Rights Reserved
+
+</footer>
 
 </body>
 </html>
