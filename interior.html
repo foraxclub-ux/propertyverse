@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,133 +8,245 @@
 <title>Interior Design | PropertyVerse</title>
 
 <style>
+
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-  background:#f5f7fa;
-  color:#081B33;
+background:#f5f7fa;
+color:#081B33;
 }
 
 header{
-  background:#081B33;
-  padding:18px 25px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
+background:#081B33;
+padding:16px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
 }
 
 .logo{
-  color:#FFD700;
-  font-size:26px;
-  font-weight:bold;
+color:#FFD700;
+font-size:25px;
+font-weight:bold;
+}
+
+nav{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
 }
 
 nav a{
-  color:white;
-  text-decoration:none;
-  margin:8px;
+color:white;
+text-decoration:none;
+padding:8px;
+}
+
+.login{
+background:#E63946;
+border-radius:6px;
+padding:9px 14px;
 }
 
 .hero{
-  background:#081B33;
-  color:white;
-  text-align:center;
-  padding:70px 20px;
+background:
+linear-gradient(rgba(8,27,51,.72),rgba(8,27,51,.72)),
+url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=80");
+
+background-size:cover;
+background-position:center;
+
+padding:90px 20px;
+text-align:center;
+color:white;
 }
 
 .hero h1{
-  font-size:40px;
-  margin-bottom:15px;
+font-size:44px;
+margin-bottom:15px;
 }
 
 .hero p{
-  font-size:18px;
+font-size:20px;
+}
+
+.section{
+padding:65px 20px;
+text-align:center;
+}
+
+.section h2{
+font-size:34px;
+margin-bottom:15px;
+}
+
+.subtitle{
+color:#666;
+margin-bottom:35px;
 }
 
 .services{
-  max-width:1100px;
-  margin:40px auto;
-  padding:20px;
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:25px;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:25px;
 }
 
 .card{
-  background:white;
-  width:300px;
-  border-radius:15px;
-  overflow:hidden;
-  box-shadow:0 5px 18px rgba(0,0,0,.1);
+background:white;
+width:270px;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 18px rgba(0,0,0,.12);
+text-align:left;
 }
 
 .card img{
-  width:100%;
-  height:210px;
-  object-fit:cover;
+width:100%;
+height:190px;
+object-fit:cover;
 }
 
-.content{
-  padding:20px;
+.card-content{
+padding:20px;
 }
 
-.content h2{
-  margin-bottom:10px;
+.icon{
+font-size:35px;
 }
 
-.content p{
-  color:#666;
-  line-height:1.5;
+.card h3{
+margin:10px 0;
+font-size:21px;
+}
+
+.card p{
+color:#666;
+line-height:1.6;
 }
 
 .price{
-  color:#E63946;
-  font-weight:bold;
-  margin-top:12px;
+color:#E63946;
+font-weight:bold;
+margin-top:12px;
 }
 
-.btn{
-  display:inline-block;
-  margin-top:15px;
-  background:#E63946;
-  color:white;
-  padding:11px 18px;
-  border-radius:7px;
-  text-decoration:none;
-  font-weight:bold;
+.enquiry{
+display:inline-block;
+margin-top:15px;
+background:#081B33;
+color:white;
+padding:10px 15px;
+border-radius:7px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.process{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.step{
+background:white;
+width:230px;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.step-number{
+font-size:35px;
+margin-bottom:10px;
 }
 
 .cta{
-  background:#081B33;
-  color:white;
-  text-align:center;
-  padding:55px 20px;
-  margin-top:30px;
+background:#081B33;
+color:white;
+padding:70px 20px;
+text-align:center;
+}
+
+.cta h2{
+font-size:34px;
+margin-bottom:15px;
+}
+
+.cta p{
+margin-bottom:25px;
+color:#ddd;
+}
+
+.btn{
+display:inline-block;
+padding:13px 22px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+margin:5px;
+}
+
+.contact{
+background:#FFD700;
+color:#081B33;
+}
+
+.whatsapp{
+background:#25D366;
+color:white;
 }
 
 footer{
-  background:#050F1F;
-  color:white;
-  text-align:center;
-  padding:30px 20px;
+background:#050F1F;
+color:white;
+text-align:center;
+padding:35px 20px;
 }
+
+footer a{
+color:white;
+margin:6px;
+}
+
+@media(max-width:600px){
+
+.hero h1{
+font-size:32px;
+}
+
+.card{
+width:100%;
+max-width:350px;
+}
+
+nav{
+margin-top:12px;
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
 
 <header>
 
-<div class="logo">🏠 PropertyVerse</div>
+<div class="logo">
+🏠 PropertyVerse
+</div>
 
 <nav>
+
 <a href="index.html">Home</a>
 <a href="buy.html">Buy</a>
 <a href="sell.html">Sell</a>
@@ -141,7 +254,8 @@ footer{
 <a href="interior.html">Interior</a>
 <a href="listing.html">Listing</a>
 <a href="contact.html">Contact</a>
-<a href="login.html">Login</a>
+<a href="login.html" class="login">Login</a>
+
 </nav>
 
 </header>
@@ -149,56 +263,51 @@ footer{
 
 <section class="hero">
 
-<h1>🎨 Transform Your Space</h1>
+<h1>🎨 Premium Interior Design</h1>
 
-<p>Premium Interior Design Services for Homes, Offices & Commercial Spaces</p>
+<p>
+Transform your house into your dream home
+</p>
 
 </section>
 
 
-<h2 style="text-align:center;margin-top:45px;">
-Our Interior Services
-</h2>
+<section class="section">
 
+<h2>Our Interior Services</h2>
 
-<section class="services">
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80">
-
-<div class="content">
-
-<h2>🏠 Home Interior</h2>
-
-<p>
-Modern and luxury interior designs for bedrooms, living rooms, kitchens and complete homes.
+<p class="subtitle">
+Beautiful designs for homes, offices and commercial spaces
 </p>
 
-<div class="price">Starting from ₹2.5 Lakh</div>
 
-<a href="contact.html" class="btn">Get Consultation</a>
-
-</div>
-
-</div>
+<div class="services">
 
 
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80">
+<img
+src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80"
+alt="Living Room Interior"
+>
 
-<div class="content">
+<div class="card-content">
 
-<h2>🏢 Office Interior</h2>
+<div class="icon">🛋️</div>
+
+<h3>Living Room</h3>
 
 <p>
-Professional office interiors designed to create a productive and premium workspace.
+Modern and luxury living room designs tailored to your space.
 </p>
 
-<div class="price">Starting from ₹3 Lakh</div>
+<div class="price">
+Starting from ₹1.5 Lakh
+</div>
 
-<a href="contact.html" class="btn">Get Consultation</a>
+<a href="contact.html" class="enquiry">
+Get Enquiry →
+</a>
 
 </div>
 
@@ -207,19 +316,28 @@ Professional office interiors designed to create a productive and premium worksp
 
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=800&q=80">
+<img
+src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80"
+alt="Bedroom Interior"
+>
 
-<div class="content">
+<div class="card-content">
 
-<h2>✨ Luxury Interior</h2>
+<div class="icon">🛏️</div>
+
+<h3>Bedroom</h3>
 
 <p>
-High-end luxury interiors with premium materials and customized designs.
+Comfortable and elegant bedroom interiors designed for you.
 </p>
 
-<div class="price">Custom Pricing</div>
+<div class="price">
+Starting from ₹1 Lakh
+</div>
 
-<a href="contact.html" class="btn">Get Consultation</a>
+<a href="contact.html" class="enquiry">
+Get Enquiry →
+</a>
 
 </div>
 
@@ -228,21 +346,132 @@ High-end luxury interiors with premium materials and customized designs.
 
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80">
+<img
+src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80"
+alt="Modular Kitchen"
+>
 
-<div class="content">
+<div class="card-content">
 
-<h2>🍳 Modular Kitchen</h2>
+<div class="icon">🍳</div>
+
+<h3>Modular Kitchen</h3>
 
 <p>
-Stylish and functional modular kitchens designed according to your space.
+Smart, modern and functional modular kitchen solutions.
 </p>
 
-<div class="price">Starting from ₹1.2 Lakh</div>
+<div class="price">
+Starting from ₹1.2 Lakh
+</div>
 
-<a href="contact.html" class="btn">Get Consultation</a>
+<a href="contact.html" class="enquiry">
+Get Enquiry →
+</a>
 
 </div>
+
+</div>
+
+
+<div class="card">
+
+<img
+src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80"
+alt="Office Interior"
+>
+
+<div class="card-content">
+
+<div class="icon">🏢</div>
+
+<h3>Office Interior</h3>
+
+<p>
+Professional office spaces designed for productivity.
+</p>
+
+<div class="price">
+Starting from ₹2.5 Lakh
+</div>
+
+<a href="contact.html" class="enquiry">
+Get Enquiry →
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section class="section" style="background:white;">
+
+<h2>How It Works</h2>
+
+<p class="subtitle">
+Simple process from idea to beautiful interior
+</p>
+
+
+<div class="process">
+
+
+<div class="step">
+
+<div class="step-number">1️⃣</div>
+
+<h3>Share Your Requirement</h3>
+
+<p style="color:#666;margin-top:10px;">
+Tell us about your space and design requirements.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">2️⃣</div>
+
+<h3>Design Consultation</h3>
+
+<p style="color:#666;margin-top:10px;">
+Our team discusses ideas, budget and design.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">3️⃣</div>
+
+<h3>Design & Planning</h3>
+
+<p style="color:#666;margin-top:10px;">
+We prepare the interior design and project plan.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">4️⃣</div>
+
+<h3>Project Completion</h3>
+
+<p style="color:#666;margin-top:10px;">
+Your dream interior is brought to life.
+</p>
+
+</div>
+
 
 </div>
 
@@ -251,15 +480,18 @@ Stylish and functional modular kitchens designed according to your space.
 
 <section class="cta">
 
-<h2>Ready to Transform Your Home?</h2>
+<h2>Ready to Transform Your Space?</h2>
 
-<p style="margin:18px 0;">
+<p>
 Talk to our interior design team today.
 </p>
 
-<a href="contact.html"
-style="display:inline-block;background:#FFD700;color:#081B33;padding:13px 25px;border-radius:8px;text-decoration:none;font-weight:bold;">
-📞 Contact Our Team
+<a href="contact.html" class="btn contact">
+📩 Get Free Consultation
+</a>
+
+<a href="https://wa.me/919999999999" class="btn whatsapp">
+💬 WhatsApp Us
 </a>
 
 </section>
@@ -267,17 +499,30 @@ style="display:inline-block;background:#FFD700;color:#081B33;padding:13px 25px;b
 
 <footer>
 
-<h2 style="color:#FFD700;">PropertyVerse</h2>
+<h2 style="color:#FFD700;">
+🏠 PropertyVerse
+</h2>
 
-<p style="margin-top:10px;">
+<p style="margin:12px 0;color:#ccc;">
 Buy • Sell • Rent • Interior
 </p>
 
-<p style="margin-top:15px;">
+<p>
+
+<a href="index.html">Home</a>
+<a href="buy.html">Buy</a>
+<a href="sell.html">Sell</a>
+<a href="rent.html">Rent</a>
+<a href="listing.html">Listing</a>
+<a href="contact.html">Contact</a>
+
+</p>
+
+<p style="margin-top:20px;color:#aaa;">
 © 2026 PropertyVerse. All Rights Reserved.
 </p>
 
 </footer>
 
 </body>
-</html>
+  </html>
