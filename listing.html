@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Property Listings | PropertyVerse</title>
 
 <style>
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
   font-family:Arial,sans-serif;
 }
 
@@ -20,7 +21,7 @@ body{
 
 header{
   background:#081B33;
-  padding:18px 25px;
+  padding:16px 25px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -29,35 +30,58 @@ header{
 
 .logo{
   color:#FFD700;
-  font-size:26px;
+  font-size:25px;
   font-weight:bold;
+}
+
+nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
 }
 
 nav a{
   color:white;
   text-decoration:none;
-  margin:8px;
+  padding:8px;
+}
+
+.login{
+  background:#E63946;
+  border-radius:6px;
+  padding:9px 14px;
 }
 
 .hero{
-  background:#081B33;
-  color:white;
+  background:
+  linear-gradient(rgba(8,27,51,.75),rgba(8,27,51,.75)),
+  url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=80");
+
+  background-size:cover;
+  background-position:center;
+
+  padding:75px 20px;
   text-align:center;
-  padding:60px 20px;
+  color:white;
 }
 
 .hero h1{
-  font-size:40px;
-  margin-bottom:12px;
+  font-size:42px;
+  margin-bottom:15px;
+}
+
+.hero p{
+  font-size:19px;
 }
 
 .filters{
   background:white;
-  max-width:1100px;
-  margin:25px auto;
+  max-width:1050px;
+  margin:35px auto;
   padding:20px;
   border-radius:12px;
-  box-shadow:0 5px 20px rgba(0,0,0,.1);
+  box-shadow:0 5px 20px rgba(0,0,0,.12);
+
   display:flex;
   gap:10px;
   flex-wrap:wrap;
@@ -67,36 +91,44 @@ nav a{
 .filters input,
 .filters select{
   padding:13px;
-  min-width:170px;
   border:1px solid #ddd;
   border-radius:7px;
+  min-width:170px;
 }
 
 .search{
   background:#E63946;
   color:white;
   border:0;
-  padding:13px 25px;
+  padding:13px 22px;
   border-radius:7px;
   font-weight:bold;
 }
 
-.properties{
+.container{
   max-width:1100px;
   margin:auto;
-  padding:20px;
+  padding:0 20px 70px;
+}
+
+.title{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.properties{
   display:flex;
-  flex-wrap:wrap;
   justify-content:center;
+  flex-wrap:wrap;
   gap:25px;
 }
 
 .card{
-  width:320px;
   background:white;
+  width:320px;
   border-radius:15px;
   overflow:hidden;
-  box-shadow:0 5px 18px rgba(0,0,0,.1);
+  box-shadow:0 5px 18px rgba(0,0,0,.12);
 }
 
 .card img{
@@ -109,54 +141,112 @@ nav a{
   padding:20px;
 }
 
-.badge{
+.verified{
   display:inline-block;
   background:#e7f8ed;
   color:#16803c;
-  padding:5px 9px;
+  padding:6px 9px;
   border-radius:5px;
   font-size:12px;
   font-weight:bold;
 }
 
-.price{
-  color:#E63946;
-  font-size:22px;
-  font-weight:bold;
-  margin:10px 0;
+.card h2{
+  font-size:21px;
+  margin:12px 0 8px;
 }
 
-.details{
+.price{
+  font-size:22px;
+  font-weight:bold;
+  color:#E63946;
+  margin-bottom:8px;
+}
+
+.info{
   color:#666;
-  margin:7px 0;
+  line-height:1.7;
 }
 
 .buttons{
   display:flex;
-  gap:7px;
+  gap:8px;
   flex-wrap:wrap;
   margin-top:15px;
 }
 
 .btn{
-  background:#081B33;
-  color:white;
+  display:inline-block;
   padding:9px 12px;
   border-radius:6px;
   text-decoration:none;
+  font-weight:bold;
   font-size:14px;
+}
+
+.details{
+  background:#081B33;
+  color:white;
+}
+
+.call{
+  background:#081B33;
+  color:white;
 }
 
 .whatsapp{
   background:#25D366;
+  color:white;
+}
+
+.list-property{
+  display:block;
+  width:fit-content;
+  margin:40px auto 0;
+  background:#FFD700;
+  color:#081B33;
+  padding:14px 25px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:bold;
 }
 
 footer{
-  margin-top:50px;
   background:#050F1F;
   color:white;
   text-align:center;
-  padding:30px 20px;
+  padding:35px 20px;
+}
+
+footer a{
+  color:white;
+  margin:6px;
+}
+
+@media(max-width:600px){
+
+  .hero h1{
+    font-size:32px;
+  }
+
+  .filters{
+    margin:25px 15px 35px;
+  }
+
+  .filters input,
+  .filters select,
+  .search{
+    width:100%;
+  }
+
+  .card{
+    width:100%;
+    max-width:360px;
+  }
+
+  nav{
+    margin-top:12px;
+  }
 }
 </style>
 </head>
@@ -165,7 +255,9 @@ footer{
 
 <header>
 
-<div class="logo">🏠 PropertyVerse</div>
+<div class="logo">
+🏠 PropertyVerse
+</div>
 
 <nav>
 <a href="index.html">Home</a>
@@ -175,7 +267,7 @@ footer{
 <a href="interior.html">Interior</a>
 <a href="listing.html">Listing</a>
 <a href="contact.html">Contact</a>
-<a href="login.html">Login</a>
+<a href="login.html" class="login">Login</a>
 </nav>
 
 </header>
@@ -183,22 +275,21 @@ footer{
 
 <section class="hero">
 
-<h1>🏡 Property Listings</h1>
+<h1>📋 Property Listings</h1>
 
-<p>Explore verified properties across India</p>
+<p>
+Explore properties listed on PropertyVerse
+</p>
 
 </section>
 
 
 <div class="filters">
 
-<input type="text" placeholder="📍 Search Location">
-
-<select>
-<option>Buy / Rent</option>
-<option>Buy</option>
-<option>Rent</option>
-</select>
+<input
+type="text"
+placeholder="📍 Search City"
+>
 
 <select>
 <option>Property Type</option>
@@ -210,72 +301,82 @@ footer{
 </select>
 
 <select>
+<option>Listing Type</option>
+<option>For Sale</option>
+<option>For Rent</option>
+</select>
+
+<select>
 <option>Budget</option>
 <option>Under ₹50 Lakh</option>
 <option>₹50 Lakh - ₹1 Crore</option>
 <option>₹1 Crore+</option>
 </select>
 
-<button class="search">🔍 Search</button>
+<button class="search">
+🔍 Search
+</button>
 
 </div>
 
 
-<h2 style="text-align:center;margin:30px 0;">
-All Properties
+<div class="container">
+
+<div class="title">
+
+<h2>⭐ Latest Property Listings</h2>
+
+<p style="color:#666;margin-top:8px;">
+Discover verified properties from different cities
+</p>
+
+</div>
+
+
+<div class="properties">
+
+
+<div class="card">
+
+<img
+src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+alt="Luxury Villa"
+>
+
+<div class="content">
+
+<span class="verified">
+✓ RERA VERIFIED
+</span>
+
+<h2>
+Luxury 3 BHK Villa
 </h2>
 
+<div class="price">
+₹85,00,000
+</div>
 
-<section class="properties">
-
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80">
-
-<div class="content">
-
-<span class="badge">✓ VERIFIED</span>
-
-<h2 style="margin-top:10px;">Luxury Villa</h2>
-
-<div class="price">₹1.25 Crore</div>
-
-<div class="details">📍 Ahmedabad</div>
-
-<div class="details">🛏 4 BHK • 📐 2500 Sq.ft</div>
+<div class="info">
+📍 Ahmedabad, Gujarat<br>
+🛏 3 BHK • 📐 2200 Sq.ft<br>
+🏷️ For Sale
+</div>
 
 <div class="buttons">
-<a href="#" class="btn">❤️ Save</a>
-<a href="#" class="btn">📞 Call</a>
-<a href="#" class="btn whatsapp">💬 WhatsApp</a>
-</div>
 
-</div>
+<a href="property-details.html" class="btn details">
+View Details
+</a>
 
-</div>
+<a href="tel:+919999999999" class="btn call">
+📞 Call
+</a>
 
+<a href="https://wa.me/919999999999" class="btn whatsapp">
+💬 WhatsApp
+</a>
 
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80">
-
-<div class="content">
-
-<span class="badge">✓ VERIFIED</span>
-
-<h2 style="margin-top:10px;">Modern Apartment</h2>
-
-<div class="price">₹78 Lakh</div>
-
-<div class="details">📍 Surat</div>
-
-<div class="details">🛏 3 BHK • 📐 1650 Sq.ft</div>
-
-<div class="buttons">
-<a href="#" class="btn">❤️ Save</a>
-<a href="#" class="btn">📞 Call</a>
-<a href="#" class="btn whatsapp">💬 WhatsApp</a>
 </div>
 
 </div>
@@ -285,24 +386,45 @@ All Properties
 
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=800&q=80">
+<img
+src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80"
+alt="Premium Villa"
+>
 
 <div class="content">
 
-<span class="badge">✓ VERIFIED</span>
+<span class="verified">
+✓ VERIFIED
+</span>
 
-<h2 style="margin-top:10px;">Premium House</h2>
+<h2>
+Premium Villa
+</h2>
 
-<div class="price">₹95 Lakh</div>
+<div class="price">
+₹1,20,00,000
+</div>
 
-<div class="details">📍 Vadodara</div>
-
-<div class="details">🛏 3 BHK • 📐 1900 Sq.ft</div>
+<div class="info">
+📍 Surat, Gujarat<br>
+🛏 4 BHK • 📐 2800 Sq.ft<br>
+🏷️ For Sale
+</div>
 
 <div class="buttons">
-<a href="#" class="btn">❤️ Save</a>
-<a href="#" class="btn">📞 Call</a>
-<a href="#" class="btn whatsapp">💬 WhatsApp</a>
+
+<a href="property-details.html" class="btn details">
+View Details
+</a>
+
+<a href="tel:+919999999999" class="btn call">
+📞 Call
+</a>
+
+<a href="https://wa.me/919999999999" class="btn whatsapp">
+💬 WhatsApp
+</a>
+
 </div>
 
 </div>
@@ -312,46 +434,88 @@ All Properties
 
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80">
+<img
+src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80"
+alt="Rental Apartment"
+>
 
 <div class="content">
 
-<span class="badge">✓ VERIFIED</span>
+<span class="verified">
+✓ VERIFIED
+</span>
 
-<h2 style="margin-top:10px;">Rental Apartment</h2>
+<h2>
+Modern 2 BHK Apartment
+</h2>
 
-<div class="price">₹35,000 / Month</div>
+<div class="price">
+₹25,000 / Month
+</div>
 
-<div class="details">📍 Ahmedabad</div>
-
-<div class="details">🛏 3 BHK • 📐 1800 Sq.ft</div>
+<div class="info">
+📍 Ahmedabad, Gujarat<br>
+🛏 2 BHK • 📐 1200 Sq.ft<br>
+🏷️ For Rent
+</div>
 
 <div class="buttons">
-<a href="#" class="btn">❤️ Save</a>
-<a href="#" class="btn">📞 Call</a>
-<a href="#" class="btn whatsapp">💬 WhatsApp</a>
-</div>
+
+<a href="property-details.html" class="btn details">
+View Details
+</a>
+
+<a href="tel:+919999999999" class="btn call">
+📞 Call
+</a>
+
+<a href="https://wa.me/919999999999" class="btn whatsapp">
+💬 WhatsApp
+</a>
 
 </div>
 
 </div>
 
-</section>
+</div>
+
+
+</div>
+
+
+<a href="sell.html" class="list-property">
+➕ List Your Property
+</a>
+
+</div>
 
 
 <footer>
 
-<h2 style="color:#FFD700;">PropertyVerse</h2>
+<h2 style="color:#FFD700;">
+🏠 PropertyVerse
+</h2>
 
-<p style="margin-top:10px;">
+<p style="margin:12px 0;color:#ccc;">
 Buy • Sell • Rent • Interior
 </p>
 
-<p style="margin-top:15px;">
+<p>
+
+<a href="index.html">Home</a>
+<a href="buy.html">Buy</a>
+<a href="sell.html">Sell</a>
+<a href="rent.html">Rent</a>
+<a href="interior.html">Interior</a>
+<a href="contact.html">Contact</a>
+
+</p>
+
+<p style="margin-top:20px;color:#aaa;">
 © 2026 PropertyVerse. All Rights Reserved.
 </p>
 
 </footer>
 
 </body>
-</html>
+  </html>
