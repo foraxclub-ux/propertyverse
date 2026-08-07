@@ -1,1 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property Listings | PropertyVerse</title>
 
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#f5f7fa;
+  color:#081B33;
+}
+
+header{
+  background:#081B33;
+  padding:18px 25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.logo{
+  color:#FFD700;
+  font-size:26px;
+  font-weight:bold;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin:8px;
+}
+
+.hero{
+  background:#081B33;
+  color:white;
+  text-align:center;
+  padding:60px 20px;
+}
+
+.hero h1{
+  font-size:40px;
+  margin-bottom:12px;
+}
+
+.filters{
+  background:white;
+  max-width:1100px;
+  margin:25px auto;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 5px 20px rgba(0,0,0,.1);
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.filters input,
+.filters select{
+  padding:13px;
+  min-width:170px;
+  border:1px solid #ddd;
+  border-radius:7px;
+}
+
+.search{
+  background:#E63946;
+  color:white;
+  border:0;
+  padding:13px 25px;
+  border-radius:7px;
+  font-weight:bold;
+}
+
+.properties{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:25px;
+}
+
+.card{
+  width:320px;
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 5px 18px rgba(0,0,0,.1);
+}
+
+.card img{
+  width:100%;
+  height:210px;
+  object-fit:cover;
+}
+
+.content{
+  padding:20px;
+}
+
+.badge{
+  display:inline-block;
+  background:#e7f8ed;
+  color:#16803c;
+  padding:5px 9px;
+  border-radius:5px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.price{
+  color:#E63946;
+  font-size:22px;
+  font-weight:bold;
+  margin:10px 0;
+}
+
+.details{
+  color:#666;
+  margin:7px 0;
+}
+
+.buttons{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin-top:15px;
+}
+
+.btn{
+  background:#081B33;
+  color:white;
+  padding:9px 12px;
+  border-radius:6px;
+  text-decoration:none;
+  font-size:14px;
+}
+
+.whatsapp{
+  background:#25D366;
+}
+
+footer{
+  margin-top:50px;
+  background:#050F1F;
+  color:white;
+  text-align:center;
+  padding:30px 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">🏠 PropertyVerse</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="buy.html">Buy</a>
+<a href="sell.html">Sell</a>
+<a href="rent.html">Rent</a>
+<a href="interior.html">Interior</a>
+<a href="listing.html">Listing</a>
+<a href="contact.html">Contact</a>
+<a href="login.html">Login</a>
+</nav>
+
+</header>
+
+
+<section class="hero">
+
+<h1>🏡 Property Listings</h1>
+
+<p>Explore verified properties across India</p>
+
+</section>
+
+
+<div class="filters">
+
+<input type="text" placeholder="📍 Search Location">
+
+<select>
+<option>Buy / Rent</option>
+<option>Buy</option>
+<option>Rent</option>
+</select>
+
+<select>
+<option>Property Type</option>
+<option>Apartment</option>
+<option>Villa</option>
+<option>House</option>
+<option>Plot</option>
+<option>Commercial</option>
+</select>
+
+<select>
+<option>Budget</option>
+<option>Under ₹50 Lakh</option>
+<option>₹50 Lakh - ₹1 Crore</option>
+<option>₹1 Crore+</option>
+</select>
+
+<button class="search">🔍 Search</button>
+
+</div>
+
+
+<h2 style="text-align:center;margin:30px 0;">
+All Properties
+</h2>
+
+
+<section class="properties">
+
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80">
+
+<div class="content">
+
+<span class="badge">✓ VERIFIED</span>
+
+<h2 style="margin-top:10px;">Luxury Villa</h2>
+
+<div class="price">₹1.25 Crore</div>
+
+<div class="details">📍 Ahmedabad</div>
+
+<div class="details">🛏 4 BHK • 📐 2500 Sq.ft</div>
+
+<div class="buttons">
+<a href="#" class="btn">❤️ Save</a>
+<a href="#" class="btn">📞 Call</a>
+<a href="#" class="btn whatsapp">💬 WhatsApp</a>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80">
+
+<div class="content">
+
+<span class="badge">✓ VERIFIED</span>
+
+<h2 style="margin-top:10px;">Modern Apartment</h2>
+
+<div class="price">₹78 Lakh</div>
+
+<div class="details">📍 Surat</div>
+
+<div class="details">🛏 3 BHK • 📐 1650 Sq.ft</div>
+
+<div class="buttons">
+<a href="#" class="btn">❤️ Save</a>
+<a href="#" class="btn">📞 Call</a>
+<a href="#" class="btn whatsapp">💬 WhatsApp</a>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=800&q=80">
+
+<div class="content">
+
+<span class="badge">✓ VERIFIED</span>
+
+<h2 style="margin-top:10px;">Premium House</h2>
+
+<div class="price">₹95 Lakh</div>
+
+<div class="details">📍 Vadodara</div>
+
+<div class="details">🛏 3 BHK • 📐 1900 Sq.ft</div>
+
+<div class="buttons">
+<a href="#" class="btn">❤️ Save</a>
+<a href="#" class="btn">📞 Call</a>
+<a href="#" class="btn whatsapp">💬 WhatsApp</a>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80">
+
+<div class="content">
+
+<span class="badge">✓ VERIFIED</span>
+
+<h2 style="margin-top:10px;">Rental Apartment</h2>
+
+<div class="price">₹35,000 / Month</div>
+
+<div class="details">📍 Ahmedabad</div>
+
+<div class="details">🛏 3 BHK • 📐 1800 Sq.ft</div>
+
+<div class="buttons">
+<a href="#" class="btn">❤️ Save</a>
+<a href="#" class="btn">📞 Call</a>
+<a href="#" class="btn whatsapp">💬 WhatsApp</a>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<h2 style="color:#FFD700;">PropertyVerse</h2>
+
+<p style="margin-top:10px;">
+Buy • Sell • Rent • Interior
+</p>
+
+<p style="margin-top:15px;">
+© 2026 PropertyVerse. All Rights Reserved.
+</p>
+
+</footer>
+
+</body>
+</html>
