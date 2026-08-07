@@ -1,238 +1,509 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Sell Property | PropertyVerse</title>
 
 <style>
+
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-  background:#f5f7fa;
-  color:#081B33;
+background:#f5f7fa;
+color:#081B33;
 }
 
 header{
-  background:#081B33;
-  padding:18px 25px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
+background:#081B33;
+padding:16px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
 }
 
 .logo{
-  color:#FFD700;
-  font-size:26px;
-  font-weight:bold;
+color:#FFD700;
+font-size:25px;
+font-weight:bold;
+}
+
+nav{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
 }
 
 nav a{
-  color:white;
-  text-decoration:none;
-  margin:8px;
+color:white;
+text-decoration:none;
+padding:8px;
+}
+
+.login{
+background:#E63946;
+border-radius:6px;
+padding:9px 14px;
 }
 
 .hero{
-  background:#081B33;
-  color:white;
-  text-align:center;
-  padding:60px 20px;
+background:
+linear-gradient(rgba(8,27,51,.75),rgba(8,27,51,.75)),
+url("https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1600&q=80");
+
+background-size:cover;
+background-position:center;
+
+padding:75px 20px;
+text-align:center;
+color:white;
 }
 
 .hero h1{
-  font-size:40px;
-  margin-bottom:15px;
+font-size:42px;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:19px;
 }
 
 .container{
-  max-width:800px;
-  margin:35px auto;
-  padding:20px;
+max-width:850px;
+margin:40px auto 70px;
+padding:0 20px;
 }
 
-.form{
-  background:white;
-  padding:30px;
-  border-radius:15px;
-  box-shadow:0 5px 20px rgba(0,0,0,.1);
+.form-box{
+background:white;
+padding:30px;
+border-radius:16px;
+box-shadow:0 5px 20px rgba(0,0,0,.12);
 }
 
-.form h2{
-  margin-bottom:25px;
+.form-box h2{
+text-align:center;
+margin-bottom:10px;
 }
 
-.form label{
-  display:block;
-  margin-top:15px;
-  margin-bottom:7px;
-  font-weight:bold;
+.subtitle{
+text-align:center;
+color:#666;
+margin-bottom:30px;
 }
 
-.form input,
-.form select,
-.form textarea{
-  width:100%;
-  padding:13px;
-  border:1px solid #ddd;
-  border-radius:7px;
-  font-size:15px;
+.row{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
 }
 
-.form textarea{
-  height:100px;
-  resize:vertical;
+.field{
+flex:1;
+min-width:250px;
+margin-bottom:18px;
+}
+
+label{
+display:block;
+font-weight:bold;
+margin-bottom:7px;
+}
+
+input,
+select,
+textarea{
+width:100%;
+padding:13px;
+border:1px solid #ddd;
+border-radius:7px;
+font-size:15px;
+}
+
+textarea{
+height:110px;
+resize:vertical;
 }
 
 .submit{
-  width:100%;
-  margin-top:25px;
-  padding:15px;
-  background:#E63946;
-  color:white;
-  border:0;
-  border-radius:8px;
-  font-size:17px;
-  font-weight:bold;
+width:100%;
+background:#E63946;
+color:white;
+border:0;
+padding:15px;
+border-radius:8px;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
 }
 
 .note{
-  background:#fff8df;
-  padding:15px;
-  margin-top:20px;
-  border-radius:8px;
-  font-size:14px;
+background:#fff8e1;
+padding:15px;
+border-radius:8px;
+margin-bottom:25px;
+color:#665000;
+font-size:14px;
+line-height:1.5;
 }
 
 footer{
-  margin-top:50px;
-  background:#050F1F;
-  color:white;
-  text-align:center;
-  padding:30px 20px;
+background:#050F1F;
+color:white;
+text-align:center;
+padding:35px 20px;
 }
+
+footer a{
+color:white;
+margin:6px;
+}
+
+@media(max-width:600px){
+
+.hero h1{
+font-size:32px;
+}
+
+.form-box{
+padding:20px;
+}
+
+.field{
+min-width:100%;
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
 
+
 <header>
 
-<div class="logo">🏠 PropertyVerse</div>
+<div class="logo">
+🏠 PropertyVerse
+</div>
 
 <nav>
+
 <a href="index.html">Home</a>
+
 <a href="buy.html">Buy</a>
+
 <a href="sell.html">Sell</a>
+
 <a href="rent.html">Rent</a>
+
 <a href="interior.html">Interior</a>
+
 <a href="listing.html">Listing</a>
+
 <a href="contact.html">Contact</a>
-<a href="login.html">Login</a>
+
+<a href="login.html" class="login">Login</a>
+
 </nav>
 
 </header>
 
+
 <section class="hero">
 
-<h1>Sell Your Property</h1>
+<h1>🏠 Sell Your Property</h1>
 
-<p>Reach genuine buyers with PropertyVerse</p>
+<p>
+Reach genuine buyers with PropertyVerse
+</p>
 
 </section>
 
+
 <div class="container">
 
-<div class="form">
+<div class="form-box">
 
-<h2>🏠 Post Your Property</h2>
+<h2>📋 List Your Property</h2>
 
-<label>Property Type</label>
+<p class="subtitle">
+Fill in your property details
+</p>
 
-<select>
-<option>Select Property Type</option>
-<option>Apartment</option>
-<option>Villa</option>
-<option>House</option>
-<option>Plot</option>
-<option>Commercial Property</option>
-</select>
-
-<label>Property Title</label>
-
-<input type="text" placeholder="Example: Luxury 3 BHK Apartment">
-
-<label>Location</label>
-
-<input type="text" placeholder="City / Area">
-
-<label>Expected Price</label>
-
-<input type="number" placeholder="₹ Expected Price">
-
-<label>Property Area</label>
-
-<input type="text" placeholder="Example: 1500 Sq.ft">
-
-<label>Bedrooms</label>
-
-<select>
-<option>Select Bedrooms</option>
-<option>1 BHK</option>
-<option>2 BHK</option>
-<option>3 BHK</option>
-<option>4 BHK</option>
-<option>5+ BHK</option>
-</select>
-
-<label>Property Description</label>
-
-<textarea placeholder="Describe your property..."></textarea>
-
-<label>Owner Name</label>
-
-<input type="text" placeholder="Your Name">
-
-<label>Mobile Number</label>
-
-<input type="tel" placeholder="Your Mobile Number">
-
-<label>Property Images</label>
-
-<input type="file" accept="image/*" multiple>
 
 <div class="note">
-⚠️ Demo form: अभी यह information database में save नहीं होगी।
-Real property posting के लिए बाद में backend/database और verification system जोड़ेंगे।
+
+<strong>Important:</strong>
+This is currently a demo form. Property submissions will be connected to the PropertyVerse database later.
+
 </div>
 
-<button class="submit">
-📤 Submit Property
+
+<form>
+
+
+<div class="row">
+
+<div class="field">
+
+<label>👤 Your Name</label>
+
+<input
+type="text"
+placeholder="Enter your full name"
+required
+>
+
+</div>
+
+
+<div class="field">
+
+<label>📞 Mobile Number</label>
+
+<input
+type="tel"
+placeholder="Enter mobile number"
+required
+>
+
+</div>
+
+</div>
+
+
+<div class="row">
+
+<div class="field">
+
+<label>📧 Email</label>
+
+<input
+type="email"
+placeholder="Enter email address"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>🏠 Property Type</label>
+
+<select required>
+
+<option value="">Select Property Type</option>
+
+<option>Apartment</option>
+
+<option>Villa</option>
+
+<option>Independent House</option>
+
+<option>Plot</option>
+
+<option>Commercial Property</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<div class="row">
+
+<div class="field">
+
+<label>📍 City</label>
+
+<select required>
+
+<option value="">Select City</option>
+
+<option>Ahmedabad</option>
+
+<option>Surat</option>
+
+<option>Vadodara</option>
+
+<option>Rajkot</option>
+
+<option>Gandhinagar</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>📍 Locality / Area</label>
+
+<input
+type="text"
+placeholder="Example: SG Highway"
+required
+>
+
+</div>
+
+</div>
+
+
+<div class="row">
+
+<div class="field">
+
+<label>💰 Expected Price</label>
+
+<input
+type="number"
+placeholder="Example: 8500000"
+required
+>
+
+</div>
+
+
+<div class="field">
+
+<label>📐 Property Area (Sq.ft)</label>
+
+<input
+type="number"
+placeholder="Example: 2200"
+required
+>
+
+</div>
+
+</div>
+
+
+<div class="row">
+
+<div class="field">
+
+<label>🛏 Bedrooms</label>
+
+<select>
+
+<option>1 BHK</option>
+
+<option>2 BHK</option>
+
+<option>3 BHK</option>
+
+<option>4 BHK</option>
+
+<option>5+ BHK</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>🚗 Parking</label>
+
+<select>
+
+<option>Yes</option>
+
+<option>No</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<div class="field" style="width:100%;">
+
+<label>📝 Property Description</label>
+
+<textarea
+placeholder="Describe your property..."
+></textarea>
+
+</div>
+
+
+<div class="field" style="width:100%;">
+
+<label>📸 Property Photos</label>
+
+<input
+type="file"
+accept="image/*"
+multiple
+>
+
+</div>
+
+
+<button
+type="button"
+class="submit"
+onclick="alert('Thank you! Your property listing form is ready. Database connection will be added later.')"
+>
+
+🚀 Submit Property
+
 </button>
 
+
+</form>
+
 </div>
 
 </div>
+
 
 <footer>
 
-<h2 style="color:#FFD700;">PropertyVerse</h2>
+<h2 style="color:#FFD700;">
+🏠 PropertyVerse
+</h2>
 
-<p style="margin-top:10px;">
+<p style="margin:12px 0;color:#ccc;">
 Buy • Sell • Rent • Interior
 </p>
 
-<p style="margin-top:15px;">
+<p>
+
+<a href="index.html">Home</a>
+
+<a href="buy.html">Buy</a>
+
+<a href="sell.html">Sell</a>
+
+<a href="rent.html">Rent</a>
+
+<a href="contact.html">Contact</a>
+
+</p>
+
+<p style="margin-top:20px;color:#aaa;">
 © 2026 PropertyVerse. All Rights Reserved.
 </p>
 
 </footer>
+
 
 </body>
 </html>
