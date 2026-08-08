@@ -497,8 +497,41 @@ Buy • Sell • Rent • Interior
 </footer>
 <script>
 function searchProperties() {
-    alert("Search feature is ready! Property results will be filtered after the database is connected.");
-}
+    const selects = document.querySelectorAll("select");
+
+    const city = selects[0]?.value.toLowerCase() || "";
+    const type = selects[1]?.value.toLowerCase() || "";
+    const budget = selects[2]?.value.toLowerCase() || "";
+
+    const cards = document.querySelectorAll(".card");
+    let found = 0;
+
+    cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+
+        const cityMatch =
+            city === "search city" || text.includes(city);
+
+        const typeMatch =
+            type === "property type" || text.includes(type);
+
+        const budgetMatch =
+            budget === "budget" || text.includes(budget);
+
+        if (cityMatch && typeMatch && budgetMatch) {
+            card.style.display = "";
+            found++;
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    if (found === 0) {
+        alert("❌ No matching property found.");
+    } else {
+        alert("✅ " + found + " properties found!");
+    }
+        }
 </script>
 </body>
 </html>
