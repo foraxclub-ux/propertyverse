@@ -163,7 +163,7 @@ footer{background:#050F1F;color:white;text-align:center;padding:30px;margin-top:
 </div>
 
 <button type="button"
-onclick="alert('Your property form is ready. Database connection will be added later.')">
+onclick="submitProperty()">
 🚀 Submit Property
 </button>
 
@@ -176,6 +176,11 @@ onclick="alert('Your property form is ready. Database connection will be added l
 <h2 style="color:#FFD700">🏠 PropertyVerse</h2>
 <p style="margin-top:10px">© 2026 PropertyVerse. All Rights Reserved.</p>
 </footer>
-
+<script>
+function submitProperty() {
+    alert("✅ Property submitted successfully!");
+    window.location.href = "listing.html";
+}
+</script>
 </body>
   </html>
