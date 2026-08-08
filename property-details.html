@@ -239,7 +239,23 @@ excellent connectivity and a comfortable lifestyle.
 ✓ Nearby Schools & Hospitals<br>
 ✓ Good Road Connectivity
 </p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;">
 
+<button
+type="button"
+onclick="saveProperty()"
+style="padding:12px 18px;border:1px solid #ddd;border-radius:8px;background:white;font-weight:bold;cursor:pointer;">
+❤️ Save Property
+</button>
+
+<button
+type="button"
+onclick="shareProperty()"
+style="padding:12px 18px;border:1px solid #ddd;border-radius:8px;background:white;font-weight:bold;cursor:pointer;">
+📤 Share Property
+</button>
+
+</div>
 <div class="buttons">
 
 <a href="tel:+919999999999" class="btn call">
@@ -275,6 +291,24 @@ Buy • Sell • Rent • Interior
 </p>
 
 </footer>
+<script>
 
+function saveProperty() {
+    alert("❤️ Property saved successfully!");
+}
+
+function shareProperty() {
+    if (navigator.share) {
+        navigator.share({
+            title: "PropertyVerse Property",
+            text: "Check out this property on PropertyVerse!",
+            url: window.location.href
+        });
+    } else {
+        alert("📤 Copy this page link and share it with others.");
+    }
+}
+
+</script>
 </body>
 </html>
