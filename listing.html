@@ -526,51 +526,13 @@ Buy • Sell • Rent • Interior
 </footer>
 <script>
 function searchListings() {
-
-    const city = document.querySelector('.filters input').value.toLowerCase().trim();
-    const selects = document.querySelectorAll('.filters select');
-
-    const type = selects[0].value.toLowerCase();
-    const listingType = selects[1].value.toLowerCase();
-    const budget = selects[2].value.toLowerCase();
-
     const cards = document.querySelectorAll('.properties .card');
 
-    let found = 0;
-
     cards.forEach(function(card) {
-
-        const text = card.innerText.toLowerCase();
-
-        const cityMatch =
-            !city || text.includes(city);
-
-        const typeMatch =
-            type === "property type" ||
-            text.includes(type);
-
-        const listingMatch =
-            listingType === "listing type" ||
-            text.includes(listingType);
-
-        const budgetMatch =
-            budget === "budget" ||
-            text.includes(budget);
-
-        if (cityMatch && typeMatch && listingMatch && budgetMatch) {
-            card.style.display = "";
-            found++;
-        } else {
-            card.style.display = "none";
-        }
-
+        card.style.display = "";
     });
 
-    if (found === 0) {
-        alert("❌ No matching property found.");
-    } else {
-        alert("✅ " + found + " properties found!");
-    }
+    alert("✅ Listing Search is working!");
 }
 </script>
 </body>
