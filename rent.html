@@ -517,8 +517,56 @@ Buy • Sell • Rent • Interior
 </footer>
 <script>
 function searchRentProperties() {
-    alert("🔍 Rent property search is ready!");
+
+    const inputs = document.querySelectorAll("input, select");
+
+    const city = inputs[0] ? inputs[0].value.toLowerCase().trim() : "";
+    const propertyType = inputs[1] ? inputs[1].value.toLowerCase().trim() : "";
+    const rent = inputs[2] ? inputs[2].value.toLowerCase().trim() : "";
+    const bhk = inputs[3] ? inputs[3].value.toLowerCase().trim() : "";
+
+    const cards = document.querySelectorAll(".card");
+
+    let found = 0;
+
+    cards.forEach(card => {
+
+        const text = card.innerText.toLowerCase();
+
+        const cityMatch =
+            !city ||
+            city === "search city" ||
+            text.includes(city);
+
+        const typeMatch =
+            !propertyType ||
+            propertyType === "property type" ||
+            text.includes(propertyType);
+
+        const rentMatch =
+            !rent ||
+            rent === "monthly rent" ||
+            text.includes(rent.replace("₹", "").trim());
+
+        const bhkMatch =
+            !bhk ||
+            bhk === "bhk" ||
+            text.includes(bhk);
+
+        if (cityMatch && typeMatch && rentMatch && bhkMatch) {
+            card.style.display = "";
+            found++;
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    if (found === 0) {
+        alert("❌ No matching rental property found.");
+    } else {
+        alert("✅ " + found + " rental properties found!");
+    }
 }
-</script>
+            </script>
 </body>
   </html>
