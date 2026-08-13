@@ -165,7 +165,7 @@ required
 <button
 type="button"
 class="login-btn"
-onclick="window.location.href='dashboard.html'">
+onclick="loginUser()">
 Login
 </button>
 
@@ -190,6 +190,27 @@ Create Account
 © 2026 PropertyVerse. All Rights Reserved.
 
 </footer>
+<script>
+function loginUser(){
 
+let email = document.getElementById("email").value;
+let password = document.getElementById("password").value;
+
+let savedEmail = localStorage.getItem("pv_email");
+let savedPassword = localStorage.getItem("pv_password");
+
+if(email === savedEmail && password === savedPassword){
+
+alert("✅ Login Successful!");
+window.location.href="dashboard.html";
+
+}else{
+
+alert("❌ Wrong Email or Password");
+
+}
+
+}
+</script>
 </body>
 </html>
