@@ -558,5 +558,29 @@ if(savedProperty){
     `;
 }
   </script>
+  <script>
+let searchLocation =
+localStorage.getItem("pv_search_location") || "";
+
+let searchPurpose =
+localStorage.getItem("pv_search_purpose") || "";
+
+let searchBudget =
+localStorage.getItem("pv_search_budget") || "";
+
+let searchType =
+localStorage.getItem("pv_search_type") || "";
+
+if(searchLocation || searchPurpose || searchBudget || searchType){
+
+    console.log("Property Search:", {
+        location: searchLocation,
+        purpose: searchPurpose,
+        budget: searchBudget,
+        type: searchType
+    });
+
+}
+      </script>
 </body>
   </html>
