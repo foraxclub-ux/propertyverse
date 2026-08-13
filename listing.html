@@ -582,5 +582,35 @@ if(searchLocation || searchPurpose || searchBudget || searchType){
 
 }
       </script>
+  <script>
+let property = localStorage.getItem("pv_property");
+
+if(property){
+
+    property = JSON.parse(property);
+
+    let cards = document.querySelectorAll(".property-card");
+
+    cards.forEach(function(card){
+
+        let text = card.innerText.toLowerCase();
+
+        let location =
+        localStorage.getItem("pv_search_location") || "";
+
+        let type =
+        localStorage.getItem("pv_search_type") || "";
+
+        if(
+            (location && !text.includes(location.toLowerCase())) ||
+            (type && type !== "Property Type" &&
+             !text.includes(type.toLowerCase()))
+        ){
+            card.style.display = "none";
+        }
+
+    });
+}
+  </script>
 </body>
   </html>
