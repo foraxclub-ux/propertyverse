@@ -139,84 +139,27 @@ Join PropertyVerse today
 </p>
 
 
-<form>
+<div style="max-width:400px;margin:50px auto;padding:30px;background:white;border-radius:15px;">
 
-<label>👤 Full Name</label>
+<h2>Create Account</h2>
 
-<input
-type="text"
-placeholder="Enter your full name"
-required
->
+<input id="name" type="text" placeholder="Full Name"
+style="width:100%;padding:12px;margin:8px 0;">
 
+<input id="email" type="email" placeholder="Email"
+style="width:100%;padding:12px;margin:8px 0;">
 
-<label>📱 Mobile Number</label>
+<input id="password" type="password" placeholder="Password"
+style="width:100%;padding:12px;margin:8px 0;">
 
-<input
-type="tel"
-placeholder="Enter mobile number"
-required
->
-
-
-<label>📧 Email Address</label>
-
-<input
-type="email"
-placeholder="Enter email address"
-required
->
-
-
-<label>👔 I am a</label>
-
-<select required>
-
-<option value="">
-Select account type
-</option>
-
-<option>
-Buyer
-</option>
-
-<option>
-Seller
-</option>
-
-<option>
-Agent
-</option>
-
-</select>
-
-
-<label>🔐 Password</label>
-
-<input
-type="password"
-placeholder="Create a password"
-required
->
-
-
-<label>🔐 Confirm Password</label>
-
-<input
-type="password"
-placeholder="Confirm password"
-required
->
-
-
-<button
-type="button"
-class="register-btn"
-onclick="window.location.href='dashboard.html'">
+<button type="button" onclick="registerUser()"
+style="width:100%;padding:13px;background:#E63946;color:white;border:0;border-radius:6px;">
 Create Account
 </button>
 
-</form>
+<p id="message"></p>
+
+</div>
 
 
 <div class="login">
@@ -237,6 +180,29 @@ Login
 © 2026 PropertyVerse. All Rights Reserved.
 
 </footer>
+<script>
+function registerUser(){
 
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+let password = document.getElementById("password").value;
+
+if(name==="" || email==="" || password===""){
+document.getElementById("message").innerText="⚠️ Please fill all fields";
+return;
+}
+
+localStorage.setItem("pv_name",name);
+localStorage.setItem("pv_email",email);
+localStorage.setItem("pv_password",password);
+
+document.getElementById("message").innerText="✅ Account created successfully!";
+
+setTimeout(function(){
+window.location.href="login.html";
+},1500);
+
+}
+</script>
 </body>
 </html>
