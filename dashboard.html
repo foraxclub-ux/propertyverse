@@ -236,8 +236,9 @@ Add Property
 </div>
 
 
-<a href="login.html" class="logout">
+<a href="login.html" class="logout" onclick="logoutUser()">
 🚪 Logout
+</a>
 </a>
 
 </div>
@@ -266,5 +267,14 @@ if (userName) {
         "👋 Welcome, " + userName + "!";
 }
 </script>
+  <script>
+function logoutUser() {
+    localStorage.removeItem("pv_name");
+    localStorage.removeItem("pv_email");
+    localStorage.removeItem("pv_password");
+
+    alert("✅ Logged out successfully!");
+}
+  </script>
 </body>
   </html>
