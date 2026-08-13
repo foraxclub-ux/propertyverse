@@ -1,1 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Property | PropertyVerse</title>
 
+<style>
+*{box-sizing:border-box;font-family:Arial,sans-serif}
+
+body{
+margin:0;
+background:#f4f6f9;
+color:#081B33;
+}
+
+header{
+background:#081B33;
+padding:18px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+color:#FFD700;
+font-size:24px;
+font-weight:bold;
+}
+
+.home{
+color:white;
+text-decoration:none;
+}
+
+.container{
+max-width:700px;
+margin:30px auto;
+padding:15px;
+}
+
+.form-box{
+background:white;
+padding:28px;
+border-radius:16px;
+box-shadow:0 8px 25px rgba(0,0,0,.12);
+}
+
+h1{
+text-align:center;
+}
+
+.subtitle{
+text-align:center;
+color:#666;
+}
+
+label{
+display:block;
+font-weight:bold;
+margin-top:18px;
+margin-bottom:7px;
+}
+
+input,select,textarea{
+width:100%;
+padding:13px;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:16px;
+}
+
+textarea{
+height:110px;
+}
+
+button{
+width:100%;
+margin-top:25px;
+padding:14px;
+background:#E63946;
+color:white;
+border:0;
+border-radius:8px;
+font-size:17px;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">🏠 PropertyVerse</div>
+<a href="dashboard.html" class="home">← Dashboard</a>
+</header>
+
+<div class="container">
+
+<div class="form-box">
+
+<h1>🏠 Add Property</h1>
+
+<p class="subtitle">
+List your property on PropertyVerse
+</p>
+
+<form onsubmit="saveProperty(event)">
+
+<label>Property Title</label>
+<input id="title" type="text"
+placeholder="Example: Premium 3 BHK House" required>
+
+<label>Property Type</label>
+<select id="type" required>
+<option value="">Select Property Type</option>
+<option>Apartment</option>
+<option>House</option>
+<option>Villa</option>
+<option>Plot</option>
+<option>Commercial</option>
+</select>
+
+<label>City</label>
+<input id="city" type="text"
+placeholder="Example: Ahmedabad" required>
+
+<label>Price</label>
+<input id="price" type="number"
+placeholder="Example: 5000000" required>
+
+<label>BHK</label>
+<select id="bhk">
+<option>1 BHK</option>
+<option>2 BHK</option>
+<option>3 BHK</option>
+<option>4 BHK</option>
+<option>5+ BHK</option>
+</select>
+
+<label>Description</label>
+<textarea id="description"
+placeholder="Describe your property"></textarea>
+
+<button type="submit">
+➕ Add Property
+</button>
+
+</form>
+
+</div>
+</div>
+
+<script>
+function saveProperty(event){
+
+event.preventDefault();
+
+let property={
+title:document.getElementById("title").value,
+type:document.getElementById("type").value,
+city:document.getElementById("city").value,
+price:document.getElementById("price").value,
+bhk:document.getElementById("bhk").value,
+description:document.getElementById("description").value
+};
+
+localStorage.setItem(
+"pv_property",
+JSON.stringify(property)
+);
+
+alert("✅ Property Added Successfully!");
+
+window.location.href="dashboard.html";
+}
+</script>
+
+</body>
+</html>
