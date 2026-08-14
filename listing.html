@@ -612,5 +612,45 @@ if(property){
     });
 }
   </script>
+  <script>
+let properties =
+JSON.parse(localStorage.getItem("pv_properties") || "[]");
+
+if(properties.length){
+
+    let section = document.createElement("section");
+
+    section.style.cssText =
+    "padding:20px;max-width:900px;margin:auto;";
+
+    section.innerHTML = "<h2>🏠 All Properties</h2>";
+
+    properties.forEach(function(property){
+
+        section.innerHTML += `
+        <div style="
+        background:white;
+        padding:20px;
+        margin:15px 0;
+        border-radius:12px;
+        box-shadow:0 4px 15px rgba(0,0,0,.12);
+        ">
+
+        <h3>${property.title}</h3>
+
+        <p>📍 ${property.city}</p>
+        <p>🏢 ${property.type}</p>
+        <p>🛏️ ${property.bhk}</p>
+        <p>💰 ₹${property.price}</p>
+
+        <p>👤 ${property.owner || "Owner not provided"}</p>
+
+        </div>
+        `;
+    });
+
+    document.body.appendChild(section);
+}
+  </script>
 </body>
   </html>
