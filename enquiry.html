@@ -1,1 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Property Enquiry | PropertyVerse</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  margin:0;
+  background:#f4f6f9;
+  color:#081B33;
+}
+
+header{
+  background:#081B33;
+  padding:18px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  color:#FFD700;
+  font-size:24px;
+  font-weight:bold;
+}
+
+.home{
+  color:white;
+  text-decoration:none;
+}
+
+.container{
+  max-width:600px;
+  margin:40px auto;
+  padding:15px;
+}
+
+.box{
+  background:white;
+  padding:30px;
+  border-radius:16px;
+  box-shadow:0 8px 25px rgba(0,0,0,.12);
+}
+
+h1{
+  text-align:center;
+}
+
+.subtitle{
+  text-align:center;
+  color:#666;
+  margin-bottom:25px;
+}
+
+label{
+  display:block;
+  font-weight:bold;
+  margin:15px 0 7px;
+}
+
+input,textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  font-size:16px;
+}
+
+textarea{
+  height:120px;
+}
+
+button{
+  width:100%;
+  margin-top:22px;
+  padding:14px;
+  background:#E63946;
+  color:white;
+  border:0;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+🏠 PropertyVerse
+</div>
+
+<a href="listing.html" class="home">
+← Properties
+</a>
+
+</header>
+
+<div class="container">
+
+<div class="box">
+
+<h1>📩 Property Enquiry</h1>
+
+<p class="subtitle">
+Interested in this property? Send an enquiry.
+</p>
+
+<form onsubmit="sendEnquiry(event)">
+
+<label>Your Name</label>
+<input id="name" type="text"
+placeholder="Enter your name" required>
+
+<label>Mobile Number</label>
+<input id="mobile" type="tel"
+placeholder="Enter mobile number" required>
+
+<label>Email</label>
+<input id="email" type="email"
+placeholder="Enter email">
+
+<label>Message</label>
+<textarea id="message"
+placeholder="I am interested in this property..."></textarea>
+
+<button type="submit">
+📩 Send Enquiry
+</button>
+
+</form>
+
+</div>
+</div>
+
+<script>
+function sendEnquiry(event){
+
+event.preventDefault();
+
+let name =
+document.getElementById("name").value;
+
+alert(
+"✅ Enquiry submitted successfully, " +
+name + "!"
+);
+
+window.location.href="listing.html";
+
+}
+</script>
+
+</body>
+</html>
