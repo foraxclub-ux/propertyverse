@@ -179,9 +179,14 @@ owner:document.getElementById("owner").value,
 phone:document.getElementById("phone").value
 };
 
+let properties =
+JSON.parse(localStorage.getItem("pv_properties") || "[]");
+
+properties.push(property);
+
 localStorage.setItem(
-"pv_property",
-JSON.stringify(property)
+"pv_properties",
+JSON.stringify(properties)
 );
 
 alert("✅ Property Added Successfully!");
