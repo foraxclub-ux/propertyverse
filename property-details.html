@@ -337,7 +337,9 @@ if(savedProperty){
         <p>🛏️ <strong>BHK:</strong> ${property.bhk}</p>
 
         <p>💰 <strong>Price:</strong> ₹${property.price}</p>
+<p>👤 <strong>Owner / Agent:</strong> ${property.owner || "Not provided"}</p>
 
+<p>📞 <strong>Contact:</strong> ${property.phone || "Not provided"}</p>
         <p style="margin-top:15px;">
         <strong>Description:</strong><br>
         ${property.description || "No description available."}
