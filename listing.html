@@ -486,7 +486,56 @@ View Details
 
 </div>
 <div id="userProperties"></div>
+<script>
+let properties =
+JSON.parse(localStorage.getItem("pv_properties") || "[]");
 
+let box = document.getElementById("userProperties");
+
+properties.forEach(function(property){
+
+    box.innerHTML += `
+    <div class="card">
+
+        <div class="content">
+
+            <span class="verified">
+            ✓ PROPERTY LISTED
+            </span>
+
+            <h2>${property.title}</h2>
+
+            <div class="price">
+            ₹${property.price}
+            </div>
+
+            <div class="info">
+            📍 ${property.city}<br>
+            🏢 ${property.type}<br>
+            🛏 ${property.bhk}<br>
+            📝 ${property.description}
+            </div>
+
+            <div class="buttons">
+
+                <a href="property-details.html"
+                class="btn details">
+                View Details
+                </a>
+
+                <a href="tel:${property.phone}"
+                class="btn call">
+                📞 Call
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+    `;
+});
+</script>
 <a href="sell.html" class="list-property">
 ➕ List Your Property
 </a>
