@@ -1,9 +1,9 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Property Details | BharatWorld Properties</title>
 
 <style>
@@ -63,7 +63,7 @@ nav a:hover{
 
 .container{
     max-width:1000px;
-    margin:40px auto;
+    margin:35px auto;
     padding:0 20px 70px;
 }
 
@@ -86,6 +86,7 @@ nav a:hover{
     width:100%;
     height:430px;
     object-fit:cover;
+    display:block;
 }
 
 .content{
@@ -133,6 +134,17 @@ h1{
 .description p{
     color:#666;
     line-height:1.7;
+}
+
+.owner{
+    margin-top:25px;
+    padding:20px;
+    background:#f5f7fa;
+    border-radius:12px;
+}
+
+.owner h2{
+    margin-bottom:10px;
 }
 
 .actions{
@@ -226,10 +238,6 @@ footer a{
         padding:8px;
     }
 
-    .container{
-        margin:25px auto;
-    }
-
     .property-image{
         height:260px;
     }
@@ -276,7 +284,6 @@ footer a{
 
 </header>
 
-
 <div class="container">
 
 <a href="listing.html" class="back">
@@ -286,7 +293,6 @@ footer a{
 <div id="propertyArea"></div>
 
 </div>
-
 
 <footer>
 
@@ -312,7 +318,6 @@ footer a{
 
 </footer>
 
-
 <script>
 
 function loadProperty(){
@@ -331,7 +336,7 @@ function loadProperty(){
             <h2>🏠 Property Not Found</h2>
 
             <p>
-            Please select a property from the listing page.
+            Please select a property from the Listing page.
             </p>
 
             <a href="listing.html">
@@ -344,15 +349,57 @@ function loadProperty(){
         return;
     }
 
-    const property =
-    JSON.parse(saved);
+    let property;
 
-    let image =
-    property.image || 
+    try{
+        property = JSON.parse(saved);
+    }
+    catch(error){
+
+        area.innerHTML = `
+        <div class="no-property">
+            <h2>⚠️ Property Data Error</h2>
+            <p>Please go back and select the property again.</p>
+            <a href="listing.html">
+            Back to Listings
+            </a>
+        </div>
+        `;
+
+        return;
+    }
+
+    const title =
+    property.title || "Property";
+
+    const price =
+    property.price || "Contact for Price";
+
+    const city =
+    property.city || "India";
+
+    const type =
+    property.type || "Property";
+
+    const bhk =
+    property.bhk || "Details available";
+
+    const purpose =
+    property.purpose || "Property Listing";
+
+    const description =
+    property.description ||
+    "This property is listed on BharatWorld Properties. Contact us for complete property details and availability.";
+
+    const phone =
+    property.phone || "+919999999999";
+
+    const image =
+    property.image ||
     "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80";
 
-    let phone =
-    property.phone || "+919999999999";
+    const cleanPhone =
+    phone.replace(/\D/g,'');
 
     area.innerHTML = `
 
@@ -361,7 +408,8 @@ function loadProperty(){
         <img
         class="property-image"
         src="${image}"
-        alt="${property.title || "Property"}"
+        alt="${title}"
+        onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80';"
         >
 
         <div class="content">
@@ -371,34 +419,49 @@ function loadProperty(){
             </span>
 
             <h1>
-            ${property.title || "Property"}
+            ${title}
             </h1>
 
             <div class="price">
-            ₹${property.price || "Contact for Price"}
+            ₹${price}
             </div>
 
             <div class="info">
 
-                📍 ${property.city || "India"}<br>
+                📍 <strong>Location:</strong>
+                ${city}<br>
 
-                🏢 ${property.type || "Property"}<br>
+                🏢 <strong>Property Type:</strong>
+                ${type}<br>
 
-                🛏 ${property.bhk || "Details available"}<br>
+                🛏 <strong>Bedrooms:</strong>
+                ${bhk}<br>
 
-                🏷️ ${property.purpose || "Property Listing"}
+                🏷️ <strong>Listing:</strong>
+                ${purpose}
 
             </div>
 
             <div class="description">
 
                 <h2>
-                Property Description
+                📝 Property Description
                 </h2>
 
                 <p>
-                ${property.description ||
-                "This property is listed on BharatWorld Properties. Contact the property owner or representative for complete details, availability and site visit information."}
+                ${description}
+                </p>
+
+            </div>
+
+            <div class="owner">
+
+                <h2>
+                👤 Property Contact
+                </h2>
+
+                <p>
+                📞 ${phone}
                 </p>
 
             </div>
@@ -408,25 +471,20 @@ function loadProperty(){
                 <a
                 href="tel:${phone}"
                 class="btn call">
-
                 📞 Call Owner
-
                 </a>
 
                 <a
-                href="https://wa.me/${phone.replace(/\D/g,'')}"
-                class="btn whatsapp">
-
+                href="https://wa.me/${cleanPhone}"
+                class="btn whatsapp"
+                target="_blank">
                 💬 WhatsApp
-
                 </a>
 
                 <a
                 href="listing.html"
                 class="btn back-list">
-
                 ← More Properties
-
                 </a>
 
             </div>
@@ -436,7 +494,6 @@ function loadProperty(){
     </div>
 
     `;
-
 }
 
 loadProperty();
@@ -444,4 +501,6 @@ loadProperty();
 </script>
 
 </body>
-    </html>
+</html>
+```
+
