@@ -988,6 +988,65 @@ loadUserProperties();
 loadHomeSearch();
 
 </script>
+<script>
 
+document.addEventListener("click", function(e){
+
+    let button = e.target.closest(".details");
+
+    if(!button) return;
+
+    let card = button.closest(".card");
+
+    if(!card) return;
+
+    let title =
+        card.querySelector("h2")?.innerText || "";
+
+    let price =
+        card.querySelector(".price")?.innerText || "";
+
+    let info =
+        card.querySelector(".info")?.innerText || "";
+
+    let property = {
+
+        title: title,
+
+        price: price.replace("₹","").trim(),
+
+        city:
+            info.split("\n")[0]
+            ?.replace("📍","")
+            .trim() || "",
+
+        type:
+            info.split("\n")[1]
+            ?.replace("🏢","")
+            .trim() || "",
+
+        bhk:
+            info.split("\n")[2]
+            ?.replace("🛏","")
+            .trim() || "",
+
+        purpose:
+            info.split("\n")[3]
+            ?.replace("🏷️","")
+            .trim() || "",
+
+        description:
+            "Property listed on BharatWorld Properties."
+
+    };
+
+    localStorage.setItem(
+        "pv_selected_property",
+        JSON.stringify(property)
+    );
+
+});
+
+</script>
 </body>
   </html>
