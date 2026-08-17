@@ -1,152 +1,271 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Property Details | PropertyVerse</title>
+
+<title>Property Details | BharatWorld Properties</title>
 
 <style>
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
 body{
-  background:#f5f7fa;
-  color:#081B33;
+    background:#f5f7fa;
+    color:#081B33;
 }
 
 header{
-  background:#081B33;
-  padding:18px 25px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
+    background:#081B33;
+    color:white;
+    padding:16px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
 }
 
 .logo{
-  color:#FFD700;
-  font-size:26px;
-  font-weight:bold;
+    color:#FFD700;
+    font-size:25px;
+    font-weight:bold;
+}
+
+.logo small{
+    display:block;
+    color:white;
+    font-size:10px;
+    letter-spacing:2px;
+    margin-top:3px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
 }
 
 nav a{
-  color:white;
-  text-decoration:none;
-  margin:7px;
+    color:white;
+    text-decoration:none;
+    padding:9px 11px;
+    border-radius:6px;
+}
+
+nav a:hover{
+    background:#E63946;
 }
 
 .container{
-  max-width:1100px;
-  margin:35px auto;
-  padding:20px;
+    max-width:1000px;
+    margin:35px auto;
+    padding:0 20px 60px;
 }
 
-.property{
-  background:white;
-  border-radius:16px;
-  overflow:hidden;
-  box-shadow:0 5px 20px rgba(0,0,0,.12);
+.property-box{
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 7px 25px rgba(0,0,0,.12);
 }
 
-.property-img{
-  width:100%;
-  height:420px;
-  object-fit:cover;
+.property-image{
+    width:100%;
+    height:420px;
+    object-fit:cover;
 }
 
 .content{
-  padding:30px;
+    padding:30px;
 }
 
-.badge{
-  display:inline-block;
-  background:#e7f8ed;
-  color:#16803c;
-  padding:7px 10px;
-  border-radius:6px;
-  font-size:13px;
-  font-weight:bold;
+.verified{
+    display:inline-block;
+    background:#e7f8ed;
+    color:#16803c;
+    padding:7px 10px;
+    border-radius:6px;
+    font-size:13px;
+    font-weight:bold;
 }
 
 h1{
-  margin:15px 0 8px;
+    font-size:34px;
+    margin:15px 0 10px;
 }
 
 .price{
-  color:#E63946;
-  font-size:28px;
-  font-weight:bold;
-  margin:15px 0;
+    color:#E63946;
+    font-size:28px;
+    font-weight:bold;
+    margin:10px 0;
+}
+
+.location{
+    color:#555;
+    font-size:17px;
+    margin-bottom:25px;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin:25px 0;
 }
 
 .info{
-  display:flex;
-  flex-wrap:wrap;
-  gap:15px;
-  margin:20px 0;
+    background:#f5f7fa;
+    padding:18px;
+    border-radius:10px;
+    text-align:center;
 }
 
-.info div{
-  background:#f5f7fa;
-  padding:14px;
-  border-radius:8px;
+.info strong{
+    display:block;
+    margin-top:6px;
+}
+
+.description{
+    margin-top:25px;
+    line-height:1.7;
+    color:#555;
+}
+
+.owner{
+    margin-top:30px;
+    background:#f5f7fa;
+    padding:22px;
+    border-radius:12px;
+}
+
+.owner h2{
+    margin-bottom:12px;
 }
 
 .buttons{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:25px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:25px;
 }
 
 .btn{
-  padding:13px 20px;
-  border-radius:8px;
-  text-decoration:none;
-  color:white;
-  font-weight:bold;
+    flex:1;
+    min-width:140px;
+    text-align:center;
+    padding:14px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
 }
 
 .call{
-  background:#081B33;
+    background:#081B33;
+    color:white;
 }
 
 .whatsapp{
-  background:#25D366;
+    background:#25D366;
+    color:white;
 }
 
-.contact{
-  background:#E63946;
+.back{
+    background:#E63946;
+    color:white;
+}
+
+.no-property{
+    background:white;
+    padding:50px 25px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.no-property h2{
+    margin-bottom:15px;
+}
+
+.no-property a{
+    display:inline-block;
+    margin-top:20px;
+    background:#E63946;
+    color:white;
+    padding:13px 22px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
 }
 
 footer{
-  margin-top:50px;
-  background:#050F1F;
-  color:white;
-  text-align:center;
-  padding:30px 20px;
+    background:#050F1F;
+    color:white;
+    text-align:center;
+    padding:35px 20px;
+}
+
+footer h2{
+    color:#FFD700;
+}
+
+footer p{
+    color:#ccc;
+    margin:12px 0;
+}
+
+footer a{
+    color:white;
+    margin:7px;
+    text-decoration:none;
 }
 
 @media(max-width:600px){
-  .property-img{
-    height:260px;
-  }
 
-  .content{
-    padding:20px;
-  }
+    header{
+        justify-content:center;
+        text-align:center;
+    }
 
-  h1{
-    font-size:27px;
-  }
+    nav{
+        justify-content:center;
+    }
 
-  .price{
-    font-size:23px;
-  }
+    nav a{
+        font-size:13px;
+        padding:8px;
+    }
+
+    .property-image{
+        height:260px;
+    }
+
+    .content{
+        padding:20px;
+    }
+
+    h1{
+        font-size:27px;
+    }
+
+    .price{
+        font-size:24px;
+    }
+
+    .info-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .btn{
+        width:100%;
+        flex:none;
+    }
 }
 </style>
 </head>
@@ -155,7 +274,10 @@ footer{
 
 <header>
 
-<div class="logo">🏠 PropertyVerse</div>
+<div class="logo">
+🏠 BharatWorld
+<small>PROPERTIES</small>
+</div>
 
 <nav>
 <a href="index.html">Home</a>
@@ -170,199 +292,206 @@ footer{
 
 </header>
 
+
 <div class="container">
 
-<div class="property">
-
-<img
-class="property-img"
-src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
-alt="Luxury Villa"
->
-<div style="display:flex;gap:10px;overflow-x:auto;padding:12px 0;">
-
-<img
-src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=400&q=80"
-style="width:120px;height:80px;object-fit:cover;border-radius:8px;"
-alt="Property Interior">
-
-<img
-src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=400&q=80"
-style="width:120px;height:80px;object-fit:cover;border-radius:8px;"
-alt="Property Room">
-
-<img
-src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80"
-style="width:120px;height:80px;object-fit:cover;border-radius:8px;"
-alt="Property Exterior">
-
-</div>
-<div class="content">
-
-<span class="badge">✓ RERA VERIFIED</span>
-
-<h1>Luxury 3 BHK Villa</h1>
-
-<p>📍 Ahmedabad, Gujarat</p>
-
-<div class="price">₹85,00,000</div>
-
-<div class="info">
-
-<div>🛏 <b>3 BHK</b></div>
-
-<div>🚿 <b>3 Bathroom</b></div>
-
-<div>📐 <b>2200 Sq.ft</b></div>
-
-<div>🚗 <b>2 Parking</b></div>
-
-<div>🏗️ <b>Ready to Move</b></div>
+<div id="propertyDetails"></div>
 
 </div>
 
-<h2>Property Description</h2>
-
-<p style="margin-top:12px;line-height:1.7;color:#555;">
-Beautiful premium villa located in Ahmedabad.
-This property offers spacious rooms, modern interiors,
-excellent connectivity and a comfortable lifestyle.
-</p>
-
-<h2 style="margin-top:30px;">Property Highlights</h2>
-
-<p style="margin-top:12px;line-height:1.8;color:#555;">
-✓ Premium Location<br>
-✓ RERA Verified<br>
-✓ Modern Construction<br>
-✓ Parking Available<br>
-✓ Nearby Schools & Hospitals<br>
-✓ Good Road Connectivity
-</p>
-<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;">
-
-<button
-type="button"
-onclick="saveProperty()"
-style="padding:12px 18px;border:1px solid #ddd;border-radius:8px;background:white;font-weight:bold;cursor:pointer;">
-❤️ Save Property
-</button>
-
-<button
-type="button"
-onclick="shareProperty()"
-style="padding:12px 18px;border:1px solid #ddd;border-radius:8px;background:white;font-weight:bold;cursor:pointer;">
-📤 Share Property
-</button>
-
-</div>
-<div class="buttons">
-
-<a href="tel:+919999999999" class="btn call">
-📞 Call Agent
-</a>
-
-<a href="https://wa.me/919999999999" class="btn whatsapp">
-💬 WhatsApp
-</a>
-
-<a href="contact.html" class="btn contact">
-📩 Enquire Now
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
 
 <footer>
 
-<h2 style="color:#FFD700;">PropertyVerse</h2>
+<h2>🏠 BharatWorld Properties</h2>
 
-<p style="margin-top:10px;">
-Buy • Sell • Rent • Interior
+<p>From Bharat to the World.</p>
+
+<p>
+<a href="index.html">Home</a>
+<a href="buy.html">Buy</a>
+<a href="sell.html">Sell</a>
+<a href="rent.html">Rent</a>
+<a href="listing.html">Listing</a>
+<a href="contact.html">Contact</a>
 </p>
 
-<p style="margin-top:15px;">
-© 2026 PropertyVerse. All Rights Reserved.
+<p>
+© 2026 BharatWorld Properties. All Rights Reserved.
 </p>
 
 </footer>
+
+
 <script>
 
-function saveProperty() {
-    alert("❤️ Property saved successfully!");
-}
+let properties =
+JSON.parse(localStorage.getItem("pv_properties") || "[]");
 
-function shareProperty() {
-    if (navigator.share) {
-        navigator.share({
-            title: "PropertyVerse Property",
-            text: "Check out this property on PropertyVerse!",
-            url: window.location.href
-        });
-    } else {
-        alert("📤 Copy this page link and share it with others.");
-    }
+let box =
+document.getElementById("propertyDetails");
+
+
+if(properties.length === 0){
+
+    box.innerHTML = `
+    <div class="no-property">
+
+        <h2>🏠 No Property Found</h2>
+
+        <p>
+        Please post a property first to view its details.
+        </p>
+
+        <a href="sell.html">
+        ➕ Post Your Property
+        </a>
+
+    </div>
+    `;
+
+}else{
+
+    /*
+      Demo version:
+      Latest posted property will be shown.
+    */
+
+    let property =
+    properties[properties.length - 1];
+
+
+    let cleanPhone =
+    String(property.phone || "")
+    .replace(/\D/g,"");
+
+
+    let priceText =
+    property.listingType === "For Rent"
+    ? "₹" + property.price + " / Month"
+    : "₹" + property.price;
+
+
+    box.innerHTML = `
+
+    <div class="property-box">
+
+        <img
+        class="property-image"
+        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+        alt="Property">
+
+        <div class="content">
+
+            <span class="verified">
+            ✓ PROPERTY LISTED
+            </span>
+
+            <h1>
+            ${property.title}
+            </h1>
+
+            <div class="price">
+            ${priceText}
+            </div>
+
+            <div class="location">
+            📍 ${property.city}
+            </div>
+
+
+            <div class="info-grid">
+
+                <div class="info">
+                    🏢
+                    <strong>${property.type}</strong>
+                </div>
+
+                <div class="info">
+                    🛏
+                    <strong>${property.bhk}</strong>
+                </div>
+
+                <div class="info">
+                    📐
+                    <strong>${property.area || "Not provided"}</strong>
+                </div>
+
+                <div class="info">
+                    🏷️
+                    <strong>${property.listingType}</strong>
+                </div>
+
+            </div>
+
+
+            <div class="description">
+
+                <h2>📝 Property Description</h2>
+
+                <p style="margin-top:10px;">
+                ${property.description}
+                </p>
+
+            </div>
+
+
+            <div class="owner">
+
+                <h2>👤 Owner Information</h2>
+
+                <p>
+                <strong>Name:</strong>
+                ${property.owner || "Not provided"}
+                </p>
+
+                <p style="margin-top:8px;">
+                <strong>Phone:</strong>
+                ${property.phone || "Not provided"}
+                </p>
+
+            </div>
+
+
+            <div class="buttons">
+
+                <a
+                href="tel:${cleanPhone}"
+                class="btn call">
+
+                📞 Call Owner
+
+                </a>
+
+
+                <a
+                href="https://wa.me/${cleanPhone}"
+                class="btn whatsapp">
+
+                💬 WhatsApp
+
+                </a>
+
+
+                <a
+                href="listing.html"
+                class="btn back">
+
+                ← Back to Listings
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    `;
+
 }
 
 </script>
-  <script>
-let savedProperty = localStorage.getItem("pv_property");
 
-if(savedProperty){
-
-    let property = JSON.parse(savedProperty);
-
-    document.body.innerHTML += `
-    
-    <section style="
-        max-width:700px;
-        margin:30px auto;
-        padding:25px;
-        background:white;
-        border-radius:15px;
-        box-shadow:0 5px 20px rgba(0,0,0,.15);
-    ">
-
-        <h1>🏠 ${property.title}</h1>
-
-        <p>📍 <strong>Location:</strong> ${property.city}</p>
-
-        <p>🏢 <strong>Type:</strong> ${property.type}</p>
-
-        <p>🛏️ <strong>BHK:</strong> ${property.bhk}</p>
-
-        <p>💰 <strong>Price:</strong> ₹${property.price}</p>
-<p>👤 <strong>Owner / Agent:</strong> ${property.owner || "Not provided"}</p>
-
-<p>📞 <strong>Contact:</strong> ${property.phone || "Not provided"}</p>
-        <p style="margin-top:15px;">
-        <strong>Description:</strong><br>
-        ${property.description || "No description available."}
-        </p>
-
-        <a href="enquiry.html"
-        style="
-        display:inline-block;
-        margin-top:20px;
-        padding:12px 20px;
-        background:#E63946;
-        color:white;
-        text-decoration:none;
-        border-radius:8px;
-        font-weight:bold;
-        ">
-        📩 Enquire Now
-        </a>
-
-    </section>
-
-    `;
-}
-  </script>
 </body>
 </html>
+```
