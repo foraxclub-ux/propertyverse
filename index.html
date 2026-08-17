@@ -1,248 +1,547 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PropertyVerse | Find Your Dream Property</title>
+<title>BharatWorld Properties | From Bharat to the World</title>
 
 <style>
-
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
 body{
-background:#f5f7fa;
-color:#081B33;
+    background:#f5f7fa;
+    color:#081B33;
 }
 
 header{
-background:#081B33;
-color:white;
-padding:16px 25px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-flex-wrap:wrap;
+    background:#081B33;
+    color:white;
+    padding:16px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
 }
 
 .logo{
-font-size:25px;
-font-weight:bold;
-color:#FFD700;
+    color:#FFD700;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.logo small{
+    display:block;
+    color:#fff;
+    font-size:10px;
+    letter-spacing:2px;
+    margin-top:3px;
 }
 
 nav{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
 }
 
 nav a{
-color:white;
-text-decoration:none;
-padding:8px;
-}
-nav a.active{
-background:#E63946;
-color:white;
-border-radius:6px;
-padding:10px 15px;
+    color:white;
+    text-decoration:none;
+    padding:9px 11px;
+    border-radius:6px;
 }
 
+nav a:hover,
+nav a.active{
+    background:#E63946;
+}
 
 .hero{
-min-height:520px;
-background:
-linear-gradient(rgba(8,27,51,.70),rgba(8,27,51,.70)),
-url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=80");
+    min-height:550px;
+    background:
+    linear-gradient(rgba(8,27,51,.72),rgba(8,27,51,.78)),
+    url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=80");
 
-background-size:cover;
-background-position:center;
+    background-size:cover;
+    background-position:center;
 
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 
-text-align:center;
-color:white;
-padding:30px 20px;
+    text-align:center;
+    color:white;
+    padding:40px 20px;
+}
+
+.hero-badge{
+    background:rgba(255,215,0,.15);
+    border:1px solid #FFD700;
+    color:#FFD700;
+    padding:8px 16px;
+    border-radius:30px;
+    font-weight:bold;
+    margin-bottom:18px;
 }
 
 .hero h1{
-font-size:48px;
-margin-bottom:15px;
+    font-size:52px;
+    margin-bottom:12px;
+}
+
+.hero h1 span{
+    color:#FFD700;
 }
 
 .hero p{
-font-size:20px;
-margin-bottom:30px;
+    font-size:20px;
+    margin-bottom:30px;
 }
 
 .search-box{
-background:white;
-padding:15px;
-border-radius:12px;
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-justify-content:center;
-max-width:850px;
-width:100%;
+    background:white;
+    padding:15px;
+    border-radius:14px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:center;
+    max-width:900px;
+    width:100%;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
 
 .search-box input,
 .search-box select{
-padding:13px;
-border:1px solid #ddd;
-border-radius:7px;
-min-width:160px;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    min-width:160px;
+    outline:none;
+}
+
+.search-box input:focus,
+.search-box select:focus{
+    border-color:#E63946;
 }
 
 .search-btn{
-background:#E63946;
-color:white;
-border:0;
-padding:13px 25px;
-border-radius:7px;
-font-weight:bold;
+    background:#E63946;
+    color:white;
+    border:0;
+    padding:14px 24px;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.search-btn:hover{
+    background:#c92f3b;
 }
 
 .services{
-padding:60px 20px;
-text-align:center;
+    padding:70px 20px;
+    text-align:center;
 }
 
-.services h2,
-.featured h2,
-.why h2,
-.cities h2,
-.reviews h2{
-font-size:34px;
-margin-bottom:35px;
+.section-title{
+    font-size:35px;
+    margin-bottom:12px;
+}
+
+.section-subtitle{
+    color:#666;
+    margin-bottom:35px;
 }
 
 .service-container{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:25px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
 }
 
 .service-card{
-background:white;
-width:250px;
-padding:30px 20px;
-border-radius:15px;
-box-shadow:0 5px 18px rgba(0,0,0,.1);
+    background:white;
+    width:250px;
+    padding:30px 20px;
+    border-radius:15px;
+    box-shadow:0 5px 18px rgba(0,0,0,.1);
+    transition:.25s;
+}
+
+.service-card:hover{
+    transform:translateY(-5px);
 }
 
 .service-card .icon{
-font-size:45px;
-margin-bottom:15px;
+    font-size:45px;
+    margin-bottom:15px;
 }
 
 .service-card h3{
-margin-bottom:10px;
+    margin-bottom:10px;
 }
 
 .service-card p{
-color:#666;
-line-height:1.5;
-margin-bottom:15px;
+    color:#666;
+    line-height:1.5;
+    margin-bottom:15px;
 }
 
 .service-card a{
-color:#E63946;
-font-weight:bold;
-text-decoration:none;
+    color:#E63946;
+    font-weight:bold;
+    text-decoration:none;
 }
 
 .featured{
-padding:70px 20px;
-background:white;
-text-align:center;
+    padding:70px 20px;
+    background:white;
+    text-align:center;
 }
 
 .property-container{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:25px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
 }
 
 .property-card{
-width:320px;
-background:white;
-border-radius:15px;
-overflow:hidden;
-box-shadow:0 5px 20px rgba(0,0,0,.12);
-text-align:left;
+    width:320px;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.12);
+    text-align:left;
+    transition:.25s;
+}
+
+.property-card:hover{
+    transform:translateY(-5px);
 }
 
 .property-card img{
-width:100%;
-height:210px;
-object-fit:cover;
+    width:100%;
+    height:210px;
+    object-fit:cover;
 }
 
 .property-content{
-padding:20px;
+    padding:20px;
 }
 
 .verified{
-display:inline-block;
-background:#e7f8ed;
-color:#16803c;
-padding:6px 9px;
-border-radius:5px;
-font-size:12px;
-font-weight:bold;
+    display:inline-block;
+    background:#e7f8ed;
+    color:#16803c;
+    padding:6px 9px;
+    border-radius:5px;
+    font-size:12px;
+    font-weight:bold;
 }
 
 .property-content h3{
-margin:12px 0 8px;
+    margin:12px 0 8px;
 }
 
 .price{
-font-size:22px;
-font-weight:bold;
-color:#E63946;
-margin-bottom:8px;
+    font-size:22px;
+    font-weight:bold;
+    color:#E63946;
+    margin-bottom:8px;
 }
 
 .property-content p{
-color:#666;
-margin:6px 0;
+    color:#666;
+    margin:6px 0;
 }
 
 .details-btn{
-display:inline-block;
-background:#081B33;
-color:white;
-padding:10px 17px;
-border-radius:7px;
-text-decoration:none;
-margin-top:12px;
-font-weight:bold;
-}
-nav a.active{
-    background:#E63946;
+    display:inline-block;
+    background:#081B33;
     color:white;
-    border-radius:6px;
-    padding:10px 15px;
+    padding:10px 17px;
+    border-radius:7px;
+    text-decoration:none;
+    margin-top:12px;
+    font-weight:bold;
 }
 
-</style>
+.india-section{
+    padding:70px 20px;
+    background:#081B33;
+    color:white;
+    text-align:center;
+}
 
+.india-section h2{
+    font-size:36px;
+    margin-bottom:15px;
+}
+
+.india-section p{
+    color:#ccc;
+    max-width:750px;
+    margin:0 auto 30px;
+    line-height:1.7;
+}
+
+.opportunity{
+    max-width:1000px;
+    margin:auto;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 35px rgba(0,0,0,.4);
+}
+
+.opportunity video{
+    width:100%;
+    display:block;
+}
+
+.gold-btn{
+    display:inline-block;
+    background:#FFD700;
+    color:#081B33;
+    padding:14px 28px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+    margin-top:25px;
+}
+
+.why{
+    padding:70px 20px;
+    background:#f5f7fa;
+    text-align:center;
+}
+
+.why-container{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
+}
+
+.why-card{
+    background:white;
+    width:250px;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 18px rgba(0,0,0,.1);
+}
+
+.why-card .icon{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.why-card p{
+    color:#666;
+    margin-top:10px;
+    line-height:1.5;
+}
+
+.cities{
+    padding:70px 20px;
+    background:white;
+    text-align:center;
+}
+
+.city-container{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.city-container a{
+    text-decoration:none;
+    color:#081B33;
+    background:#f5f7fa;
+    padding:16px 25px;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+.city-container a:hover{
+    background:#FFD700;
+}
+
+.reviews{
+    padding:70px 20px;
+    background:#f5f7fa;
+    text-align:center;
+}
+
+.review-container{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
+}
+
+.review-card{
+    background:white;
+    width:280px;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.stars{
+    font-size:24px;
+}
+
+.review-card p{
+    margin:15px 0;
+    color:#555;
+}
+
+.review-card small{
+    color:#777;
+}
+
+.cta{
+    padding:70px 20px;
+    background:#081B33;
+    color:white;
+    text-align:center;
+}
+
+.cta h2{
+    font-size:35px;
+}
+
+.cta p{
+    font-size:18px;
+    margin:20px 0 30px;
+}
+
+.cta a{
+    display:inline-block;
+    padding:14px 25px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+    margin:5px;
+}
+
+.contact-btn{
+    background:#FFD700;
+    color:#081B33;
+}
+
+.whatsapp-btn{
+    background:#25D366;
+    color:white;
+}
+
+footer{
+    background:#050F1F;
+    color:white;
+    padding:45px 20px 20px;
+    text-align:center;
+}
+
+footer h2{
+    color:#FFD700;
+}
+
+footer p{
+    margin:12px 0;
+    color:#ccc;
+}
+
+footer a{
+    color:white;
+    margin:8px;
+    text-decoration:none;
+}
+
+footer hr{
+    border:0;
+    border-top:1px solid #334;
+    margin:30px auto 20px;
+    max-width:900px;
+}
+
+.copyright{
+    color:#aaa;
+}
+
+/* Mobile */
+@media(max-width:600px){
+
+    header{
+        justify-content:center;
+        text-align:center;
+    }
+
+    nav{
+        justify-content:center;
+    }
+
+    nav a{
+        font-size:13px;
+        padding:8px;
+    }
+
+    .hero{
+        min-height:600px;
+    }
+
+    .hero h1{
+        font-size:36px;
+    }
+
+    .hero p{
+        font-size:17px;
+    }
+
+    .search-box{
+        padding:12px;
+    }
+
+    .search-box input,
+    .search-box select,
+    .search-btn{
+        width:100%;
+        min-width:100%;
+    }
+
+    .section-title,
+    .india-section h2,
+    .cta h2{
+        font-size:29px;
+    }
+
+    .property-card{
+        width:100%;
+        max-width:360px;
+    }
+
+    .service-card,
+    .why-card{
+        width:100%;
+        max-width:360px;
+    }
+
+    .city-container a{
+        width:100%;
+        max-width:300px;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -250,27 +549,19 @@ nav a.active{
 <header>
 
 <div class="logo">
-🏠 PropertyVerse
+🏠 BharatWorld
+<small>PROPERTIES</small>
 </div>
 
 <nav>
-
 <a href="index.html" class="active">Home</a>
-
 <a href="buy.html">Buy</a>
-
 <a href="sell.html">Sell</a>
-
 <a href="rent.html">Rent</a>
-
 <a href="interior.html">Interior</a>
-
 <a href="listing.html">Listing</a>
-
 <a href="contact.html">Contact</a>
-
 <a href="login.html">Login</a>
-
 </nav>
 
 </header>
@@ -278,58 +569,50 @@ nav a.active{
 
 <section class="hero">
 
-<h1>Find Your Dream Property</h1>
+<div class="hero-badge">
+🇮🇳 FROM BHARAT TO THE WORLD
+</div>
+
+<h1>Find Your <span>Dream Property</span></h1>
 
 <p>
-Buy • Sell • Rent • Commercial
+Buy • Sell • Rent • Commercial • Invest
 </p>
 
 <div class="search-box">
 
 <input
+id="homeLocation"
 type="text"
 placeholder="📍 Location"
 >
 
-<select>
-
+<select id="homePurpose">
 <option>Buy / Rent</option>
-
 <option>Buy</option>
-
 <option>Rent</option>
-
 </select>
 
-<select>
-
+<select id="homeBudget">
 <option>Budget</option>
-
 <option>Under ₹50 Lakh</option>
-
 <option>₹50 Lakh - ₹1 Crore</option>
-
 <option>₹1 Crore+</option>
-
 </select>
 
-<select>
-
+<select id="homeType">
 <option>Property Type</option>
-
 <option>Apartment</option>
-
 <option>Villa</option>
-
 <option>House</option>
-
 <option>Plot</option>
-
 <option>Commercial</option>
-
 </select>
 
-<button class="search-btn" type="button" onclick="searchHomeProperties()">
+<button
+class="search-btn"
+type="button"
+onclick="searchHomeProperties()">
 🔍 Search Property
 </button>
 
@@ -340,117 +623,100 @@ placeholder="📍 Location"
 
 <section class="services">
 
-<h2>What Are You Looking For?</h2>
+<h2 class="section-title">
+What Are You Looking For?
+</h2>
+
+<p class="section-subtitle">
+Everything you need for your property journey.
+</p>
 
 <div class="service-container">
 
-
 <div class="service-card">
-
 <div class="icon">🏠</div>
-
 <h3>Buy Property</h3>
-
 <p>
-Find verified homes, apartments, villas and plots.
+Find homes, apartments, villas and plots.
 </p>
-
-<a href="buy.html">
-Explore →
-</a>
-
+<a href="buy.html">Explore →</a>
 </div>
 
-
 <div class="service-card">
-
 <div class="icon">🏢</div>
-
 <h3>Sell Property</h3>
-
 <p>
-List your property and reach genuine buyers.
+List your property and reach potential buyers.
 </p>
-
-<a href="sell.html">
-Sell Property →
-</a>
-
+<a href="sell.html">Sell Property →</a>
 </div>
 
-
 <div class="service-card">
-
 <div class="icon">🏡</div>
-
 <h3>Rent Property</h3>
-
 <p>
 Find houses, apartments and commercial spaces.
 </p>
-
-<a href="rent.html">
-Find Rental →
-</a>
-
+<a href="rent.html">Find Rental →</a>
 </div>
-
 
 <div class="service-card">
-
 <div class="icon">🎨</div>
-
 <h3>Interior Design</h3>
+<p>
+Create beautiful interiors for your dream home.
+</p>
+<a href="interior.html">Explore Interior →</a>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="india-section">
+
+<h2>🇮🇳 BharatWorld Properties</h2>
 
 <p>
-Premium interior solutions for your dream home.
+A modern real-estate platform designed to connect
+property buyers, sellers, renters and businesses
+across India's growing property ecosystem.
 </p>
 
-<a href="interior.html">
-Explore Interior →
+<div class="opportunity">
+
+<video
+controls
+playsinline
+preload="metadata">
+
+<source
+src="VID_20250802_130551.mp4"
+type="video/mp4">
+
+Your browser does not support video playback.
+
+</video>
+
+</div>
+
+<a href="contact.html" class="gold-btn">
+📞 Enquire Now
 </a>
-
-</div>
-
-
-</div>
 
 </section>
 
 
 <section class="featured">
-<section style="padding:70px 20px;background:#081B33;color:white;text-align:center;">
 
-<h2 style="font-size:36px;margin-bottom:12px;">
-🚀 Featured Opportunity — Dholera
+<h2 class="section-title">
+⭐ Featured Properties
 </h2>
 
-<p style="font-size:18px;color:#ccc;margin-bottom:30px;">
-Explore Dholera's future development and property opportunities.
+<p class="section-subtitle">
+Explore selected properties from Gujarat.
 </p>
-
-<div style="max-width:1000px;margin:auto;border-radius:18px;overflow:hidden;box-shadow:0 10px 35px rgba(0,0,0,.4);">
-
-<video
-controls
-playsinline
-preload="metadata"
-style="width:100%;display:block;">
-<source src="VID_20250802_130551.mp4" type="video/mp4">
-Your browser does not support video playback.
-</video>
-
-</div>
-
-<div style="margin-top:25px;">
-<a href="contact.html"
-style="display:inline-block;background:#FFD700;color:#081B33;padding:14px 28px;border-radius:8px;text-decoration:none;font-weight:bold;">
-📞 Enquire Now
-</a>
-</div>
-
-</section>
-<h2>⭐ Featured Properties</h2>
 
 <div class="property-container">
 
@@ -459,8 +725,7 @@ style="display:inline-block;background:#FFD700;color:#081B33;padding:14px 28px;b
 
 <img
 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
-alt="Luxury Villa"
->
+alt="Luxury Villa">
 
 <div class="property-content">
 
@@ -468,26 +733,18 @@ alt="Luxury Villa"
 ✓ RERA VERIFIED
 </span>
 
-<h3>
-Luxury 3 BHK Villa
-</h3>
+<h3>Luxury 3 BHK Villa</h3>
 
 <div class="price">
 ₹85,00,000
 </div>
 
-<p>
-📍 Ahmedabad, Gujarat
-</p>
-
-<p>
-🛏 3 BHK • 📐 2200 Sq.ft
-</p>
+<p>📍 Ahmedabad, Gujarat</p>
+<p>🛏 3 BHK • 📐 2200 Sq.ft</p>
 
 <a
 href="property-details.html"
-class="details-btn"
->
+class="details-btn">
 View Details
 </a>
 
@@ -500,8 +757,7 @@ View Details
 
 <img
 src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80"
-alt="Premium Villa"
->
+alt="Premium Villa">
 
 <div class="property-content">
 
@@ -509,26 +765,18 @@ alt="Premium Villa"
 ✓ VERIFIED
 </span>
 
-<h3>
-Premium Villa
-</h3>
+<h3>Premium Villa</h3>
 
 <div class="price">
 ₹1,20,00,000
 </div>
 
-<p>
-📍 Surat, Gujarat
-</p>
-
-<p>
-🛏 4 BHK • 📐 2800 Sq.ft
-</p>
+<p>📍 Surat, Gujarat</p>
+<p>🛏 4 BHK • 📐 2800 Sq.ft</p>
 
 <a
 href="property-details.html"
-class="details-btn"
->
+class="details-btn">
 View Details
 </a>
 
@@ -541,8 +789,7 @@ View Details
 
 <img
 src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=800&q=80"
-alt="Premium House"
->
+alt="Premium House">
 
 <div class="property-content">
 
@@ -550,26 +797,18 @@ alt="Premium House"
 ✓ VERIFIED
 </span>
 
-<h3>
-Premium House
-</h3>
+<h3>Premium House</h3>
 
 <div class="price">
 ₹95,00,000
 </div>
 
-<p>
-📍 Vadodara, Gujarat
-</p>
-
-<p>
-🛏 3 BHK • 📐 1900 Sq.ft
-</p>
+<p>📍 Vadodara, Gujarat</p>
+<p>🛏 3 BHK • 📐 1900 Sq.ft</p>
 
 <a
 href="property-details.html"
-class="details-btn"
->
+class="details-btn">
 View Details
 </a>
 
@@ -577,40 +816,53 @@ View Details
 
 </div>
 
-
 </div>
 
 </section>
-  <section style="padding:70px 20px;background:#f5f7fa;text-align:center;">
 
-<h2 style="font-size:34px;margin-bottom:35px;color:#081B33;">
-Why Choose PropertyVerse?
+
+<section class="why">
+
+<h2 class="section-title">
+Why Choose BharatWorld?
 </h2>
 
-<div style="display:flex;justify-content:center;flex-wrap:wrap;gap:25px;">
+<p class="section-subtitle">
+Built around trust, convenience and technology.
+</p>
 
-<div style="background:white;width:250px;padding:25px;border-radius:15px;box-shadow:0 5px 18px rgba(0,0,0,.1);">
-<div style="font-size:40px;">✅</div>
+<div class="why-container">
+
+<div class="why-card">
+<div class="icon">✅</div>
 <h3>Verified Properties</h3>
-<p style="color:#666;margin-top:10px;">Trusted and verified property listings.</p>
+<p>
+A future-ready verification workflow for property listings.
+</p>
 </div>
 
-<div style="background:white;width:250px;padding:25px;border-radius:15px;box-shadow:0 5px 18px rgba(0,0,0,.1);">
-<div style="font-size:40px;">🤖</div>
-<h3>AI Smart Search</h3>
-<p style="color:#666;margin-top:10px;">Find suitable properties with smart search.</p>
+<div class="why-card">
+<div class="icon">🤖</div>
+<h3>Smart Search</h3>
+<p>
+Search properties using location, purpose, budget and type.
+</p>
 </div>
 
-<div style="background:white;width:250px;padding:25px;border-radius:15px;box-shadow:0 5px 18px rgba(0,0,0,.1);">
-<div style="font-size:40px;">🏦</div>
+<div class="why-card">
+<div class="icon">🏦</div>
 <h3>Home Loan Support</h3>
-<p style="color:#666;margin-top:10px;">Get assistance for your home loan.</p>
+<p>
+Connect users with suitable property and financing assistance.
+</p>
 </div>
 
-<div style="background:white;width:250px;padding:25px;border-radius:15px;box-shadow:0 5px 18px rgba(0,0,0,.1);">
-<div style="font-size:40px;">📞</div>
-<h3>24×7 Support</h3>
-<p style="color:#666;margin-top:10px;">Our team is ready to help you.</p>
+<div class="why-card">
+<div class="icon">📞</div>
+<h3>Customer Support</h3>
+<p>
+Help buyers, sellers and renters throughout their property journey.
+</p>
 </div>
 
 </div>
@@ -618,74 +870,66 @@ Why Choose PropertyVerse?
 </section>
 
 
-<section style="padding:65px 20px;background:white;text-align:center;">
+<section class="cities">
 
-<h2 style="font-size:34px;color:#081B33;margin-bottom:15px;">
+<h2 class="section-title">
 📍 Top Cities
 </h2>
 
-<p style="color:#666;margin-bottom:30px;">
-Explore properties in India's growing cities
+<p class="section-subtitle">
+Explore properties in India's growing cities.
 </p>
 
-<div style="display:flex;justify-content:center;flex-wrap:wrap;gap:15px;">
+<div class="city-container">
 
-<a href="buy.html" style="text-decoration:none;color:#081B33;background:#f5f7fa;padding:16px 25px;border-radius:10px;font-weight:bold;">
-Ahmedabad
-</a>
-
-<a href="buy.html" style="text-decoration:none;color:#081B33;background:#f5f7fa;padding:16px 25px;border-radius:10px;font-weight:bold;">
-Surat
-</a>
-
-<a href="buy.html" style="text-decoration:none;color:#081B33;background:#f5f7fa;padding:16px 25px;border-radius:10px;font-weight:bold;">
-Vadodara
-</a>
-
-<a href="buy.html" style="text-decoration:none;color:#081B33;background:#f5f7fa;padding:16px 25px;border-radius:10px;font-weight:bold;">
-Rajkot
-</a>
-
-<a href="buy.html" style="text-decoration:none;color:#081B33;background:#f5f7fa;padding:16px 25px;border-radius:10px;font-weight:bold;">
-Gandhinagar
-</a>
+<a href="buy.html">Ahmedabad</a>
+<a href="buy.html">Surat</a>
+<a href="buy.html">Vadodara</a>
+<a href="buy.html">Rajkot</a>
+<a href="buy.html">Gandhinagar</a>
 
 </div>
 
 </section>
 
 
-<section style="padding:70px 20px;background:#f5f7fa;text-align:center;">
+<section class="reviews">
 
-<h2 style="font-size:34px;color:#081B33;margin-bottom:15px;">
+<h2 class="section-title">
 💬 What Our Customers Say
 </h2>
 
-<p style="color:#666;margin-bottom:35px;">
-Trusted by property buyers, sellers and renters
+<p class="section-subtitle">
+User experiences and testimonials can be added as the platform grows.
 </p>
 
-<div style="display:flex;justify-content:center;flex-wrap:wrap;gap:25px;">
+<div class="review-container">
 
-<div style="background:white;width:280px;padding:25px;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,.1);">
-<div style="font-size:24px;">⭐⭐⭐⭐⭐</div>
-<p style="margin:15px 0;">PropertyVerse helped me find my dream home.</p>
+<div class="review-card">
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<p>
+“Great platform concept for exploring properties.”
+</p>
 <h3>Rahul</h3>
-<p style="color:#777;">Ahmedabad</p>
+<small>Ahmedabad</small>
 </div>
 
-<div style="background:white;width:280px;padding:25px;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,.1);">
-<div style="font-size:24px;">⭐⭐⭐⭐⭐</div>
-<p style="margin:15px 0;">Very easy to search and explore properties.</p>
+<div class="review-card">
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<p>
+“Easy way to search and explore property options.”
+</p>
 <h3>Priya</h3>
-<p style="color:#777;">Surat</p>
+<small>Surat</small>
 </div>
 
-<div style="background:white;width:280px;padding:25px;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,.1);">
-<div style="font-size:24px;">⭐⭐⭐⭐⭐</div>
-<p style="margin:15px 0;">Great platform for finding properties.</p>
+<div class="review-card">
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<p>
+“A promising platform for India's property market.”
+</p>
 <h3>Amit</h3>
-<p style="color:#777;">Vadodara</p>
+<small>Vadodara</small>
 </div>
 
 </div>
@@ -693,74 +937,77 @@ Trusted by property buyers, sellers and renters
 </section>
 
 
-<section style="padding:70px 20px;background:#081B33;color:white;text-align:center;">
+<section class="cta">
 
-<h2 style="font-size:34px;">
+<h2>
 Ready to Find Your Dream Property?
 </h2>
 
-<p style="font-size:18px;margin:20px 0 30px;">
-Our property experts are ready to help you.
+<p>
+Explore properties or connect with our team.
 </p>
 
-<a href="contact.html"
-style="display:inline-block;background:#FFD700;color:#081B33;padding:14px 25px;border-radius:8px;text-decoration:none;font-weight:bold;margin:5px;">
+<a
+href="contact.html"
+class="contact-btn">
 📞 Contact Us
 </a>
 
-<a href="https://wa.me/919999999999"
-style="display:inline-block;background:#25D366;color:white;padding:14px 25px;border-radius:8px;text-decoration:none;font-weight:bold;margin:5px;">
+<a
+href="https://wa.me/919999999999"
+class="whatsapp-btn">
 💬 WhatsApp Us
 </a>
 
 </section>
 
 
-<footer style="background:#050F1F;color:white;padding:45px 20px 20px;text-align:center;">
+<footer>
 
-<h2 style="color:#FFD700;">
-🏠 PropertyVerse
+<h2>
+🏠 BharatWorld Properties
 </h2>
 
-<p style="margin:12px 0;color:#ccc;">
-Find your dream property with PropertyVerse.
+<p>
+From Bharat to the World.
 </p>
 
 <p style="margin-top:25px;">
-<a href="index.html" style="color:white;margin:8px;">Home</a>
-<a href="buy.html" style="color:white;margin:8px;">Buy</a>
-<a href="sell.html" style="color:white;margin:8px;">Sell</a>
-<a href="rent.html" style="color:white;margin:8px;">Rent</a>
-<a href="interior.html" style="color:white;margin:8px;">Interior</a>
-<a href="contact.html" style="color:white;margin:8px;">Contact</a>
+
+<a href="index.html">Home</a>
+<a href="buy.html">Buy</a>
+<a href="sell.html">Sell</a>
+<a href="rent.html">Rent</a>
+<a href="interior.html">Interior</a>
+<a href="listing.html">Listing</a>
+<a href="contact.html">Contact</a>
+
 </p>
 
-<hr style="border:0;border-top:1px solid #334;margin:30px auto 20px;max-width:900px;">
+<hr>
 
-<p style="color:#aaa;">
-© 2026 PropertyVerse. All Rights Reserved.
+<p class="copyright">
+© 2026 BharatWorld Properties. All Rights Reserved.
 </p>
 
 </footer>
+
+
 <script>
-function searchHomeProperties() {
-  alert("✅ Property Search is working!");
-}
-</script>
-    <script>
+
 function searchHomeProperties(){
 
-    let location = document.querySelector(
-        '.search-box input'
-    ).value.trim();
+    const location =
+    document.getElementById("homeLocation").value.trim();
 
-    let selects = document.querySelectorAll(
-        '.search-box select'
-    );
+    const purpose =
+    document.getElementById("homePurpose").value;
 
-    let purpose = selects[0].value;
-    let budget = selects[1].value;
-    let type = selects[2].value;
+    const budget =
+    document.getElementById("homeBudget").value;
+
+    const type =
+    document.getElementById("homeType").value;
 
     if(
         location === "" &&
@@ -768,6 +1015,7 @@ function searchHomeProperties(){
         budget === "Budget" &&
         type === "Property Type"
     ){
+
         alert("Please select at least one search option.");
         return;
     }
@@ -794,6 +1042,9 @@ function searchHomeProperties(){
 
     window.location.href = "listing.html";
 }
-    </script>
+
+</script>
+
 </body>
-</html>
+    </html>
+
