@@ -4,245 +4,327 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Property Listings | PropertyVerse</title>
+<title>Property Listings | BharatWorld Properties</title>
 
 <style>
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
 body{
-  background:#f5f7fa;
-  color:#081B33;
+    background:#f5f7fa;
+    color:#081B33;
 }
 
 header{
-  background:#081B33;
-  padding:16px 25px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
+    background:#081B33;
+    color:white;
+    padding:16px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
 }
 
 .logo{
-  color:#FFD700;
-  font-size:25px;
-  font-weight:bold;
+    color:#FFD700;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.logo small{
+    display:block;
+    color:white;
+    font-size:10px;
+    letter-spacing:2px;
+    margin-top:3px;
 }
 
 nav{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
 }
 
 nav a{
-  color:white;
-  text-decoration:none;
-  padding:8px;
+    color:white;
+    text-decoration:none;
+    padding:9px 11px;
+    border-radius:6px;
 }
 
+nav a:hover,
+nav a.active{
+    background:#E63946;
+}
 
+.post-area{
+    text-align:center;
+    padding:30px 20px 10px;
+}
+
+.post-btn{
+    display:inline-block;
+    background:#E63946;
+    color:white;
+    padding:14px 25px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+}
 
 .hero{
-  background:
-  linear-gradient(rgba(8,27,51,.75),rgba(8,27,51,.75)),
-  url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=80");
+    background:
+    linear-gradient(rgba(8,27,51,.75),rgba(8,27,51,.75)),
+    url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=80");
 
-  background-size:cover;
-  background-position:center;
+    background-size:cover;
+    background-position:center;
 
-  padding:75px 20px;
-  text-align:center;
-  color:white;
+    padding:75px 20px;
+    text-align:center;
+    color:white;
 }
 
 .hero h1{
-  font-size:42px;
-  margin-bottom:15px;
+    font-size:42px;
+    margin-bottom:15px;
 }
 
 .hero p{
-  font-size:19px;
+    font-size:19px;
 }
 
 .filters{
-  background:white;
-  max-width:1050px;
-  margin:35px auto;
-  padding:20px;
-  border-radius:12px;
-  box-shadow:0 5px 20px rgba(0,0,0,.12);
+    background:white;
+    max-width:1050px;
+    margin:35px auto;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.12);
 
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  justify-content:center;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:center;
 }
 
 .filters input,
 .filters select{
-  padding:13px;
-  border:1px solid #ddd;
-  border-radius:7px;
-  min-width:170px;
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:7px;
+    min-width:170px;
 }
 
 .search{
-  background:#E63946;
-  color:white;
-  border:0;
-  padding:13px 22px;
-  border-radius:7px;
-  font-weight:bold;
+    background:#E63946;
+    color:white;
+    border:0;
+    padding:13px 22px;
+    border-radius:7px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
 .container{
-  max-width:1100px;
-  margin:auto;
-  padding:0 20px 70px;
+    max-width:1100px;
+    margin:auto;
+    padding:0 20px 70px;
 }
 
 .title{
-  text-align:center;
-  margin-bottom:30px;
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.title h2{
+    font-size:30px;
+}
+
+.title p{
+    color:#666;
+    margin-top:8px;
 }
 
 .properties{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:25px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
 }
 
 .card{
-  background:white;
-  width:320px;
-  border-radius:15px;
-  overflow:hidden;
-  box-shadow:0 5px 18px rgba(0,0,0,.12);
+    background:white;
+    width:320px;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 18px rgba(0,0,0,.12);
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
 }
 
 .card img{
-  width:100%;
-  height:210px;
-  object-fit:cover;
+    width:100%;
+    height:210px;
+    object-fit:cover;
 }
 
 .content{
-  padding:20px;
+    padding:20px;
 }
 
 .verified{
-  display:inline-block;
-  background:#e7f8ed;
-  color:#16803c;
-  padding:6px 9px;
-  border-radius:5px;
-  font-size:12px;
-  font-weight:bold;
+    display:inline-block;
+    background:#e7f8ed;
+    color:#16803c;
+    padding:6px 9px;
+    border-radius:5px;
+    font-size:12px;
+    font-weight:bold;
 }
 
 .card h2{
-  font-size:21px;
-  margin:12px 0 8px;
+    font-size:21px;
+    margin:12px 0 8px;
 }
 
 .price{
-  font-size:22px;
-  font-weight:bold;
-  color:#E63946;
-  margin-bottom:8px;
+    font-size:22px;
+    font-weight:bold;
+    color:#E63946;
+    margin-bottom:8px;
 }
 
 .info{
-  color:#666;
-  line-height:1.7;
+    color:#666;
+    line-height:1.7;
 }
 
 .buttons{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:15px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:15px;
 }
 
 .btn{
-  display:inline-block;
-  padding:9px 12px;
-  border-radius:6px;
-  text-decoration:none;
-  font-weight:bold;
-  font-size:14px;
+    display:inline-block;
+    padding:9px 12px;
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:14px;
 }
 
 .details{
-  background:#081B33;
-  color:white;
+    background:#081B33;
+    color:white;
 }
 
 .call{
-  background:#081B33;
-  color:white;
+    background:#081B33;
+    color:white;
 }
 
 .whatsapp{
-  background:#25D366;
-  color:white;
+    background:#25D366;
+    color:white;
+}
+
+.user-title{
+    text-align:center;
+    margin-top:45px;
+    margin-bottom:20px;
 }
 
 .list-property{
-  display:block;
-  width:fit-content;
-  margin:40px auto 0;
-  background:#FFD700;
-  color:#081B33;
-  padding:14px 25px;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:bold;
+    display:block;
+    width:fit-content;
+    margin:40px auto 0;
+    background:#FFD700;
+    color:#081B33;
+    padding:14px 25px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.no-results{
+    text-align:center;
+    padding:30px;
+    color:#666;
+    display:none;
 }
 
 footer{
-  background:#050F1F;
-  color:white;
-  text-align:center;
-  padding:35px 20px;
+    background:#050F1F;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+footer h2{
+    color:#FFD700;
+}
+
+footer p{
+    margin:12px 0;
+    color:#ccc;
 }
 
 footer a{
-  color:white;
-  margin:6px;
+    color:white;
+    margin:6px;
+    text-decoration:none;
+}
+
+.copyright{
+    color:#aaa;
 }
 
 @media(max-width:600px){
 
-  .hero h1{
-    font-size:32px;
-  }
+    header{
+        justify-content:center;
+        text-align:center;
+    }
 
-  .filters{
-    margin:25px 15px 35px;
-  }
+    nav{
+        justify-content:center;
+    }
 
-  .filters input,
-  .filters select,
-  .search{
-    width:100%;
-  }
+    nav a{
+        font-size:13px;
+        padding:8px;
+    }
 
-  .card{
-    width:100%;
-    max-width:360px;
-  }
+    .hero h1{
+        font-size:32px;
+    }
 
-  nav{
-    margin-top:12px;
-  }
+    .filters{
+        margin:25px 15px 35px;
+    }
+
+    .filters input,
+    .filters select,
+    .search{
+        width:100%;
+        min-width:100%;
+    }
+
+    .card{
+        width:100%;
+        max-width:360px;
+    }
 }
 </style>
 </head>
@@ -252,7 +334,8 @@ footer a{
 <header>
 
 <div class="logo">
-🏠 PropertyVerse
+🇮🇳 BharatWorld
+<small>PROPERTIES</small>
 </div>
 
 <nav>
@@ -261,20 +344,21 @@ footer a{
 <a href="sell.html">Sell</a>
 <a href="rent.html">Rent</a>
 <a href="interior.html">Interior</a>
-<a href="listing.html" style="background:#E63946;color:white;border-radius:6px;padding:10px 15px;">Listing</a>
+<a href="listing.html" class="active">Listing</a>
 <a href="contact.html">Contact</a>
 <a href="login.html">Login</a>
 </nav>
 
 </header>
-  <div style="text-align:center;padding:30px 20px 10px;">
-<a href="sell.html"
-style="display:inline-block;background:#E63946;color:white;
-padding:14px 25px;border-radius:8px;text-decoration:none;
-font-weight:bold;font-size:17px;">
+
+
+<div class="post-area">
+
+<a href="sell.html" class="post-btn">
 ➕ Post Your Property
 </a>
-  </div>
+
+</div>
 
 
 <section class="hero">
@@ -282,7 +366,7 @@ font-weight:bold;font-size:17px;">
 <h1>📋 Property Listings</h1>
 
 <p>
-Explore properties listed on PropertyVerse
+Explore properties listed on BharatWorld Properties
 </p>
 
 </section>
@@ -291,34 +375,49 @@ Explore properties listed on PropertyVerse
 <div class="filters">
 
 <input
+id="cityFilter"
 type="text"
 placeholder="📍 Search City"
 >
 
-<select>
-<option>Property Type</option>
-<option>Apartment</option>
-<option>Villa</option>
-<option>House</option>
-<option>Plot</option>
-<option>Commercial</option>
+<select id="typeFilter">
+
+<option value="">Property Type</option>
+<option value="Apartment">Apartment</option>
+<option value="Villa">Villa</option>
+<option value="House">House</option>
+<option value="Plot">Plot</option>
+<option value="Commercial">Commercial</option>
+
 </select>
 
-<select>
-<option>Listing Type</option>
-<option>For Sale</option>
-<option>For Rent</option>
+
+<select id="listingFilter">
+
+<option value="">Listing Type</option>
+<option value="For Sale">For Sale</option>
+<option value="For Rent">For Rent</option>
+
 </select>
 
-<select>
-<option>Budget</option>
-<option>Under ₹50 Lakh</option>
-<option>₹50 Lakh - ₹1 Crore</option>
-<option>₹1 Crore+</option>
+
+<select id="budgetFilter">
+
+<option value="">Budget</option>
+<option value="under50">Under ₹50 Lakh</option>
+<option value="50to100">₹50 Lakh - ₹1 Crore</option>
+<option value="above100">₹1 Crore+</option>
+
 </select>
 
-<button class="search" type="button" onclick="searchListings()">
+
+<button
+class="search"
+type="button"
+onclick="searchListings()">
+
 🔍 Search
+
 </button>
 
 </div>
@@ -330,17 +429,25 @@ placeholder="📍 Search City"
 
 <h2>⭐ Latest Property Listings</h2>
 
-<p style="color:#666;margin-top:8px;">
-Discover verified properties from different cities
+<p>
+Discover properties from different cities
 </p>
 
 </div>
 
 
-<div class="properties">
+<div id="propertiesContainer" class="properties">
 
 
-<div class="card">
+<!-- PROPERTY 1 -->
+
+<div
+class="card"
+data-city="Ahmedabad"
+data-type="Villa"
+data-listing="For Sale"
+data-price="85"
+>
 
 <img
 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
@@ -362,22 +469,32 @@ Luxury 3 BHK Villa
 </div>
 
 <div class="info">
+
 📍 Ahmedabad, Gujarat<br>
+
 🛏 3 BHK • 📐 2200 Sq.ft<br>
+
 🏷️ For Sale
+
 </div>
 
 <div class="buttons">
 
-<a href="property-details.html" class="btn details">
+<a
+href="property-details.html"
+class="btn details">
 View Details
 </a>
 
-<a href="tel:+919999999999" class="btn call">
+<a
+href="tel:+919999999999"
+class="btn call">
 📞 Call
 </a>
 
-<a href="https://wa.me/919999999999" class="btn whatsapp">
+<a
+href="https://wa.me/919999999999"
+class="btn whatsapp">
 💬 WhatsApp
 </a>
 
@@ -388,7 +505,15 @@ View Details
 </div>
 
 
-<div class="card">
+<!-- PROPERTY 2 -->
+
+<div
+class="card"
+data-city="Surat"
+data-type="Villa"
+data-listing="For Sale"
+data-price="120"
+>
 
 <img
 src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80"
@@ -410,22 +535,32 @@ Premium Villa
 </div>
 
 <div class="info">
+
 📍 Surat, Gujarat<br>
+
 🛏 4 BHK • 📐 2800 Sq.ft<br>
+
 🏷️ For Sale
+
 </div>
 
 <div class="buttons">
 
-<a href="property-details.html" class="btn details">
+<a
+href="property-details.html"
+class="btn details">
 View Details
 </a>
 
-<a href="tel:+919999999999" class="btn call">
+<a
+href="tel:+919999999999"
+class="btn call">
 📞 Call
 </a>
 
-<a href="https://wa.me/919999999999" class="btn whatsapp">
+<a
+href="https://wa.me/919999999999"
+class="btn whatsapp">
 💬 WhatsApp
 </a>
 
@@ -436,11 +571,19 @@ View Details
 </div>
 
 
-<div class="card">
+<!-- PROPERTY 3 -->
+
+<div
+class="card"
+data-city="Ahmedabad"
+data-type="Apartment"
+data-listing="For Rent"
+data-price="25"
+>
 
 <img
 src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80"
-alt="Rental Apartment"
+alt="Modern Apartment"
 >
 
 <div class="content">
@@ -458,22 +601,32 @@ Modern 2 BHK Apartment
 </div>
 
 <div class="info">
+
 📍 Ahmedabad, Gujarat<br>
+
 🛏 2 BHK • 📐 1200 Sq.ft<br>
+
 🏷️ For Rent
+
 </div>
 
 <div class="buttons">
 
-<a href="property-details.html" class="btn details">
+<a
+href="property-details.html"
+class="btn details">
 View Details
 </a>
 
-<a href="tel:+919999999999" class="btn call">
+<a
+href="tel:+919999999999"
+class="btn call">
 📞 Call
 </a>
 
-<a href="https://wa.me/919999999999" class="btn whatsapp">
+<a
+href="https://wa.me/919999999999"
+class="btn whatsapp">
 💬 WhatsApp
 </a>
 
@@ -483,61 +636,30 @@ View Details
 
 </div>
 
+</div>
+
+
+<div id="noResults" class="no-results">
+
+❌ No properties found for your search.
 
 </div>
-<div id="userProperties"></div>
-<script>
-let properties =
-JSON.parse(localStorage.getItem("pv_properties") || "[]");
 
-let box = document.getElementById("userProperties");
 
-properties.forEach(function(property){
+<!-- USER POSTED PROPERTIES -->
 
-    box.innerHTML += `
-    <div class="card">
+<h2 id="userTitle" class="user-title">
+🏠 Recently Posted Properties
+</h2>
 
-        <div class="content">
+<div id="userProperties" class="properties">
+</div>
 
-            <span class="verified">
-            ✓ PROPERTY LISTED
-            </span>
 
-            <h2>${property.title}</h2>
-
-            <div class="price">
-            ₹${property.price}
-            </div>
-
-            <div class="info">
-            📍 ${property.city}<br>
-            🏢 ${property.type}<br>
-            🛏 ${property.bhk}<br>
-            📝 ${property.description}
-            </div>
-
-            <div class="buttons">
-
-                <a href="property-details.html"
-                class="btn details">
-                View Details
-                </a>
-
-                <a href="tel:${property.phone}"
-                class="btn call">
-                📞 Call
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-    `;
-});
-</script>
 <a href="sell.html" class="list-property">
+
 ➕ List Your Property
+
 </a>
 
 </div>
@@ -545,11 +667,15 @@ properties.forEach(function(property){
 
 <footer>
 
-<h2 style="color:#FFD700;">
-🏠 PropertyVerse
+<h2>
+🇮🇳 BharatWorld Properties
 </h2>
 
-<p style="margin:12px 0;color:#ccc;">
+<p>
+From Bharat to the World.
+</p>
+
+<p>
 Buy • Sell • Rent • Interior
 </p>
 
@@ -564,165 +690,304 @@ Buy • Sell • Rent • Interior
 
 </p>
 
-<p style="margin-top:20px;color:#aaa;">
-© 2026 PropertyVerse. All Rights Reserved.
+<p class="copyright">
+© 2026 BharatWorld Properties. All Rights Reserved.
 </p>
 
 </footer>
+
+
 <script>
-function searchListings() {
-    const cards = document.querySelectorAll('.properties .card');
 
-    cards.forEach(function(card) {
-        card.style.display = "";
-    });
+/* SEARCH FUNCTION */
 
-    alert("✅ Listing Search is working!");
-}
-</script>
-  
+function searchListings(){
 
+    const city =
+    document.getElementById("cityFilter")
+    .value
+    .trim()
+    .toLowerCase();
 
-  <script>
-let searchLocation =
-localStorage.getItem("pv_search_location") || "";
+    const type =
+    document.getElementById("typeFilter")
+    .value;
 
-let searchPurpose =
-localStorage.getItem("pv_search_purpose") || "";
+    const listing =
+    document.getElementById("listingFilter")
+    .value;
 
-let searchBudget =
-localStorage.getItem("pv_search_budget") || "";
+    const budget =
+    document.getElementById("budgetFilter")
+    .value;
 
-let searchType =
-localStorage.getItem("pv_search_type") || "";
+    const cards =
+    document.querySelectorAll(
+        "#propertiesContainer .card"
+    );
 
-if(searchLocation || searchPurpose || searchBudget || searchType){
-
-    console.log("Property Search:", {
-        location: searchLocation,
-        purpose: searchPurpose,
-        budget: searchBudget,
-        type: searchType
-    });
-
-}
-      </script>
-  <script>
-let property = localStorage.getItem("pv_property");
-
-if(property){
-
-    property = JSON.parse(property);
-
-    let cards = document.querySelectorAll(".property-card");
+    let found = 0;
 
     cards.forEach(function(card){
 
-        let text = card.innerText.toLowerCase();
+        const cardCity =
+        card.dataset.city.toLowerCase();
 
-        let location =
-        localStorage.getItem("pv_search_location") || "";
+        const cardType =
+        card.dataset.type;
 
-        let type =
-        localStorage.getItem("pv_search_type") || "";
+        const cardListing =
+        card.dataset.listing;
+
+        const cardPrice =
+        Number(card.dataset.price);
+
+        let cityMatch =
+        !city ||
+        cardCity.includes(city);
+
+        let typeMatch =
+        !type ||
+        cardType === type;
+
+        let listingMatch =
+        !listing ||
+        cardListing === listing;
+
+        let budgetMatch = true;
+
+        if(budget === "under50"){
+            budgetMatch = cardPrice < 50;
+        }
+
+        if(budget === "50to100"){
+            budgetMatch =
+            cardPrice >= 50 &&
+            cardPrice <= 100;
+        }
+
+        if(budget === "above100"){
+            budgetMatch =
+            cardPrice > 100;
+        }
 
         if(
-            (location && !text.includes(location.toLowerCase())) ||
-            (type && type !== "Property Type" &&
-             !text.includes(type.toLowerCase()))
+            cityMatch &&
+            typeMatch &&
+            listingMatch &&
+            budgetMatch
         ){
+
+            card.style.display = "";
+
+            found++;
+
+        }else{
+
             card.style.display = "none";
+
         }
 
     });
+
+    const noResults =
+    document.getElementById("noResults");
+
+    if(found === 0){
+
+        noResults.style.display = "block";
+
+    }else{
+
+        noResults.style.display = "none";
+
+    }
+
 }
-  </script>
-  <script>
-let properties =
-JSON.parse(localStorage.getItem("pv_properties") || "[]");
 
-if(properties.length){
 
-    let section = document.createElement("section");
+/* LOAD USER POSTED PROPERTIES */
 
-    section.style.cssText =
-    "padding:20px;max-width:900px;margin:auto;";
+function loadUserProperties(){
 
-    section.innerHTML = "<h2>🏠 All Properties</h2>";
+    const saved =
+    JSON.parse(
+        localStorage.getItem("pv_properties") || "[]"
+    );
 
-    properties.forEach(function(property){
+    const box =
+    document.getElementById("userProperties");
 
-        section.innerHTML += `
-        <div style="
-        background:white;
-        padding:20px;
-        margin:15px 0;
-        border-radius:12px;
-        box-shadow:0 4px 15px rgba(0,0,0,.12);
-        ">
+    box.innerHTML = "";
 
-        <h3>${property.title}</h3>
+    saved.forEach(function(property){
 
-        <p>📍 ${property.city}</p>
-        <p>🏢 ${property.type}</p>
-        <p>🛏️ ${property.bhk}</p>
-        <p>💰 ₹${property.price}</p>
+        box.innerHTML += `
 
-        <p>👤 ${property.owner || "Owner not provided"}</p>
+        <div class="card">
+
+            <div class="content">
+
+                <span class="verified">
+                ✓ PROPERTY LISTED
+                </span>
+
+                <h2>
+                ${property.title || "Property"}
+                </h2>
+
+                <div class="price">
+                ₹${property.price || "Contact"}
+                </div>
+
+                <div class="info">
+
+                📍 ${property.city || "India"}<br>
+
+                🏢 ${property.type || "Property"}<br>
+
+                🛏 ${property.bhk || "Details available"}<br>
+
+                📝 ${property.description || ""}
+
+                </div>
+
+                <div class="buttons">
+
+                    <a
+                    href="property-details.html"
+                    class="btn details">
+
+                    View Details
+
+                    </a>
+
+                    ${
+                    property.phone
+                    ?
+                    `<a
+                    href="tel:${property.phone}"
+                    class="btn call">
+
+                    📞 Call
+
+                    </a>`
+                    :
+                    ""
+                    }
+
+                </div>
+
+            </div>
 
         </div>
+
         `;
+
     });
 
-    document.body.appendChild(section);
 }
-  </script>
-  <script>
-let properties =
-JSON.parse(localStorage.getItem("pv_properties") || "[]");
 
-let box = document.getElementById("userProperties");
 
-properties.forEach(function(property){
+/* READ SEARCH FROM HOMEPAGE */
 
-    box.innerHTML += `
-    <div class="card">
-        <div class="content">
+function loadHomeSearch(){
 
-            <span class="verified">
-            ✓ PROPERTY LISTED
-            </span>
+    const location =
+    localStorage.getItem(
+        "pv_search_location"
+    ) || "";
 
-            <h2>${property.title}</h2>
+    const purpose =
+    localStorage.getItem(
+        "pv_search_purpose"
+    ) || "";
 
-            <div class="price">
-            ₹${property.price}
-            </div>
+    const type =
+    localStorage.getItem(
+        "pv_search_type"
+    ) || "";
 
-            <div class="info">
-            📍 ${property.city}<br>
-            🛏 ${property.bhk}<br>
-            🏷️ ${property.type}
-            </div>
+    const budget =
+    localStorage.getItem(
+        "pv_search_budget"
+    ) || "";
 
-            <div class="buttons">
 
-                <a href="property-details.html"
-                class="btn details">
-                View Details
-                </a>
+    if(location){
 
-                <a href="tel:${property.phone}"
-                class="btn call">
-                📞 Call
-                </a>
+        document.getElementById(
+            "cityFilter"
+        ).value = location;
 
-            </div>
+    }
 
-        </div>
-    </div>
-    `;
-});
-  </script>
+
+    if(
+        type &&
+        type !== "Property Type"
+    ){
+
+        document.getElementById(
+            "typeFilter"
+        ).value = type;
+
+    }
+
+
+    if(
+        purpose &&
+        purpose !== "Buy / Rent"
+    ){
+
+        document.getElementById(
+            "listingFilter"
+        ).value =
+        purpose === "Buy"
+        ? "For Sale"
+        : "For Rent";
+
+    }
+
+
+    if(budget){
+
+        if(budget === "Under ₹50 Lakh"){
+
+            document.getElementById(
+                "budgetFilter"
+            ).value = "under50";
+
+        }
+
+        if(budget === "₹50 Lakh - ₹1 Crore"){
+
+            document.getElementById(
+                "budgetFilter"
+            ).value = "50to100";
+
+        }
+
+        if(budget === "₹1 Crore+"){
+
+            document.getElementById(
+                "budgetFilter"
+            ).value = "above100";
+
+        }
+
+    }
+
+}
+
+
+/* START */
+
+loadUserProperties();
+
+loadHomeSearch();
+
+</script>
+
 </body>
   </html>
