@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,19 +15,15 @@
 }
 
 body{
-    background:#f5f7fa;
+    background:#f4f6fa;
     color:#081B33;
 }
 
 header{
     background:#081B33;
     color:white;
-    padding:16px 25px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:15px;
+    padding:18px 20px;
+    text-align:center;
 }
 
 .logo{
@@ -37,42 +32,17 @@ header{
     font-weight:bold;
 }
 
-.logo small{
-    display:block;
-    color:white;
-    font-size:10px;
-    letter-spacing:2px;
-    margin-top:3px;
-}
-
-nav{
-    display:flex;
-    flex-wrap:wrap;
-    gap:7px;
-}
-
-nav a{
-    color:white;
-    text-decoration:none;
-    padding:9px 11px;
-    border-radius:6px;
-}
-
-nav a:hover{
-    background:#E63946;
-}
-
 .container{
-    max-width:1000px;
-    margin:35px auto;
-    padding:0 20px 60px;
+    max-width:900px;
+    margin:30px auto;
+    padding:0 15px;
 }
 
-.property-box{
+.card{
     background:white;
-    border-radius:18px;
+    border-radius:20px;
     overflow:hidden;
-    box-shadow:0 7px 25px rgba(0,0,0,.12);
+    box-shadow:0 5px 25px rgba(0,0,0,.12);
 }
 
 .property-image{
@@ -89,182 +59,145 @@ nav a:hover{
     display:inline-block;
     background:#e7f8ed;
     color:#16803c;
-    padding:7px 10px;
-    border-radius:6px;
-    font-size:13px;
+    padding:10px 15px;
+    border-radius:8px;
     font-weight:bold;
+    margin-bottom:18px;
 }
 
 h1{
-    font-size:34px;
-    margin:15px 0 10px;
+    font-size:38px;
+    margin-bottom:12px;
 }
 
 .price{
     color:#E63946;
-    font-size:28px;
+    font-size:30px;
     font-weight:bold;
-    margin:10px 0;
+    margin-bottom:15px;
 }
 
 .location{
-    color:#555;
-    font-size:17px;
+    color:#666;
+    font-size:20px;
     margin-bottom:25px;
 }
 
-.info-grid{
+.details-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
     margin:25px 0;
 }
 
-.info{
-    background:#f5f7fa;
-    padding:18px;
-    border-radius:10px;
+.detail-box{
+    background:#f5f7fb;
+    padding:22px;
+    border-radius:14px;
     text-align:center;
-}
-
-.info strong{
-    display:block;
-    margin-top:6px;
+    font-size:20px;
+    font-weight:bold;
 }
 
 .description{
-    margin-top:25px;
+    margin-top:30px;
+}
+
+.description h2{
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+.description p{
+    color:#666;
+    font-size:18px;
     line-height:1.7;
-    color:#555;
 }
 
 .owner{
+    background:#f5f7fb;
+    padding:25px;
+    border-radius:15px;
     margin-top:30px;
-    background:#f5f7fa;
-    padding:22px;
-    border-radius:12px;
 }
 
 .owner h2{
-    margin-bottom:12px;
+    margin-bottom:15px;
+}
+
+.owner p{
+    font-size:18px;
+    margin:8px 0;
 }
 
 .buttons{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
     margin-top:25px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
 }
 
 .btn{
     flex:1;
-    min-width:140px;
+    min-width:200px;
     text-align:center;
-    padding:14px;
-    border-radius:8px;
+    padding:16px;
+    border-radius:10px;
     text-decoration:none;
+    color:white;
+    font-size:18px;
     font-weight:bold;
 }
 
 .call{
     background:#081B33;
-    color:white;
 }
 
 .whatsapp{
     background:#25D366;
-    color:white;
 }
 
 .back{
     background:#E63946;
-    color:white;
-}
-
-.no-property{
-    background:white;
-    padding:50px 25px;
-    border-radius:15px;
-    text-align:center;
-    box-shadow:0 5px 20px rgba(0,0,0,.1);
-}
-
-.no-property h2{
-    margin-bottom:15px;
-}
-
-.no-property a{
-    display:inline-block;
-    margin-top:20px;
-    background:#E63946;
-    color:white;
-    padding:13px 22px;
-    border-radius:8px;
-    text-decoration:none;
-    font-weight:bold;
 }
 
 footer{
+    margin-top:50px;
     background:#050F1F;
     color:white;
     text-align:center;
-    padding:35px 20px;
+    padding:30px 15px;
 }
 
 footer h2{
     color:#FFD700;
 }
 
-footer p{
-    color:#ccc;
-    margin:12px 0;
-}
-
-footer a{
-    color:white;
-    margin:7px;
-    text-decoration:none;
-}
-
 @media(max-width:600px){
-
-    header{
-        justify-content:center;
-        text-align:center;
-    }
-
-    nav{
-        justify-content:center;
-    }
-
-    nav a{
-        font-size:13px;
-        padding:8px;
-    }
 
     .property-image{
         height:260px;
     }
 
     .content{
-        padding:20px;
+        padding:22px;
     }
 
     h1{
-        font-size:27px;
+        font-size:30px;
     }
 
     .price{
-        font-size:24px;
+        font-size:25px;
     }
 
-    .info-grid{
-        grid-template-columns:repeat(2,1fr);
+    .details-grid{
+        grid-template-columns:1fr 1fr;
     }
 
-    .btn{
-        width:100%;
-        flex:none;
+    .detail-box{
+        font-size:17px;
+        padding:18px 8px;
     }
 }
 </style>
@@ -273,49 +206,121 @@ footer a{
 <body>
 
 <header>
-
-<div class="logo">
-🏠 BharatWorld
-<small>PROPERTIES</small>
-</div>
-
-<nav>
-<a href="index.html">Home</a>
-<a href="buy.html">Buy</a>
-<a href="sell.html">Sell</a>
-<a href="rent.html">Rent</a>
-<a href="interior.html">Interior</a>
-<a href="listing.html">Listing</a>
-<a href="contact.html">Contact</a>
-<a href="login.html">Login</a>
-</nav>
-
+    <div class="logo">🏠 BharatWorld Properties</div>
 </header>
-
 
 <div class="container">
 
-<div id="propertyDetails"></div>
+<div class="card">
+
+<img id="propertyImage"
+class="property-image"
+src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+alt="Property">
+
+<div class="content">
+
+<span class="verified">
+✓ PROPERTY LISTED
+</span>
+
+<h1 id="propertyTitle">
+Property Details
+</h1>
+
+<div class="price" id="propertyPrice">
+₹0
+</div>
+
+<div class="location" id="propertyCity">
+📍 Location
+</div>
+
+<div class="details-grid">
+
+<div class="detail-box">
+🏢<br>
+<span id="propertyType">Property</span>
+</div>
+
+<div class="detail-box">
+🛏️<br>
+<span id="propertyBhk">BHK</span>
+</div>
+
+<div class="detail-box">
+📐<br>
+<span id="propertyArea">Area</span>
+</div>
+
+<div class="detail-box">
+🏷️<br>
+<span id="propertyPurpose">For Sale</span>
+</div>
 
 </div>
 
+<div class="description">
+
+<h2>📝 Property Description</h2>
+
+<p id="propertyDescription">
+Property details will appear here.
+</p>
+
+</div>
+
+<div class="owner">
+
+<h2>👤 Owner Information</h2>
+
+<p>
+<strong>Name:</strong>
+<span id="ownerName">Owner</span>
+</p>
+
+<p>
+<strong>Phone:</strong>
+<span id="ownerPhone">Not provided</span>
+</p>
+
+</div>
+
+<div class="buttons">
+
+<a id="callButton"
+class="btn call"
+href="#">
+📞 Call Owner
+</a>
+
+<a id="whatsappButton"
+class="btn whatsapp"
+href="#"
+target="_blank">
+💬 WhatsApp
+</a>
+
+<a href="listing.html"
+class="btn back">
+← Back to Listings
+</a>
+
+</div>
+
+</div>
+</div>
+</div>
 
 <footer>
 
 <h2>🏠 BharatWorld Properties</h2>
 
-<p>From Bharat to the World.</p>
-
-<p>
-<a href="index.html">Home</a>
-<a href="buy.html">Buy</a>
-<a href="sell.html">Sell</a>
-<a href="rent.html">Rent</a>
-<a href="listing.html">Listing</a>
-<a href="contact.html">Contact</a>
+<p style="margin-top:10px;color:#ccc;">
+Buy • Sell • Rent • Interior
 </p>
 
-<p>
+<p style="margin-top:15px;color:#aaa;">
 © 2026 BharatWorld Properties. All Rights Reserved.
 </p>
 
@@ -324,174 +329,74 @@ footer a{
 
 <script>
 
-let properties =
-JSON.parse(localStorage.getItem("pv_properties") || "[]");
+let property =
+localStorage.getItem("pv_selected_property");
 
-let box =
-document.getElementById("propertyDetails");
+if(property){
 
+    property = JSON.parse(property);
 
-if(properties.length === 0){
+    document.getElementById("propertyTitle").innerText =
+        property.title || "Property";
 
-    box.innerHTML = `
-    <div class="no-property">
+    document.getElementById("propertyPrice").innerText =
+        "₹" + (property.price || "Price not provided");
 
-        <h2>🏠 No Property Found</h2>
+    document.getElementById("propertyCity").innerText =
+        "📍 " + (property.city || "Location not provided");
 
-        <p>
-        Please post a property first to view its details.
-        </p>
+    document.getElementById("propertyType").innerText =
+        property.type || "Property";
 
-        <a href="sell.html">
-        ➕ Post Your Property
-        </a>
+    document.getElementById("propertyBhk").innerText =
+        property.bhk || "N/A";
 
-    </div>
-    `;
+    document.getElementById("propertyArea").innerText =
+        property.area || property.size || "N/A";
+
+    document.getElementById("propertyPurpose").innerText =
+        property.purpose || "For Sale";
+
+    document.getElementById("propertyDescription").innerText =
+        property.description || "No description provided.";
+
+    document.getElementById("ownerName").innerText =
+        property.owner || property.ownerName || "Owner";
+
+    document.getElementById("ownerPhone").innerText =
+        property.phone || "Not provided";
+
+    if(property.image){
+
+        document.getElementById("propertyImage").src =
+            property.image;
+
+    }
+
+    if(property.phone){
+
+        let phone =
+            String(property.phone).replace(/\D/g,'');
+
+        document.getElementById("callButton").href =
+            "tel:" + phone;
+
+        document.getElementById("whatsappButton").href =
+            "https://wa.me/" + phone;
+
+    }
 
 }else{
 
-    /*
-      Demo version:
-      Latest posted property will be shown.
-    */
+    document.getElementById("propertyTitle").innerText =
+        "Property Not Selected";
 
-    let property =
-    properties[properties.length - 1];
-
-
-    let cleanPhone =
-    String(property.phone || "")
-    .replace(/\D/g,"");
-
-
-    let priceText =
-    property.listingType === "For Rent"
-    ? "₹" + property.price + " / Month"
-    : "₹" + property.price;
-
-
-    box.innerHTML = `
-
-    <div class="property-box">
-
-        <img
-        class="property-image"
-        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
-        alt="Property">
-
-        <div class="content">
-
-            <span class="verified">
-            ✓ PROPERTY LISTED
-            </span>
-
-            <h1>
-            ${property.title}
-            </h1>
-
-            <div class="price">
-            ${priceText}
-            </div>
-
-            <div class="location">
-            📍 ${property.city}
-            </div>
-
-
-            <div class="info-grid">
-
-                <div class="info">
-                    🏢
-                    <strong>${property.type}</strong>
-                </div>
-
-                <div class="info">
-                    🛏
-                    <strong>${property.bhk}</strong>
-                </div>
-
-                <div class="info">
-                    📐
-                    <strong>${property.area || "Not provided"}</strong>
-                </div>
-
-                <div class="info">
-                    🏷️
-                    <strong>${property.listingType}</strong>
-                </div>
-
-            </div>
-
-
-            <div class="description">
-
-                <h2>📝 Property Description</h2>
-
-                <p style="margin-top:10px;">
-                ${property.description}
-                </p>
-
-            </div>
-
-
-            <div class="owner">
-
-                <h2>👤 Owner Information</h2>
-
-                <p>
-                <strong>Name:</strong>
-                ${property.owner || "Not provided"}
-                </p>
-
-                <p style="margin-top:8px;">
-                <strong>Phone:</strong>
-                ${property.phone || "Not provided"}
-                </p>
-
-            </div>
-
-
-            <div class="buttons">
-
-                <a
-                href="tel:${cleanPhone}"
-                class="btn call">
-
-                📞 Call Owner
-
-                </a>
-
-
-                <a
-                href="https://wa.me/${cleanPhone}"
-                class="btn whatsapp">
-
-                💬 WhatsApp
-
-                </a>
-
-
-                <a
-                href="listing.html"
-                class="btn back">
-
-                ← Back to Listings
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    `;
+    document.getElementById("propertyDescription").innerText =
+        "Please go back to Listings and select a property.";
 
 }
 
 </script>
 
 </body>
-</html>
-```
+    </html>
