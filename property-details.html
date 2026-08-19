@@ -1,3 +1,6 @@
+# Property Details HTML
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,8 +22,6 @@ body{
     background:#f5f7fa;
     color:#081B33;
 }
-
-/* HEADER */
 
 header{
     background:#081B33;
@@ -62,8 +63,6 @@ nav a{
 nav a:hover{
     background:#E63946;
 }
-
-/* PROPERTY */
 
 .container{
     max-width:1000px;
@@ -171,8 +170,6 @@ h1{
     color:white;
 }
 
-/* ERROR */
-
 .no-property{
     text-align:center;
     background:white;
@@ -180,8 +177,6 @@ h1{
     border-radius:15px;
     box-shadow:0 5px 20px rgba(0,0,0,.1);
 }
-
-/* FOOTER */
 
 footer{
     background:#050F1F;
@@ -205,8 +200,6 @@ footer a{
     margin:7px;
     text-decoration:none;
 }
-
-/* MOBILE */
 
 @media(max-width:600px){
 
@@ -337,102 +330,19 @@ if(property){
     phone.replace(/\D/g,"");
 
 
-    /* FIX PROPERTY DETAILS */
-
     let propertyType =
-    property.type || "";
+    property.type || "Property";
 
     let bhk =
-    property.bhk || "";
+    property.bhk || "Details Available";
 
     let area =
-    property.area || "";
+    property.area || "Area not specified";
 
     let listingType =
     property.listingType ||
-    property.purpose || "";
-
-
-    /* NEW LISTING.HTML DATA */
-
-    if(property.details){
-
-        let details =
-        property.details;
-
-        /* Example:
-        3 BHK • 2200 Sq.ft
-        */
-
-        let parts =
-        details.split("•");
-
-        bhk =
-        parts[0]
-        ?
-        parts[0].trim()
-        :
-        bhk;
-
-        area =
-        parts[1]
-        ?
-        parts[1].trim()
-        :
-        area;
-
-    }
-
-
-    /* IF PROPERTY TYPE IS MISSING,
-       DETECT FROM TITLE */
-
-    if(!propertyType){
-
-        let title =
-        (property.title || "")
-        .toLowerCase();
-
-        if(title.includes("villa")){
-            propertyType = "Villa";
-        }
-
-        else if(title.includes("apartment")){
-            propertyType = "Apartment";
-        }
-
-        else if(title.includes("house")){
-            propertyType = "House";
-        }
-
-        else if(title.includes("plot")){
-            propertyType = "Plot";
-        }
-
-        else if(title.includes("commercial")){
-            propertyType = "Commercial";
-        }
-
-        else{
-            propertyType = "Property";
-        }
-
-    }
-
-
-    /* FALLBACK VALUES */
-
-    if(!bhk){
-        bhk = "Details Available";
-    }
-
-    if(!area){
-        area = "Area not specified";
-    }
-
-    if(!listingType){
-        listingType = "Available";
-    }
+    property.purpose ||
+    "Available";
 
 
     container.innerHTML = `
@@ -441,7 +351,7 @@ if(property){
 
         <img
         class="property-image"
-        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+        src="${property.image || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80'}"
         alt="Property Image">
 
         <div class="property-content">
@@ -540,12 +450,8 @@ if(property){
                 ${
                 phone
                 ?
-                `<a
-                href="tel:${phone}"
-                class="btn call">
-
+                `<a href="tel:${phone}" class="btn call">
                 📞 Call Owner
-
                 </a>`
                 :
                 ""
@@ -616,10 +522,7 @@ if(property){
 
 </script>
 
-
-
-                
-
-
 </body>
-    </html>
+</html>
+```
+
