@@ -1076,7 +1076,115 @@ function loadHomeSearch(){
    SAVE SELECTED PROPERTY
 ================================ */
 
+<script>
+
 document.addEventListener("click", function(e){
+
+    let button = e.target.closest(".details");
+
+    if(!button) return;
+
+    let card = button.closest(".card");
+
+    if(!card) return;
+
+
+    let title =
+    card.querySelector("h2")?.innerText || "";
+
+
+    let price =
+    card.querySelector(".price")?.innerText || "";
+
+
+    let property = {
+
+        title: title,
+
+        price:
+        price.replace("₹","")
+        .replace("/ Month","")
+        .trim(),
+
+        city:
+        card.dataset.city || "",
+
+        type:
+        card.dataset.type || "Property",
+
+        listingType:
+        card.dataset.listing || "Available",
+
+        bhk: "",
+
+        area: "",
+
+        description:
+        "Property listed on BharatWorld Properties.",
+
+        owner:
+        "Property Owner",
+
+        phone:
+        "9999999999"
+
+    };
+
+
+    /* READ BHK AND AREA FROM CARD */
+
+    let info =
+    card.querySelector(".info")?.innerText || "";
+
+
+    let lines =
+    info.split("\n");
+
+
+    lines.forEach(function(line){
+
+        if(
+            line.includes("BHK") &&
+            !line.includes("For Sale") &&
+            !line.includes("For Rent")
+        ){
+
+            property.bhk =
+            line.replace("🛏","")
+            .split("•")[0]
+            .trim();
+
+        }
+
+
+        if(
+            line.includes("Sq.ft")
+        ){
+
+            property.area =
+            line.replace("📐","")
+            .trim();
+
+        }
+
+    });
+
+
+    localStorage.setItem(
+
+        "pv_selected_property",
+
+        JSON.stringify(property)
+
+    );
+
+
+    window.location.href =
+    "property-details.html";
+
+});
+
+</script>
 
     const button = e.target.closest(".details");
 
