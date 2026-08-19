@@ -1332,58 +1332,441 @@ function loadHomeSearch(){
 
         document.getElementById(
             "budgetFilter"
-        ).value =
-        "under50";
+<script>
 
-    }
+/* ================================
+   SEARCH
+================================ */
 
+function searchListings(){
 
-    else if(
-        budget ===
-        "₹50 Lakh - ₹1 Crore"
-    ){
+    const city =
+    document.getElementById("cityFilter")
+    .value
+    .trim()
+    .toLowerCase();
 
-        document.getElementById(
-            "budgetFilter"
-        ).value =
-        "50to100";
+    const type =
+    document.getElementById("typeFilter").value;
 
-    }
+    const listing =
+    document.getElementById("listingFilter").value;
 
+    const budget =
+    document.getElementById("budgetFilter").value;
 
-    else if(
-        budget === "₹1 Crore+"
-    ){
+    const cards =
+    document.querySelectorAll(
+        "#propertiesContainer .card"
+    );
 
-        document.getElementById(
-            "budgetFilter"
-        ).value =
-        "above100";
+    let found = 0;
 
-    }
+    cards.forEach(function(card){
 
+        const cardCity =
+        (card.dataset.city || "")
+        .toLowerCase();
 
-    if(
-        location ||
-        purpose ||
-        type ||
-        budget
-    ){
+        const cardType =
+        card.dataset.type || "";
 
-        searchListings();
+        const cardListing =
+        card.dataset.listing || "";
 
-    }
+        const cardPrice =
+        Number(card.dataset.price || 0);
+
+        const cityMatch =
+        !city ||
+        cardCity.includes(city);
+
+        const typeMatch =
+        !type ||
+        cardType === type;
+
+        const listingMatch =
+        !listing ||
+        cardListing === listing;
+
+        let budgetMatch = true;
+
+        if(budget === "under50"){
+            budgetMatch = cardPrice < 50;
+        }
+
+        if(budget === "50to100"){
+            budgetMatch =
+            cardPrice >= 50 &&
+            cardPrice <= 100;
+        }
+
+        if(budget === "above100"){
+            budgetMatch =
+            cardPrice > 100;
+        }
+
+        if(
+            cityMatch &&
+            typeMatch &&
+            listingMatch &&
+            budgetMatch
+        ){
+
+            card.style.display = "";
+            found++;
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+    document.getElementById("noResults")
+    .style.display =
+    found === 0
+    ? "block"
+    : "none";
 
 }
 
 
-/* =========================
+/* ================================
+   RESET SEARCH
+================================ */
+
+function resetSearch(){
+
+    document.getElementById(
+        "cityFilter"
+    ).value = "";
+
+    document.getElementById(
+        "typeFilter"
+    ).value = "";
+
+    document.getElementById(
+        "listingFilter"
+    ).value = "";
+
+    document.getElementById(
+        "budgetFilter"
+    ).value = "";
+
+    document
+    .querySelectorAll(
+        "#propertiesContainer .card"
+    )
+    .forEach(function(card){
+
+        card.style.display = "";
+
+    });
+
+    document.getElementById(
+        "noResults"
+    ).style.display = "none";
+
+}
+
+
+/* ================================
+   LOAD USER PROPERTIES
+================================ */
+
+function loadUserProperties(){
+
+    const saved =
+    JSON.parse(
+        localStorage.getItem(
+            "pv_properties"
+        ) || "[]"
+    );
+
+    const box =
+    document.getElementById(
+        "userProperties"
+    );
+
+    box.innerHTML = "";
+
+    saved.forEach(function(property, index){
+
+        const phone =
+        property.phone || "";
+
+        const whatsapp =
+        phone.replace(/\D/g, "");
+
+        box.innerHTML += `
+
+        <div
+        class="card user-card"
+        data-user-index="${index}"
+        data-city="${property.city || ""}"
+        data-type="${property.type || "Property"}"
+        data-listing="${property.purpose || "Available"}"
+        data-price="${property.price || 0}">
+
+        ${
+            property.image
+            ?
+            `<img
+            src="${property.image}"
+            alt="Property Image">`
+            :
+            ""
+        }
+
+        <div class="content">
+
+            <span class="verified">
+            ✓ PROPERTY LISTED
+            </span>
+
+            <h2>
+            ${property.title || "Property"}
+            </h2>
+
+            <div class="price">
+            ₹${property.price || "Contact for Price"}
+            </div>
+
+            <div class="info">
+
+                📍 ${property.city || "India"}<br>
+
+                🏢 ${property.type || "Property"}<br>
+
+                🛏 ${property.bhk || "Details Available"}<br>
+
+                📐 ${property.area || "Area not specified"}<br>
+
+                🏷️ ${property.purpose || "Available"}
+
+            </div>
+
+            <div class="buttons">
+
+                <a
+                href="property-details.html"
+                class="btn details">
+
+                View Details
+
+                </a>
+
+                ${
+                    phone
+                    ?
+                    `<a
+                    href="tel:${phone}"
+                    class="btn call">
+
+                    📞 Call
+
+                    </a>`
+                    :
+                    ""
+                }
+
+                ${
+                    whatsapp
+                    ?
+                    `<a
+                    href="https://wa.me/91${whatsapp}"
+                    target="_blank"
+                    class="btn whatsapp">
+
+                    💬 WhatsApp
+
+                    </a>`
+                    :
+                    ""
+                }
+
+            </div>
+
+        </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+/* ================================
+   SAVE SELECTED PROPERTY
+================================ */
+
+document.addEventListener(
+    "click",
+    function(e){
+
+        const button =
+        e.target.closest(".details");
+
+        if(!button){
+            return;
+        }
+
+        e.preventDefault();
+
+        const card =
+        button.closest(".card");
+
+        if(!card){
+            return;
+        }
+
+
+        const title =
+        card.querySelector("h2")
+        ?.innerText
+        .trim()
+        || "Property";
+
+
+        const priceText =
+        card.querySelector(".price")
+        ?.innerText
+        .trim()
+        || "";
+
+
+        const info =
+        card.querySelector(".info")
+        ?.innerText
+        || "";
+
+
+        const lines =
+        info
+        .split("\n")
+        .map(function(line){
+
+            return line.trim();
+
+        })
+        .filter(function(line){
+
+            return line !== "";
+
+        });
+
+
+        let bhk = "";
+        let area = "";
+
+
+        lines.forEach(function(line){
+
+            if(
+                line.includes("BHK")
+            ){
+
+                const parts =
+                line
+                .replace("🛏","")
+                .split("•");
+
+                bhk =
+                parts[0]
+                ? parts[0].trim()
+                : "";
+
+                if(parts[1]){
+
+                    area =
+                    parts[1]
+                    .replace("📐","")
+                    .trim();
+
+                }
+
+            }
+
+
+            if(
+                line.includes("Sq.ft") &&
+                !area
+            ){
+
+                area =
+                line
+                .replace("📐","")
+                .trim();
+
+            }
+
+        });
+
+
+        const property = {
+
+            title: title,
+
+            price:
+            priceText
+            .replace("₹","")
+            .replace("/ Month","")
+            .trim(),
+
+            city:
+            card.dataset.city || "",
+
+            type:
+            card.dataset.type ||
+            "Property",
+
+            bhk:
+            bhk || "Details Available",
+
+            area:
+            area || "Area not specified",
+
+            listingType:
+            card.dataset.listing ||
+            "Available",
+
+            description:
+            "Property listed on BharatWorld Properties.",
+
+            owner:
+            "Property Owner",
+
+            phone:
+            "9999999999"
+
+        };
+
+
+        localStorage.setItem(
+
+            "pv_selected_property",
+
+            JSON.stringify(property)
+
+        );
+
+
+        window.location.href =
+        "property-details.html";
+
+    }
+);
+
+
+/* ================================
    START PAGE
-========================= */
+================================ */
 
 loadUserProperties();
-
-loadHomeSearch();
 
 </script>
 
