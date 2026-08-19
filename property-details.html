@@ -336,6 +336,105 @@ if(property){
     let whatsapp =
     phone.replace(/\D/g,"");
 
+
+    /* FIX PROPERTY DETAILS */
+
+    let propertyType =
+    property.type || "";
+
+    let bhk =
+    property.bhk || "";
+
+    let area =
+    property.area || "";
+
+    let listingType =
+    property.listingType ||
+    property.purpose || "";
+
+
+    /* NEW LISTING.HTML DATA */
+
+    if(property.details){
+
+        let details =
+        property.details;
+
+        /* Example:
+        3 BHK • 2200 Sq.ft
+        */
+
+        let parts =
+        details.split("•");
+
+        bhk =
+        parts[0]
+        ?
+        parts[0].trim()
+        :
+        bhk;
+
+        area =
+        parts[1]
+        ?
+        parts[1].trim()
+        :
+        area;
+
+    }
+
+
+    /* IF PROPERTY TYPE IS MISSING,
+       DETECT FROM TITLE */
+
+    if(!propertyType){
+
+        let title =
+        (property.title || "")
+        .toLowerCase();
+
+        if(title.includes("villa")){
+            propertyType = "Villa";
+        }
+
+        else if(title.includes("apartment")){
+            propertyType = "Apartment";
+        }
+
+        else if(title.includes("house")){
+            propertyType = "House";
+        }
+
+        else if(title.includes("plot")){
+            propertyType = "Plot";
+        }
+
+        else if(title.includes("commercial")){
+            propertyType = "Commercial";
+        }
+
+        else{
+            propertyType = "Property";
+        }
+
+    }
+
+
+    /* FALLBACK VALUES */
+
+    if(!bhk){
+        bhk = "Details Available";
+    }
+
+    if(!area){
+        area = "Area not specified";
+    }
+
+    if(!listingType){
+        listingType = "Available";
+    }
+
+
     container.innerHTML = `
 
     <div class="property-box">
@@ -359,32 +458,46 @@ if(property){
             ₹${property.price || "Contact for Price"}
             </div>
 
+
             <div class="info">
 
             📍 <strong>Location:</strong>
             ${property.city || "India"}
+
             <br>
 
             🏢 <strong>Property Type:</strong>
-            ${property.type || "Property"}
+            ${propertyType}
+
             <br>
 
             🛏 <strong>BHK:</strong>
-            ${property.bhk || "Details Available"}
+            ${bhk}
+
+            <br>
+
+            📐 <strong>Area:</strong>
+            ${area}
+
             <br>
 
             🏷️ <strong>Listing:</strong>
-            ${property.listingType || property.purpose || "Available"}
+            ${listingType}
 
             </div>
 
 
             <div class="description">
 
-                <h2>📝 Property Description</h2>
+                <h2>
+                📝 Property Description
+                </h2>
 
                 <p>
-                ${property.description || "Property details are available on request."}
+                ${
+                    property.description ||
+                    "Property details are available on request."
+                }
                 </p>
 
             </div>
@@ -392,16 +505,31 @@ if(property){
 
             <div class="owner-box">
 
-                <h2>👤 Owner / Contact Details</h2>
+                <h2>
+                👤 Owner / Contact Details
+                </h2>
 
                 <p>
+
                 <strong>Name:</strong>
-                ${property.owner || "Property Owner"}
+
+                ${
+                    property.owner ||
+                    "Property Owner"
+                }
+
                 </p>
 
+
                 <p style="margin-top:8px;">
+
                 <strong>Phone:</strong>
-                ${phone || "Contact details available on request"}
+
+                ${
+                    phone ||
+                    "Contact details available on request"
+                }
+
                 </p>
 
             </div>
@@ -415,7 +543,9 @@ if(property){
                 `<a
                 href="tel:${phone}"
                 class="btn call">
+
                 📞 Call Owner
+
                 </a>`
                 :
                 ""
@@ -429,7 +559,9 @@ if(property){
                 href="https://wa.me/91${whatsapp}"
                 class="btn whatsapp"
                 target="_blank">
+
                 💬 WhatsApp
+
                 </a>`
                 :
                 ""
@@ -439,7 +571,9 @@ if(property){
                 <a
                 href="listing.html"
                 class="btn back">
+
                 ← Back to Listings
+
                 </a>
 
             </div>
@@ -456,10 +590,14 @@ if(property){
 
     <div class="no-property">
 
-        <h2>❌ Property Not Found</h2>
+        <h2>
+        ❌ Property Not Found
+        </h2>
 
         <p style="margin:15px 0;">
+
         Please select a property from the Listing page.
+
         </p>
 
         <a
@@ -477,6 +615,11 @@ if(property){
 }
 
 </script>
+
+
+
+                
+
 
 </body>
     </html>
