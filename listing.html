@@ -1076,9 +1076,66 @@ function loadHomeSearch(){
    SAVE SELECTED PROPERTY
 ================================ */
 
-document.addEventListener(
-    "click",
-    function(e){
+document.addEventListener("click", function(e){
+
+    const button = e.target.closest(".details");
+
+    if(!button) return;
+
+    const card = button.closest(".card");
+
+    if(!card) return;
+
+    const title =
+        card.querySelector("h2")?.innerText || "";
+
+    const price =
+        card.querySelector(".price")?.innerText || "";
+
+    const info =
+        card.querySelector(".info")?.innerText || "";
+
+    const lines = info
+        .split("\n")
+        .map(function(line){
+            return line.trim();
+        })
+        .filter(function(line){
+            return line !== "";
+        });
+
+    let property = {
+
+        title: title,
+
+        price: price.replace("₹","").trim(),
+
+        city:
+            (lines[0] || "")
+            .replace("📍","")
+            .trim(),
+
+        details:
+            (lines[1] || "")
+            .replace("🛏","")
+            .trim(),
+
+        listingType:
+            (lines[2] || "")
+            .replace("🏷️","")
+            .trim(),
+
+        description:
+            "Property listed on BharatWorld Properties."
+
+    };
+
+    localStorage.setItem(
+        "pv_selected_property",
+        JSON.stringify(property)
+    );
+
+});
 
         const button =
         e.target.closest(".details");
