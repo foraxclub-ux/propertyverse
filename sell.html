@@ -473,64 +473,108 @@ class="submit-btn">
 
 <script>
 
-document.getElementById("propertyForm").addEventListener("submit",function(e){
+document.getElementById("propertyForm").addEventListener(
+"submit",
+function(e){
 
     e.preventDefault();
 
-    let property = {
 
-        title:document.getElementById("propertyTitle").value,
+    const property = {
 
-        city:document.getElementById("propertyCity").value,
+        title:
+        document.getElementById("propertyTitle")
+        .value
+        .trim(),
 
-        type:document.getElementById("propertyType").value,
+        city:
+        document.getElementById("propertyCity")
+        .value
+        .trim(),
 
-        listingType:document.getElementById("listingType").value,
+        type:
+        document.getElementById("propertyType")
+        .value,
 
-        price:document.getElementById("propertyPrice").value,
+        listingType:
+        document.getElementById("listingType")
+        .value,
 
-        bhk:document.getElementById("propertyBhk").value,
+        price:
+        document.getElementById("propertyPrice")
+        .value
+        .trim(),
 
-        area:document.getElementById("propertyArea").value,
+        bhk:
+        document.getElementById("propertyBhk")
+        .value,
 
-        description:document.getElementById("propertyDescription").value,
+        area:
+        document.getElementById("propertyArea")
+        .value
+        .trim(),
 
-        owner:document.getElementById("ownerName").value,
+        description:
+        document.getElementById("propertyDescription")
+        .value
+        .trim(),
 
-        phone:document.getElementById("ownerPhone").value
+        owner:
+        document.getElementById("ownerName")
+        .value
+        .trim(),
+
+        phone:
+        document.getElementById("ownerPhone")
+        .value
+        .replace(/\D/g, ""),
+
+        image:
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
 
     };
 
 
     let properties =
-    JSON.parse(localStorage.getItem("pv_properties") || "[]");
+    JSON.parse(
+        localStorage.getItem(
+            "pv_properties"
+        ) || "[]"
+    );
 
 
     properties.push(property);
 
 
     localStorage.setItem(
+
         "pv_properties",
+
         JSON.stringify(properties)
+
     );
 
 
-    document.getElementById("successMessage").style.display="block";
+    document.getElementById(
+        "successMessage"
+    ).style.display = "block";
 
 
-    document.getElementById("propertyForm").reset();
+    document.getElementById(
+        "propertyForm"
+    ).reset();
 
 
     setTimeout(function(){
 
-        window.location.href="listing.html";
+        window.location.href =
+        "listing.html";
 
-    },1500);
+    }, 1500);
 
 });
 
-</script>
-
+            </script>
 </body>
     </html>
 
