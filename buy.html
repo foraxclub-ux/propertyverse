@@ -1,259 +1,354 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Buy Property | PropertyVerse</title>
+<title>Buy Property | BharatWorld Properties</title>
 
 <style>
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
 body{
-background:#f5f7fa;
-color:#081B33;
+    background:#f5f7fa;
+    color:#081B33;
 }
 
+/* HEADER */
+
 header{
-background:#081B33;
-padding:16px 25px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-flex-wrap:wrap;
+    background:#081B33;
+    padding:16px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
 }
 
 .logo{
-color:#FFD700;
-font-size:25px;
-font-weight:bold;
+    color:#FFD700;
+    font-size:25px;
+    font-weight:bold;
+}
+
+.logo small{
+    display:block;
+    color:white;
+    font-size:10px;
+    letter-spacing:2px;
+    margin-top:3px;
 }
 
 nav{
-display:flex;
-flex-wrap:wrap;
-gap:8px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
 }
 
 nav a{
-color:white;
-text-decoration:none;
-padding:8px;
+    color:white;
+    text-decoration:none;
+    padding:9px 11px;
+    border-radius:6px;
 }
 
-.login{
-background:#E63946;
-border-radius:6px;
-padding:9px 14px;
+nav a:hover,
+nav a.active{
+    background:#E63946;
 }
+
+/* HERO */
 
 .hero{
-background:
-linear-gradient(rgba(8,27,51,.72),rgba(8,27,51,.72)),
-url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80");
+    background:
+    linear-gradient(
+        rgba(8,27,51,.72),
+        rgba(8,27,51,.72)
+    ),
+    url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80");
 
-background-size:cover;
-background-position:center;
+    background-size:cover;
+    background-position:center;
 
-padding:80px 20px;
-text-align:center;
-color:white;
+    padding:80px 20px;
+    text-align:center;
+    color:white;
 }
 
 .hero h1{
-font-size:42px;
-margin-bottom:15px;
+    font-size:42px;
+    margin-bottom:15px;
 }
 
 .hero p{
-font-size:19px;
+    font-size:19px;
 }
 
-.filters{
-background:white;
-padding:20px;
-max-width:1050px;
-margin:-30px auto 40px;
-border-radius:12px;
-box-shadow:0 5px 20px rgba(0,0,0,.15);
+/* FILTERS */
 
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-justify-content:center;
-position:relative;
+.filters{
+    background:white;
+    padding:20px;
+    max-width:1050px;
+    margin:-30px auto 40px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:center;
+
+    position:relative;
 }
 
 .filters input,
 .filters select{
-padding:13px;
-border:1px solid #ddd;
-border-radius:7px;
-min-width:170px;
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:7px;
+    min-width:170px;
+    font-size:15px;
 }
 
 .search{
-background:#E63946;
-color:white;
-border:0;
-padding:13px 22px;
-border-radius:7px;
-font-weight:bold;
+    background:#E63946;
+    color:white;
+    border:0;
+    padding:13px 22px;
+    border-radius:7px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
+.reset{
+    background:#081B33;
+    color:white;
+    border:0;
+    padding:13px 22px;
+    border-radius:7px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* CONTENT */
+
 .container{
-max-width:1100px;
-margin:auto;
-padding:0 20px 60px;
+    max-width:1100px;
+    margin:auto;
+    padding:0 20px 60px;
 }
 
 .title{
-text-align:center;
-margin-bottom:30px;
+    text-align:center;
+    margin-bottom:30px;
 }
 
+.title h2{
+    font-size:30px;
+}
+
+.title p{
+    color:#666;
+    margin-top:8px;
+}
+
+/* PROPERTIES */
+
 .properties{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:25px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
 }
 
 .card{
-background:white;
-width:320px;
-border-radius:15px;
-overflow:hidden;
-box-shadow:0 5px 18px rgba(0,0,0,.12);
+    background:white;
+    width:320px;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 18px rgba(0,0,0,.12);
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
 }
 
 .card img{
-width:100%;
-height:210px;
-object-fit:cover;
+    width:100%;
+    height:210px;
+    object-fit:cover;
 }
 
 .content{
-padding:20px;
+    padding:20px;
 }
 
 .verified{
-display:inline-block;
-background:#e7f8ed;
-color:#16803c;
-padding:6px 9px;
-border-radius:5px;
-font-size:12px;
-font-weight:bold;
+    display:inline-block;
+    background:#e7f8ed;
+    color:#16803c;
+    padding:6px 9px;
+    border-radius:5px;
+    font-size:12px;
+    font-weight:bold;
 }
 
 .card h2{
-font-size:21px;
-margin:12px 0 8px;
+    font-size:21px;
+    margin:12px 0 8px;
 }
 
 .price{
-font-size:22px;
-font-weight:bold;
-color:#E63946;
-margin-bottom:8px;
+    font-size:22px;
+    font-weight:bold;
+    color:#E63946;
+    margin-bottom:8px;
 }
 
 .info{
-color:#666;
-line-height:1.7;
+    color:#666;
+    line-height:1.7;
 }
 
 .buttons{
-display:flex;
-gap:8px;
-flex-wrap:wrap;
-margin-top:15px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:15px;
 }
 
 .btn{
-display:inline-block;
-padding:9px 12px;
-border-radius:6px;
-text-decoration:none;
-font-weight:bold;
-font-size:14px;
+    display:inline-block;
+    padding:9px 12px;
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:14px;
 }
 
 .details{
-background:#081B33;
-color:white;
+    background:#081B33;
+    color:white;
 }
 
 .call{
-background:#081B33;
-color:white;
+    background:#E63946;
+    color:white;
 }
 
 .whatsapp{
-background:#25D366;
-color:white;
+    background:#25D366;
+    color:white;
 }
 
+.no-results{
+    display:none;
+    text-align:center;
+    color:#666;
+    padding:30px;
+    font-size:18px;
+}
+
+/* FOOTER */
+
 footer{
-background:#050F1F;
-color:white;
-text-align:center;
-padding:35px 20px;
+    background:#050F1F;
+    color:white;
+    text-align:center;
+    padding:35px 20px;
+}
+
+footer h2{
+    color:#FFD700;
+}
+
+footer p{
+    margin:12px 0;
+    color:#ccc;
 }
 
 footer a{
-color:white;
-margin:6px;
+    color:white;
+    margin:6px;
+    text-decoration:none;
 }
+
+/* MOBILE */
 
 @media(max-width:600px){
 
-.hero h1{
-font-size:32px;
+    header{
+        justify-content:center;
+        text-align:center;
+    }
+
+    nav{
+        justify-content:center;
+    }
+
+    nav a{
+        font-size:13px;
+        padding:8px;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .filters{
+        margin:0 15px 35px;
+    }
+
+    .filters input,
+    .filters select,
+    .search,
+    .reset{
+        width:100%;
+        min-width:100%;
+    }
+
+    .card{
+        width:100%;
+        max-width:360px;
+    }
+
 }
 
-.filters{
-margin:0 15px 35px;
-}
-
-.filters input,
-.filters select,
-.search{
-width:100%;
-}
-
-.card{
-width:100%;
-max-width:360px;
-}
-
-nav{
-margin-top:12px;
-}
-
-}
 </style>
+
 </head>
 
+
 <body>
+
 
 <header>
 
 <div class="logo">
-🏠 PropertyVerse
+
+🇮🇳 BharatWorld
+
+<small>PROPERTIES</small>
+
 </div>
+
 
 <nav>
 
 <a href="index.html">Home</a>
 
-<a href="buy.html" style="background:#E63946;color:white;border-radius:6px;padding:10px 15px;">Buy</a>
+<a href="buy.html" class="active">Buy</a>
 
 <a href="sell.html">Sell</a>
 
@@ -287,26 +382,63 @@ Discover verified homes, villas, apartments and plots
 
 <input
 type="text"
+id="cityFilter"
 placeholder="📍 Search City"
 >
 
-<select>
-<option>Property Type</option>
-<option>Apartment</option>
-<option>Villa</option>
-<option>House</option>
-<option>Plot</option>
+<select id="typeFilter">
+
+<option value="">Property Type</option>
+
+<option value="Apartment">Apartment</option>
+
+<option value="Villa">Villa</option>
+
+<option value="House">House</option>
+
+<option value="Plot">Plot</option>
+
+<option value="Commercial">Commercial</option>
+
 </select>
 
-<select>
-<option>Budget</option>
-<option>Under ₹50 Lakh</option>
-<option>₹50 Lakh - ₹1 Crore</option>
-<option>₹1 Crore+</option>
+
+<select id="budgetFilter">
+
+<option value="">Budget</option>
+
+<option value="under50">
+Under ₹50 Lakh
+</option>
+
+<option value="50to100">
+₹50 Lakh - ₹1 Crore
+</option>
+
+<option value="above100">
+₹1 Crore+
+</option>
+
 </select>
 
-<button class="search" type="button" onclick="searchProperties()">
+
+<button
+class="search"
+type="button"
+onclick="searchProperties()">
+
 🔍 Search
+
+</button>
+
+
+<button
+class="reset"
+type="button"
+onclick="resetSearch()">
+
+↻ Reset
+
 </button>
 
 </div>
@@ -314,26 +446,38 @@ placeholder="📍 Search City"
 
 <div class="container">
 
+
 <div class="title">
 
 <h2>⭐ Properties For Sale</h2>
 
-<p style="color:#666;margin-top:8px;">
+<p>
 Verified properties available for purchase
 </p>
 
 </div>
 
 
-<div class="properties">
+<div
+id="propertiesContainer"
+class="properties">
 
 
-<div class="card">
+<!-- PROPERTY 1 -->
+
+<div
+class="card"
+data-city="Ahmedabad"
+data-type="Villa"
+data-price="85"
+data-listing="For Sale"
+>
 
 <img
 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
 alt="Luxury Villa"
 >
+
 
 <div class="content">
 
@@ -350,23 +494,56 @@ Luxury 3 BHK Villa
 </div>
 
 <div class="info">
+
 📍 Ahmedabad, Gujarat<br>
-🛏 3 BHK • 📐 2200 Sq.ft<br>
-🚗 2 Parking
+
+🏢 Villa<br>
+
+🛏 3 BHK<br>
+
+📐 2200 Sq.ft<br>
+
+🏷️ For Sale
+
 </div>
+
 
 <div class="buttons">
 
-<a href="property-details.html" class="btn details">
+<a
+href="#"
+class="btn details"
+data-title="Luxury 3 BHK Villa"
+data-price="8500000"
+data-city="Ahmedabad, Gujarat"
+data-type="Villa"
+data-bhk="3 BHK"
+data-area="2200 Sq.ft"
+data-listing="For Sale"
+data-description="Beautiful luxury 3 BHK villa located in Ahmedabad."
+>
+
 View Details
+
 </a>
 
-<a href="tel:+919999999999" class="btn call">
+
+<a
+href="tel:+919999999999"
+class="btn call">
+
 📞 Call
+
 </a>
 
-<a href="https://wa.me/919999999999" class="btn whatsapp">
+
+<a
+href="https://wa.me/919999999999"
+class="btn whatsapp"
+target="_blank">
+
 💬 WhatsApp
+
 </a>
 
 </div>
@@ -376,12 +553,21 @@ View Details
 </div>
 
 
-<div class="card">
+<!-- PROPERTY 2 -->
+
+<div
+class="card"
+data-city="Surat"
+data-type="Villa"
+data-price="120"
+data-listing="For Sale"
+>
 
 <img
 src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80"
 alt="Premium Villa"
 >
+
 
 <div class="content">
 
@@ -390,7 +576,7 @@ alt="Premium Villa"
 </span>
 
 <h2>
-Premium Villa
+Premium 4 BHK Villa
 </h2>
 
 <div class="price">
@@ -398,23 +584,56 @@ Premium Villa
 </div>
 
 <div class="info">
+
 📍 Surat, Gujarat<br>
-🛏 4 BHK • 📐 2800 Sq.ft<br>
-🚗 2 Parking
+
+🏢 Villa<br>
+
+🛏 4 BHK<br>
+
+📐 2800 Sq.ft<br>
+
+🏷️ For Sale
+
 </div>
+
 
 <div class="buttons">
 
-<a href="property-details.html" class="btn details">
+<a
+href="#"
+class="btn details"
+data-title="Premium 4 BHK Villa"
+data-price="12000000"
+data-city="Surat, Gujarat"
+data-type="Villa"
+data-bhk="4 BHK"
+data-area="2800 Sq.ft"
+data-listing="For Sale"
+data-description="Premium 4 BHK villa with spacious rooms in Surat."
+>
+
 View Details
+
 </a>
 
-<a href="tel:+919999999999" class="btn call">
+
+<a
+href="tel:+919999999999"
+class="btn call">
+
 📞 Call
+
 </a>
 
-<a href="https://wa.me/919999999999" class="btn whatsapp">
+
+<a
+href="https://wa.me/919999999999"
+class="btn whatsapp"
+target="_blank">
+
 💬 WhatsApp
+
 </a>
 
 </div>
@@ -424,12 +643,21 @@ View Details
 </div>
 
 
-<div class="card">
+<!-- PROPERTY 3 -->
+
+<div
+class="card"
+data-city="Vadodara"
+data-type="House"
+data-price="95"
+data-listing="For Sale"
+>
 
 <img
 src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=800&q=80"
 alt="Premium House"
 >
+
 
 <div class="content">
 
@@ -438,7 +666,7 @@ alt="Premium House"
 </span>
 
 <h2>
-Premium House
+Premium 3 BHK House
 </h2>
 
 <div class="price">
@@ -446,23 +674,56 @@ Premium House
 </div>
 
 <div class="info">
+
 📍 Vadodara, Gujarat<br>
-🛏 3 BHK • 📐 1900 Sq.ft<br>
-🚗 2 Parking
+
+🏢 House<br>
+
+🛏 3 BHK<br>
+
+📐 1900 Sq.ft<br>
+
+🏷️ For Sale
+
 </div>
+
 
 <div class="buttons">
 
-<a href="property-details.html" class="btn details">
+<a
+href="#"
+class="btn details"
+data-title="Premium 3 BHK House"
+data-price="9500000"
+data-city="Vadodara, Gujarat"
+data-type="House"
+data-bhk="3 BHK"
+data-area="1900 Sq.ft"
+data-listing="For Sale"
+data-description="Premium 3 BHK house available for sale in Vadodara."
+>
+
 View Details
+
 </a>
 
-<a href="tel:+919999999999" class="btn call">
+
+<a
+href="tel:+919999999999"
+class="btn call">
+
 📞 Call
+
 </a>
 
-<a href="https://wa.me/919999999999" class="btn whatsapp">
+
+<a
+href="https://wa.me/919999999999"
+class="btn whatsapp"
+target="_blank">
+
 💬 WhatsApp
+
 </a>
 
 </div>
@@ -473,70 +734,483 @@ View Details
 
 
 </div>
+
+
+<div
+id="noResults"
+class="no-results">
+
+❌ No matching property found.
+
+</div>
+
 
 </div>
 
 
 <footer>
 
-<h2 style="color:#FFD700;">
-🏠 PropertyVerse
+<h2>
+🇮🇳 BharatWorld Properties
 </h2>
 
-<p style="margin:12px 0;color:#ccc;">
+<p>
+From Bharat to the World.
+</p>
+
+<p>
 Buy • Sell • Rent • Interior
 </p>
 
 <p>
 
 <a href="index.html">Home</a>
-<a href="buy.html" style="background:#E63946;color:white;border-radius:6px;padding:10px 15px;">Buy</a>
+
+<a href="buy.html">Buy</a>
+
 <a href="sell.html">Sell</a>
+
 <a href="rent.html">Rent</a>
+
+<a href="interior.html">Interior</a>
+
+<a href="listing.html">Listing</a>
+
 <a href="contact.html">Contact</a>
 
 </p>
 
-<p style="margin-top:20px;color:#aaa;">
-© 2026 PropertyVerse. All Rights Reserved.
+<p>
+© 2026 BharatWorld Properties. All Rights Reserved.
 </p>
 
 </footer>
-<script>
-function searchProperties() {
-    const city = document.querySelector('input[placeholder="Search City"]').value.toLowerCase();
-    const type = document.querySelectorAll('select')[0].value;
-    const budget = document.querySelectorAll('select')[1].value;
-    const bhk = document.querySelectorAll('select')[2].value;
 
-    const cards = document.querySelectorAll('.card');
+
+
+<script>
+
+
+/* FEATURED PROPERTY DETAILS */
+
+document.querySelectorAll(".details")
+.forEach(function(button){
+
+    button.addEventListener(
+        "click",
+        function(e){
+
+            e.preventDefault();
+
+            const property = {
+
+                title:
+                button.dataset.title,
+
+                price:
+                button.dataset.price,
+
+                city:
+                button.dataset.city,
+
+                type:
+                button.dataset.type,
+
+                bhk:
+                button.dataset.bhk,
+
+                area:
+                button.dataset.area,
+
+                listingType:
+                button.dataset.listing,
+
+                description:
+                button.dataset.description,
+
+                owner:
+                "Property Owner",
+
+                phone:
+                "9999999999"
+
+            };
+
+
+            localStorage.setItem(
+
+                "pv_selected_property",
+
+                JSON.stringify(property)
+
+            );
+
+
+            window.location.href =
+            "property-details.html";
+
+        }
+
+    );
+
+});
+
+
+/* SEARCH */
+
+function searchProperties(){
+
+    const city =
+    document.getElementById("cityFilter")
+    .value
+    .trim()
+    .toLowerCase();
+
+
+    const type =
+    document.getElementById("typeFilter")
+    .value;
+
+
+    const budget =
+    document.getElementById("budgetFilter")
+    .value;
+
+
+    const cards =
+    document.querySelectorAll(
+        "#propertiesContainer .card"
+    );
+
+
     let found = 0;
 
-    cards.forEach(card => {
-        const text = card.innerText.toLowerCase();
 
-        const cityMatch = !city || text.includes(city);
-        const typeMatch = type === "Property Type" || text.includes(type.toLowerCase());
-        const budgetMatch = budget === "Budget" || text.includes(budget.toLowerCase());
-        const bhkMatch = bhk === "BHK" || text.includes(bhk.toLowerCase());
+    cards.forEach(function(card){
 
-        if (cityMatch && typeMatch && budgetMatch && bhkMatch) {
-            card.style.display = "";
-            found++;
-        } else {
-            card.style.display = "none";
+        const cardCity =
+        (card.dataset.city || "")
+        .toLowerCase();
+
+
+        const cardType =
+        card.dataset.type || "";
+
+
+        const cardPrice =
+        Number(card.dataset.price || 0);
+
+
+        const cardListing =
+        card.dataset.listing || "";
+
+
+        const cityMatch =
+        !city ||
+        cardCity.includes(city);
+
+
+        const typeMatch =
+        !type ||
+        cardType === type;
+
+
+        const saleMatch =
+        cardListing === "For Sale";
+
+
+        let budgetMatch = true;
+
+
+        if(budget === "under50"){
+
+            budgetMatch =
+            cardPrice < 50;
+
         }
+
+
+        if(budget === "50to100"){
+
+            budgetMatch =
+            cardPrice >= 50 &&
+            cardPrice <= 100;
+
+        }
+
+
+        if(budget === "above100"){
+
+            budgetMatch =
+            cardPrice > 100;
+
+        }
+
+
+        if(
+            cityMatch &&
+            typeMatch &&
+            saleMatch &&
+            budgetMatch
+        ){
+
+            card.style.display = "";
+
+            found++;
+
+        }
+
+        else{
+
+            card.style.display = "none";
+
+        }
+
     });
 
-    if (found === 0) {
-        alert("❌ No matching property found.");
-    } else {
-        alert("✅ " + found + " property found!");
+
+    if(found === 0){
+
+        document.getElementById(
+            "noResults"
+        ).style.display = "block";
+
     }
+
+    else{
+
+        document.getElementById(
+            "noResults"
+        ).style.display = "none";
+
+    }
+
 }
+
+
+/* RESET */
+
+function resetSearch(){
+
+    document.getElementById(
+        "cityFilter"
+    ).value = "";
+
+
+    document.getElementById(
+        "typeFilter"
+    ).value = "";
+
+
+    document.getElementById(
+        "budgetFilter"
+    ).value = "";
+
+
+    document.querySelectorAll(
+        "#propertiesContainer .card"
+    )
+    .forEach(function(card){
+
+        card.style.display = "";
+
+    });
+
+
+    document.getElementById(
+        "noResults"
+    ).style.display = "none";
+
+}
+
+
+/* USER POSTED PROPERTIES */
+
+function loadUserProperties(){
+
+    const properties =
+    JSON.parse(
+        localStorage.getItem(
+            "pv_properties"
+        ) || "[]"
+    );
+
+
+    const container =
+    document.getElementById(
+        "propertiesContainer"
+    );
+
+
+    properties.forEach(function(property){
+
+        if(
+            property.listingType !==
+            "For Sale"
+        ){
+
+            return;
+
+        }
+
+
+        const priceNumber =
+        Number(
+            String(property.price)
+            .replace(/[^0-9]/g,"")
+        );
+
+
+        let priceInLakh = 0;
+
+
+        if(priceNumber >= 100000){
+
+            priceInLakh =
+            priceNumber / 100000;
+
+        }
+
+        else{
+
+            priceInLakh =
+            priceNumber;
+
+        }
+
+
+        const card =
+        document.createElement("div");
+
+
+        card.className = "card";
+
+
+        card.dataset.city =
+        property.city || "";
+
+
+        card.dataset.type =
+        property.type || "";
+
+
+        card.dataset.price =
+        priceInLakh;
+
+
+        card.dataset.listing =
+        property.listingType || "";
+
+
+        card.innerHTML = `
+
+        <img
+        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+        alt="Property"
+        >
+
+        <div class="content">
+
+        <span class="verified">
+        ✓ PROPERTY LISTED
+        </span>
+
+        <h2>
+        ${property.title || "Property"}
+        </h2>
+
+        <div class="price">
+        ₹${property.price || "Contact for price"}
+        </div>
+
+        <div class="info">
+
+        📍 ${property.city || "India"}<br>
+
+        🏢 ${property.type || "Property"}<br>
+
+        🛏 ${property.bhk || "Details available"}<br>
+
+        📐 ${property.area || "Area not specified"}<br>
+
+        🏷️ ${property.listingType || "For Sale"}
+
+        </div>
+
+        <div class="buttons">
+
+        <a
+        href="#"
+        class="btn details user-details">
+
+        View Details
+
+        </a>
+
+        <a
+        href="tel:${property.phone || ""}"
+        class="btn call">
+
+        📞 Call
+
+        </a>
+
+        <a
+        href="https://wa.me/${String(property.phone || "").replace(/[^0-9]/g,"")}"
+        class="btn whatsapp"
+        target="_blank">
+
+        💬 WhatsApp
+
+        </a>
+
+        </div>
+
+        </div>
+
+        `;
+
+
+        card.querySelector(".user-details")
+        .addEventListener(
+            "click",
+            function(e){
+
+                e.preventDefault();
+
+
+                localStorage.setItem(
+
+                    "pv_selected_property",
+
+                    JSON.stringify(property)
+
+                );
+
+
+                window.location.href =
+                "property-details.html";
+
+            }
+
+        );
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* START */
+
+loadUserProperties();
+
+
 </script>
+
+
 </body>
-</html>
-</script>
-</body>
-</html>
+
+    </html>
