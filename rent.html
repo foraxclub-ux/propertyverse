@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Rent Property | PropertyVerse</title>
+<title>Rent Property | BharatWorld Properties</title>
 
 <style>
 
@@ -28,12 +28,21 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 flex-wrap:wrap;
+gap:15px;
 }
 
 .logo{
 color:#FFD700;
 font-size:25px;
 font-weight:bold;
+}
+
+.logo small{
+display:block;
+color:white;
+font-size:10px;
+letter-spacing:2px;
+margin-top:3px;
 }
 
 nav{
@@ -45,13 +54,13 @@ gap:8px;
 nav a{
 color:white;
 text-decoration:none;
-padding:8px;
+padding:8px 10px;
+border-radius:6px;
 }
 
-.login{
+nav a:hover,
+nav a.active{
 background:#E63946;
-border-radius:6px;
-padding:9px 14px;
 }
 
 .hero{
@@ -97,6 +106,12 @@ padding:13px;
 border:1px solid #ddd;
 border-radius:7px;
 min-width:170px;
+outline:none;
+}
+
+.filters input:focus,
+.filters select:focus{
+border-color:#E63946;
 }
 
 .search{
@@ -106,6 +121,7 @@ border:0;
 padding:13px 22px;
 border-radius:7px;
 font-weight:bold;
+cursor:pointer;
 }
 
 .container{
@@ -202,6 +218,15 @@ background:#25D366;
 color:white;
 }
 
+.no-results{
+display:none;
+text-align:center;
+font-size:18px;
+color:#E63946;
+font-weight:bold;
+margin-top:20px;
+}
+
 footer{
 background:#050F1F;
 color:white;
@@ -209,12 +234,22 @@ text-align:center;
 padding:35px 20px;
 }
 
+footer h2{
+color:#FFD700;
+}
+
 footer a{
 color:white;
 margin:6px;
+text-decoration:none;
 }
 
 @media(max-width:600px){
+
+header{
+justify-content:center;
+text-align:center;
+}
 
 .hero h1{
 font-size:32px;
@@ -236,7 +271,7 @@ max-width:360px;
 }
 
 nav{
-margin-top:12px;
+justify-content:center;
 }
 
 }
@@ -250,7 +285,8 @@ margin-top:12px;
 <header>
 
 <div class="logo">
-🏠 PropertyVerse
+🏠 BharatWorld
+<small>PROPERTIES</small>
 </div>
 
 <nav>
@@ -258,7 +294,7 @@ margin-top:12px;
 <a href="index.html">Home</a>
 <a href="buy.html">Buy</a>
 <a href="sell.html">Sell</a>
-<a href="rent.html" style="background:#E63946;color:white;border-radius:6px;padding:10px 15px;">Rent</a>
+<a href="rent.html" class="active">Rent</a>
 <a href="interior.html">Interior</a>
 <a href="listing.html">Listing</a>
 <a href="contact.html">Contact</a>
@@ -284,42 +320,47 @@ Find comfortable homes, apartments and commercial spaces
 
 <input
 type="text"
+id="rentCity"
 placeholder="📍 Search City"
 >
 
-<select>
+<select id="rentType">
 
-<option>Property Type</option>
-<option>Apartment</option>
-<option>Villa</option>
-<option>House</option>
-<option>Commercial</option>
-
-</select>
-
-<select>
-
-<option>Monthly Rent</option>
-<option>Under ₹15,000</option>
-<option>₹15,000 - ₹30,000</option>
-<option>₹30,000 - ₹50,000</option>
-<option>₹50,000+</option>
+<option value="">Property Type</option>
+<option value="apartment">Apartment</option>
+<option value="villa">Villa</option>
+<option value="house">House</option>
+<option value="commercial">Commercial</option>
 
 </select>
 
-<select>
+<select id="rentBudget">
 
-<option>BHK</option>
-<option>1 BHK</option>
-<option>2 BHK</option>
-<option>3 BHK</option>
-<option>4+ BHK</option>
+<option value="">Monthly Rent</option>
+<option value="15000">Under ₹15,000</option>
+<option value="30000">₹15,000 - ₹30,000</option>
+<option value="50000">₹30,000 - ₹50,000</option>
+<option value="50001">₹50,000+</option>
 
 </select>
 
-    <button class="search" type="button"
-onclick="alert('🔍 Rent property search is ready!')">
+<select id="rentBhk">
+
+<option value="">BHK</option>
+<option value="1">1 BHK</option>
+<option value="2">2 BHK</option>
+<option value="3">3 BHK</option>
+<option value="4">4+ BHK</option>
+
+</select>
+
+<button
+class="search"
+type="button"
+onclick="searchRentProperties()">
+
 🔍 Search
+
 </button>
 
 </div>
@@ -338,15 +379,18 @@ Explore verified rental properties
 </div>
 
 
-<div class="properties">
+<div class="properties" id="rentProperties">
 
 
-<div class="card">
+<div class="card"
+data-city="Ahmedabad"
+data-type="apartment"
+data-price="25000"
+data-bhk="2">
 
 <img
 src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80"
-alt="Modern Apartment"
->
+alt="Modern Apartment">
 
 <div class="content">
 
@@ -354,9 +398,7 @@ alt="Modern Apartment"
 ✓ VERIFIED
 </span>
 
-<h2>
-Modern 2 BHK Apartment
-</h2>
+<h2>Modern 2 BHK Apartment</h2>
 
 <div class="price">
 ₹25,000 / Month
@@ -364,22 +406,38 @@ Modern 2 BHK Apartment
 
 <div class="info">
 📍 Ahmedabad, Gujarat<br>
+🏢 Apartment<br>
 🛏 2 BHK • 📐 1200 Sq.ft<br>
 🚗 Parking Available
 </div>
 
 <div class="buttons">
 
-<a href="property-details.html" class="btn details">
+<a href="#"
+class="btn details"
+data-title="Modern 2 BHK Apartment"
+data-price="25000"
+data-city="Ahmedabad, Gujarat"
+data-type="Apartment"
+data-bhk="2 BHK"
+data-area="1200 Sq.ft"
+data-listing="For Rent"
+data-description="Modern 2 BHK apartment available for rent in Ahmedabad.">
+
 View Details
+
 </a>
 
 <a href="tel:+919999999999" class="btn call">
 📞 Call
 </a>
 
-<a href="https://wa.me/919999999999" class="btn whatsapp">
+<a href="https://wa.me/919999999999"
+class="btn whatsapp"
+target="_blank">
+
 💬 WhatsApp
+
 </a>
 
 </div>
@@ -389,12 +447,15 @@ View Details
 </div>
 
 
-<div class="card">
+<div class="card"
+data-city="Surat"
+data-type="house"
+data-price="38000"
+data-bhk="3">
 
 <img
 src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80"
-alt="Luxury Rental"
->
+alt="Luxury Rental">
 
 <div class="content">
 
@@ -402,9 +463,7 @@ alt="Luxury Rental"
 ✓ VERIFIED
 </span>
 
-<h2>
-Luxury 3 BHK Home
-</h2>
+<h2>Luxury 3 BHK Home</h2>
 
 <div class="price">
 ₹38,000 / Month
@@ -412,22 +471,38 @@ Luxury 3 BHK Home
 
 <div class="info">
 📍 Surat, Gujarat<br>
+🏢 House<br>
 🛏 3 BHK • 📐 1800 Sq.ft<br>
 🚗 2 Parking
 </div>
 
 <div class="buttons">
 
-<a href="property-details.html" class="btn details">
+<a href="#"
+class="btn details"
+data-title="Luxury 3 BHK Home"
+data-price="38000"
+data-city="Surat, Gujarat"
+data-type="House"
+data-bhk="3 BHK"
+data-area="1800 Sq.ft"
+data-listing="For Rent"
+data-description="Luxury 3 BHK home available for rent in Surat.">
+
 View Details
+
 </a>
 
 <a href="tel:+919999999999" class="btn call">
 📞 Call
 </a>
 
-<a href="https://wa.me/919999999999" class="btn whatsapp">
+<a href="https://wa.me/919999999999"
+class="btn whatsapp"
+target="_blank">
+
 💬 WhatsApp
+
 </a>
 
 </div>
@@ -437,12 +512,15 @@ View Details
 </div>
 
 
-<div class="card">
+<div class="card"
+data-city="Vadodara"
+data-type="apartment"
+data-price="22000"
+data-bhk="2">
 
 <img
 src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80"
-alt="Premium Apartment"
->
+alt="Premium Apartment">
 
 <div class="content">
 
@@ -450,9 +528,7 @@ alt="Premium Apartment"
 ✓ VERIFIED
 </span>
 
-<h2>
-Premium 2 BHK Apartment
-</h2>
+<h2>Premium 2 BHK Apartment</h2>
 
 <div class="price">
 ₹22,000 / Month
@@ -460,22 +536,38 @@ Premium 2 BHK Apartment
 
 <div class="info">
 📍 Vadodara, Gujarat<br>
+🏢 Apartment<br>
 🛏 2 BHK • 📐 1100 Sq.ft<br>
 🚗 Parking Available
 </div>
 
 <div class="buttons">
 
-<a href="property-details.html" class="btn details">
+<a href="#"
+class="btn details"
+data-title="Premium 2 BHK Apartment"
+data-price="22000"
+data-city="Vadodara, Gujarat"
+data-type="Apartment"
+data-bhk="2 BHK"
+data-area="1100 Sq.ft"
+data-listing="For Rent"
+data-description="Premium 2 BHK apartment available for rent in Vadodara.">
+
 View Details
+
 </a>
 
 <a href="tel:+919999999999" class="btn call">
 📞 Call
 </a>
 
-<a href="https://wa.me/919999999999" class="btn whatsapp">
+<a href="https://wa.me/919999999999"
+class="btn whatsapp"
+target="_blank">
+
 💬 WhatsApp
+
 </a>
 
 </div>
@@ -484,7 +576,10 @@ View Details
 
 </div>
 
+</div>
 
+<div id="noResults" class="no-results">
+❌ No matching rental property found.
 </div>
 
 </div>
@@ -492,8 +587,8 @@ View Details
 
 <footer>
 
-<h2 style="color:#FFD700;">
-🏠 PropertyVerse
+<h2>
+🏠 BharatWorld Properties
 </h2>
 
 <p style="margin:12px 0;color:#ccc;">
@@ -511,62 +606,192 @@ Buy • Sell • Rent • Interior
 </p>
 
 <p style="margin-top:20px;color:#aaa;">
-© 2026 PropertyVerse. All Rights Reserved.
+© 2026 BharatWorld Properties. All Rights Reserved.
 </p>
 
 </footer>
+
+
 <script>
-function searchRentProperties() {
 
-    const inputs = document.querySelectorAll("input, select");
+function searchRentProperties(){
 
-    const city = inputs[0] ? inputs[0].value.toLowerCase().trim() : "";
-    const propertyType = inputs[1] ? inputs[1].value.toLowerCase().trim() : "";
-    const rent = inputs[2] ? inputs[2].value.toLowerCase().trim() : "";
-    const bhk = inputs[3] ? inputs[3].value.toLowerCase().trim() : "";
+const city =
+document.getElementById("rentCity").value
+.toLowerCase()
+.trim();
 
-    const cards = document.querySelectorAll(".card");
+const type =
+document.getElementById("rentType").value;
 
-    let found = 0;
+const budget =
+document.getElementById("rentBudget").value;
 
-    cards.forEach(card => {
+const bhk =
+document.getElementById("rentBhk").value;
 
-        const text = card.innerText.toLowerCase();
+const cards =
+document.querySelectorAll(".card");
 
-        const cityMatch =
-            !city ||
-            city === "search city" ||
-            text.includes(city);
+let found = 0;
 
-        const typeMatch =
-            !propertyType ||
-            propertyType === "property type" ||
-            text.includes(propertyType);
+cards.forEach(function(card){
 
-        const rentMatch =
-            !rent ||
-            rent === "monthly rent" ||
-            text.includes(rent.replace("₹", "").trim());
+const cardCity =
+card.dataset.city.toLowerCase();
 
-        const bhkMatch =
-            !bhk ||
-            bhk === "bhk" ||
-            text.includes(bhk);
+const cardType =
+card.dataset.type;
 
-        if (cityMatch && typeMatch && rentMatch && bhkMatch) {
-            card.style.display = "";
-            found++;
-        } else {
-            card.style.display = "none";
-        }
-    });
+const cardPrice =
+parseInt(card.dataset.price);
 
-    if (found === 0) {
-        alert("❌ No matching rental property found.");
-    } else {
-        alert("✅ " + found + " rental properties found!");
-    }
+const cardBhk =
+card.dataset.bhk;
+
+
+const cityMatch =
+city === "" ||
+cardCity.includes(city);
+
+
+const typeMatch =
+type === "" ||
+cardType === type;
+
+
+let budgetMatch = true;
+
+if(budget === "15000"){
+budgetMatch = cardPrice < 15000;
 }
-            </script>
+
+else if(budget === "30000"){
+budgetMatch =
+cardPrice >= 15000 &&
+cardPrice <= 30000;
+}
+
+else if(budget === "50000"){
+budgetMatch =
+cardPrice > 30000 &&
+cardPrice <= 50000;
+}
+
+else if(budget === "50001"){
+budgetMatch =
+cardPrice > 50000;
+}
+
+
+const bhkMatch =
+bhk === "" ||
+cardBhk === bhk;
+
+
+if(
+cityMatch &&
+typeMatch &&
+budgetMatch &&
+bhkMatch
+){
+
+card.style.display = "";
+
+found++;
+
+}
+
+else{
+
+card.style.display = "none";
+
+}
+
+});
+
+
+const noResults =
+document.getElementById("noResults");
+
+if(found === 0){
+
+noResults.style.display = "block";
+
+}
+
+else{
+
+noResults.style.display = "none";
+
+}
+
+}
+
+
+document.querySelectorAll(".details")
+.forEach(function(button){
+
+button.addEventListener(
+"click",
+function(e){
+
+e.preventDefault();
+
+const property = {
+
+title:
+button.dataset.title,
+
+price:
+button.dataset.price,
+
+city:
+button.dataset.city,
+
+type:
+button.dataset.type,
+
+bhk:
+button.dataset.bhk,
+
+area:
+button.dataset.area,
+
+listingType:
+button.dataset.listing,
+
+description:
+button.dataset.description,
+
+owner:
+"Property Owner",
+
+phone:
+"9999999999"
+
+};
+
+
+localStorage.setItem(
+
+"pv_selected_property",
+
+JSON.stringify(property)
+
+);
+
+
+window.location.href =
+"property-details.html";
+
+}
+
+);
+
+});
+
+</script>
+
 </body>
-  </html>
+    </html>
