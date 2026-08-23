@@ -1,9 +1,8 @@
-# Property Details HTML
-
-```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -23,6 +22,8 @@ body{
     color:#081B33;
 }
 
+/* HEADER */
+
 header{
     background:#081B33;
     padding:16px 25px;
@@ -35,7 +36,7 @@ header{
 
 .logo{
     color:#FFD700;
-    font-size:25px;
+    font-size:24px;
     font-weight:bold;
 }
 
@@ -47,116 +48,152 @@ header{
     margin-top:3px;
 }
 
-nav{
-    display:flex;
-    flex-wrap:wrap;
-    gap:7px;
-}
-
-nav a{
+.back{
     color:white;
     text-decoration:none;
-    padding:9px 11px;
-    border-radius:6px;
+    padding:10px 15px;
+    border-radius:7px;
 }
 
-nav a:hover{
+.back:hover{
     background:#E63946;
 }
 
+/* CONTAINER */
+
 .container{
-    max-width:1000px;
-    margin:45px auto;
-    padding:0 20px;
+    max-width:1100px;
+    margin:40px auto;
+    padding:0 20px 60px;
 }
+
+/* PROPERTY BOX */
 
 .property-box{
     background:white;
     border-radius:18px;
     overflow:hidden;
-    box-shadow:0 8px 30px rgba(0,0,0,.12);
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
+    display:flex;
+    flex-wrap:wrap;
 }
 
-.property-image{
+.image-section{
+    width:50%;
+    min-width:320px;
+}
+
+.image-section img{
     width:100%;
-    height:380px;
+    height:100%;
+    min-height:420px;
     object-fit:cover;
-    background:#ddd;
 }
 
-.property-content{
-    padding:30px;
+.details-section{
+    flex:1;
+    padding:35px;
+    min-width:320px;
 }
 
 .badge{
     display:inline-block;
     background:#e7f8ed;
     color:#16803c;
-    padding:7px 12px;
+    padding:7px 11px;
     border-radius:6px;
     font-size:13px;
     font-weight:bold;
     margin-bottom:15px;
 }
 
-h1{
-    font-size:35px;
+.details-section h1{
+    font-size:34px;
     margin-bottom:15px;
 }
 
 .price{
-    color:#E63946;
     font-size:30px;
     font-weight:bold;
+    color:#E63946;
     margin-bottom:20px;
 }
 
-.info{
+.location{
+    color:#666;
+    font-size:17px;
+    margin-bottom:25px;
+}
+
+/* INFO */
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.info-item{
     background:#f5f7fa;
-    padding:20px;
+    padding:15px;
     border-radius:10px;
-    line-height:2;
-    color:#555;
+}
+
+.info-item strong{
+    display:block;
+    margin-bottom:5px;
 }
 
 .description{
-    margin-top:25px;
+    margin-top:20px;
+    padding-top:20px;
+    border-top:1px solid #eee;
 }
 
 .description h2{
     margin-bottom:10px;
+    font-size:21px;
 }
+
+.description p{
+    color:#666;
+    line-height:1.7;
+}
+
+/* OWNER */
 
 .owner-box{
+    background:#fff8e1;
     margin-top:25px;
-    background:#081B33;
-    color:white;
-    padding:22px;
-    border-radius:12px;
+    padding:18px;
+    border-radius:10px;
 }
 
-.owner-box h2{
-    color:#FFD700;
-    margin-bottom:10px;
+.owner-box h3{
+    margin-bottom:8px;
 }
+
+/* BUTTONS */
 
 .buttons{
     display:flex;
     flex-wrap:wrap;
-    gap:12px;
+    gap:10px;
     margin-top:25px;
 }
 
 .btn{
     display:inline-block;
-    padding:14px 22px;
+    padding:13px 20px;
     border-radius:8px;
     text-decoration:none;
     font-weight:bold;
+    text-align:center;
 }
 
 .call{
-    background:#081B33;
+    background:#E63946;
     color:white;
 }
 
@@ -165,25 +202,39 @@ h1{
     color:white;
 }
 
-.back{
-    background:#E63946;
+.listing{
+    background:#081B33;
     color:white;
 }
 
-.no-property{
-    text-align:center;
+/* NOT FOUND */
+
+.not-found{
     background:white;
-    padding:50px 20px;
+    max-width:600px;
+    margin:80px auto;
+    padding:40px 25px;
+    text-align:center;
     border-radius:15px;
     box-shadow:0 5px 20px rgba(0,0,0,.1);
 }
+
+.not-found h1{
+    margin-bottom:15px;
+}
+
+.not-found p{
+    color:#666;
+    margin-bottom:25px;
+}
+
+/* FOOTER */
 
 footer{
     background:#050F1F;
     color:white;
     text-align:center;
     padding:35px 20px;
-    margin-top:60px;
 }
 
 footer h2{
@@ -192,111 +243,83 @@ footer h2{
 
 footer p{
     color:#ccc;
-    margin:12px 0;
+    margin-top:10px;
 }
 
-footer a{
-    color:white;
-    margin:7px;
-    text-decoration:none;
-}
+/* MOBILE */
 
-@media(max-width:600px){
+@media(max-width:700px){
 
     header{
         justify-content:center;
         text-align:center;
     }
 
-    nav{
-        justify-content:center;
+    .property-box{
+        display:block;
     }
 
-    nav a{
-        font-size:13px;
-        padding:8px;
+    .image-section{
+        width:100%;
+        min-width:100%;
     }
 
-    .property-image{
-        height:240px;
+    .image-section img{
+        min-height:280px;
+        height:280px;
     }
 
-    .property-content{
-        padding:20px;
+    .details-section{
+        padding:25px 20px;
+        min-width:100%;
     }
 
-    h1{
+    .details-section h1{
         font-size:28px;
     }
 
-    .price{
-        font-size:25px;
-    }
-
-    .buttons{
-        flex-direction:column;
-    }
-
-    .btn{
-        text-align:center;
+    .info-grid{
+        grid-template-columns:1fr;
     }
 
 }
 
 </style>
+
 </head>
 
+
 <body>
+
 
 <header>
 
 <div class="logo">
-🏠 BharatWorld
+
+🇮🇳 BharatWorld
+
 <small>PROPERTIES</small>
+
 </div>
 
-<nav>
-<a href="index.html">Home</a>
-<a href="buy.html">Buy</a>
-<a href="sell.html">Sell</a>
-<a href="rent.html">Rent</a>
-<a href="interior.html">Interior</a>
-<a href="listing.html">Listing</a>
-<a href="contact.html">Contact</a>
-</nav>
+<a href="listing.html" class="back">
+
+← Back to Listings
+
+</a>
 
 </header>
 
 
-<div class="container" id="propertyContainer">
-
-<div class="no-property">
-
-<h2>Loading Property...</h2>
-
-<p style="margin-top:10px;">
-Please wait.
-</p>
-
-</div>
-
-</div>
+<div id="propertyContainer"></div>
 
 
 <footer>
 
-<h2>🏠 BharatWorld Properties</h2>
-
-<p>From Bharat to the World.</p>
+<h2>🇮🇳 BharatWorld Properties</h2>
 
 <p>
-<a href="index.html">Home</a>
-<a href="buy.html">Buy</a>
-<a href="sell.html">Sell</a>
-<a href="rent.html">Rent</a>
-<a href="interior.html">Interior</a>
-<a href="listing.html">Listing</a>
-<a href="contact.html">Contact</a>
+From Bharat to the World.
 </p>
 
 <p>
@@ -308,183 +331,30 @@ Please wait.
 
 <script>
 
-let property =
-JSON.parse(
-    localStorage.getItem(
-        "pv_selected_property"
-    ) || "null"
-);
-
-let container =
-document.getElementById(
-    "propertyContainer"
+const selectedProperty = JSON.parse(
+    localStorage.getItem("pv_selected_property")
 );
 
 
-if(property){
-
-    let phone =
-    property.phone || "";
-
-    let whatsapp =
-    phone.replace(/\D/g,"");
+const container =
+document.getElementById("propertyContainer");
 
 
-    let propertyType =
-    property.type || "Property";
-
-    let bhk =
-    property.bhk || "Details Available";
-
-    let area =
-    property.area || "Area not specified";
-
-    let listingType =
-    property.listingType ||
-    property.purpose ||
-    "Available";
-
+if(!selectedProperty){
 
     container.innerHTML = `
 
-    <div class="property-box">
+    <div class="not-found">
 
-        <img
-        class="property-image"
-        src="${property.image || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80'}"
-        alt="Property Image">
+        <h1>🏠 Property Not Found</h1>
 
-        <div class="property-content">
+        <p>
+        Please select a property from the listings page.
+        </p>
 
-            <span class="badge">
-            ✓ PROPERTY VERIFIED
-            </span>
-
-            <h1>
-            ${property.title || "Property"}
-            </h1>
-
-            <div class="price">
-            ₹${property.price || "Contact for Price"}
-            </div>
-
-
-            <div class="info">
-
-            📍 <strong>Location:</strong>
-            ${property.city || "India"}
-
-            <br>
-
-            🏢 <strong>Property Type:</strong>
-            ${propertyType}
-
-            <br>
-
-            🛏 <strong>BHK:</strong>
-            ${bhk}
-
-            <br>
-
-            📐 <strong>Area:</strong>
-            ${area}
-
-            <br>
-
-            🏷️ <strong>Listing:</strong>
-            ${listingType}
-
-            </div>
-
-
-            <div class="description">
-
-                <h2>
-                📝 Property Description
-                </h2>
-
-                <p>
-                ${
-                    property.description ||
-                    "Property details are available on request."
-                }
-                </p>
-
-            </div>
-
-
-            <div class="owner-box">
-
-                <h2>
-                👤 Owner / Contact Details
-                </h2>
-
-                <p>
-
-                <strong>Name:</strong>
-
-                ${
-                    property.owner ||
-                    "Property Owner"
-                }
-
-                </p>
-
-
-                <p style="margin-top:8px;">
-
-                <strong>Phone:</strong>
-
-                ${
-                    phone ||
-                    "Contact details available on request"
-                }
-
-                </p>
-
-            </div>
-
-
-            <div class="buttons">
-
-                ${
-                phone
-                ?
-                `<a href="tel:${phone}" class="btn call">
-                📞 Call Owner
-                </a>`
-                :
-                ""
-                }
-
-
-                ${
-                whatsapp
-                ?
-                `<a
-                href="https://wa.me/91${whatsapp}"
-                class="btn whatsapp"
-                target="_blank">
-
-                💬 WhatsApp
-
-                </a>`
-                :
-                ""
-                }
-
-
-                <a
-                href="listing.html"
-                class="btn back">
-
-                ← Back to Listings
-
-                </a>
-
-            </div>
-
-        </div>
+        <a href="listing.html" class="btn listing">
+        View Properties
+        </a>
 
     </div>
 
@@ -492,27 +362,228 @@ if(property){
 
 }else{
 
+
+    const propertyImage =
+
+    selectedProperty.image ||
+
+    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80";
+
+
+    let formattedPrice = selectedProperty.price;
+
+
+    if(
+        selectedProperty.price &&
+        !String(selectedProperty.price).includes("₹")
+    ){
+
+        const numberPrice =
+        Number(selectedProperty.price);
+
+
+        if(!isNaN(numberPrice)){
+
+            formattedPrice =
+            "₹" +
+            numberPrice.toLocaleString("en-IN");
+
+        }
+
+    }
+
+
+    const title =
+    selectedProperty.title || "Property";
+
+
+    const city =
+    selectedProperty.city || "Location not specified";
+
+
+    const type =
+    selectedProperty.type || "Not specified";
+
+
+    const bhk =
+    selectedProperty.bhk || "Not specified";
+
+
+    const listingType =
+    selectedProperty.listingType || "For Sale";
+
+
+    const area =
+    selectedProperty.area || "Not specified";
+
+
+    const description =
+    selectedProperty.description ||
+    "No property description available.";
+
+
+    const owner =
+    selectedProperty.owner ||
+    "Property Owner";
+
+
+    const phone =
+    selectedProperty.phone ||
+    "9999999999";
+
+
     container.innerHTML = `
 
-    <div class="no-property">
+    <div class="container">
 
-        <h2>
-        ❌ Property Not Found
-        </h2>
+        <div class="property-box">
 
-        <p style="margin:15px 0;">
 
-        Please select a property from the Listing page.
+            <div class="image-section">
 
-        </p>
+                <img
+                src="${propertyImage}"
+                alt="${title}"
 
-        <a
-        href="listing.html"
-        class="btn back">
+                onerror="
+                this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80'
+                "
 
-        ← Go to Listings
+                >
 
-        </a>
+            </div>
+
+
+            <div class="details-section">
+
+
+                <span class="badge">
+                ✓ PROPERTY LISTED
+                </span>
+
+
+                <h1>
+                ${title}
+                </h1>
+
+
+                <div class="price">
+                ${formattedPrice}
+                </div>
+
+
+                <div class="location">
+
+                📍 ${city}
+
+                </div>
+
+
+                <div class="info-grid">
+
+
+                    <div class="info-item">
+
+                        <strong>🏢 Property Type</strong>
+
+                        ${type}
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <strong>🛏 BHK</strong>
+
+                        ${bhk}
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <strong>📐 Area</strong>
+
+                        ${area}
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <strong>🏷️ Listing Type</strong>
+
+                        ${listingType}
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="description">
+
+                    <h2>📝 Property Description</h2>
+
+                    <p>
+                    ${description}
+                    </p>
+
+                </div>
+
+
+                <div class="owner-box">
+
+                    <h3>
+                    👤 ${owner}
+                    </h3>
+
+                    <p>
+                    📞 +91 ${phone}
+                    </p>
+
+                </div>
+
+
+                <div class="buttons">
+
+
+                    <a
+                    href="tel:+91${phone}"
+                    class="btn call">
+
+                    📞 Call Now
+
+                    </a>
+
+
+                    <a
+                    href="https://wa.me/91${phone}"
+                    target="_blank"
+                    class="btn whatsapp">
+
+                    💬 WhatsApp
+
+                    </a>
+
+
+                    <a
+                    href="listing.html"
+                    class="btn listing">
+
+                    ← All Listings
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
 
     </div>
 
@@ -522,7 +593,7 @@ if(property){
 
 </script>
 
-</body>
-</html>
-```
 
+</body>
+
+</html>
