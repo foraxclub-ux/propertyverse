@@ -1,165 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Register | PropertyVerse</title>
+<title>Create Account | BharatWorld Properties</title>
 
 <style>
+
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-  min-height:100vh;
-  background:linear-gradient(rgba(8,27,51,.78),rgba(8,27,51,.78)),
-  url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=80");
-  background-size:cover;
-  background-position:center;
-  display:flex;
-  flex-direction:column;
+min-height:100vh;
+
+background:
+linear-gradient(
+rgba(8,27,51,.78),
+rgba(8,27,51,.78)
+),
+url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=80");
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+flex-direction:column;
 }
 
 header{
-  background:#081B33;
-  padding:16px 25px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+background:#081B33;
+padding:16px 25px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+flex-wrap:wrap;
+gap:15px;
 }
 
 .logo{
-  color:#FFD700;
-  font-size:25px;
-  font-weight:bold;
+color:#FFD700;
+font-size:25px;
+font-weight:bold;
+}
+
+.logo small{
+display:block;
+color:white;
+font-size:10px;
+letter-spacing:2px;
+margin-top:3px;
 }
 
 .home{
-  color:white;
-  text-decoration:none;
+color:white;
+text-decoration:none;
+padding:9px 14px;
+border-radius:6px;
+}
+
+.home:hover{
+background:#E63946;
 }
 
 .register-box{
-  width:400px;
-  max-width:92%;
-  background:white;
-  margin:35px auto;
-  padding:32px 30px;
-  border-radius:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,.25);
+width:400px;
+max-width:92%;
+
+background:white;
+
+margin:35px auto;
+
+padding:35px 30px;
+
+border-radius:16px;
+
+box-shadow:
+0 10px 30px
+rgba(0,0,0,.25);
 }
 
 .register-box h1{
-  text-align:center;
-  color:#081B33;
-  margin-bottom:8px;
+text-align:center;
+color:#081B33;
+margin-bottom:8px;
 }
 
 .subtitle{
-  text-align:center;
-  color:#666;
-  margin-bottom:20px;
+text-align:center;
+color:#666;
+margin-bottom:25px;
 }
 
 label{
-  display:block;
-  font-weight:bold;
-  margin:14px 0 7px;
+display:block;
+font-weight:bold;
+margin:15px 0 7px;
 }
 
-input,
-select{
-  width:100%;
-  padding:12px;
-  border:1px solid #ddd;
-  border-radius:7px;
-  font-size:15px;
+input{
+width:100%;
+padding:13px;
+
+border:1px solid #ddd;
+
+border-radius:7px;
+
+font-size:15px;
+
+outline:none;
+}
+
+input:focus{
+border-color:#E63946;
 }
 
 .register-btn{
-  width:100%;
-  margin-top:22px;
-  padding:14px;
-  background:#E63946;
-  color:white;
-  border:0;
-  border-radius:8px;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
+width:100%;
+
+margin-top:22px;
+
+padding:14px;
+
+background:#E63946;
+
+color:white;
+
+border:0;
+
+border-radius:8px;
+
+font-size:16px;
+
+font-weight:bold;
+
+cursor:pointer;
+}
+
+.register-btn:hover{
+background:#c92f3b;
+}
+
+.message{
+display:none;
+
+margin-top:18px;
+
+padding:12px;
+
+border-radius:7px;
+
+text-align:center;
+
+font-weight:bold;
+}
+
+.error{
+background:#ffe8e8;
+color:#c62828;
+}
+
+.success{
+background:#e7f8ed;
+color:#16803c;
 }
 
 .login{
-  text-align:center;
-  margin-top:20px;
-  color:#666;
+text-align:center;
+margin-top:22px;
+color:#666;
 }
 
 .login a{
-  color:#E63946;
-  font-weight:bold;
-  text-decoration:none;
+color:#E63946;
+font-weight:bold;
+text-decoration:none;
 }
 
 footer{
-  text-align:center;
-  color:white;
-  padding:15px;
-  background:#050F1F;
-  margin-top:auto;
+text-align:center;
+color:white;
+
+padding:15px;
+
+background:#050F1F;
+
+margin-top:auto;
 }
+
+@media(max-width:500px){
+
+header{
+justify-content:center;
+text-align:center;
+}
+
+.register-box{
+margin:35px auto;
+padding:30px 22px;
+}
+
+}
+
 </style>
+
 </head>
 
+
 <body>
+
 
 <header>
 
 <div class="logo">
-🏠 PropertyVerse
+
+🏠 BharatWorld
+
+<small>PROPERTIES</small>
+
 </div>
 
+
 <a href="index.html" class="home">
+
 ← Home
+
 </a>
 
 </header>
 
 
+
 <div class="register-box">
+
 
 <h1>📝 Create Account</h1>
 
+
 <p class="subtitle">
-Join PropertyVerse today
+
+Join BharatWorld Properties today
+
 </p>
 
 
-<div style="max-width:400px;margin:50px auto;padding:30px;background:white;border-radius:15px;">
+<form id="registerForm">
 
-<h2>Create Account</h2>
 
-<input id="name" type="text" placeholder="Full Name"
-style="width:100%;padding:12px;margin:8px 0;">
+<label>
 
-<input id="email" type="email" placeholder="Email"
-style="width:100%;padding:12px;margin:8px 0;">
+👤 Full Name
 
-<input id="password" type="password" placeholder="Password"
-style="width:100%;padding:12px;margin:8px 0;">
+</label>
 
-<button type="button" onclick="registerUser()"
-style="width:100%;padding:13px;background:#E63946;color:white;border:0;border-radius:6px;">
+
+<input
+id="name"
+type="text"
+placeholder="Enter your full name"
+required
+>
+
+
+<label>
+
+📧 Email
+
+</label>
+
+
+<input
+id="email"
+type="email"
+placeholder="Enter your email"
+required
+>
+
+
+<label>
+
+🔑 Password
+
+</label>
+
+
+<input
+id="password"
+type="password"
+placeholder="Create a password"
+minlength="4"
+required
+>
+
+
+<button
+type="submit"
+class="register-btn"
+>
+
 Create Account
+
 </button>
 
-<p id="message"></p>
+
+<div
+id="errorMessage"
+class="message error"
+>
 
 </div>
+
+
+<div
+id="successMessage"
+class="message success"
+>
+
+</div>
+
+
+</form>
+
 
 
 <div class="login">
@@ -167,42 +336,168 @@ Create Account
 Already have an account?
 
 <a href="login.html">
+
 Login
+
 </a>
 
 </div>
 
+
 </div>
+
 
 
 <footer>
 
-© 2026 PropertyVerse. All Rights Reserved.
+© 2026 BharatWorld Properties. All Rights Reserved.
 
 </footer>
+
+
+
 <script>
-function registerUser(){
 
-let name = document.getElementById("name").value;
-let email = document.getElementById("email").value;
-let password = document.getElementById("password").value;
+document
+.getElementById("registerForm")
+.addEventListener("submit", function(e){
 
-if(name==="" || email==="" || password===""){
-document.getElementById("message").innerText="⚠️ Please fill all fields";
+e.preventDefault();
+
+
+const name =
+document
+.getElementById("name")
+.value
+.trim();
+
+
+const email =
+document
+.getElementById("email")
+.value
+.trim()
+.toLowerCase();
+
+
+const password =
+document
+.getElementById("password")
+.value;
+
+
+const errorMessage =
+document
+.getElementById("errorMessage");
+
+
+const successMessage =
+document
+.getElementById("successMessage");
+
+
+errorMessage.style.display = "none";
+
+successMessage.style.display = "none";
+
+
+if(
+name === "" ||
+email === "" ||
+password === ""
+){
+
+errorMessage.innerText =
+"⚠️ Please fill all fields.";
+
+errorMessage.style.display =
+"block";
+
 return;
+
 }
 
-localStorage.setItem("pv_name",name);
-localStorage.setItem("pv_email",email);
-localStorage.setItem("pv_password",password);
 
-document.getElementById("message").innerText="✅ Account created successfully!";
+if(
+password.length < 4
+){
+
+errorMessage.innerText =
+"⚠️ Password must contain at least 4 characters.";
+
+errorMessage.style.display =
+"block";
+
+return;
+
+}
+
+
+const existingEmail =
+localStorage.getItem("pv_email");
+
+
+if(
+existingEmail &&
+existingEmail.toLowerCase() === email
+){
+
+errorMessage.innerText =
+"⚠️ This account already exists. Please login.";
+
+errorMessage.style.display =
+"block";
+
+return;
+
+}
+
+
+localStorage.setItem(
+"pv_name",
+name
+);
+
+
+localStorage.setItem(
+"pv_email",
+email
+);
+
+
+localStorage.setItem(
+"pv_password",
+password
+);
+
+
+localStorage.setItem(
+"pv_logged_in",
+"false"
+);
+
+
+successMessage.innerText =
+"✅ Account created successfully! Redirecting to login...";
+
+
+successMessage.style.display =
+"block";
+
 
 setTimeout(function(){
-window.location.href="login.html";
+
+window.location.href =
+"login.html";
+
 },1500);
 
-}
+
+});
+
 </script>
+
+
 </body>
+
 </html>
