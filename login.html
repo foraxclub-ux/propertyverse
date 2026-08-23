@@ -1,150 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Login | PropertyVerse</title>
+<title>Login | BharatWorld Properties</title>
 
 <style>
+
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-  min-height:100vh;
-  background:linear-gradient(rgba(8,27,51,.78),rgba(8,27,51,.78)),
-  url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=80");
-  background-size:cover;
-  background-position:center;
-  display:flex;
-  flex-direction:column;
+min-height:100vh;
+
+background:
+linear-gradient(
+rgba(8,27,51,.78),
+rgba(8,27,51,.78)
+),
+url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=80");
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+flex-direction:column;
 }
 
 header{
-  background:#081B33;
-  padding:16px 25px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+background:#081B33;
+padding:16px 25px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+flex-wrap:wrap;
+gap:15px;
 }
 
 .logo{
-  color:#FFD700;
-  font-size:25px;
-  font-weight:bold;
+color:#FFD700;
+font-size:25px;
+font-weight:bold;
+}
+
+.logo small{
+display:block;
+color:white;
+font-size:10px;
+letter-spacing:2px;
+margin-top:3px;
 }
 
 .home{
-  color:white;
-  text-decoration:none;
+color:white;
+text-decoration:none;
+padding:9px 14px;
+border-radius:6px;
+}
+
+.home:hover{
+background:#E63946;
 }
 
 .login-box{
-  width:360px;
-  max-width:92%;
-  background:white;
-  margin:auto;
-  padding:35px 30px;
-  border-radius:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,.25);
+width:380px;
+max-width:92%;
+
+background:white;
+
+margin:auto;
+
+padding:35px 30px;
+
+border-radius:16px;
+
+box-shadow:
+0 10px 30px
+rgba(0,0,0,.25);
 }
 
 .login-box h1{
-  text-align:center;
-  color:#081B33;
-  margin-bottom:8px;
+text-align:center;
+color:#081B33;
+margin-bottom:8px;
 }
 
 .subtitle{
-  text-align:center;
-  color:#666;
-  margin-bottom:25px;
+text-align:center;
+color:#666;
+margin-bottom:25px;
 }
 
 label{
-  display:block;
-  font-weight:bold;
-  margin:15px 0 7px;
+display:block;
+font-weight:bold;
+margin:15px 0 7px;
 }
 
 input{
-  width:100%;
-  padding:13px;
-  border:1px solid #ddd;
-  border-radius:7px;
-  font-size:15px;
+width:100%;
+padding:13px;
+
+border:1px solid #ddd;
+
+border-radius:7px;
+
+font-size:15px;
+
+outline:none;
+}
+
+input:focus{
+border-color:#E63946;
 }
 
 .login-btn{
-  width:100%;
-  margin-top:22px;
-  padding:14px;
-  background:#E63946;
-  color:white;
-  border:0;
-  border-radius:8px;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
+width:100%;
+
+margin-top:22px;
+
+padding:14px;
+
+background:#E63946;
+
+color:white;
+
+border:0;
+
+border-radius:8px;
+
+font-size:16px;
+
+font-weight:bold;
+
+cursor:pointer;
+}
+
+.login-btn:hover{
+background:#c92f3b;
 }
 
 .register{
-  text-align:center;
-  margin-top:22px;
-  color:#666;
+text-align:center;
+margin-top:22px;
+color:#666;
 }
 
 .register a{
-  color:#E63946;
-  font-weight:bold;
-  text-decoration:none;
+color:#E63946;
+font-weight:bold;
+text-decoration:none;
+}
+
+.message{
+display:none;
+
+margin-top:18px;
+
+padding:12px;
+
+border-radius:7px;
+
+text-align:center;
+
+font-weight:bold;
+}
+
+.error{
+background:#ffe8e8;
+color:#c62828;
+}
+
+.success{
+background:#e7f8ed;
+color:#16803c;
 }
 
 footer{
-  text-align:center;
-  color:white;
-  padding:15px;
-  background:#050F1F;
+text-align:center;
+color:white;
+
+padding:15px;
+
+background:#050F1F;
 }
 
 @media(max-width:500px){
-  .login-box{
-    margin:35px auto;
-  }
+
+header{
+justify-content:center;
+text-align:center;
 }
+
+.login-box{
+margin:35px auto;
+padding:30px 22px;
+}
+
+}
+
 </style>
+
 </head>
 
+
 <body>
+
 
 <header>
 
 <div class="logo">
-🏠 PropertyVerse
+
+🏠 BharatWorld
+
+<small>PROPERTIES</small>
+
 </div>
 
+
 <a href="index.html" class="home">
+
 ← Home
+
 </a>
 
 </header>
 
 
+
 <div class="login-box">
+
 
 <h1>🔐 Login</h1>
 
+
 <p class="subtitle">
-Welcome back to PropertyVerse
+
+Welcome back to BharatWorld Properties
+
 </p>
 
-<form>
 
-<label>📧 Email or Mobile</label>
+<form id="loginForm">
+
+
+<label>
+
+📧 Email or Mobile
+
+</label>
+
 
 <input
 id="email"
@@ -154,7 +268,12 @@ required
 >
 
 
-<label>🔑 Password</label>
+<label>
+
+🔑 Password
+
+</label>
+
 
 <input
 id="password"
@@ -165,13 +284,37 @@ required
 
 
 <button
-type="button"
+type="submit"
 class="login-btn"
-onclick="loginUser()">
+>
+
 Login
+
 </button>
 
+
+<div
+id="errorMessage"
+class="message error"
+>
+
+❌ Wrong Email/Mobile or Password
+
+</div>
+
+
+<div
+id="successMessage"
+class="message success"
+>
+
+✅ Login Successful! Redirecting...
+
+</div>
+
+
 </form>
+
 
 
 <div class="register">
@@ -179,40 +322,136 @@ Login
 Don't have an account?
 
 <a href="register.html">
+
 Create Account
+
 </a>
 
 </div>
 
+
 </div>
+
 
 
 <footer>
 
-© 2026 PropertyVerse. All Rights Reserved.
+© 2026 BharatWorld Properties. All Rights Reserved.
 
 </footer>
+
+
+
 <script>
-function loginUser(){
 
-let email = document.getElementById("email").value;
-let password = document.getElementById("password").value;
+document
+.getElementById("loginForm")
+.addEventListener("submit", function(e){
 
-let savedEmail = localStorage.getItem("pv_email");
-let savedPassword = localStorage.getItem("pv_password");
+e.preventDefault();
 
-if(email === savedEmail && password === savedPassword){
 
-alert("✅ Login Successful!");
-window.location.href="dashboard.html";
+const email =
+document
+.getElementById("email")
+.value
+.trim();
+
+
+const password =
+document
+.getElementById("password")
+.value;
+
+
+const savedEmail =
+localStorage
+.getItem("pv_email");
+
+
+const savedPassword =
+localStorage
+.getItem("pv_password");
+
+
+const errorMessage =
+document
+.getElementById("errorMessage");
+
+
+const successMessage =
+document
+.getElementById("successMessage");
+
+
+errorMessage.style.display = "none";
+
+successMessage.style.display = "none";
+
+
+if(
+!savedEmail ||
+!savedPassword
+){
+
+errorMessage.innerText =
+"❌ Account not found. Please create an account first.";
+
+errorMessage.style.display =
+"block";
+
+return;
+
+}
+
+
+if(
+email === savedEmail &&
+password === savedPassword
+){
+
+localStorage.setItem(
+"pv_logged_in",
+"true"
+);
+
+
+localStorage.setItem(
+"pv_current_user",
+email
+);
+
+
+successMessage.style.display =
+"block";
+
+
+setTimeout(function(){
+
+window.location.href =
+"dashboard.html";
+
+},1000);
+
 
 }else{
 
-alert("❌ Wrong Email or Password");
+
+errorMessage.innerText =
+"❌ Wrong Email/Mobile or Password";
+
+
+errorMessage.style.display =
+"block";
+
 
 }
 
-}
+});
+
 </script>
+
+
 </body>
+
 </html>
