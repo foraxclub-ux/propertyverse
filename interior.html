@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Interior Design | PropertyVerse</title>
+<title>Interior Design | BharatWorld Properties</title>
 
 <style>
 
@@ -36,6 +36,14 @@ font-size:25px;
 font-weight:bold;
 }
 
+.logo small{
+display:block;
+color:white;
+font-size:10px;
+letter-spacing:2px;
+margin-top:3px;
+}
+
 nav{
 display:flex;
 flex-wrap:wrap;
@@ -46,9 +54,12 @@ nav a{
 color:white;
 text-decoration:none;
 padding:8px;
+border-radius:6px;
 }
 
-
+nav a:hover{
+background:#E63946;
+}
 
 .hero{
 background:
@@ -101,6 +112,11 @@ border-radius:15px;
 overflow:hidden;
 box-shadow:0 5px 18px rgba(0,0,0,.12);
 text-align:left;
+transition:0.25s;
+}
+
+.card:hover{
+transform:translateY(-5px);
 }
 
 .card img{
@@ -142,6 +158,10 @@ padding:10px 15px;
 border-radius:7px;
 text-decoration:none;
 font-weight:bold;
+}
+
+.enquiry:hover{
+background:#E63946;
 }
 
 .process{
@@ -207,15 +227,49 @@ text-align:center;
 padding:35px 20px;
 }
 
+footer h2{
+color:#FFD700;
+}
+
+footer p{
+margin:12px 0;
+color:#ccc;
+}
+
 footer a{
 color:white;
 margin:6px;
+text-decoration:none;
 }
 
 @media(max-width:600px){
 
+header{
+justify-content:center;
+text-align:center;
+}
+
+nav{
+margin-top:12px;
+justify-content:center;
+}
+
+nav a{
+font-size:13px;
+padding:8px;
+}
+
 .hero h1{
 font-size:32px;
+}
+
+.hero p{
+font-size:17px;
+}
+
+.section h2,
+.cta h2{
+font-size:28px;
 }
 
 .card{
@@ -223,8 +277,9 @@ width:100%;
 max-width:350px;
 }
 
-nav{
-margin-top:12px;
+.step{
+width:100%;
+max-width:350px;
 }
 
 }
@@ -238,18 +293,29 @@ margin-top:12px;
 <header>
 
 <div class="logo">
-🏠 PropertyVerse
+🏠 BharatWorld
+<small>PROPERTIES</small>
 </div>
 
 <nav>
 
 <a href="index.html">Home</a>
+
 <a href="buy.html">Buy</a>
+
 <a href="sell.html">Sell</a>
+
 <a href="rent.html">Rent</a>
-<a href="interior.html" style="background:#E63946;color:white;border-radius:6px;padding:10px 15px;">Interior</a>
+
+<a href="interior.html"
+style="background:#E63946;color:white;border-radius:6px;padding:10px 15px;">
+Interior
+</a>
+
 <a href="listing.html">Listing</a>
+
 <a href="contact.html">Contact</a>
+
 <a href="login.html">Login</a>
 
 </nav>
@@ -479,14 +545,16 @@ Your dream interior is brought to life.
 <h2>Ready to Transform Your Space?</h2>
 
 <p>
-Talk to our interior design team today.
+Talk to BharatWorld Properties' interior design team today.
 </p>
 
 <a href="contact.html" class="btn contact">
 📩 Get Free Consultation
 </a>
 
-<a href="https://wa.me/919999999999" class="btn whatsapp">
+<a href="https://wa.me/919999999999"
+target="_blank"
+class="btn whatsapp">
 💬 WhatsApp Us
 </a>
 
@@ -495,30 +563,42 @@ Talk to our interior design team today.
 
 <footer>
 
-<h2 style="color:#FFD700;">
-🏠 PropertyVerse
+<h2>
+🏠 BharatWorld Properties
 </h2>
 
-<p style="margin:12px 0;color:#ccc;">
+<p>
+From Bharat to the World.
+</p>
+
+<p>
 Buy • Sell • Rent • Interior
 </p>
 
 <p>
 
 <a href="index.html">Home</a>
+
 <a href="buy.html">Buy</a>
+
 <a href="sell.html">Sell</a>
+
 <a href="rent.html">Rent</a>
+
+<a href="interior.html">Interior</a>
+
 <a href="listing.html">Listing</a>
+
 <a href="contact.html">Contact</a>
 
 </p>
 
 <p style="margin-top:20px;color:#aaa;">
-© 2026 PropertyVerse. All Rights Reserved.
+© 2026 BharatWorld Properties. All Rights Reserved.
 </p>
 
 </footer>
 
 </body>
-  </html>
+
+</html>
