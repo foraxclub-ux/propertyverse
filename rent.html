@@ -1,21 +1,19 @@
+\<!DOCTYPE html>
+\<html lang="en">
 
-<!DOCTYPE html>
-<html lang="en">
+\<head>
+\<meta charset="UTF-8">
+\<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<head>
+\<title>Rent Property | BharatWorld Properties\</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+\<style>
 
-<title>Rent Property | BharatWorld Properties</title>
-
-<style>
-
-*{
+\*{
 margin:0;
 padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+box-sizing\:border-box;
+font-family\:Arial,sans-serif;
 }
 
 body{
@@ -23,125 +21,59 @@ background:#f5f7fa;
 color:#081B33;
 }
 
-/* HEADER */
-
 header{
 background:#081B33;
 padding:16px 25px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-flex-wrap:wrap;
+display\:flex;
+justify-content\:space-between;
+align-items\:center;
+flex-wrap\:wrap;
 gap:15px;
 }
 
 .logo{
 color:#FFD700;
 font-size:25px;
-font-weight:bold;
+font-weight\:bold;
 }
 
 .logo small{
-display:block;
-color:white;
+display\:block;
+color\:white;
 font-size:10px;
 letter-spacing:2px;
 margin-top:3px;
 }
 
-/* MAIN NAV */
-
-.main-nav{
-display:flex;
-flex-wrap:wrap;
+nav{
+display\:flex;
+flex-wrap\:wrap;
 gap:8px;
-align-items:center;
-margin-left:auto;
 }
 
-.main-nav a{
-color:white;
-text-decoration:none;
-padding:9px 13px;
+nav a{
+color\:white;
+text-decoration\:none;
+padding:8px 10px;
 border-radius:6px;
 }
 
-.main-nav a:hover,
-.main-nav a.active{
+nav a\:hover,
+nav a.active{
 background:#E63946;
 }
-
-/* 3 DOT MENU */
-
-.more-menu{
-position:relative;
-margin-left:5px;
-}
-
-.more-btn{
-background:#E63946;
-color:white;
-border:none;
-width:42px;
-height:42px;
-border-radius:8px;
-font-size:28px;
-font-weight:bold;
-cursor:pointer;
-line-height:20px;
-}
-
-.more-btn:hover{
-background:#c92f3b;
-}
-
-/* DROPDOWN MENU */
-
-.dropdown-menu{
-display:none;
-position:absolute;
-right:0;
-top:52px;
-width:220px;
-background:white;
-border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,.18);
-padding:8px;
-z-index:9999;
-}
-
-.dropdown-menu.show{
-display:block;
-}
-
-.dropdown-menu a{
-display:block;
-color:#081B33;
-text-decoration:none;
-padding:13px 14px;
-border-radius:7px;
-font-weight:bold;
-font-size:14px;
-}
-
-.dropdown-menu a:hover{
-background:#f5f7fa;
-color:#E63946;
-}
-
-/* HERO */
 
 .hero{
 background:
 linear-gradient(rgba(8,27,51,.75),rgba(8,27,51,.75)),
-url("https://images.unsplash.com/photo-1560185008-b033106af5c3?auto=format&fit=crop&w=1600&q=80");
+url("[https://images.unsplash.com/photo-1560185008-b033106af5c3?auto=format&fit=crop&w=1600&q=80](https://images.unsplash.com/photo-1560185008-b033106af5c3?auto=format\&fit=crop\&w=1600\&q=80)");
 
-background-size:cover;
-background-position:center;
+background-size\:cover;
+background-position\:center;
 
 padding:75px 20px;
-text-align:center;
-color:white;
+text-align\:center;
+color\:white;
 }
 
 .hero h1{
@@ -153,21 +85,19 @@ margin-bottom:15px;
 font-size:19px;
 }
 
-/* FILTERS */
-
 .filters{
-background:white;
+background\:white;
 padding:20px;
 max-width:1050px;
 margin:-30px auto 40px;
 border-radius:12px;
 box-shadow:0 5px 20px rgba(0,0,0,.15);
 
-display:flex;
+display\:flex;
 gap:10px;
-flex-wrap:wrap;
-justify-content:center;
-position:relative;
+flex-wrap\:wrap;
+justify-content\:center;
+position\:relative;
 }
 
 .filters input,
@@ -176,63 +106,54 @@ padding:13px;
 border:1px solid #ddd;
 border-radius:7px;
 min-width:170px;
-outline:none;
+outline\:none;
 }
 
-.filters input:focus,
-.filters select:focus{
+.filters input\:focus,
+.filters select\:focus{
 border-color:#E63946;
 }
 
 .search{
 background:#E63946;
-color:white;
+color\:white;
 border:0;
 padding:13px 22px;
 border-radius:7px;
-font-weight:bold;
-cursor:pointer;
+font-weight\:bold;
+cursor\:pointer;
 }
-
-/* CONTAINER */
 
 .container{
 max-width:1100px;
-margin:auto;
+margin\:auto;
 padding:0 20px 60px;
 }
 
 .title{
-text-align:center;
+text-align\:center;
 margin-bottom:30px;
 }
 
-/* PROPERTIES */
-
 .properties{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
+display\:flex;
+justify-content\:center;
+flex-wrap\:wrap;
 gap:25px;
 }
 
 .card{
-background:white;
+background\:white;
 width:320px;
 border-radius:15px;
-overflow:hidden;
+overflow\:hidden;
 box-shadow:0 5px 18px rgba(0,0,0,.12);
-transition:.25s;
-}
-
-.card:hover{
-transform:translateY(-5px);
 }
 
 .card img{
 width:100%;
 height:210px;
-object-fit:cover;
+object-fit\:cover;
 }
 
 .content{
@@ -240,13 +161,13 @@ padding:20px;
 }
 
 .verified{
-display:inline-block;
+display\:inline-block;
 background:#e7f8ed;
 color:#16803c;
 padding:6px 9px;
 border-radius:5px;
 font-size:12px;
-font-weight:bold;
+font-weight\:bold;
 }
 
 .card h2{
@@ -256,7 +177,7 @@ margin:12px 0 8px;
 
 .price{
 font-size:22px;
-font-weight:bold;
+font-weight\:bold;
 color:#E63946;
 margin-bottom:8px;
 }
@@ -267,51 +188,49 @@ line-height:1.7;
 }
 
 .buttons{
-display:flex;
+display\:flex;
 gap:8px;
-flex-wrap:wrap;
+flex-wrap\:wrap;
 margin-top:15px;
 }
 
 .btn{
-display:inline-block;
+display\:inline-block;
 padding:9px 12px;
 border-radius:6px;
-text-decoration:none;
-font-weight:bold;
+text-decoration\:none;
+font-weight\:bold;
 font-size:14px;
 }
 
 .details{
 background:#081B33;
-color:white;
+color\:white;
 }
 
 .call{
 background:#081B33;
-color:white;
+color\:white;
 }
 
 .whatsapp{
 background:#25D366;
-color:white;
+color\:white;
 }
 
 .no-results{
-display:none;
-text-align:center;
+display\:none;
+text-align\:center;
 font-size:18px;
 color:#E63946;
-font-weight:bold;
+font-weight\:bold;
 margin-top:20px;
 }
 
-/* FOOTER */
-
 footer{
 background:#050F1F;
-color:white;
-text-align:center;
+color\:white;
+text-align\:center;
 padding:35px 20px;
 }
 
@@ -320,37 +239,16 @@ color:#FFD700;
 }
 
 footer a{
-color:white;
+color\:white;
 margin:6px;
-text-decoration:none;
+text-decoration\:none;
 }
-
-/* MOBILE */
 
 @media(max-width:600px){
 
 header{
-padding:14px 15px;
-gap:10px;
-}
-
-.logo{
-font-size:20px;
-}
-
-.main-nav{
-margin-left:auto;
-gap:3px;
-}
-
-.main-nav a{
-font-size:13px;
-padding:8px 9px;
-}
-
-.more-btn{
-width:38px;
-height:38px;
+justify-content\:center;
+text-align\:center;
 }
 
 .hero h1{
@@ -372,211 +270,151 @@ width:100%;
 max-width:360px;
 }
 
+nav{
+justify-content\:center;
 }
 
-</style>
+}
 
-</head>
+\</style>
 
+\</head>
 
-<body>
+\<body>
 
+\<header>
 
-<!-- HEADER -->
-
-<header>
-
-<div class="logo">
+\<div class="logo">
 🏠 BharatWorld
-<small>PROPERTIES</small>
-</div>
+\<small>PROPERTIES\</small>
+\</div>
+
+\<nav>
+
+\<a href="index.html">Home\</a>
+\<a href="buy.html">Buy\</a>
+\<a href="sell.html">Sell\</a>
+\<a href="rent.html" class="active">Rent\</a>
+\<a href="interior.html">Interior\</a>
+\<a href="listing.html">Listing\</a>
+\<a href="contact.html">Contact\</a>
+\<a href="login.html">Login\</a>
+
+\</nav>
+
+\</header>
 
 
-<nav class="main-nav">
 
-<a href="index.html">Home</a>
+\<section class="hero">
 
-<a href="buy.html">Buy</a>
+\<h1>🏡 Find Your Rental Property\</h1>
 
-<a href="rent.html" class="active">Rent</a>
-
-</nav>
-
-
-<div class="more-menu">
-
-<button
-class="more-btn"
-onclick="toggleMenu()"
-type="button">
-
-⋮
-
-</button>
-
-
-<div class="dropdown-menu" id="dropdownMenu">
-
-<a href="sell.html">
-🏷️ Sell Property
-</a>
-
-<a href="interior.html">
-🎨 Interior Design
-</a>
-
-<a href="listing.html">
-📋 Property Listings
-</a>
-
-<a href="contact.html">
-📞 Contact Us
-</a>
-
-<a href="dashboard.html">
-👤 My Dashboard
-</a>
-
-<a href="login.html">
-🔐 Login
-</a>
-
-</div>
-
-</div>
-
-</header>
-
-
-<!-- HERO -->
-
-<section class="hero">
-
-<h1>🏡 Find Your Rental Property</h1>
-
-<p>
+\<p>
 Find comfortable homes, apartments and commercial spaces
-</p>
+\</p>
 
-</section>
+\</section>
 
 
-<!-- FILTERS -->
 
-<div class="filters">
+\<div class="filters">
 
-<input
+\<input
 type="text"
 id="rentCity"
 placeholder="📍 Search City"
->
+\>
 
-<select id="rentType">
+\<select id="rentType">
 
-<option value="">Property Type</option>
-<option value="apartment">Apartment</option>
-<option value="villa">Villa</option>
-<option value="house">House</option>
-<option value="commercial">Commercial</option>
+\<option value="">Property Type\</option>
+\<option value="apartment">Apartment\</option>
+\<option value="villa">Villa\</option>
+\<option value="house">House\</option>
+\<option value="commercial">Commercial\</option>
 
-</select>
+\</select>
 
+\<select id="rentBudget">
 
-<select id="rentBudget">
+\<option value="">Monthly Rent\</option>
+\<option value="15000">Under ₹15,000\</option>
+\<option value="30000">₹15,000 - ₹30,000\</option>
+\<option value="50000">₹30,000 - ₹50,000\</option>
+\<option value="50001">₹50,000+\</option>
 
-<option value="">Monthly Rent</option>
-<option value="15000">Under ₹15,000</option>
-<option value="30000">₹15,000 - ₹30,000</option>
-<option value="50000">₹30,000 - ₹50,000</option>
-<option value="50001">₹50,000+</option>
+\</select>
 
-</select>
+\<select id="rentBhk">
 
+\<option value="">BHK\</option>
+\<option value="1">1 BHK\</option>
+\<option value="2">2 BHK\</option>
+\<option value="3">3 BHK\</option>
+\<option value="4">4+ BHK\</option>
 
-<select id="rentBhk">
+\</select>
 
-<option value="">BHK</option>
-<option value="1">1 BHK</option>
-<option value="2">2 BHK</option>
-<option value="3">3 BHK</option>
-<option value="4">4+ BHK</option>
-
-</select>
-
-
-<button
-class="search"
-type="button"
+\<button class="search" type="button"
 onclick="searchRentProperties()">
-
 🔍 Search
+\</button>
 
-</button>
-
-</div>
+\</div>
 
 
-<!-- PROPERTIES -->
 
-<div class="container">
+\<div class="container">
 
-<div class="title">
+\<div class="title">
 
-<h2>🏠 Properties For Rent</h2>
+\<h2>🏠 Properties For Rent\</h2>
 
-<p style="color:#666;margin-top:8px;">
+\<p style="color:#666;margin-top:8px;">
 Explore verified rental properties
-</p>
+\</p>
 
-</div>
-
-
-<div class="properties" id="rentProperties">
+\</div>
 
 
-<!-- PROPERTY 1 -->
 
-<div
-class="card"
+\<div class="properties" id="rentProperties">
+
+
+
+\<div class="card"
 data-city="Ahmedabad"
 data-type="apartment"
 data-price="25000"
 data-bhk="2">
 
-<img
-src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80"
-alt="Modern Apartment"
->
+\<img
+src="[https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80](https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format\&fit=crop\&w=800\&q=80)"
+alt="Modern Apartment">
 
-<div class="content">
+\<div class="content">
 
-<span class="verified">
+\<span class="verified">
 ✓ VERIFIED
-</span>
+\</span>
 
-<h2>Modern 2 BHK Apartment</h2>
+\<h2>Modern 2 BHK Apartment\</h2>
 
-<div class="price">
+\<div class="price">
 ₹25,000 / Month
-</div>
+\</div>
 
-<div class="info">
-
-📍 Ahmedabad, Gujarat<br>
-
-🏢 Apartment<br>
-
-🛏 2 BHK • 📐 1200 Sq.ft<br>
-
+\<div class="info">
+📍 Ahmedabad, Gujarat\<br>
+🏢 Apartment\<br>
+🛏 2 BHK • 📐 1200 Sq.ft\<br>
 🚗 Parking Available
+\</div>
 
-</div>
+\<div class="buttons">
 
-
-<div class="buttons">
-
-<a
-href="#"
+\<a href="#"
 class="btn details"
 data-title="Modern 2 BHK Apartment"
 data-price="25000"
@@ -589,77 +427,60 @@ data-description="Modern 2 BHK apartment available for rent in Ahmedabad.">
 
 View Details
 
-</a>
+\</a>
 
-
-<a
-href="tel:+919999999999"
-class="btn call">
-
+\<a href="tel:+919999999999" class="btn call">
 📞 Call
+\</a>
 
-</a>
-
-
-<a
-href="https://wa.me/919999999999"
+\<a href="[https://wa.me/919999999999](https://wa.me/919999999999)"
 class="btn whatsapp"
-target="_blank">
+target="\_blank">
 
 💬 WhatsApp
 
-</a>
+\</a>
 
-</div>
+\</div>
 
-</div>
+\</div>
 
-</div>
+\</div>
 
 
-<!-- PROPERTY 2 -->
 
-<div
-class="card"
+\<div class="card"
 data-city="Surat"
 data-type="house"
 data-price="38000"
 data-bhk="3">
 
-<img
-src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80"
-alt="Luxury Rental"
->
+\<img
+src="[https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80](https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format\&fit=crop\&w=800\&q=80)"
+alt="Luxury Rental">
 
-<div class="content">
+\<div class="content">
 
-<span class="verified">
+\<span class="verified">
 ✓ VERIFIED
-</span>
+\</span>
 
-<h2>Luxury 3 BHK Home</h2>
+\<h2>Luxury 3 BHK Home\</h2>
 
-<div class="price">
+\<div class="price">
 ₹38,000 / Month
-</div>
+\</div>
 
-<div class="info">
-
-📍 Surat, Gujarat<br>
-
-🏢 House<br>
-
-🛏 3 BHK • 📐 1800 Sq.ft<br>
-
+\<div class="info">
+📍 Surat, Gujarat\<br>
+🏢 House\<br>
+🛏 3 BHK • 📐 1800 Sq.ft\<br>
 🚗 2 Parking
+\</div>
 
-</div>
+\<div class="buttons">
 
-
-<div class="buttons">
-
-<a
-href="#"
+\<a href="#"
 class="btn details"
 data-title="Luxury 3 BHK Home"
 data-price="38000"
@@ -672,77 +493,60 @@ data-description="Luxury 3 BHK home available for rent in Surat.">
 
 View Details
 
-</a>
+\</a>
 
-
-<a
-href="tel:+919999999999"
-class="btn call">
-
+\<a href="tel:+919999999999" class="btn call">
 📞 Call
+\</a>
 
-</a>
-
-
-<a
-href="https://wa.me/919999999999"
+\<a href="[https://wa.me/919999999999](https://wa.me/919999999999)"
 class="btn whatsapp"
-target="_blank">
+target="\_blank">
 
 💬 WhatsApp
 
-</a>
+\</a>
 
-</div>
+\</div>
 
-</div>
+\</div>
 
-</div>
+\</div>
 
 
-<!-- PROPERTY 3 -->
 
-<div
-class="card"
+\<div class="card"
 data-city="Vadodara"
 data-type="apartment"
 data-price="22000"
 data-bhk="2">
 
-<img
-src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80"
-alt="Premium Apartment"
->
+\<img
+src="[https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80](https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format\&fit=crop\&w=800\&q=80)"
+alt="Premium Apartment">
 
-<div class="content">
+\<div class="content">
 
-<span class="verified">
+\<span class="verified">
 ✓ VERIFIED
-</span>
+\</span>
 
-<h2>Premium 2 BHK Apartment</h2>
+\<h2>Premium 2 BHK Apartment\</h2>
 
-<div class="price">
+\<div class="price">
 ₹22,000 / Month
-</div>
+\</div>
 
-<div class="info">
-
-📍 Vadodara, Gujarat<br>
-
-🏢 Apartment<br>
-
-🛏 2 BHK • 📐 1100 Sq.ft<br>
-
+\<div class="info">
+📍 Vadodara, Gujarat\<br>
+🏢 Apartment\<br>
+🛏 2 BHK • 📐 1100 Sq.ft\<br>
 🚗 Parking Available
+\</div>
 
-</div>
+\<div class="buttons">
 
-
-<div class="buttons">
-
-<a
-href="#"
+\<a href="#"
 class="btn details"
 data-title="Premium 2 BHK Apartment"
 data-price="22000"
@@ -755,118 +559,65 @@ data-description="Premium 2 BHK apartment available for rent in Vadodara.">
 
 View Details
 
-</a>
+\</a>
 
-
-<a
-href="tel:+919999999999"
-class="btn call">
-
+\<a href="tel:+919999999999" class="btn call">
 📞 Call
+\</a>
 
-</a>
-
-
-<a
-href="https://wa.me/919999999999"
+\<a href="[https://wa.me/919999999999](https://wa.me/919999999999)"
 class="btn whatsapp"
-target="_blank">
+target="\_blank">
 
 💬 WhatsApp
 
-</a>
+\</a>
 
-</div>
+\</div>
 
-</div>
+\</div>
 
-</div>
+\</div>
 
+\</div>
 
-</div>
-
-
-<div id="noResults" class="no-results">
-
+\<div id="noResults" class="no-results">
 ❌ No matching rental property found.
+\</div>
 
-</div>
-
-</div>
+\</div>
 
 
-<!-- FOOTER -->
 
-<footer>
+\<footer>
 
-<h2>
+\<h2>
 🏠 BharatWorld Properties
-</h2>
+\</h2>
 
-<p style="margin:12px 0;color:#ccc;">
+\<p style="margin:12px 0;color:#ccc;">
 Buy • Sell • Rent • Interior
-</p>
+\</p>
 
-<p>
+\<p>
 
-<a href="index.html">Home</a>
+\<a href="index.html">Home\</a>
+\<a href="buy.html">Buy\</a>
+\<a href="sell.html">Sell\</a>
+\<a href="rent.html">Rent\</a>
+\<a href="contact.html">Contact\</a>
 
-<a href="buy.html">Buy</a>
+\</p>
 
-<a href="sell.html">Sell</a>
-
-<a href="rent.html">Rent</a>
-
-<a href="contact.html">Contact</a>
-
-</p>
-
-<p style="margin-top:20px;color:#aaa;">
-
+\<p style="margin-top:20px;color:#aaa;">
 © 2026 BharatWorld Properties. All Rights Reserved.
+\</p>
 
-</p>
-
-</footer>
-
-
-<script>
-
-/* 3 DOT MENU */
-
-function toggleMenu(){
-
-const menu =
-document.getElementById("dropdownMenu");
-
-menu.classList.toggle("show");
-
-}
+\</footer>
 
 
-/* CLOSE MENU WHEN CLICKING OUTSIDE */
 
-document.addEventListener("click", function(event){
-
-const menu =
-document.getElementById("dropdownMenu");
-
-const button =
-document.querySelector(".more-btn");
-
-if(
-!menu.contains(event.target) &&
-!button.contains(event.target)
-){
-
-menu.classList.remove("show");
-
-}
-
-});
-
-
-/* RENT PROPERTY SEARCH */
+\<script>
 
 function searchRentProperties(){
 
@@ -889,7 +640,6 @@ document.querySelectorAll(".card");
 
 let found = 0;
 
-
 cards.forEach(function(card){
 
 const cardCity =
@@ -905,9 +655,11 @@ const cardBhk =
 card.dataset.bhk;
 
 
+
 const cityMatch =
 city === "" ||
 cardCity.includes(city);
+
 
 
 const typeMatch =
@@ -915,42 +667,36 @@ type === "" ||
 cardType === type;
 
 
+
 let budgetMatch = true;
 
-
 if(budget === "15000"){
-
 budgetMatch = cardPrice < 15000;
-
 }
 
 else if(budget === "30000"){
-
 budgetMatch =
 cardPrice >= 15000 &&
 cardPrice <= 30000;
-
 }
 
 else if(budget === "50000"){
-
 budgetMatch =
 cardPrice > 30000 &&
 cardPrice <= 50000;
-
 }
 
 else if(budget === "50001"){
-
 budgetMatch =
 cardPrice > 50000;
-
 }
+
 
 
 const bhkMatch =
 bhk === "" ||
 cardBhk === bhk;
+
 
 
 if(
@@ -975,9 +721,9 @@ card.style.display = "none";
 });
 
 
+
 const noResults =
 document.getElementById("noResults");
-
 
 if(found === 0){
 
@@ -994,7 +740,6 @@ noResults.style.display = "none";
 }
 
 
-/* VIEW DETAILS */
 
 document.querySelectorAll(".details")
 .forEach(function(button){
@@ -1004,7 +749,6 @@ button.addEventListener(
 function(e){
 
 e.preventDefault();
-
 
 const property = {
 
@@ -1041,16 +785,18 @@ phone:
 };
 
 
+
 localStorage.setItem(
 
-"pv_selected_property",
+"pv\_selected\_property",
 
 JSON.stringify(property)
 
 );
 
 
-window.location.href =
+
+window\.location.href =
 "property-details.html";
 
 }
@@ -1059,8 +805,7 @@ window.location.href =
 
 });
 
-</script>
+\</script>
 
-</body>
-
-</html>
+\</body>
+    \</html>
