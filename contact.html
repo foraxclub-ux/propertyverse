@@ -2,10 +2,12 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Contact Us | PropertyVerse</title>
+<title>Contact Us | BharatWorld Properties</title>
 
 <style>
 
@@ -28,12 +30,21 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 flex-wrap:wrap;
+gap:15px;
 }
 
 .logo{
 color:#FFD700;
 font-size:25px;
 font-weight:bold;
+}
+
+.logo small{
+display:block;
+color:white;
+font-size:10px;
+letter-spacing:2px;
+margin-top:3px;
 }
 
 nav{
@@ -46,9 +57,13 @@ nav a{
 color:white;
 text-decoration:none;
 padding:8px;
+border-radius:6px;
 }
 
-
+nav a:hover,
+nav a.active{
+background:#E63946;
+}
 
 .hero{
 background:
@@ -134,6 +149,13 @@ padding:13px;
 border:1px solid #ddd;
 border-radius:7px;
 font-size:15px;
+outline:none;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+border-color:#E63946;
 }
 
 textarea{
@@ -151,6 +173,21 @@ border-radius:8px;
 font-size:17px;
 font-weight:bold;
 cursor:pointer;
+}
+
+.submit:hover{
+background:#c92f3b;
+}
+
+.success-message{
+display:none;
+background:#e7f8ed;
+color:#16803c;
+padding:14px;
+border-radius:8px;
+margin-top:18px;
+font-weight:bold;
+text-align:center;
 }
 
 .info-item{
@@ -178,15 +215,44 @@ text-align:center;
 padding:35px 20px;
 }
 
+footer h2{
+color:#FFD700;
+}
+
+footer p{
+margin:12px 0;
+color:#ccc;
+}
+
 footer a{
 color:white;
 margin:6px;
+text-decoration:none;
 }
 
 @media(max-width:600px){
 
+header{
+justify-content:center;
+text-align:center;
+}
+
+nav{
+margin-top:12px;
+justify-content:center;
+}
+
+nav a{
+font-size:13px;
+padding:8px;
+}
+
 .hero h1{
 font-size:32px;
+}
+
+.hero p{
+font-size:17px;
 }
 
 .form-box,
@@ -198,15 +264,12 @@ width:100%;
 min-width:100%;
 }
 
-nav{
-margin-top:12px;
-}
-
 }
 
 </style>
 
 </head>
+
 
 <body>
 
@@ -214,34 +277,48 @@ margin-top:12px;
 <header>
 
 <div class="logo">
-🏠 PropertyVerse
+
+🏠 BharatWorld
+
+<small>PROPERTIES</small>
+
 </div>
+
 
 <nav>
 
 <a href="index.html">Home</a>
+
 <a href="buy.html">Buy</a>
+
 <a href="sell.html">Sell</a>
+
 <a href="rent.html">Rent</a>
+
 <a href="interior.html">Interior</a>
+
 <a href="listing.html">Listing</a>
-<a href="contact.html" style="background:#E63946;color:white;border-radius:6px;padding:10px 15px;">Contact</a>
-<a href="login.html" class="login">Login</a>
+
+<a href="contact.html" class="active">Contact</a>
+
+<a href="login.html">Login</a>
 
 </nav>
 
 </header>
 
 
+
 <section class="hero">
 
-<h1>📞 Contact PropertyVerse</h1>
+<h1>📞 Contact BharatWorld Properties</h1>
 
 <p>
 Our property experts are ready to help you
 </p>
 
 </section>
+
 
 
 <div class="container">
@@ -256,16 +333,18 @@ Tell us what you are looking for
 </p>
 
 
-<form>
+<form id="contactForm">
 
 
 <div class="row">
+
 
 <div class="field">
 
 <label>👤 Your Name</label>
 
 <input
+id="contactName"
 type="text"
 placeholder="Enter your name"
 required
@@ -274,11 +353,13 @@ required
 </div>
 
 
+
 <div class="field">
 
 <label>📞 Mobile Number</label>
 
 <input
+id="contactPhone"
 type="tel"
 placeholder="Enter mobile number"
 required
@@ -286,7 +367,9 @@ required
 
 </div>
 
+
 </div>
+
 
 
 <div class="field">
@@ -294,6 +377,7 @@ required
 <label>📧 Email Address</label>
 
 <input
+id="contactEmail"
 type="email"
 placeholder="Enter your email"
 >
@@ -301,33 +385,34 @@ placeholder="Enter your email"
 </div>
 
 
+
 <div class="field">
 
 <label>🏠 I am interested in</label>
 
-<select required>
+<select id="contactInterest" required>
 
 <option value="">
 Select an option
 </option>
 
-<option>
+<option value="Buy Property">
 Buy Property
 </option>
 
-<option>
+<option value="Sell Property">
 Sell Property
 </option>
 
-<option>
+<option value="Rent Property">
 Rent Property
 </option>
 
-<option>
+<option value="Interior Design">
 Interior Design
 </option>
 
-<option>
+<option value="Property Listing">
 Property Listing
 </option>
 
@@ -336,33 +421,34 @@ Property Listing
 </div>
 
 
+
 <div class="field">
 
 <label>📍 Preferred City</label>
 
-<select>
+<select id="contactCity">
 
-<option>
+<option value="">
 Select City
 </option>
 
-<option>
+<option value="Ahmedabad">
 Ahmedabad
 </option>
 
-<option>
+<option value="Surat">
 Surat
 </option>
 
-<option>
+<option value="Vadodara">
 Vadodara
 </option>
 
-<option>
+<option value="Rajkot">
 Rajkot
 </option>
 
-<option>
+<option value="Gandhinagar">
 Gandhinagar
 </option>
 
@@ -371,21 +457,23 @@ Gandhinagar
 </div>
 
 
+
 <div class="field">
 
 <label>📝 Your Message</label>
 
 <textarea
+id="contactMessage"
 placeholder="Tell us about your requirement..."
 ></textarea>
 
 </div>
 
 
+
 <button
-type="button"
+type="submit"
 class="submit"
-onclick="alert('Thank you! Your enquiry has been received. Our team will contact you soon.')"
 >
 
 📩 Send Enquiry
@@ -393,9 +481,20 @@ onclick="alert('Thank you! Your enquiry has been received. Our team will contact
 </button>
 
 
+<div
+id="successMessage"
+class="success-message"
+>
+
+✅ Thank you! Your enquiry has been received successfully.
+
+</div>
+
+
 </form>
 
 </div>
+
 
 
 <div class="info-box">
@@ -403,44 +502,59 @@ onclick="alert('Thank you! Your enquiry has been received. Our team will contact
 <h2>📍 Get In Touch</h2>
 
 <p style="color:#666;margin-bottom:15px;">
+
 We are here to help you find the right property.
+
 </p>
+
 
 
 <div class="info-item">
 
-<strong>📞 Phone</strong><br>
+<strong>📞 Phone</strong>
+
+<br>
 
 +91 99999 99999
 
 </div>
 
 
+
 <div class="info-item">
 
-<strong>📧 Email</strong><br>
+<strong>📧 Email</strong>
 
-support@propertyverse.in
+<br>
+
+support@bharatworldproperties.in
 
 </div>
 
 
+
 <div class="info-item">
 
-<strong>📍 Office</strong><br>
+<strong>📍 Office</strong>
+
+<br>
 
 Ahmedabad, Gujarat, India
 
 </div>
 
 
+
 <div class="info-item">
 
-<strong>🕐 Working Hours</strong><br>
+<strong>🕐 Working Hours</strong>
+
+<br>
 
 Mon - Sat: 9:00 AM - 7:00 PM
 
 </div>
+
 
 
 <a
@@ -453,39 +567,143 @@ target="_blank"
 
 </a>
 
+
 </div>
 
 
 </div>
+
 
 
 <footer>
 
-<h2 style="color:#FFD700;">
-🏠 PropertyVerse
+<h2>
+
+🏠 BharatWorld Properties
+
 </h2>
 
-<p style="margin:12px 0;color:#ccc;">
-Buy • Sell • Rent • Interior
+
+<p>
+
+From Bharat to the World.
+
 </p>
+
+
+<p>
+
+Buy • Sell • Rent • Interior
+
+</p>
+
 
 <p>
 
 <a href="index.html">Home</a>
+
 <a href="buy.html">Buy</a>
+
 <a href="sell.html">Sell</a>
+
 <a href="rent.html">Rent</a>
+
 <a href="interior.html">Interior</a>
+
 <a href="listing.html">Listing</a>
 
+<a href="contact.html">Contact</a>
+
 </p>
 
+
 <p style="margin-top:20px;color:#aaa;">
-© 2026 PropertyVerse. All Rights Reserved.
+
+© 2026 BharatWorld Properties. All Rights Reserved.
+
 </p>
+
 
 </footer>
 
 
+
+<script>
+
+document.getElementById("contactForm")
+.addEventListener("submit", function(e){
+
+e.preventDefault();
+
+
+const enquiry = {
+
+name:
+document.getElementById("contactName").value,
+
+phone:
+document.getElementById("contactPhone").value,
+
+email:
+document.getElementById("contactEmail").value,
+
+interest:
+document.getElementById("contactInterest").value,
+
+city:
+document.getElementById("contactCity").value,
+
+message:
+document.getElementById("contactMessage").value,
+
+date:
+new Date().toLocaleString()
+
+};
+
+
+let enquiries =
+JSON.parse(
+localStorage.getItem("pv_enquiries") || "[]"
+);
+
+
+enquiries.push(enquiry);
+
+
+localStorage.setItem(
+
+"pv_enquiries",
+
+JSON.stringify(enquiries)
+
+);
+
+
+document
+.getElementById("successMessage")
+.style.display = "block";
+
+
+document
+.getElementById("contactForm")
+.reset();
+
+
+setTimeout(function(){
+
+document
+.getElementById("successMessage")
+.style.display = "none";
+
+},5000);
+
+
+});
+
+</script>
+
+
 </body>
+
 </html>
