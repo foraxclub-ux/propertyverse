@@ -1,7 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -20,6 +22,8 @@ body{
 background:#f5f7fa;
 color:#081B33;
 }
+
+/* HEADER */
 
 header{
 background:#081B33;
@@ -45,23 +49,87 @@ letter-spacing:2px;
 margin-top:3px;
 }
 
-nav{
+/* MAIN NAV */
+
+.main-nav{
 display:flex;
 flex-wrap:wrap;
 gap:8px;
+align-items:center;
+margin-left:auto;
 }
 
-nav a{
+.main-nav a{
 color:white;
 text-decoration:none;
-padding:8px 10px;
+padding:9px 13px;
 border-radius:6px;
 }
 
-nav a:hover,
-nav a.active{
+.main-nav a:hover,
+.main-nav a.active{
 background:#E63946;
 }
+
+/* 3 DOT MENU */
+
+.more-menu{
+position:relative;
+margin-left:5px;
+}
+
+.more-btn{
+background:#E63946;
+color:white;
+border:none;
+width:42px;
+height:42px;
+border-radius:8px;
+font-size:28px;
+font-weight:bold;
+cursor:pointer;
+line-height:20px;
+}
+
+.more-btn:hover{
+background:#c92f3b;
+}
+
+/* DROPDOWN MENU */
+
+.dropdown-menu{
+display:none;
+position:absolute;
+right:0;
+top:52px;
+width:220px;
+background:white;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,.18);
+padding:8px;
+z-index:9999;
+}
+
+.dropdown-menu.show{
+display:block;
+}
+
+.dropdown-menu a{
+display:block;
+color:#081B33;
+text-decoration:none;
+padding:13px 14px;
+border-radius:7px;
+font-weight:bold;
+font-size:14px;
+}
+
+.dropdown-menu a:hover{
+background:#f5f7fa;
+color:#E63946;
+}
+
+/* HERO */
 
 .hero{
 background:
@@ -84,6 +152,8 @@ margin-bottom:15px;
 .hero p{
 font-size:19px;
 }
+
+/* FILTERS */
 
 .filters{
 background:white;
@@ -124,6 +194,8 @@ font-weight:bold;
 cursor:pointer;
 }
 
+/* CONTAINER */
+
 .container{
 max-width:1100px;
 margin:auto;
@@ -134,6 +206,8 @@ padding:0 20px 60px;
 text-align:center;
 margin-bottom:30px;
 }
+
+/* PROPERTIES */
 
 .properties{
 display:flex;
@@ -214,7 +288,7 @@ color:white;
 }
 
 .call{
-background:#E63946;
+background:#081B33;
 color:white;
 }
 
@@ -231,6 +305,8 @@ color:#E63946;
 font-weight:bold;
 margin-top:20px;
 }
+
+/* FOOTER */
 
 footer{
 background:#050F1F;
@@ -249,11 +325,32 @@ margin:6px;
 text-decoration:none;
 }
 
+/* MOBILE */
+
 @media(max-width:600px){
 
 header{
-justify-content:center;
-text-align:center;
+padding:14px 15px;
+gap:10px;
+}
+
+.logo{
+font-size:20px;
+}
+
+.main-nav{
+margin-left:auto;
+gap:3px;
+}
+
+.main-nav a{
+font-size:13px;
+padding:8px 9px;
+}
+
+.more-btn{
+width:38px;
+height:38px;
 }
 
 .hero h1{
@@ -275,45 +372,83 @@ width:100%;
 max-width:360px;
 }
 
-nav{
-justify-content:center;
-}
-
 }
 
 </style>
 
 </head>
 
+
 <body>
 
+
+<!-- HEADER -->
 
 <header>
 
 <div class="logo">
-
 🏠 BharatWorld
-
 <small>PROPERTIES</small>
-
 </div>
 
 
-<nav>
+<nav class="main-nav">
 
 <a href="index.html">Home</a>
+
 <a href="buy.html">Buy</a>
-<a href="sell.html">Sell</a>
+
 <a href="rent.html" class="active">Rent</a>
-<a href="interior.html">Interior</a>
-<a href="listing.html">Listing</a>
-<a href="contact.html">Contact</a>
-<a href="login.html">Login</a>
 
 </nav>
 
+
+<div class="more-menu">
+
+<button
+class="more-btn"
+onclick="toggleMenu()"
+type="button">
+
+⋮
+
+</button>
+
+
+<div class="dropdown-menu" id="dropdownMenu">
+
+<a href="sell.html">
+🏷️ Sell Property
+</a>
+
+<a href="interior.html">
+🎨 Interior Design
+</a>
+
+<a href="listing.html">
+📋 Property Listings
+</a>
+
+<a href="contact.html">
+📞 Contact Us
+</a>
+
+<a href="dashboard.html">
+👤 My Dashboard
+</a>
+
+<a href="login.html">
+🔐 Login
+</a>
+
+</div>
+
+</div>
+
 </header>
 
+
+<!-- HERO -->
 
 <section class="hero">
 
@@ -325,6 +460,8 @@ Find comfortable homes, apartments and commercial spaces
 
 </section>
 
+
+<!-- FILTERS -->
 
 <div class="filters">
 
@@ -361,7 +498,7 @@ placeholder="📍 Search City"
 <option value="">BHK</option>
 <option value="1">1 BHK</option>
 <option value="2">2 BHK</option>
-<option value="3">3">3 BHK</option>
+<option value="3">3 BHK</option>
 <option value="4">4+ BHK</option>
 
 </select>
@@ -379,8 +516,9 @@ onclick="searchRentProperties()">
 </div>
 
 
-<div class="container">
+<!-- PROPERTIES -->
 
+<div class="container">
 
 <div class="title">
 
@@ -393,9 +531,7 @@ Explore verified rental properties
 </div>
 
 
-<div
-class="properties"
-id="rentProperties">
+<div class="properties" id="rentProperties">
 
 
 <!-- PROPERTY 1 -->
@@ -409,7 +545,8 @@ data-bhk="2">
 
 <img
 src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80"
-alt="Modern Apartment">
+alt="Modern Apartment"
+>
 
 <div class="content">
 
@@ -426,9 +563,11 @@ alt="Modern Apartment">
 <div class="info">
 
 📍 Ahmedabad, Gujarat<br>
+
 🏢 Apartment<br>
-🛏 2 BHK<br>
-📐 1200 Sq.ft<br>
+
+🛏 2 BHK • 📐 1200 Sq.ft<br>
+
 🚗 Parking Available
 
 </div>
@@ -446,9 +585,7 @@ data-type="Apartment"
 data-bhk="2 BHK"
 data-area="1200 Sq.ft"
 data-listing="For Rent"
-data-description="Modern 2 BHK apartment available for rent in Ahmedabad."
-data-owner="Property Owner"
-data-phone="9999999999">
+data-description="Modern 2 BHK apartment available for rent in Ahmedabad.">
 
 View Details
 
@@ -491,7 +628,8 @@ data-bhk="3">
 
 <img
 src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80"
-alt="Luxury Home">
+alt="Luxury Rental"
+>
 
 <div class="content">
 
@@ -508,9 +646,11 @@ alt="Luxury Home">
 <div class="info">
 
 📍 Surat, Gujarat<br>
+
 🏢 House<br>
-🛏 3 BHK<br>
-📐 1800 Sq.ft<br>
+
+🛏 3 BHK • 📐 1800 Sq.ft<br>
+
 🚗 2 Parking
 
 </div>
@@ -528,9 +668,7 @@ data-type="House"
 data-bhk="3 BHK"
 data-area="1800 Sq.ft"
 data-listing="For Rent"
-data-description="Luxury 3 BHK home available for rent in Surat."
-data-owner="Property Owner"
-data-phone="9999999999">
+data-description="Luxury 3 BHK home available for rent in Surat.">
 
 View Details
 
@@ -573,7 +711,8 @@ data-bhk="2">
 
 <img
 src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80"
-alt="Premium Apartment">
+alt="Premium Apartment"
+>
 
 <div class="content">
 
@@ -590,9 +729,11 @@ alt="Premium Apartment">
 <div class="info">
 
 📍 Vadodara, Gujarat<br>
+
 🏢 Apartment<br>
-🛏 2 BHK<br>
-📐 1100 Sq.ft<br>
+
+🛏 2 BHK • 📐 1100 Sq.ft<br>
+
 🚗 Parking Available
 
 </div>
@@ -610,9 +751,7 @@ data-type="Apartment"
 data-bhk="2 BHK"
 data-area="1100 Sq.ft"
 data-listing="For Rent"
-data-description="Premium 2 BHK apartment available for rent in Vadodara."
-data-owner="Property Owner"
-data-phone="9999999999">
+data-description="Premium 2 BHK apartment available for rent in Vadodara.">
 
 View Details
 
@@ -647,17 +786,16 @@ target="_blank">
 </div>
 
 
-<div
-id="noResults"
-class="no-results">
+<div id="noResults" class="no-results">
 
 ❌ No matching rental property found.
 
 </div>
 
-
 </div>
 
+
+<!-- FOOTER -->
 
 <footer>
 
@@ -672,17 +810,21 @@ Buy • Sell • Rent • Interior
 <p>
 
 <a href="index.html">Home</a>
+
 <a href="buy.html">Buy</a>
+
 <a href="sell.html">Sell</a>
+
 <a href="rent.html">Rent</a>
-<a href="interior.html">Interior</a>
-<a href="listing.html">Listing</a>
+
 <a href="contact.html">Contact</a>
 
 </p>
 
 <p style="margin-top:20px;color:#aaa;">
+
 © 2026 BharatWorld Properties. All Rights Reserved.
+
 </p>
 
 </footer>
@@ -690,8 +832,41 @@ Buy • Sell • Rent • Interior
 
 <script>
 
+/* 3 DOT MENU */
 
-/* SEARCH RENT PROPERTIES */
+function toggleMenu(){
+
+const menu =
+document.getElementById("dropdownMenu");
+
+menu.classList.toggle("show");
+
+}
+
+
+/* CLOSE MENU WHEN CLICKING OUTSIDE */
+
+document.addEventListener("click", function(event){
+
+const menu =
+document.getElementById("dropdownMenu");
+
+const button =
+document.querySelector(".more-btn");
+
+if(
+!menu.contains(event.target) &&
+!button.contains(event.target)
+){
+
+menu.classList.remove("show");
+
+}
+
+});
+
+
+/* RENT PROPERTY SEARCH */
 
 function searchRentProperties(){
 
@@ -709,9 +884,8 @@ document.getElementById("rentBudget").value;
 const bhk =
 document.getElementById("rentBhk").value;
 
-
 const cards =
-document.querySelectorAll("#rentProperties .card");
+document.querySelectorAll(".card");
 
 let found = 0;
 
@@ -719,18 +893,16 @@ let found = 0;
 cards.forEach(function(card){
 
 const cardCity =
-(card.dataset.city || "")
-.toLowerCase();
+card.dataset.city.toLowerCase();
 
 const cardType =
-(card.dataset.type || "")
-.toLowerCase();
+card.dataset.type;
 
 const cardPrice =
-parseInt(card.dataset.price || 0);
+parseInt(card.dataset.price);
 
 const cardBhk =
-card.dataset.bhk || "";
+card.dataset.bhk;
 
 
 const cityMatch =
@@ -748,8 +920,7 @@ let budgetMatch = true;
 
 if(budget === "15000"){
 
-budgetMatch =
-cardPrice < 15000;
+budgetMatch = cardPrice < 15000;
 
 }
 
@@ -823,11 +994,9 @@ noResults.style.display = "none";
 }
 
 
+/* VIEW DETAILS */
 
-/* STATIC PROPERTY DETAILS */
-
-document
-.querySelectorAll(".details")
+document.querySelectorAll(".details")
 .forEach(function(button){
 
 button.addEventListener(
@@ -864,10 +1033,10 @@ description:
 button.dataset.description,
 
 owner:
-button.dataset.owner,
+"Property Owner",
 
 phone:
-button.dataset.phone
+"9999999999"
 
 };
 
@@ -890,179 +1059,7 @@ window.location.href =
 
 });
 
-
-
-/* LOAD USER ADDED RENT PROPERTIES */
-
-function loadUserRentProperties(){
-
-const properties = JSON.parse(
-localStorage.getItem("pv_properties") || "[]"
-);
-
-
-const propertiesBox =
-document.getElementById("rentProperties");
-
-
-properties.forEach(function(property){
-
-/* Only show rental properties */
-
-if(
-property.listingType &&
-property.listingType
-.toLowerCase()
-.includes("rent")
-){
-
-const card =
-document.createElement("div");
-
-
-card.className = "card";
-
-
-card.dataset.city =
-property.city || "";
-
-
-card.dataset.type =
-(property.type || "")
-.toLowerCase();
-
-
-card.dataset.price =
-property.price || "0";
-
-
-let bhkNumber =
-(property.bhk || "")
-.match(/\d+/);
-
-
-card.dataset.bhk =
-bhkNumber ?
-bhkNumber[0] :
-"";
-
-
-card.innerHTML = `
-
-<img
-src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
-alt="Property">
-
-<div class="content">
-
-<span class="verified">
-
-✓ PROPERTY LISTED
-
-</span>
-
-
-<h2>
-${property.title}
-</h2>
-
-
-<div class="price">
-
-₹${Number(property.price).toLocaleString()} / Month
-
-</div>
-
-
-<div class="info">
-
-📍 ${property.city}<br>
-
-🏢 ${property.type}<br>
-
-🛏 ${property.bhk || "Not specified"}<br>
-
-📐 ${property.area || "Area not specified"}
-
-</div>
-
-
-<div class="buttons">
-
-<a
-href="#"
-class="btn details user-details">
-
-View Details
-
-</a>
-
-
-<a
-href="tel:+91${property.phone}"
-class="btn call">
-
-📞 Call
-
-</a>
-
-
-<a
-href="https://wa.me/91${property.phone}"
-class="btn whatsapp"
-target="_blank">
-
-💬 WhatsApp
-
-</a>
-
-</div>
-
-</div>
-
-`;
-
-
-card
-.querySelector(".user-details")
-.addEventListener(
-"click",
-function(e){
-
-e.preventDefault();
-
-
-localStorage.setItem(
-
-"pv_selected_property",
-
-JSON.stringify(property)
-
-);
-
-
-window.location.href =
-"property-details.html";
-
-}
-
-);
-
-
-propertiesBox.appendChild(card);
-
-}
-
-});
-
-}
-
-
-loadUserRentProperties();
-
-
 </script>
-
 
 </body>
 
