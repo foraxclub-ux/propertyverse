@@ -473,61 +473,164 @@ class="submit-btn">
 
 <script>
 
-document.getElementById("propertyForm").addEventListener(
+/* CHECK LOGIN */
+
+const loggedIn =
+localStorage.getItem("pv_logged_in");
+
+if(loggedIn !== "true"){
+
+    alert("🔐 Please login first to post your property.");
+
+    window.location.href = "login.html";
+
+}
+
+
+/* PROPERTY FORM */
+
+document
+.getElementById("propertyForm")
+.addEventListener(
 "submit",
 function(e){
 
     e.preventDefault();
 
 
+    const title =
+    document
+    .getElementById("propertyTitle")
+    .value
+    .trim();
+
+
+    const city =
+    document
+    .getElementById("propertyCity")
+    .value
+    .trim();
+
+
+    const type =
+    document
+    .getElementById("propertyType")
+    .value;
+
+
+    const listingType =
+    document
+    .getElementById("listingType")
+    .value;
+
+
+    const price =
+    document
+    .getElementById("propertyPrice")
+    .value
+    .replace(/,/g,"")
+    .trim();
+
+
+    const bhk =
+    document
+    .getElementById("propertyBhk")
+    .value;
+
+
+    const area =
+    document
+    .getElementById("propertyArea")
+    .value
+    .trim();
+
+
+    const description =
+    document
+    .getElementById("propertyDescription")
+    .value
+    .trim();
+
+
+    const owner =
+    document
+    .getElementById("ownerName")
+    .value
+    .trim();
+
+
+    const phone =
+    document
+    .getElementById("ownerPhone")
+    .value
+    .replace(/\D/g,"");
+
+
+    /* PHONE VALIDATION */
+
+    if(phone.length !== 10){
+
+        alert(
+        "⚠️ Please enter a valid 10 digit mobile number."
+        );
+
+        return;
+
+    }
+
+
+    /* PRICE VALIDATION */
+
+    if(
+        price === "" ||
+        Number(price) <= 0
+    ){
+
+        alert(
+        "⚠️ Please enter a valid property price."
+        );
+
+        return;
+
+    }
+
+
+    /* CREATE PROPERTY */
+
     const property = {
 
-        title:
-        document.getElementById("propertyTitle")
-        .value
-        .trim(),
+        id:
+        "PV" +
+        Date.now(),
 
-        city:
-        document.getElementById("propertyCity")
-        .value
-        .trim(),
+        title:title,
 
-        type:
-        document.getElementById("propertyType")
-        .value,
+        city:city,
 
-        listingType:
-        document.getElementById("listingType")
-        .value,
+        type:type,
 
-        price:
-        document.getElementById("propertyPrice")
-        .value
-        .trim(),
+        listingType:listingType,
 
-        bhk:
-        document.getElementById("propertyBhk")
-        .value,
+        price:Number(price),
+
+        bhk:bhk,
 
         area:
-        document.getElementById("propertyArea")
-        .value
-        .trim(),
+        area || "Area not specified",
 
-        description:
-        document.getElementById("propertyDescription")
-        .value
-        .trim(),
+        description:description,
 
-        owner:
-        document.getElementById("ownerName")
-        .value
-        .trim(),
+        owner:owner,
 
-        phone:
-        document.getElementById("ownerPhone")
-        .value
-        .replace(/\D/g, ""),
+        phone:phone,
+
+        postedBy:
+        localStorage.getItem(
+            "pv_current_user"
+        ),
+
+        createdAt:
+        new Date().toLocaleString(),
 
         image:
         "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
@@ -535,16 +638,24 @@ function(e){
     };
 
 
+    /* GET OLD PROPERTIES */
+
     let properties =
     JSON.parse(
+
         localStorage.getItem(
             "pv_properties"
         ) || "[]"
+
     );
 
 
+    /* ADD NEW PROPERTY */
+
     properties.push(property);
 
+
+    /* SAVE */
 
     localStorage.setItem(
 
@@ -555,26 +666,38 @@ function(e){
     );
 
 
-    document.getElementById(
+    /* SUCCESS MESSAGE */
+
+    document
+    .getElementById(
         "successMessage"
-    ).style.display = "block";
+    )
+    .style.display =
+    "block";
 
 
-    document.getElementById(
+    /* RESET FORM */
+
+    document
+    .getElementById(
         "propertyForm"
-    ).reset();
+    )
+    .reset();
 
+
+    /* REDIRECT */
 
     setTimeout(function(){
 
         window.location.href =
         "listing.html";
 
-    }, 1500);
+    },1500);
+
 
 });
 
-            </script>
+</script>
 </body>
     </html>
 
