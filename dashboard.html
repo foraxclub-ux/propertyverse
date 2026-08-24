@@ -112,6 +112,17 @@ margin-bottom:18px;
 line-height:1.5;
 }
 
+.property-count{
+display:inline-block;
+background:#e7f8ed;
+color:#16803c;
+padding:5px 10px;
+border-radius:20px;
+font-size:13px;
+font-weight:bold;
+margin-bottom:12px;
+}
+
 .btn{
 display:inline-block;
 background:#081B33;
@@ -221,6 +232,8 @@ Manage your properties, saved listings and enquiries from one place.
 <div class="cards">
 
 
+<!-- MY PROPERTIES -->
+
 <div class="card">
 
 <div class="icon">
@@ -235,6 +248,15 @@ My Properties
 
 </h3>
 
+<div
+class="property-count"
+id="propertyCount"
+>
+
+0 Properties
+
+</div>
+
 <p>
 
 View and manage your property listings.
@@ -242,7 +264,7 @@ View and manage your property listings.
 </p>
 
 <a
-href="listing.html"
+href="my-properties.html"
 class="btn"
 >
 
@@ -251,7 +273,7 @@ View Properties
 </a>
 
 <a
-href="add-property.html"
+href="sell.html"
 class="btn add"
 >
 
@@ -262,6 +284,8 @@ class="btn add"
 </div>
 
 
+
+<!-- SAVED PROPERTIES -->
 
 <div class="card">
 
@@ -296,6 +320,8 @@ Browse Properties
 
 
 
+<!-- ENQUIRIES -->
+
 <div class="card">
 
 <div class="icon">
@@ -329,6 +355,8 @@ View Enquiries
 
 
 
+<!-- ADD PROPERTY -->
+
 <div class="card">
 
 <div class="icon">
@@ -350,7 +378,7 @@ List your property on BharatWorld Properties.
 </p>
 
 <a
-href="add-property.html"
+href="sell.html"
 class="btn add"
 >
 
@@ -405,15 +433,13 @@ Buy • Sell • Rent • Interior
 
 <script>
 
-/* Login Protection */
+/* LOGIN PROTECTION */
 
 const isLoggedIn =
 localStorage.getItem("pv_logged_in");
 
 
-if(
-isLoggedIn !== "true"
-){
+if(isLoggedIn !== "true"){
 
 window.location.href =
 "login.html";
@@ -421,7 +447,7 @@ window.location.href =
 }
 
 
-/* Show User Name */
+/* SHOW USER NAME */
 
 const userName =
 localStorage.getItem("pv_name");
@@ -437,7 +463,48 @@ document
 }
 
 
-/* Logout Function */
+/* SHOW MY PROPERTY COUNT */
+
+const currentUser =
+localStorage.getItem(
+"pv_current_user"
+);
+
+
+const allProperties =
+JSON.parse(
+localStorage.getItem(
+"pv_properties"
+) || "[]"
+);
+
+
+const myProperties =
+allProperties.filter(
+function(property){
+
+return property.postedBy === currentUser;
+
+}
+);
+
+
+const propertyCount =
+document.getElementById(
+"propertyCount"
+);
+
+
+propertyCount.innerText =
+myProperties.length +
+(
+myProperties.length === 1
+? " Property"
+: " Properties"
+);
+
+
+/* LOGOUT FUNCTION */
 
 function logoutUser(){
 
@@ -465,4 +532,4 @@ window.location.href =
 
 </body>
 
-  </html>
+</html>
