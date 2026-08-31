@@ -1,346 +1,483 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Post Your Property | BharatWorld Properties</title>
+<title id="pageTitle">Post Your Property | BharatWorld Properties</title>
 
 <style>
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-    background:#f5f7fa;
-    color:#081B33;
+background:#f5f7fa;
+color:#081B33;
 }
 
 header{
-    background:#081B33;
-    color:white;
-    padding:16px 25px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:15px;
+background:#081B33;
+color:white;
+padding:16px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:15px;
 }
 
 .logo{
-    color:#FFD700;
-    font-size:25px;
-    font-weight:bold;
+color:#FFD700;
+font-size:25px;
+font-weight:bold;
 }
 
 .logo small{
-    display:block;
-    color:white;
-    font-size:10px;
-    letter-spacing:2px;
-    margin-top:3px;
+display:block;
+color:white;
+font-size:10px;
+letter-spacing:2px;
+margin-top:3px;
 }
 
 nav{
-    display:flex;
-    flex-wrap:wrap;
-    gap:7px;
+display:flex;
+flex-wrap:wrap;
+gap:7px;
 }
 
 nav a{
-    color:white;
-    text-decoration:none;
-    padding:9px 11px;
-    border-radius:6px;
+color:white;
+text-decoration:none;
+padding:9px 11px;
+border-radius:6px;
 }
 
 nav a:hover,
 nav a.active{
-    background:#E63946;
+background:#E63946;
 }
 
 .hero{
-    background:
-    linear-gradient(rgba(8,27,51,.78),rgba(8,27,51,.82)),
-    url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=80");
+background:
+linear-gradient(rgba(8,27,51,.78),rgba(8,27,51,.82)),
+url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=80");
 
-    background-size:cover;
-    background-position:center;
+background-size:cover;
+background-position:center;
 
-    color:white;
-    text-align:center;
-    padding:65px 20px;
+color:white;
+text-align:center;
+padding:65px 20px;
 }
 
 .hero h1{
-    font-size:42px;
-    margin-bottom:12px;
+font-size:42px;
+margin-bottom:12px;
 }
 
 .hero p{
-    font-size:18px;
+font-size:18px;
 }
 
 .form-container{
-    max-width:850px;
-    margin:40px auto 70px;
-    padding:30px;
-    background:white;
-    border-radius:18px;
-    box-shadow:0 8px 30px rgba(0,0,0,.12);
+max-width:850px;
+margin:40px auto 70px;
+padding:30px;
+background:white;
+border-radius:18px;
+box-shadow:0 8px 30px rgba(0,0,0,.12);
 }
 
 .form-container h2{
-    text-align:center;
-    margin-bottom:25px;
+text-align:center;
+margin-bottom:25px;
 }
 
 .form-group{
-    margin-bottom:18px;
+margin-bottom:18px;
 }
 
 .form-group label{
-    display:block;
-    font-weight:bold;
-    margin-bottom:7px;
+display:block;
+font-weight:bold;
+margin-bottom:7px;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea{
-    width:100%;
-    padding:14px;
-    border:1px solid #ddd;
-    border-radius:8px;
-    font-size:16px;
-    outline:none;
+width:100%;
+padding:14px;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:16px;
+outline:none;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus{
-    border-color:#E63946;
+border-color:#E63946;
 }
 
 .form-group textarea{
-    min-height:120px;
-    resize:vertical;
+min-height:120px;
+resize:vertical;
 }
 
 .row{
-    display:flex;
-    gap:15px;
+display:flex;
+gap:15px;
 }
 
 .row .form-group{
-    flex:1;
+flex:1;
 }
 
 .submit-btn{
-    width:100%;
-    border:0;
-    background:#E63946;
-    color:white;
-    padding:16px;
-    border-radius:8px;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-    margin-top:10px;
+width:100%;
+border:0;
+background:#E63946;
+color:white;
+padding:16px;
+border-radius:8px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
 }
 
 .submit-btn:hover{
-    background:#c92f3b;
+background:#c92f3b;
+}
+
+.cancel-btn{
+display:none;
+width:100%;
+border:0;
+background:#081B33;
+color:white;
+padding:14px;
+border-radius:8px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
 }
 
 .note{
-    background:#fff8d8;
-    border-left:5px solid #FFD700;
-    padding:15px;
-    margin-bottom:20px;
-    line-height:1.5;
+background:#fff8d8;
+border-left:5px solid #FFD700;
+padding:15px;
+margin-bottom:20px;
+line-height:1.5;
+}
+
+.edit-note{
+display:none;
+background:#e8f0ff;
+color:#2457a6;
+border-left:5px solid #2457a6;
+padding:15px;
+margin-bottom:20px;
+line-height:1.5;
+border-radius:5px;
 }
 
 .success{
-    display:none;
-    background:#e7f8ed;
-    color:#16803c;
-    padding:15px;
-    border-radius:8px;
-    margin-bottom:20px;
-    text-align:center;
-    font-weight:bold;
+display:none;
+background:#e7f8ed;
+color:#16803c;
+padding:15px;
+border-radius:8px;
+margin-bottom:20px;
+text-align:center;
+font-weight:bold;
 }
 
 footer{
-    background:#050F1F;
-    color:white;
-    text-align:center;
-    padding:35px 20px;
+background:#050F1F;
+color:white;
+text-align:center;
+padding:35px 20px;
 }
 
 footer h2{
-    color:#FFD700;
+color:#FFD700;
 }
 
 footer p{
-    color:#ccc;
-    margin:12px 0;
+color:#ccc;
+margin:12px 0;
 }
 
 footer a{
-    color:white;
-    margin:7px;
-    text-decoration:none;
+color:white;
+margin:7px;
+text-decoration:none;
 }
 
 @media(max-width:600px){
 
-    header{
-        justify-content:center;
-        text-align:center;
-    }
-
-    nav{
-        justify-content:center;
-    }
-
-    nav a{
-        font-size:13px;
-        padding:8px;
-    }
-
-    .hero h1{
-        font-size:32px;
-    }
-
-    .form-container{
-        margin:25px 15px 50px;
-        padding:20px;
-    }
-
-    .row{
-        flex-direction:column;
-        gap:0;
-    }
+header{
+justify-content:center;
+text-align:center;
 }
+
+nav{
+justify-content:center;
+}
+
+nav a{
+font-size:13px;
+padding:8px;
+}
+
+.hero h1{
+font-size:32px;
+}
+
+.form-container{
+margin:25px 15px 50px;
+padding:20px;
+}
+
+.row{
+flex-direction:column;
+gap:0;
+}
+
+}
+
 </style>
+
 </head>
 
+
 <body>
+
 
 <header>
 
 <div class="logo">
+
 🏠 BharatWorld
+
 <small>PROPERTIES</small>
+
 </div>
 
+
 <nav>
+
 <a href="index.html">Home</a>
+
 <a href="buy.html">Buy</a>
+
 <a href="sell.html" class="active">Sell</a>
+
 <a href="rent.html">Rent</a>
+
 <a href="interior.html">Interior</a>
+
 <a href="listing.html">Listing</a>
+
 <a href="contact.html">Contact</a>
-<a href="login.html">Login</a>
+
+<a href="dashboard.html">Dashboard</a>
+
 </nav>
 
 </header>
 
 
+
 <section class="hero">
 
-<h1>🏠 Post Your Property</h1>
+<h1 id="heroTitle">
+🏠 Post Your Property
+</h1>
 
-<p>List your property and connect with potential buyers or tenants.</p>
+<p id="heroText">
+List your property and connect with potential buyers or tenants.
+</p>
 
 </section>
 
 
+
 <div class="form-container">
 
-<h2>📋 Property Details</h2>
 
-<div class="note">
-<strong>Important:</strong> Please enter accurate property information.
+<h2 id="formHeading">
+📋 Property Details
+</h2>
+
+
+
+<div
+class="note"
+id="newNote"
+>
+
+<strong>Important:</strong>
+Please enter accurate property information.
 Your listing will appear on the Listing page after submission.
+
 </div>
 
-<div id="successMessage" class="success">
-✅ Property listed successfully!
+
+
+<div
+class="edit-note"
+id="editNote"
+>
+
+<strong>✏️ Edit Mode:</strong>
+You are updating an existing property.
+After saving, your changes will be applied to your listing.
+
 </div>
+
+
+
+<div
+id="successMessage"
+class="success"
+>
+
+✅ Property listed successfully!
+
+</div>
+
 
 
 <form id="propertyForm">
 
+
 <div class="form-group">
-<label>Property Title</label>
+
+<label>
+Property Title
+</label>
 
 <input
 type="text"
 id="propertyTitle"
 placeholder="Example: Luxury 3 BHK Villa"
 required>
+
 </div>
+
 
 
 <div class="row">
 
+
 <div class="form-group">
-<label>City</label>
+
+<label>
+City
+</label>
 
 <input
 type="text"
 id="propertyCity"
 placeholder="Example: Ahmedabad"
 required>
+
 </div>
 
 
+
 <div class="form-group">
-<label>Property Type</label>
 
-<select id="propertyType" required>
+<label>
+Property Type
+</label>
 
-<option value="">Select Type</option>
-<option>Apartment</option>
-<option>Villa</option>
-<option>House</option>
-<option>Plot</option>
-<option>Commercial</option>
+<select
+id="propertyType"
+required
+>
+
+<option value="">
+Select Type
+</option>
+
+<option value="Apartment">
+Apartment
+</option>
+
+<option value="Villa">
+Villa
+</option>
+
+<option value="House">
+House
+</option>
+
+<option value="Plot">
+Plot
+</option>
+
+<option value="Commercial">
+Commercial
+</option>
 
 </select>
 
 </div>
 
 </div>
+
 
 
 <div class="row">
 
+
 <div class="form-group">
 
-<label>Listing Type</label>
+<label>
+Listing Type
+</label>
 
-<select id="listingType" required>
+<select
+id="listingType"
+required
+>
 
-<option value="">Select</option>
-<option>For Sale</option>
-<option>For Rent</option>
+<option value="">
+Select
+</option>
+
+<option value="For Sale">
+For Sale
+</option>
+
+<option value="For Rent">
+For Rent
+</option>
 
 </select>
 
 </div>
 
 
+
 <div class="form-group">
 
-<label>Price</label>
+<label>
+Price
+</label>
 
 <input
 type="text"
@@ -353,28 +490,49 @@ required>
 </div>
 
 
+
 <div class="row">
+
 
 <div class="form-group">
 
-<label>BHK</label>
+<label>
+BHK
+</label>
 
 <select id="propertyBhk">
 
-<option>1 BHK</option>
-<option>2 BHK</option>
-<option>3 BHK</option>
-<option>4 BHK</option>
-<option>5+ BHK</option>
+<option value="1 BHK">
+1 BHK
+</option>
+
+<option value="2 BHK">
+2 BHK
+</option>
+
+<option value="3 BHK">
+3 BHK
+</option>
+
+<option value="4 BHK">
+4 BHK
+</option>
+
+<option value="5+ BHK">
+5+ BHK
+</option>
 
 </select>
 
 </div>
 
 
+
 <div class="form-group">
 
-<label>Area</label>
+<label>
+Area
+</label>
 
 <input
 type="text"
@@ -386,9 +544,12 @@ placeholder="Example: 2200 Sq.ft">
 </div>
 
 
+
 <div class="form-group">
 
-<label>Property Description</label>
+<label>
+Property Description
+</label>
 
 <textarea
 id="propertyDescription"
@@ -398,16 +559,23 @@ required></textarea>
 </div>
 
 
+
 <h2 style="margin-top:30px;">
+
 👤 Owner Contact
+
 </h2>
+
 
 
 <div class="row">
 
+
 <div class="form-group">
 
-<label>Owner Name</label>
+<label>
+Owner Name
+</label>
 
 <input
 type="text"
@@ -418,14 +586,18 @@ required>
 </div>
 
 
+
 <div class="form-group">
 
-<label>Phone Number</label>
+<label>
+Phone Number
+</label>
 
 <input
 type="tel"
 id="ownerPhone"
 placeholder="10 digit mobile number"
+maxlength="10"
 required>
 
 </div>
@@ -433,24 +605,46 @@ required>
 </div>
 
 
+
 <button
 type="submit"
-class="submit-btn">
+class="submit-btn"
+id="submitButton"
+>
 
 ➕ Publish Property
 
 </button>
+
+
+
+<button
+type="button"
+class="cancel-btn"
+id="cancelButton"
+onclick="cancelEdit()"
+>
+
+✖️ Cancel Edit
+
+</button>
+
 
 </form>
 
 </div>
 
 
+
 <footer>
 
-<h2>🏠 BharatWorld Properties</h2>
+<h2>
+🏠 BharatWorld Properties
+</h2>
 
-<p>From Bharat to the World.</p>
+<p>
+From Bharat to the World.
+</p>
 
 <p>
 
@@ -471,23 +665,250 @@ class="submit-btn">
 </footer>
 
 
+
 <script>
 
+
+/* ================================= */
 /* CHECK LOGIN */
+/* ================================= */
 
 const loggedIn =
 localStorage.getItem("pv_logged_in");
 
+
 if(loggedIn !== "true"){
 
-    alert("🔐 Please login first to post your property.");
+alert(
+"🔐 Please login first to post your property."
+);
 
-    window.location.href = "login.html";
+window.location.href =
+"login.html";
 
 }
 
 
-/* PROPERTY FORM */
+
+/* ================================= */
+/* CURRENT USER */
+/* ================================= */
+
+const currentUser =
+localStorage.getItem(
+"pv_current_user"
+);
+
+
+
+/* ================================= */
+/* CHECK EDIT MODE */
+/* ================================= */
+
+let editProperty =
+JSON.parse(
+
+localStorage.getItem(
+"pv_edit_property"
+) || "null"
+
+);
+
+
+
+let isEditMode =
+false;
+
+
+
+/* ================================= */
+/* ELEMENTS */
+/* ================================= */
+
+const pageTitle =
+document.getElementById(
+"pageTitle"
+);
+
+const heroTitle =
+document.getElementById(
+"heroTitle"
+);
+
+const heroText =
+document.getElementById(
+"heroText"
+);
+
+const formHeading =
+document.getElementById(
+"formHeading"
+);
+
+const submitButton =
+document.getElementById(
+"submitButton"
+);
+
+const cancelButton =
+document.getElementById(
+"cancelButton"
+);
+
+const newNote =
+document.getElementById(
+"newNote"
+);
+
+const editNote =
+document.getElementById(
+"editNote"
+);
+
+
+
+/* ================================= */
+/* LOAD EDIT PROPERTY */
+/* ================================= */
+
+if(editProperty){
+
+
+/* SECURITY CHECK */
+
+if(
+String(editProperty.postedBy) !==
+String(currentUser)
+){
+
+alert(
+"❌ You can only edit your own property."
+);
+
+localStorage.removeItem(
+"pv_edit_property"
+);
+
+window.location.href =
+"my-properties.html";
+
+}
+
+
+/* EDIT MODE */
+
+else{
+
+isEditMode = true;
+
+
+/* PAGE TEXT */
+
+pageTitle.innerText =
+"Edit Property | BharatWorld Properties";
+
+heroTitle.innerText =
+"✏️ Edit Your Property";
+
+heroText.innerText =
+"Update your property information and save the changes.";
+
+formHeading.innerText =
+"✏️ Edit Property Details";
+
+submitButton.innerText =
+"💾 Update Property";
+
+cancelButton.style.display =
+"block";
+
+newNote.style.display =
+"none";
+
+editNote.style.display =
+"block";
+
+
+
+/* FILL FORM */
+
+document.getElementById(
+"propertyTitle"
+).value =
+editProperty.title || "";
+
+
+
+document.getElementById(
+"propertyCity"
+).value =
+editProperty.city || "";
+
+
+
+document.getElementById(
+"propertyType"
+).value =
+editProperty.type || "";
+
+
+
+document.getElementById(
+"listingType"
+).value =
+editProperty.listingType || "";
+
+
+
+document.getElementById(
+"propertyPrice"
+).value =
+editProperty.price || "";
+
+
+
+document.getElementById(
+"propertyBhk"
+).value =
+editProperty.bhk || "1 BHK";
+
+
+
+document.getElementById(
+"propertyArea"
+).value =
+editProperty.area || "";
+
+
+
+document.getElementById(
+"propertyDescription"
+).value =
+editProperty.description || "";
+
+
+
+document.getElementById(
+"ownerName"
+).value =
+editProperty.owner || "";
+
+
+
+document.getElementById(
+"ownerPhone"
+).value =
+editProperty.phone || "";
+
+}
+
+}
+
+
+
+/* ================================= */
+/* FORM SUBMIT */
+/* ================================= */
 
 document
 .getElementById("propertyForm")
@@ -495,209 +916,446 @@ document
 "submit",
 function(e){
 
-    e.preventDefault();
+e.preventDefault();
 
 
-    const title =
-    document
-    .getElementById("propertyTitle")
-    .value
-    .trim();
 
+/* ================================= */
+/* GET FORM VALUES */
+/* ================================= */
 
-    const city =
-    document
-    .getElementById("propertyCity")
-    .value
-    .trim();
+const title =
+document
+.getElementById("propertyTitle")
+.value
+.trim();
 
 
-    const type =
-    document
-    .getElementById("propertyType")
-    .value;
 
+const city =
+document
+.getElementById("propertyCity")
+.value
+.trim();
 
-    const listingType =
-    document
-    .getElementById("listingType")
-    .value;
 
 
-    const price =
-    document
-    .getElementById("propertyPrice")
-    .value
-    .replace(/,/g,"")
-    .trim();
+const type =
+document
+.getElementById("propertyType")
+.value;
 
 
-    const bhk =
-    document
-    .getElementById("propertyBhk")
-    .value;
 
+const listingType =
+document
+.getElementById("listingType")
+.value;
 
-    const area =
-    document
-    .getElementById("propertyArea")
-    .value
-    .trim();
 
 
-    const description =
-    document
-    .getElementById("propertyDescription")
-    .value
-    .trim();
+const price =
+document
+.getElementById("propertyPrice")
+.value
+.replace(/,/g,"")
+.trim();
 
 
-    const owner =
-    document
-    .getElementById("ownerName")
-    .value
-    .trim();
 
+const bhk =
+document
+.getElementById("propertyBhk")
+.value;
 
-    const phone =
-    document
-    .getElementById("ownerPhone")
-    .value
-    .replace(/\D/g,"");
 
 
-    /* PHONE VALIDATION */
+const area =
+document
+.getElementById("propertyArea")
+.value
+.trim();
 
-    if(phone.length !== 10){
 
-        alert(
-        "⚠️ Please enter a valid 10 digit mobile number."
-        );
 
-        return;
+const description =
+document
+.getElementById("propertyDescription")
+.value
+.trim();
 
-    }
 
 
-    /* PRICE VALIDATION */
+const owner =
+document
+.getElementById("ownerName")
+.value
+.trim();
 
-    if(
-        price === "" ||
-        Number(price) <= 0
-    ){
 
-        alert(
-        "⚠️ Please enter a valid property price."
-        );
 
-        return;
+const phone =
+document
+.getElementById("ownerPhone")
+.value
+.replace(/\D/g,"");
 
-    }
 
 
-    /* CREATE PROPERTY */
+/* ================================= */
+/* PHONE VALIDATION */
+/* ================================= */
 
-    const property = {
+if(phone.length !== 10){
 
-        id:
-        "PV" +
-        Date.now(),
+alert(
+"⚠️ Please enter a valid 10 digit mobile number."
+);
 
-        title:title,
+return;
 
-        city:city,
+}
 
-        type:type,
 
-        listingType:listingType,
 
-        price:Number(price),
+/* ================================= */
+/* PRICE VALIDATION */
+/* ================================= */
 
-        bhk:bhk,
+if(
+price === "" ||
+Number(price) <= 0
+){
 
-        area:
-        area || "Area not specified",
+alert(
+"⚠️ Please enter a valid property price."
+);
 
-        description:description,
+return;
 
-        owner:owner,
+}
 
-        phone:phone,
 
-        postedBy:
-        localStorage.getItem(
-            "pv_current_user"
-        ),
 
-        createdAt:
-        new Date().toLocaleString(),
+/* ================================= */
+/* GET PROPERTIES */
+/* ================================= */
 
-        image:
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+let properties =
+JSON.parse(
 
-    };
+localStorage.getItem(
+"pv_properties"
+) || "[]"
 
+);
 
-    /* GET OLD PROPERTIES */
 
-    let properties =
-    JSON.parse(
 
-        localStorage.getItem(
-            "pv_properties"
-        ) || "[]"
+/* ================================= */
+/* EDIT EXISTING PROPERTY */
+/* ================================= */
 
-    );
+if(isEditMode){
 
 
-    /* ADD NEW PROPERTY */
+const propertyIndex =
+properties.findIndex(
 
-    properties.push(property);
+function(property){
 
+return String(property.id) ===
+String(editProperty.id);
 
-    /* SAVE */
+}
 
-    localStorage.setItem(
+);
 
-        "pv_properties",
 
-        JSON.stringify(properties)
 
-    );
+/* PROPERTY NOT FOUND */
 
+if(propertyIndex === -1){
 
-    /* SUCCESS MESSAGE */
+alert(
+"❌ Property could not be found."
+);
 
-    document
-    .getElementById(
-        "successMessage"
-    )
-    .style.display =
-    "block";
+localStorage.removeItem(
+"pv_edit_property"
+);
 
+window.location.href =
+"my-properties.html";
 
-    /* RESET FORM */
+return;
 
-    document
-    .getElementById(
-        "propertyForm"
-    )
-    .reset();
+}
 
 
-    /* REDIRECT */
 
-    setTimeout(function(){
+/* SECURITY CHECK AGAIN */
 
-        window.location.href =
-        "listing.html";
+if(
+String(properties[propertyIndex].postedBy) !==
+String(currentUser)
+){
 
-    },1500);
+alert(
+"❌ You are not allowed to edit this property."
+);
 
+localStorage.removeItem(
+"pv_edit_property"
+);
+
+window.location.href =
+"my-properties.html";
+
+return;
+
+}
+
+
+
+/* UPDATE ONLY PROPERTY DATA */
+
+properties[propertyIndex] = {
+
+...properties[propertyIndex],
+
+title:title,
+
+city:city,
+
+type:type,
+
+listingType:listingType,
+
+price:Number(price),
+
+bhk:bhk,
+
+area:
+area || "Area not specified",
+
+description:description,
+
+owner:owner,
+
+phone:phone,
+
+updatedAt:
+new Date().toLocaleString()
+
+};
+
+
+
+/* SAVE */
+
+localStorage.setItem(
+
+"pv_properties",
+
+JSON.stringify(
+properties
+)
+
+);
+
+
+
+/* CLEAR EDIT MODE */
+
+localStorage.removeItem(
+"pv_edit_property"
+);
+
+
+
+/* SUCCESS */
+
+document
+.getElementById(
+"successMessage"
+)
+.innerText =
+"✅ Property updated successfully!";
+
+
+
+document
+.getElementById(
+"successMessage"
+)
+.style.display =
+"block";
+
+
+
+/* REDIRECT */
+
+setTimeout(
+
+function(){
+
+window.location.href =
+"my-properties.html";
+
+},
+
+1200
+
+);
+
+
+return;
+
+}
+
+
+
+/* ================================= */
+/* CREATE NEW PROPERTY */
+/* ================================= */
+
+const newProperty = {
+
+id:
+"PV" +
+Date.now(),
+
+title:title,
+
+city:city,
+
+type:type,
+
+listingType:listingType,
+
+price:Number(price),
+
+bhk:bhk,
+
+area:
+area || "Area not specified",
+
+description:description,
+
+owner:owner,
+
+phone:phone,
+
+postedBy:
+currentUser,
+
+createdAt:
+new Date().toLocaleString(),
+
+image:
+"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+
+};
+
+
+
+/* ================================= */
+/* ADD PROPERTY */
+/* ================================= */
+
+properties.push(
+newProperty
+);
+
+
+
+/* ================================= */
+/* SAVE PROPERTIES */
+/* ================================= */
+
+localStorage.setItem(
+
+"pv_properties",
+
+JSON.stringify(
+properties
+)
+
+);
+
+
+
+/* ================================= */
+/* SUCCESS */
+/* ================================= */
+
+document
+.getElementById(
+"successMessage"
+)
+.innerText =
+"✅ Property listed successfully!";
+
+
+
+document
+.getElementById(
+"successMessage"
+)
+.style.display =
+"block";
+
+
+
+/* RESET */
+
+document
+.getElementById(
+"propertyForm"
+)
+.reset();
+
+
+
+/* REDIRECT */
+
+setTimeout(
+
+function(){
+
+window.location.href =
+"listing.html";
+
+},
+
+1200
+
+);
 
 });
 
-</script>
-</body>
-    </html>
 
+
+/* ================================= */
+/* CANCEL EDIT */
+/* ================================= */
+
+function cancelEdit(){
+
+localStorage.removeItem(
+"pv_edit_property"
+);
+
+window.location.href =
+"my-properties.html";
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
