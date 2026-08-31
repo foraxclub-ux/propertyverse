@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Edit Property | BharatWorld Properties</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f5f7fa;
+color:#081B33;
+}
+
+header{
+background:#081B33;
+padding:16px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:15px;
+}
+
+.logo{
+color:#FFD700;
+font-size:24px;
+font-weight:bold;
+}
+
+.logo small{
+display:block;
+color:white;
+font-size:10px;
+letter-spacing:2px;
+margin-top:3px;
+}
+
+.back{
+color:white;
+text-decoration:none;
+padding:9px 14px;
+border-radius:6px;
+}
+
+.back:hover{
+background:#E63946;
+}
+
+.container{
+max-width:850px;
+margin:40px auto 70px;
+padding:0 20px;
+}
+
+.form-box{
+background:white;
+padding:30px;
+border-radius:18px;
+box-shadow:0 8px 30px rgba(0,0,0,.12);
+}
+
+.form-box h1{
+text-align:center;
+margin-bottom:25px;
+}
+
+.form-group{
+margin-bottom:18px;
+}
+
+.form-group label{
+display:block;
+font-weight:bold;
+margin-bottom:7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+width:100%;
+padding:14px;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:16px;
+outline:none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+border-color:#E63946;
+}
+
+.form-group textarea{
+min-height:130px;
+resize:vertical;
+}
+
+.row{
+display:flex;
+gap:15px;
+}
+
+.row .form-group{
+flex:1;
+}
+
+.save-btn{
+width:100%;
+border:0;
+background:#16803c;
+color:white;
+padding:16px;
+border-radius:8px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
+}
+
+.save-btn:hover{
+background:#126b31;
+}
+
+.cancel-btn{
+display:block;
+width:100%;
+background:#081B33;
+color:white;
+text-align:center;
+text-decoration:none;
+padding:14px;
+border-radius:8px;
+font-weight:bold;
+margin-top:10px;
+}
+
+.success{
+display:none;
+background:#e7f8ed;
+color:#16803c;
+padding:14px;
+border-radius:8px;
+margin-bottom:20px;
+text-align:center;
+font-weight:bold;
+}
+
+.error{
+display:none;
+background:#ffe7e7;
+color:#b00020;
+padding:14px;
+border-radius:8px;
+margin-bottom:20px;
+text-align:center;
+font-weight:bold;
+}
+
+footer{
+background:#050F1F;
+color:white;
+text-align:center;
+padding:30px 20px;
+}
+
+footer h2{
+color:#FFD700;
+}
+
+footer p{
+color:#ccc;
+margin-top:10px;
+}
+
+@media(max-width:600px){
+
+header{
+justify-content:center;
+text-align:center;
+}
+
+.form-box{
+padding:20px;
+}
+
+.row{
+flex-direction:column;
+gap:0;
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+
+🏠 BharatWorld
+
+<small>PROPERTIES</small>
+
+</div>
+
+<a
+href="my-properties.html"
+class="back"
+>
+
+← My Properties
+
+</a>
+
+</header>
+
+
+
+<div class="container">
+
+<div class="form-box">
+
+<h1>
+✏️ Edit Property
+</h1>
+
+
+<div
+id="successMessage"
+class="success"
+>
+
+✅ Property updated successfully!
+
+</div>
+
+
+<div
+id="errorMessage"
+class="error"
+>
+
+❌ Property not found.
+
+</div>
+
+
+<form id="editForm">
+
+
+<div class="form-group">
+
+<label>
+Property Title
+</label>
+
+<input
+type="text"
+id="propertyTitle"
+required
+>
+
+</div>
+
+
+
+<div class="row">
+
+
+<div class="form-group">
+
+<label>
+City
+</label>
+
+<input
+type="text"
+id="propertyCity"
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Property Type
+</label>
+
+<select
+id="propertyType"
+required
+>
+
+<option value="Apartment">
+Apartment
+</option>
+
+<option value="Villa">
+Villa
+</option>
+
+<option value="House">
+House
+</option>
+
+<option value="Plot">
+Plot
+</option>
+
+<option value="Commercial">
+Commercial
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+
+<div class="row">
+
+
+<div class="form-group">
+
+<label>
+Listing Type
+</label>
+
+<select
+id="listingType"
+required
+>
+
+<option value="For Sale">
+For Sale
+</option>
+
+<option value="For Rent">
+For Rent
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Price
+</label>
+
+<input
+type="text"
+id="propertyPrice"
+required
+>
+
+</div>
+
+</div>
+
+
+
+<div class="row">
+
+
+<div class="form-group">
+
+<label>
+BHK
+</label>
+
+<select id="propertyBhk">
+
+<option value="1 BHK">
+1 BHK
+</option>
+
+<option value="2 BHK">
+2 BHK
+</option>
+
+<option value="3 BHK">
+3 BHK
+</option>
+
+<option value="4 BHK">
+4 BHK
+</option>
+
+<option value="5+ BHK">
+5+ BHK
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Area
+</label>
+
+<input
+type="text"
+id="propertyArea"
+>
+
+</div>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+Property Description
+</label>
+
+<textarea
+id="propertyDescription"
+required
+></textarea>
+
+</div>
+
+
+
+<h2 style="margin:25px 0 20px;">
+
+👤 Owner Contact
+
+</h2>
+
+
+
+<div class="row">
+
+
+<div class="form-group">
+
+<label>
+Owner Name
+</label>
+
+<input
+type="text"
+id="ownerName"
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Phone Number
+</label>
+
+<input
+type="tel"
+id="ownerPhone"
+required
+>
+
+</div>
+
+</div>
+
+
+
+<button
+type="submit"
+class="save-btn"
+>
+
+💾 Save Changes
+
+</button>
+
+
+<a
+href="my-properties.html"
+class="cancel-btn"
+>
+
+Cancel
+
+</a>
+
+
+</form>
+
+</div>
+
+</div>
+
+
+
+<footer>
+
+<h2>
+🏠 BharatWorld Properties
+</h2>
+
+<p>
+Buy • Sell • Rent • Interior
+</p>
+
+<p>
+© 2026 BharatWorld Properties. All Rights Reserved.
+</p>
+
+</footer>
+
+
+
+<script>
+
+/* LOGIN PROTECTION */
+
+const loggedIn =
+localStorage.getItem("pv_logged_in");
+
+
+if(loggedIn !== "true"){
+
+window.location.href =
+"login.html";
+
+}
+
+
+
+/* GET EDIT PROPERTY */
+
+const editProperty =
+JSON.parse(
+
+localStorage.getItem(
+"pv_edit_property"
+) || "null"
+
+);
+
+
+
+/* CHECK PROPERTY */
+
+if(!editProperty){
+
+document.getElementById(
+"errorMessage"
+).style.display =
+"block";
+
+document.getElementById(
+"editForm"
+).style.display =
+"none";
+
+}
+
+
+
+/* FILL FORM */
+
+if(editProperty){
+
+document.getElementById(
+"propertyTitle"
+).value =
+editProperty.title || "";
+
+
+document.getElementById(
+"propertyCity"
+).value =
+editProperty.city || "";
+
+
+document.getElementById(
+"propertyType"
+).value =
+editProperty.type || "Apartment";
+
+
+document.getElementById(
+"listingType"
+).value =
+editProperty.listingType || "For Sale";
+
+
+document.getElementById(
+"propertyPrice"
+).value =
+editProperty.price || "";
+
+
+document.getElementById(
+"propertyBhk"
+).value =
+editProperty.bhk || "1 BHK";
+
+
+document.getElementById(
+"propertyArea"
+).value =
+editProperty.area || "";
+
+
+document.getElementById(
+"propertyDescription"
+).value =
+editProperty.description || "";
+
+
+document.getElementById(
+"ownerName"
+).value =
+editProperty.owner || "";
+
+
+document.getElementById(
+"ownerPhone"
+).value =
+editProperty.phone || "";
+
+}
+
+
+
+/* SAVE CHANGES */
+
+document
+.getElementById("editForm")
+.addEventListener(
+"submit",
+function(e){
+
+e.preventDefault();
+
+
+if(!editProperty){
+
+return;
+
+}
+
+
+/* PHONE */
+
+const phone =
+document
+.getElementById("ownerPhone")
+.value
+.replace(/\D/g,"");
+
+
+if(phone.length !== 10){
+
+alert(
+"⚠️ Please enter a valid 10 digit mobile number."
+);
+
+return;
+
+}
+
+
+/* PRICE */
+
+const price =
+document
+.getElementById("propertyPrice")
+.value
+.replace(/,/g,"")
+.trim();
+
+
+if(
+price === "" ||
+Number(price) <= 0
+){
+
+alert(
+"⚠️ Please enter a valid property price."
+);
+
+return;
+
+}
+
+
+
+/* GET ALL PROPERTIES */
+
+let properties =
+JSON.parse(
+
+localStorage.getItem(
+"pv_properties"
+) || "[]"
+
+);
+
+
+
+/* FIND PROPERTY */
+
+const index =
+properties.findIndex(
+function(property){
+
+return property.id ===
+editProperty.id;
+
+}
+);
+
+
+
+if(index === -1){
+
+alert(
+"❌ Property not found."
+);
+
+return;
+
+}
+
+
+
+/* UPDATE PROPERTY */
+
+properties[index].title =
+document
+.getElementById("propertyTitle")
+.value
+.trim();
+
+
+properties[index].city =
+document
+.getElementById("propertyCity")
+.value
+.trim();
+
+
+properties[index].type =
+document
+.getElementById("propertyType")
+.value;
+
+
+properties[index].listingType =
+document
+.getElementById("listingType")
+.value;
+
+
+properties[index].price =
+Number(price);
+
+
+properties[index].bhk =
+document
+.getElementById("propertyBhk")
+.value;
+
+
+properties[index].area =
+document
+.getElementById("propertyArea")
+.value
+.trim() ||
+"Area not specified";
+
+
+properties[index].description =
+document
+.getElementById("propertyDescription")
+.value
+.trim();
+
+
+properties[index].owner =
+document
+.getElementById("ownerName")
+.value
+.trim();
+
+
+properties[index].phone =
+phone;
+
+
+/* UPDATED TIME */
+
+properties[index].updatedAt =
+new Date().toLocaleString();
+
+
+
+/* SAVE */
+
+localStorage.setItem(
+
+"pv_properties",
+
+JSON.stringify(properties)
+
+);
+
+
+
+/* REMOVE EDIT DATA */
+
+localStorage.removeItem(
+"pv_edit_property"
+);
+
+
+
+/* SUCCESS */
+
+document.getElementById(
+"successMessage"
+).style.display =
+"block";
+
+
+
+/* REDIRECT */
+
+setTimeout(function(){
+
+window.location.href =
+"my-properties.html";
+
+},1200);
+
+
+});
+
+</script>
+
+
+</body>
+
+  </html>
