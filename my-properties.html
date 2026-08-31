@@ -58,7 +58,7 @@ background:#E63946;
 }
 
 .container{
-max-width:1150px;
+max-width:1100px;
 margin:35px auto 60px;
 padding:0 20px;
 }
@@ -77,7 +77,7 @@ margin-bottom:8px;
 color:#666;
 }
 
-.property-count{
+.count{
 display:inline-block;
 margin-top:12px;
 background:#e7f8ed;
@@ -118,34 +118,20 @@ object-fit:cover;
 padding:20px;
 }
 
-.badges{
-display:flex;
-gap:8px;
-flex-wrap:wrap;
-margin-bottom:10px;
-}
-
 .badge{
 display:inline-block;
-padding:6px 9px;
-border-radius:5px;
-font-size:12px;
-font-weight:bold;
-}
-
-.sale{
 background:#e7f8ed;
 color:#16803c;
-}
-
-.rent{
-background:#e8f0ff;
-color:#2457a6;
+padding:6px 10px;
+border-radius:6px;
+font-size:12px;
+font-weight:bold;
+margin-bottom:10px;
 }
 
 .card h2{
 font-size:21px;
-margin:10px 0;
+margin:8px 0;
 }
 
 .price{
@@ -159,21 +145,6 @@ margin-bottom:8px;
 color:#666;
 line-height:1.7;
 font-size:15px;
-}
-
-.description{
-margin-top:12px;
-padding-top:12px;
-border-top:1px solid #eee;
-color:#555;
-line-height:1.5;
-font-size:14px;
-}
-
-.owner{
-margin-top:12px;
-font-size:14px;
-color:#555;
 }
 
 .buttons{
@@ -190,6 +161,8 @@ border-radius:7px;
 font-weight:bold;
 cursor:pointer;
 font-size:14px;
+text-decoration:none;
+display:inline-block;
 }
 
 .view{
@@ -207,11 +180,22 @@ background:#E63946;
 color:white;
 }
 
+.add{
+display:inline-block;
+margin-top:25px;
+background:#E63946;
+color:white;
+padding:13px 20px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+}
+
 .empty{
 display:none;
 text-align:center;
 background:white;
-padding:50px 20px;
+padding:55px 20px;
 border-radius:15px;
 box-shadow:0 5px 18px rgba(0,0,0,.08);
 }
@@ -223,16 +207,6 @@ margin-bottom:12px;
 .empty p{
 color:#666;
 margin-bottom:20px;
-}
-
-.add-btn{
-display:inline-block;
-background:#E63946;
-color:white;
-text-decoration:none;
-padding:12px 20px;
-border-radius:8px;
-font-weight:bold;
 }
 
 footer{
@@ -259,13 +233,13 @@ justify-content:center;
 text-align:center;
 }
 
+.title h1{
+font-size:28px;
+}
+
 .card{
 width:100%;
 max-width:370px;
-}
-
-.title h1{
-font-size:28px;
 }
 
 }
@@ -312,17 +286,28 @@ class="back"
 </h1>
 
 <p>
-Manage all your posted property listings.
+Manage the properties you have listed on BharatWorld Properties.
 </p>
 
 <div
-class="property-count"
+class="count"
 id="propertyCount"
 >
 
 0 Properties
 
 </div>
+
+<br>
+
+<a
+href="sell.html"
+class="add"
+>
+
+➕ Add New Property
+
+</a>
 
 </div>
 
@@ -343,19 +328,19 @@ id="emptyMessage"
 >
 
 <h2>
-🏠 No Properties Yet
+🏠 No Properties Listed
 </h2>
 
 <p>
-You have not posted any property yet.
+You have not listed any property yet.
 </p>
 
 <a
 href="sell.html"
-class="add-btn"
+class="add"
 >
 
-➕ Post Your Property
+➕ List Your Property
 
 </a>
 
@@ -386,6 +371,7 @@ Buy • Sell • Rent • Interior
 
 <script>
 
+
 /* ============================= */
 /* LOGIN PROTECTION */
 /* ============================= */
@@ -393,12 +379,14 @@ Buy • Sell • Rent • Interior
 const isLoggedIn =
 localStorage.getItem("pv_logged_in");
 
+
 if(isLoggedIn !== "true"){
 
 window.location.href =
 "login.html";
 
 }
+
 
 
 /* ============================= */
@@ -411,42 +399,38 @@ localStorage.getItem(
 );
 
 
+
 /* ============================= */
 /* GET ALL PROPERTIES */
 /* ============================= */
 
 let allProperties =
 JSON.parse(
+
 localStorage.getItem(
 "pv_properties"
 ) || "[]"
+
 );
 
 
+
 /* ============================= */
-/* FILTER MY PROPERTIES */
+/* GET MY PROPERTIES */
 /* ============================= */
 
 let myProperties =
 allProperties.filter(
+
 function(property){
 
-/*
-Old properties without postedBy
-will still be shown.
-*/
-
-if(!property.postedBy){
-
-return true;
+return String(property.postedBy) ===
+String(currentUser);
 
 }
 
-return property.postedBy ===
-currentUser;
-
-}
 );
+
 
 
 /* ============================= */
@@ -469,6 +453,7 @@ document.getElementById(
 );
 
 
+
 /* ============================= */
 /* PROPERTY COUNT */
 /* ============================= */
@@ -482,8 +467,9 @@ myProperties.length === 1
 );
 
 
+
 /* ============================= */
-/* EMPTY MESSAGE */
+/* EMPTY STATE */
 /* ============================= */
 
 if(myProperties.length === 0){
@@ -494,12 +480,15 @@ emptyMessage.style.display =
 }
 
 
+
 /* ============================= */
-/* SHOW PROPERTIES */
+/* SHOW MY PROPERTIES */
 /* ============================= */
 
 myProperties.forEach(
+
 function(property){
+
 
 const card =
 document.createElement("div");
@@ -508,22 +497,50 @@ card.className =
 "card";
 
 
-const listingClass =
-property.listingType ===
-"For Rent"
-? "rent"
-: "sale";
+
+/* PRICE */
+
+let formattedPrice =
+"Price on Request";
 
 
-const formattedPrice =
-Number(
-property.price || 0
-).toLocaleString("en-IN");
+if(property.price){
 
+const cleanPrice =
+String(property.price)
+.replace(/[₹,]/g,"")
+.trim();
+
+
+const numberPrice =
+Number(cleanPrice);
+
+
+if(!isNaN(numberPrice)){
+
+formattedPrice =
+"₹" +
+numberPrice.toLocaleString("en-IN");
+
+}
+
+else{
+
+formattedPrice =
+property.price;
+
+}
+
+}
+
+
+
+/* IMAGE */
 
 const image =
 property.image ||
 "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80";
+
 
 
 card.innerHTML = `
@@ -531,21 +548,18 @@ card.innerHTML = `
 <img
 src="${image}"
 alt="Property Image"
+onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'"
 >
 
 
 <div class="content">
 
 
-<div class="badges">
+<span class="badge">
 
-<span class="badge ${listingClass}">
-
-${property.listingType || "For Sale"}
+✓ MY LISTING
 
 </span>
-
-</div>
 
 
 <h2>
@@ -557,18 +571,14 @@ ${property.title || "Property"}
 
 <div class="price">
 
-₹${formattedPrice}
-
-${property.listingType === "For Rent"
-? " / Month"
-: ""}
+${formattedPrice}
 
 </div>
 
 
 <div class="info">
 
-📍 ${property.city || "City not specified"}
+📍 ${property.city || "Location not specified"}
 
 <br>
 
@@ -580,19 +590,9 @@ ${property.listingType === "For Rent"
 
 • 📐 ${property.area || "Not specified"}
 
-</div>
+<br>
 
-
-<div class="description">
-
-${property.description || "No description available."}
-
-</div>
-
-
-<div class="owner">
-
-👤 ${property.owner || "Property Owner"}
+🏷️ ${property.listingType || "For Sale"}
 
 </div>
 
@@ -640,7 +640,9 @@ onclick="deleteProperty('${property.id}')"
 
 container.appendChild(card);
 
+
 }
+
 );
 
 
@@ -651,15 +653,19 @@ container.appendChild(card);
 
 function viewProperty(id){
 
+
 const property =
 allProperties.find(
+
 function(item){
 
 return String(item.id) ===
 String(id);
 
 }
+
 );
+
 
 
 if(!property){
@@ -673,6 +679,9 @@ return;
 }
 
 
+
+/* SAVE SELECTED PROPERTY */
+
 localStorage.setItem(
 
 "pv_selected_property",
@@ -681,6 +690,9 @@ JSON.stringify(property)
 
 );
 
+
+
+/* OPEN DETAILS */
 
 window.location.href =
 "property-details.html";
@@ -695,15 +707,19 @@ window.location.href =
 
 function editProperty(id){
 
+
 const property =
 allProperties.find(
+
 function(item){
 
 return String(item.id) ===
 String(id);
 
 }
+
 );
+
 
 
 if(!property){
@@ -717,10 +733,8 @@ return;
 }
 
 
-/*
-Save selected property
-for edit-property.html
-*/
+
+/* SAVE EDIT PROPERTY */
 
 localStorage.setItem(
 
@@ -731,12 +745,11 @@ JSON.stringify(property)
 );
 
 
-/*
-Open edit page
-*/
+
+/* OPEN SELL PAGE */
 
 window.location.href =
-"edit-property.html";
+"sell.html";
 
 }
 
@@ -748,36 +761,38 @@ window.location.href =
 
 function deleteProperty(id){
 
+
 const property =
 allProperties.find(
+
 function(item){
 
 return String(item.id) ===
 String(id);
 
 }
+
 );
+
 
 
 if(!property){
-
-alert(
-"❌ Property not found."
-);
 
 return;
 
 }
 
 
+
+/* CONFIRM */
+
 const confirmDelete =
 confirm(
 
-"🗑️ Are you sure you want to delete this property?\n\n" +
-
-(property.title || "Property")
+"⚠️ Are you sure you want to delete this property?"
 
 );
+
 
 
 if(!confirmDelete){
@@ -787,32 +802,35 @@ return;
 }
 
 
-/*
-Remove property
-*/
+
+/* DELETE */
 
 allProperties =
 allProperties.filter(
+
 function(item){
 
 return String(item.id) !==
 String(id);
 
 }
+
 );
 
 
-/*
-Save updated list
-*/
+
+/* SAVE */
 
 localStorage.setItem(
 
 "pv_properties",
 
-JSON.stringify(allProperties)
+JSON.stringify(
+allProperties
+)
 
 );
+
 
 
 alert(
@@ -820,13 +838,13 @@ alert(
 );
 
 
-/*
-Reload page
-*/
+
+/* REFRESH */
 
 window.location.reload();
 
 }
+
 
 </script>
 
