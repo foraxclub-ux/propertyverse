@@ -73,7 +73,7 @@ nav a.active{
     background:
     linear-gradient(
         rgba(8,27,51,.78),
-        rgba(8,27,51,.82)
+        rgba(8,27,51,.78)
     ),
     url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=80");
 
@@ -94,30 +94,33 @@ nav a.active{
     font-size:18px;
 }
 
-/* TOP ACTIONS */
+/* TOP BUTTONS */
 
 .post-area{
     text-align:center;
     padding:30px 20px 10px;
 }
 
-.post-btn,
-.saved-btn{
+.post-btn{
     display:inline-block;
+    background:#E63946;
     color:white;
-    padding:13px 20px;
+    padding:14px 25px;
     border-radius:8px;
     text-decoration:none;
     font-weight:bold;
     margin:5px;
 }
 
-.post-btn{
-    background:#E63946;
-}
-
 .saved-btn{
+    display:inline-block;
     background:#081B33;
+    color:white;
+    padding:14px 25px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+    margin:5px;
 }
 
 /* CONTAINER */
@@ -186,15 +189,14 @@ nav a.active{
     font-weight:bold;
 }
 
-.saved-badge{
+.user-badge{
     display:inline-block;
-    background:#ffe8ec;
-    color:#E63946;
+    background:#e8f0ff;
+    color:#2457a6;
     padding:6px 9px;
     border-radius:5px;
     font-size:12px;
     font-weight:bold;
-    margin-left:5px;
 }
 
 .card h2{
@@ -218,19 +220,19 @@ nav a.active{
 
 .buttons{
     display:flex;
-    gap:8px;
+    gap:7px;
     flex-wrap:wrap;
     margin-top:18px;
 }
 
 .btn{
+    border:0;
     display:inline-block;
-    padding:10px 12px;
+    padding:10px 11px;
     border-radius:6px;
     text-decoration:none;
     font-weight:bold;
     font-size:13px;
-    border:0;
     cursor:pointer;
 }
 
@@ -263,9 +265,9 @@ nav a.active{
 
 .empty{
     display:none;
-    background:white;
     text-align:center;
-    padding:50px 20px;
+    background:white;
+    padding:45px 20px;
     border-radius:15px;
     box-shadow:0 5px 18px rgba(0,0,0,.08);
 }
@@ -328,6 +330,10 @@ footer a{
     .card{
         width:100%;
         max-width:360px;
+    }
+
+    .buttons{
+        gap:6px;
     }
 
 }
@@ -409,7 +415,7 @@ Explore properties on BharatWorld Properties
 
 
 
-<!-- ACTION BUTTONS -->
+<!-- TOP BUTTONS -->
 
 <div class="post-area">
 
@@ -460,12 +466,9 @@ id="propertiesBox"
 >
 
 
-<!-- ============================= -->
 <!-- DEMO PROPERTY 1 -->
-<!-- ============================= -->
 
 <div class="card">
-
 
 <img
 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
@@ -474,7 +477,6 @@ alt="Luxury Villa"
 
 
 <div class="content">
-
 
 <span class="verified">
 ✓ RERA VERIFIED
@@ -510,24 +512,24 @@ Luxury 3 BHK Villa
 <div class="buttons">
 
 
-<a
-href="#"
-class="btn details static-details"
-data-title="Luxury 3 BHK Villa"
-data-price="8500000"
-data-city="Ahmedabad, Gujarat"
-data-type="Villa"
-data-bhk="3 BHK"
-data-area="2200 Sq.ft"
-data-description="Beautiful luxury 3 BHK villa located in Ahmedabad."
-data-owner="Property Owner"
-data-phone="9999999999"
-data-image="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+<button
+class="btn details"
+onclick="showDemoProperty(
+'Luxury 3 BHK Villa',
+8500000,
+'Ahmedabad, Gujarat',
+'Villa',
+'3 BHK',
+'For Sale',
+'Beautiful luxury 3 BHK villa located in Ahmedabad.',
+'Property Owner',
+'9999999999'
+)"
 >
 
 👁️ View
 
-</a>
+</button>
 
 
 <a
@@ -553,18 +555,19 @@ target="_blank"
 
 <button
 class="btn save"
-onclick="saveDemoProperty(this)"
-data-id="DEMO001"
-data-title="Luxury 3 BHK Villa"
-data-price="8500000"
-data-city="Ahmedabad, Gujarat"
-data-type="Villa"
-data-bhk="3 BHK"
-data-area="2200 Sq.ft"
-data-description="Beautiful luxury 3 BHK villa located in Ahmedabad."
-data-owner="Property Owner"
-data-phone="9999999999"
-data-image="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+onclick="saveDemoProperty(
+'DEMO001',
+'Luxury 3 BHK Villa',
+8500000,
+'Ahmedabad, Gujarat',
+'Villa',
+'3 BHK',
+'For Sale',
+'Beautiful luxury 3 BHK villa located in Ahmedabad.',
+'Property Owner',
+'9999999999',
+'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'
+)"
 >
 
 ❤️ Save
@@ -580,12 +583,9 @@ data-image="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=fo
 
 
 
-<!-- ============================= -->
 <!-- DEMO PROPERTY 2 -->
-<!-- ============================= -->
 
 <div class="card">
-
 
 <img
 src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80"
@@ -594,7 +594,6 @@ alt="Premium Villa"
 
 
 <div class="content">
-
 
 <span class="verified">
 ✓ VERIFIED
@@ -630,24 +629,24 @@ Premium 4 BHK Villa
 <div class="buttons">
 
 
-<a
-href="#"
-class="btn details static-details"
-data-title="Premium 4 BHK Villa"
-data-price="12000000"
-data-city="Surat, Gujarat"
-data-type="Villa"
-data-bhk="4 BHK"
-data-area="2800 Sq.ft"
-data-description="Premium 4 BHK villa with spacious rooms in Surat."
-data-owner="Property Owner"
-data-phone="9999999999"
-data-image="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80"
+<button
+class="btn details"
+onclick="showDemoProperty(
+'Premium 4 BHK Villa',
+12000000,
+'Surat, Gujarat',
+'Villa',
+'4 BHK',
+'For Sale',
+'Premium 4 BHK villa with spacious rooms in Surat.',
+'Property Owner',
+'9999999999'
+)"
 >
 
 👁️ View
 
-</a>
+</button>
 
 
 <a
@@ -673,18 +672,19 @@ target="_blank"
 
 <button
 class="btn save"
-onclick="saveDemoProperty(this)"
-data-id="DEMO002"
-data-title="Premium 4 BHK Villa"
-data-price="12000000"
-data-city="Surat, Gujarat"
-data-type="Villa"
-data-bhk="4 BHK"
-data-area="2800 Sq.ft"
-data-description="Premium 4 BHK villa with spacious rooms in Surat."
-data-owner="Property Owner"
-data-phone="9999999999"
-data-image="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80"
+onclick="saveDemoProperty(
+'DEMO002',
+'Premium 4 BHK Villa',
+12000000,
+'Surat, Gujarat',
+'Villa',
+'4 BHK',
+'For Sale',
+'Premium 4 BHK villa with spacious rooms in Surat.',
+'Property Owner',
+'9999999999',
+'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80'
+)"
 >
 
 ❤️ Save
@@ -700,12 +700,9 @@ data-image="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=fo
 
 
 
-<!-- ============================= -->
 <!-- DEMO PROPERTY 3 -->
-<!-- ============================= -->
 
 <div class="card">
-
 
 <img
 src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80"
@@ -714,7 +711,6 @@ alt="Modern Apartment"
 
 
 <div class="content">
-
 
 <span class="verified">
 ✓ VERIFIED
@@ -750,24 +746,24 @@ Modern 2 BHK Apartment
 <div class="buttons">
 
 
-<a
-href="#"
-class="btn details static-details"
-data-title="Modern 2 BHK Apartment"
-data-price="25000"
-data-city="Ahmedabad, Gujarat"
-data-type="Apartment"
-data-bhk="2 BHK"
-data-area="1200 Sq.ft"
-data-description="Modern 2 BHK apartment available for rent in Ahmedabad."
-data-owner="Property Owner"
-data-phone="9999999999"
-data-image="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80"
+<button
+class="btn details"
+onclick="showDemoProperty(
+'Modern 2 BHK Apartment',
+25000,
+'Ahmedabad, Gujarat',
+'Apartment',
+'2 BHK',
+'For Rent',
+'Modern 2 BHK apartment available for rent in Ahmedabad.',
+'Property Owner',
+'9999999999'
+)"
 >
 
 👁️ View
 
-</a>
+</button>
 
 
 <a
@@ -793,18 +789,19 @@ target="_blank"
 
 <button
 class="btn save"
-onclick="saveDemoProperty(this)"
-data-id="DEMO003"
-data-title="Modern 2 BHK Apartment"
-data-price="25000"
-data-city="Ahmedabad, Gujarat"
-data-type="Apartment"
-data-bhk="2 BHK"
-data-area="1200 Sq.ft"
-data-description="Modern 2 BHK apartment available for rent in Ahmedabad."
-data-owner="Property Owner"
-data-phone="9999999999"
-data-image="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80"
+onclick="saveDemoProperty(
+'DEMO003',
+'Modern 2 BHK Apartment',
+25000,
+'Ahmedabad, Gujarat',
+'Apartment',
+'2 BHK',
+'For Rent',
+'Modern 2 BHK apartment available for rent in Ahmedabad.',
+'Property Owner',
+'9999999999',
+'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80'
+)"
 >
 
 ❤️ Save
@@ -822,8 +819,7 @@ data-image="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=fo
 </div>
 
 
-
-<!-- EMPTY -->
+<!-- EMPTY MESSAGE -->
 
 <div
 class="empty"
@@ -912,531 +908,514 @@ Contact
 
 <script>
 
-/* ================================= */
-/* CURRENT USER */
-/* ================================= */
 
-function getCurrentUser(){
+/* ========================================= */
+/* LOGIN USER */
+/* ========================================= */
 
-    return localStorage.getItem(
-        "pv_current_user"
-    );
-
-}
+const currentUser =
+localStorage.getItem(
+"pv_current_user"
+);
 
 
 
-/* ================================= */
-/* USER LOGIN CHECK */
-/* ================================= */
-
-function isUserLoggedIn(){
-
-    return localStorage.getItem(
-        "pv_logged_in"
-    ) === "true";
-
-}
-
-
-
-/* ================================= */
+/* ========================================= */
 /* GET SAVED PROPERTIES */
-/* ================================= */
+/* ========================================= */
 
 function getSavedProperties(){
 
-    const user =
-    getCurrentUser();
+if(!currentUser){
 
-    if(!user){
-        return [];
-    }
+return [];
 
-    return JSON.parse(
+}
 
-        localStorage.getItem(
-            "pv_saved_properties_" + user
-        ) || "[]"
+return JSON.parse(
 
-    );
+localStorage.getItem(
+"pv_saved_properties_" +
+currentUser
+) || "[]"
+
+);
 
 }
 
 
 
-/* ================================= */
+/* ========================================= */
 /* SAVE PROPERTY */
-/* ================================= */
+/* ========================================= */
 
 function saveProperty(property){
 
-    if(!isUserLoggedIn()){
+if(
+localStorage.getItem(
+"pv_logged_in"
+) !== "true"
+){
 
-        alert(
-            "🔐 Please login first to save properties."
-        );
+alert(
+"🔐 Please login first to save a property."
+);
 
-        window.location.href =
-        "login.html";
+window.location.href =
+"login.html";
 
-        return;
-
-    }
-
-
-    const user =
-    getCurrentUser();
-
-
-    let saved =
-    getSavedProperties();
-
-
-    const alreadySaved =
-    saved.some(function(item){
-
-        return String(item.id) ===
-        String(property.id);
-
-    });
-
-
-    if(alreadySaved){
-
-        alert(
-            "❤️ This property is already saved."
-        );
-
-        return;
-
-    }
-
-
-    saved.push(property);
-
-
-    localStorage.setItem(
-
-        "pv_saved_properties_" +
-        user,
-
-        JSON.stringify(saved)
-
-    );
-
-
-    alert(
-        "❤️ Property saved successfully!"
-    );
-
-
-    updateSaveButtons();
+return;
 
 }
 
 
+let saved =
+getSavedProperties();
 
-/* ================================= */
-/* SAVE DEMO PROPERTY */
-/* ================================= */
 
-function saveDemoProperty(button){
+const alreadySaved =
+saved.some(function(item){
 
-    const property = {
-
-        id:
-        button.dataset.id,
-
-        title:
-        button.dataset.title,
-
-        price:
-        Number(button.dataset.price),
-
-        city:
-        button.dataset.city,
-
-        type:
-        button.dataset.type,
-
-        bhk:
-        button.dataset.bhk,
-
-        area:
-        button.dataset.area,
-
-        description:
-        button.dataset.description,
-
-        owner:
-        button.dataset.owner,
-
-        phone:
-        button.dataset.phone,
-
-        image:
-        button.dataset.image
-
-    };
-
-
-    saveProperty(property);
-
-}
-
-
-
-/* ================================= */
-/* UPDATE SAVE BUTTONS */
-/* ================================= */
-
-function updateSaveButtons(){
-
-    const saved =
-    getSavedProperties();
-
-
-    document
-    .querySelectorAll(".save")
-    .forEach(function(button){
-
-        const id =
-        button.dataset.id;
-
-
-        const found =
-        saved.some(function(property){
-
-            return String(property.id) ===
-            String(id);
-
-        });
-
-
-        if(found){
-
-            button.classList.add("saved");
-
-            button.innerText =
-            "❤️ Saved";
-
-        }
-
-        else{
-
-            button.classList.remove("saved");
-
-            button.innerText =
-            "❤️ Save";
-
-        }
-
-    });
-
-}
-
-
-
-/* ================================= */
-/* STATIC PROPERTY DETAILS */
-/* ================================= */
-
-document
-.querySelectorAll(".static-details")
-.forEach(function(button){
-
-    button.addEventListener(
-        "click",
-        function(e){
-
-            e.preventDefault();
-
-
-            const property = {
-
-                id:
-                button.dataset.title
-                .replace(/\s+/g,"-")
-                .toUpperCase(),
-
-                title:
-                button.dataset.title,
-
-                price:
-                Number(button.dataset.price),
-
-                city:
-                button.dataset.city,
-
-                type:
-                button.dataset.type,
-
-                bhk:
-                button.dataset.bhk,
-
-                area:
-                button.dataset.area,
-
-                description:
-                button.dataset.description,
-
-                owner:
-                button.dataset.owner,
-
-                phone:
-                button.dataset.phone,
-
-                image:
-                button.dataset.image
-
-            };
-
-
-            localStorage.setItem(
-
-                "pv_selected_property",
-
-                JSON.stringify(property)
-
-            );
-
-
-            window.location.href =
-            "property-details.html";
-
-        }
-    );
+return String(item.id) ===
+String(property.id);
 
 });
 
 
+if(alreadySaved){
 
-/* ================================= */
-/* LOAD USER POSTED PROPERTIES */
-/* ================================= */
+alert(
+"❤️ Property is already saved."
+);
 
-function loadUserProperties(){
+return;
 
-    const properties =
-    JSON.parse(
+}
 
-        localStorage.getItem(
-            "pv_properties"
-        ) || "[]"
 
-    );
+saved.push(property);
 
 
-    const propertiesBox =
-    document.getElementById(
-        "propertiesBox"
-    );
+localStorage.setItem(
 
+"pv_saved_properties_" +
+currentUser,
 
-    const emptyMessage =
-    document.getElementById(
-        "emptyMessage"
-    );
+JSON.stringify(saved)
 
+);
 
-    if(properties.length === 0){
 
-        emptyMessage.style.display =
-        "block";
-
-        return;
-
-    }
-
-
-    properties.forEach(function(property){
-
-        const card =
-        document.createElement(
-            "div"
-        );
-
-
-        card.className =
-        "card";
-
-
-        const imageUrl =
-        property.image ||
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80";
-
-
-        const formattedPrice =
-        Number(
-            property.price || 0
-        ).toLocaleString(
-            "en-IN"
-        );
-
-
-        const safePhone =
-        String(
-            property.phone || ""
-        ).replace(
-            /\D/g,
-            ""
-        );
-
-
-        card.innerHTML = `
-
-        <img
-        src="${imageUrl}"
-        alt="Property"
-        onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'"
-        >
-
-        <div class="content">
-
-        <span class="verified">
-        ✓ PROPERTY LISTED
-        </span>
-
-        <span class="saved-badge">
-        USER POSTED
-        </span>
-
-        <h2>
-        ${property.title || "Property"}
-        </h2>
-
-        <div class="price">
-        ₹${formattedPrice}
-        </div>
-
-        <div class="info">
-
-        📍 ${property.city || "Location not specified"}
-
-        <br>
-
-        🏢 ${property.type || "Property"}
-
-        <br>
-
-        🛏 ${property.bhk || "Not specified"}
-
-        <br>
-
-        📐 ${property.area || "Area not specified"}
-
-        <br>
-
-        🏷️ ${property.listingType || "For Sale"}
-
-        </div>
-
-        <div class="buttons">
-
-        <a
-        href="#"
-        class="btn details user-details"
-        >
-        👁️ View
-        </a>
-
-        <a
-        href="tel:+91${safePhone}"
-        class="btn call"
-        >
-        📞 Call
-        </a>
-
-        <a
-        href="https://wa.me/91${safePhone}"
-        class="btn whatsapp"
-        target="_blank"
-        >
-        💬 WhatsApp
-        </a>
-
-        <button
-        class="btn save user-save"
-        data-id="${property.id}"
-        >
-        ❤️ Save
-        </button>
-
-        </div>
-
-        </div>
-
-        `;
-
-
-        /* VIEW DETAILS */
-
-        card
-        .querySelector(".user-details")
-        .addEventListener(
-            "click",
-            function(e){
-
-                e.preventDefault();
-
-
-                localStorage.setItem(
-
-                    "pv_selected_property",
-
-                    JSON.stringify(property)
-
-                );
-
-
-                window.location.href =
-                "property-details.html";
-
-            }
-        );
-
-
-        /* SAVE */
-
-        card
-        .querySelector(".user-save")
-        .addEventListener(
-            "click",
-            function(){
-
-                saveProperty(
-                    property
-                );
-
-            }
-        );
-
-
-        propertiesBox.appendChild(
-            card
-        );
-
-    });
-
-
-    updateSaveButtons();
+alert(
+"❤️ Property saved successfully!"
+);
 
 }
 
 
 
-/* ================================= */
-/* START */
-/* ================================= */
+/* ========================================= */
+/* SAVE DEMO PROPERTY */
+/* ========================================= */
+
+function saveDemoProperty(
+id,
+title,
+price,
+city,
+type,
+bhk,
+listingType,
+description,
+owner,
+phone,
+image
+){
+
+const property = {
+
+id:id,
+
+title:title,
+
+price:price,
+
+city:city,
+
+type:type,
+
+bhk:bhk,
+
+listingType:listingType,
+
+description:description,
+
+owner:owner,
+
+phone:phone,
+
+image:image
+
+};
+
+
+saveProperty(property);
+
+}
+
+
+
+/* ========================================= */
+/* SHOW DEMO PROPERTY */
+/* ========================================= */
+
+function showDemoProperty(
+title,
+price,
+city,
+type,
+bhk,
+listingType,
+description,
+owner,
+phone
+){
+
+const property = {
+
+id:
+"DEMO_" +
+title
+.replace(/\s/g,"_"),
+
+title:title,
+
+price:price,
+
+city:city,
+
+type:type,
+
+bhk:bhk,
+
+listingType:listingType,
+
+description:description,
+
+owner:owner,
+
+phone:phone
+
+};
+
+
+localStorage.setItem(
+
+"pv_selected_property",
+
+JSON.stringify(property)
+
+);
+
+
+window.location.href =
+"property-details.html";
+
+}
+
+
+
+/* ========================================= */
+/* LOAD USER POSTED PROPERTIES */
+/* ========================================= */
+
+function loadUserProperties(){
+
+const properties = JSON.parse(
+
+localStorage.getItem(
+"pv_properties"
+) || "[]"
+
+);
+
+
+const propertiesBox =
+document.getElementById(
+"propertiesBox"
+);
+
+
+const emptyMessage =
+document.getElementById(
+"emptyMessage"
+);
+
+
+/* NO USER PROPERTIES */
+
+if(properties.length === 0){
+
+emptyMessage.style.display =
+"block";
+
+return;
+
+}
+
+
+/* USER PROPERTIES */
+
+properties.forEach(
+function(property){
+
+const card =
+document.createElement(
+"div"
+);
+
+card.className =
+"card";
+
+
+const imageUrl =
+
+property.image ||
+
+"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80";
+
+
+const formattedPrice =
+
+property.price
+?
+"₹" +
+Number(
+property.price
+).toLocaleString("en-IN")
+:
+"Price on Request";
+
+
+const safeId =
+String(property.id)
+.replace(/'/g,"");
+
+
+card.innerHTML = `
+
+<img
+src="${imageUrl}"
+alt="Property Image"
+onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'"
+>
+
+
+<div class="content">
+
+<span class="user-badge">
+✓ USER LISTED
+</span>
+
+
+<h2>
+${property.title || "Property"}
+</h2>
+
+
+<div class="price">
+${formattedPrice}
+</div>
+
+
+<div class="info">
+
+📍 ${property.city || "Location not specified"}
+
+<br>
+
+🏢 ${property.type || "Property"}
+
+<br>
+
+🛏 ${property.bhk || "Not specified"}
+
+<br>
+
+🏷️ ${property.listingType || "For Sale"}
+
+</div>
+
+
+<div class="buttons">
+
+
+<button
+class="btn details"
+onclick="viewUserProperty('${safeId}')"
+>
+
+👁️ View
+
+</button>
+
+
+<a
+href="tel:+91${property.phone || ""}"
+class="btn call"
+>
+
+📞 Call
+
+</a>
+
+
+<a
+href="https://wa.me/91${property.phone || ""}"
+class="btn whatsapp"
+target="_blank"
+>
+
+💬 WhatsApp
+
+</a>
+
+
+<button
+class="btn save"
+onclick="saveUserProperty('${safeId}')"
+>
+
+❤️ Save
+
+</button>
+
+
+</div>
+
+</div>
+
+`;
+
+
+propertiesBox.appendChild(card);
+
+}
+
+);
+
+}
+
+
+
+/* ========================================= */
+/* VIEW USER PROPERTY */
+/* ========================================= */
+
+function viewUserProperty(id){
+
+const properties =
+JSON.parse(
+
+localStorage.getItem(
+"pv_properties"
+) || "[]"
+
+);
+
+
+const property =
+properties.find(
+function(item){
+
+return String(item.id) ===
+String(id);
+
+}
+);
+
+
+if(!property){
+
+alert(
+"⚠️ Property not found."
+);
+
+return;
+
+}
+
+
+localStorage.setItem(
+
+"pv_selected_property",
+
+JSON.stringify(property)
+
+);
+
+
+window.location.href =
+"property-details.html";
+
+}
+
+
+
+/* ========================================= */
+/* SAVE USER PROPERTY */
+/* ========================================= */
+
+function saveUserProperty(id){
+
+const properties =
+JSON.parse(
+
+localStorage.getItem(
+"pv_properties"
+) || "[]"
+
+);
+
+
+const property =
+properties.find(
+function(item){
+
+return String(item.id) ===
+String(id);
+
+}
+);
+
+
+if(!property){
+
+alert(
+"⚠️ Property not found."
+);
+
+return;
+
+}
+
+
+saveProperty(property);
+
+}
+
+
+
+/* ========================================= */
+/* LOAD */
+/* ========================================= */
 
 loadUserProperties();
 
-updateSaveButtons();
 
 </script>
 
 
 </body>
 
-</html>
+    </html>
