@@ -141,8 +141,20 @@ font-weight:bold;
 margin:4px;
 }
 
+.btn:hover{
+opacity:.9;
+}
+
 .add{
 background:#E63946;
+}
+
+.saved{
+background:#E63946;
+}
+
+.browse{
+background:#081B33;
 }
 
 .logout{
@@ -239,7 +251,9 @@ Manage your properties, saved listings and enquiries from one place.
 <div class="cards">
 
 
+<!-- =============================== -->
 <!-- MY PROPERTIES -->
+<!-- =============================== -->
 
 <div class="card">
 
@@ -292,7 +306,9 @@ class="btn add"
 
 
 
+<!-- =============================== -->
 <!-- SAVED PROPERTIES -->
+<!-- =============================== -->
 
 <div class="card">
 
@@ -315,11 +331,20 @@ Your favourite properties will appear here.
 </p>
 
 <a
-href="buy.html"
-class="btn"
+href="saved-properties.html"
+class="btn saved"
 >
 
-Browse Properties
+❤️ View Saved
+
+</a>
+
+<a
+href="buy.html"
+class="btn browse"
+>
+
+🏠 Browse Properties
 
 </a>
 
@@ -327,7 +352,9 @@ Browse Properties
 
 
 
+<!-- =============================== -->
 <!-- MY ENQUIRIES -->
+<!-- =============================== -->
 
 <div class="card">
 
@@ -343,7 +370,6 @@ My Enquiries
 
 </h3>
 
-
 <div
 class="lead-count"
 id="leadCount"
@@ -353,13 +379,11 @@ id="leadCount"
 
 </div>
 
-
 <p>
 
 Check and manage enquiries received for your properties.
 
 </p>
-
 
 <a
 href="my-enquiries.html"
@@ -374,7 +398,9 @@ View Enquiries
 
 
 
+<!-- =============================== -->
 <!-- ADD PROPERTY -->
+<!-- =============================== -->
 
 <div class="card">
 
