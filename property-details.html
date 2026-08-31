@@ -59,7 +59,7 @@ header{
     background:#E63946;
 }
 
-/* CONTAINER */
+/* MAIN */
 
 .container{
     max-width:1100px;
@@ -67,7 +67,7 @@ header{
     padding:0 20px 60px;
 }
 
-/* PROPERTY BOX */
+/* PROPERTY */
 
 .property-box{
     background:white;
@@ -145,6 +145,8 @@ header{
     margin-bottom:5px;
 }
 
+/* DESCRIPTION */
+
 .description{
     margin-top:20px;
     padding-top:20px;
@@ -190,6 +192,9 @@ header{
     text-decoration:none;
     font-weight:bold;
     text-align:center;
+    border:0;
+    cursor:pointer;
+    font-size:15px;
 }
 
 .call{
@@ -205,6 +210,87 @@ header{
 .listing{
     background:#081B33;
     color:white;
+}
+
+.enquiry-btn{
+    background:#FFD700;
+    color:#081B33;
+}
+
+/* ENQUIRY BOX */
+
+.enquiry-box{
+    background:white;
+    margin-top:25px;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,.10);
+}
+
+.enquiry-box h2{
+    margin-bottom:8px;
+}
+
+.enquiry-subtitle{
+    color:#666;
+    margin-bottom:20px;
+}
+
+.field{
+    margin-bottom:15px;
+}
+
+.field label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.field input,
+.field textarea{
+    width:100%;
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-size:15px;
+    outline:none;
+}
+
+.field input:focus,
+.field textarea:focus{
+    border-color:#E63946;
+}
+
+.field textarea{
+    min-height:110px;
+    resize:vertical;
+}
+
+.send-btn{
+    width:100%;
+    background:#E63946;
+    color:white;
+    border:0;
+    padding:15px;
+    border-radius:8px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.send-btn:hover{
+    background:#c92f3b;
+}
+
+.success-message{
+    display:none;
+    background:#e7f8ed;
+    color:#16803c;
+    padding:14px;
+    border-radius:8px;
+    margin-bottom:15px;
+    text-align:center;
+    font-weight:bold;
 }
 
 /* NOT FOUND */
@@ -282,6 +368,10 @@ footer p{
         grid-template-columns:1fr;
     }
 
+    .btn{
+        width:100%;
+    }
+
 }
 
 </style>
@@ -331,6 +421,10 @@ From Bharat to the World.
 
 <script>
 
+/* ============================== */
+/* GET SELECTED PROPERTY */
+/* ============================== */
+
 const selectedProperty = JSON.parse(
     localStorage.getItem("pv_selected_property")
 );
@@ -339,6 +433,10 @@ const selectedProperty = JSON.parse(
 const container =
 document.getElementById("propertyContainer");
 
+
+/* ============================== */
+/* PROPERTY NOT FOUND */
+/* ============================== */
 
 if(!selectedProperty){
 
@@ -352,25 +450,36 @@ if(!selectedProperty){
         Please select a property from the listings page.
         </p>
 
-        <a href="listing.html" class="btn listing">
+        <a
+        href="listing.html"
+        class="btn listing">
+
         View Properties
+
         </a>
 
     </div>
 
     `;
 
-}else{
+}
 
+
+/* ============================== */
+/* SHOW PROPERTY */
+/* ============================== */
+
+else{
 
     const propertyImage =
-
     selectedProperty.image ||
-
     "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80";
 
 
-    let formattedPrice = selectedProperty.price;
+    /* PRICE */
+
+    let formattedPrice =
+    selectedProperty.price;
 
 
     if(
@@ -393,28 +502,36 @@ if(!selectedProperty){
     }
 
 
+    /* PROPERTY DATA */
+
     const title =
-    selectedProperty.title || "Property";
+    selectedProperty.title ||
+    "Property";
 
 
     const city =
-    selectedProperty.city || "Location not specified";
+    selectedProperty.city ||
+    "Location not specified";
 
 
     const type =
-    selectedProperty.type || "Not specified";
+    selectedProperty.type ||
+    "Not specified";
 
 
     const bhk =
-    selectedProperty.bhk || "Not specified";
+    selectedProperty.bhk ||
+    "Not specified";
 
 
     const listingType =
-    selectedProperty.listingType || "For Sale";
+    selectedProperty.listingType ||
+    "For Sale";
 
 
     const area =
-    selectedProperty.area || "Not specified";
+    selectedProperty.area ||
+    "Not specified";
 
 
     const description =
@@ -428,13 +545,20 @@ if(!selectedProperty){
 
 
     const phone =
-    selectedProperty.phone ||
-    "9999999999";
+    String(
+        selectedProperty.phone ||
+        "9999999999"
+    ).replace(/\D/g,"");
 
+
+    /* ============================== */
+    /* DISPLAY PAGE */
+    /* ============================== */
 
     container.innerHTML = `
 
     <div class="container">
+
 
         <div class="property-box">
 
@@ -443,7 +567,7 @@ if(!selectedProperty){
 
                 <img
                 src="${propertyImage}"
-                alt="${title}"
+                alt="Property Image"
 
                 onerror="
                 this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80'
@@ -484,7 +608,9 @@ if(!selectedProperty){
 
                     <div class="info-item">
 
-                        <strong>🏢 Property Type</strong>
+                        <strong>
+                        🏢 Property Type
+                        </strong>
 
                         ${type}
 
@@ -493,7 +619,9 @@ if(!selectedProperty){
 
                     <div class="info-item">
 
-                        <strong>🛏 BHK</strong>
+                        <strong>
+                        🛏 BHK
+                        </strong>
 
                         ${bhk}
 
@@ -502,7 +630,9 @@ if(!selectedProperty){
 
                     <div class="info-item">
 
-                        <strong>📐 Area</strong>
+                        <strong>
+                        📐 Area
+                        </strong>
 
                         ${area}
 
@@ -511,7 +641,9 @@ if(!selectedProperty){
 
                     <div class="info-item">
 
-                        <strong>🏷️ Listing Type</strong>
+                        <strong>
+                        🏷️ Listing Type
+                        </strong>
 
                         ${listingType}
 
@@ -523,7 +655,9 @@ if(!selectedProperty){
 
                 <div class="description">
 
-                    <h2>📝 Property Description</h2>
+                    <h2>
+                    📝 Property Description
+                    </h2>
 
                     <p>
                     ${description}
@@ -567,6 +701,15 @@ if(!selectedProperty){
                     </a>
 
 
+                    <button
+                    onclick="showEnquiryForm()"
+                    class="btn enquiry-btn">
+
+                    📩 Send Enquiry
+
+                    </button>
+
+
                     <a
                     href="listing.html"
                     class="btn listing">
@@ -585,9 +728,300 @@ if(!selectedProperty){
         </div>
 
 
+
+        <!-- ENQUIRY FORM -->
+
+        <div
+        class="enquiry-box"
+        id="enquiryBox"
+        style="display:none;"
+        >
+
+            <h2>
+            📩 Send Enquiry
+            </h2>
+
+            <p class="enquiry-subtitle">
+
+            Interested in this property?
+            Send your requirement to the property owner.
+
+            </p>
+
+
+            <div
+            id="successMessage"
+            class="success-message"
+            >
+
+            ✅ Enquiry sent successfully!
+
+            </div>
+
+
+            <form id="enquiryForm">
+
+
+                <div class="field">
+
+                    <label>
+                    👤 Your Name
+                    </label>
+
+                    <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Enter your name"
+                    required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                    📞 Mobile Number
+                    </label>
+
+                    <input
+                    type="tel"
+                    id="customerPhone"
+                    placeholder="10 digit mobile number"
+                    maxlength="10"
+                    required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                    📝 Message
+                    </label>
+
+                    <textarea
+                    id="customerMessage"
+                    placeholder="I am interested in this property..."
+                    required
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                type="submit"
+                class="send-btn">
+
+                📩 Send Enquiry
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+
     </div>
 
     `;
+
+
+    /* ============================== */
+    /* SHOW ENQUIRY FORM */
+    /* ============================== */
+
+    window.showEnquiryForm =
+    function(){
+
+        const box =
+        document.getElementById(
+            "enquiryBox"
+        );
+
+
+        box.style.display =
+        "block";
+
+
+        box.scrollIntoView({
+            behavior:"smooth"
+        });
+
+    };
+
+
+    /* ============================== */
+    /* SUBMIT ENQUIRY */
+    /* ============================== */
+
+    document
+    .getElementById("enquiryForm")
+    .addEventListener(
+        "submit",
+        function(e){
+
+            e.preventDefault();
+
+
+            const customerName =
+            document
+            .getElementById("customerName")
+            .value
+            .trim();
+
+
+            const customerPhone =
+            document
+            .getElementById("customerPhone")
+            .value
+            .replace(/\D/g,"");
+
+
+            const customerMessage =
+            document
+            .getElementById("customerMessage")
+            .value
+            .trim();
+
+
+            /* PHONE VALIDATION */
+
+            if(customerPhone.length !== 10){
+
+                alert(
+                "⚠️ Please enter a valid 10 digit mobile number."
+                );
+
+                return;
+
+            }
+
+
+            /* ============================== */
+            /* CREATE ENQUIRY */
+            /* ============================== */
+
+            const enquiry = {
+
+                id:
+                "ENQ" +
+                Date.now(),
+
+                /* CUSTOMER */
+
+                customerName:
+                customerName,
+
+                phone:
+                customerPhone,
+
+                message:
+                customerMessage,
+
+
+                /* PROPERTY */
+
+                propertyId:
+                selectedProperty.id,
+
+                propertyTitle:
+                selectedProperty.title,
+
+                propertyCity:
+                selectedProperty.city,
+
+
+                /* IMPORTANT OWNER CONNECTION */
+
+                ownerUser:
+                selectedProperty.postedBy,
+
+
+                /* DATE */
+
+                createdAt:
+                new Date().toLocaleString()
+
+            };
+
+
+            /* ============================== */
+            /* GET OLD ENQUIRIES */
+            /* ============================== */
+
+            let enquiries =
+            JSON.parse(
+
+                localStorage.getItem(
+                    "pv_enquiries"
+                ) || "[]"
+
+            );
+
+
+            /* ============================== */
+            /* SAVE NEW ENQUIRY */
+            /* ============================== */
+
+            enquiries.push(enquiry);
+
+
+            localStorage.setItem(
+
+                "pv_enquiries",
+
+                JSON.stringify(
+                    enquiries
+                )
+
+            );
+
+
+            /* ============================== */
+            /* SUCCESS */
+            /* ============================== */
+
+            document
+            .getElementById(
+                "successMessage"
+            )
+            .style.display =
+            "block";
+
+
+            document
+            .getElementById(
+                "enquiryForm"
+            )
+            .reset();
+
+
+            alert(
+            "✅ Enquiry sent successfully!"
+            );
+
+
+            /* HIDE FORM AFTER 2 SEC */
+
+            setTimeout(
+                function(){
+
+                    document
+                    .getElementById(
+                        "enquiryBox"
+                    )
+                    .style.display =
+                    "none";
+
+                },
+                2500
+            );
+
+        }
+    );
 
 }
 
