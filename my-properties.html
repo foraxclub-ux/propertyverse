@@ -25,11 +25,9 @@ color:#081B33;
 header{
 background:#081B33;
 padding:16px 25px;
-
 display:flex;
 justify-content:space-between;
 align-items:center;
-
 flex-wrap:wrap;
 gap:15px;
 }
@@ -388,14 +386,12 @@ Buy • Sell • Rent • Interior
 
 <script>
 
-
+/* ============================= */
 /* LOGIN PROTECTION */
+/* ============================= */
 
 const isLoggedIn =
-localStorage.getItem(
-"pv_logged_in"
-);
-
+localStorage.getItem("pv_logged_in");
 
 if(isLoggedIn !== "true"){
 
@@ -405,8 +401,9 @@ window.location.href =
 }
 
 
-
-/* GET CURRENT USER */
+/* ============================= */
+/* CURRENT USER */
+/* ============================= */
 
 const currentUser =
 localStorage.getItem(
@@ -414,27 +411,30 @@ localStorage.getItem(
 );
 
 
-
+/* ============================= */
 /* GET ALL PROPERTIES */
+/* ============================= */
 
 let allProperties =
 JSON.parse(
-
 localStorage.getItem(
 "pv_properties"
 ) || "[]"
-
 );
 
 
-
-/* FILTER USER PROPERTIES */
+/* ============================= */
+/* FILTER MY PROPERTIES */
+/* ============================= */
 
 let myProperties =
 allProperties.filter(
 function(property){
 
-/* Old properties without postedBy */
+/*
+Old properties without postedBy
+will still be shown.
+*/
 
 if(!property.postedBy){
 
@@ -442,27 +442,26 @@ return true;
 
 }
 
-
-/* Current user's properties */
-
-return property.postedBy === currentUser;
+return property.postedBy ===
+currentUser;
 
 }
 );
 
 
+/* ============================= */
+/* ELEMENTS */
+/* ============================= */
 
 const container =
 document.getElementById(
 "propertiesContainer"
 );
 
-
 const emptyMessage =
 document.getElementById(
 "emptyMessage"
 );
-
 
 const propertyCount =
 document.getElementById(
@@ -470,8 +469,9 @@ document.getElementById(
 );
 
 
-
-/* SHOW PROPERTY COUNT */
+/* ============================= */
+/* PROPERTY COUNT */
+/* ============================= */
 
 propertyCount.innerText =
 myProperties.length +
@@ -482,8 +482,9 @@ myProperties.length === 1
 );
 
 
-
-/* EMPTY PROPERTIES */
+/* ============================= */
+/* EMPTY MESSAGE */
+/* ============================= */
 
 if(myProperties.length === 0){
 
@@ -493,17 +494,15 @@ emptyMessage.style.display =
 }
 
 
-
+/* ============================= */
 /* SHOW PROPERTIES */
+/* ============================= */
 
 myProperties.forEach(
 function(property){
 
 const card =
-document.createElement(
-"div"
-);
-
+document.createElement("div");
 
 card.className =
 "card";
@@ -518,195 +517,161 @@ property.listingType ===
 
 const formattedPrice =
 Number(
-property.price
-).toLocaleString(
-"en-IN"
-);
+property.price || 0
+).toLocaleString("en-IN");
 
 
-card.innerHTML =
-
-'<img src="' +
-
-(property.image ||
-"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80")
-
-+
-
-'" alt="Property Image">' +
+const image =
+property.image ||
+"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80";
 
 
-'<div class="content">' +
+card.innerHTML = `
+
+<img
+src="${image}"
+alt="Property Image"
+>
 
 
-'<div class="badges">' +
-
-'<span class="badge ' +
-
-listingClass +
-
-'">' +
-
-(property.listingType ||
-"For Sale")
-
-+
-
-'</span>' +
-
-'</div>' +
+<div class="content">
 
 
-'<h2>' +
+<div class="badges">
 
-(property.title ||
-"Property")
+<span class="badge ${listingClass}">
 
-+
+${property.listingType || "For Sale"}
 
-'</h2>' +
+</span>
+
+</div>
 
 
-'<div class="price">₹' +
+<h2>
 
-formattedPrice +
+${property.title || "Property"}
 
-(property.listingType === "For Rent"
+</h2>
+
+
+<div class="price">
+
+₹${formattedPrice}
+
+${property.listingType === "For Rent"
 ? " / Month"
-: "")
+: ""}
 
-+
-
-'</div>' +
+</div>
 
 
-'<div class="info">' +
+<div class="info">
 
-'📍 ' +
+📍 ${property.city || "City not specified"}
 
-(property.city ||
-"City not specified")
+<br>
 
-+
+🏢 ${property.type || "Property"}
 
-'<br>' +
+<br>
 
-'🏢 ' +
+🛏 ${property.bhk || "Not specified"}
 
-(property.type ||
-"Property")
+• 📐 ${property.area || "Not specified"}
 
-+
-
-'<br>' +
-
-'🛏 ' +
-
-(property.bhk ||
-"Not specified")
-
-+
-
-' • 📐 ' +
-
-(property.area ||
-"Not specified")
-
-+
-
-'</div>' +
+</div>
 
 
-'<div class="description">' +
+<div class="description">
 
-(property.description ||
-"No description available.")
+${property.description || "No description available."}
 
-+
-
-'</div>' +
+</div>
 
 
-'<div class="owner">' +
+<div class="owner">
 
-'👤 ' +
+👤 ${property.owner || "Property Owner"}
 
-(property.owner ||
-"Property Owner")
-
-+
-
-'</div>' +
+</div>
 
 
-'<div class="buttons">' +
+<div class="buttons">
 
 
-'<button class="btn view" onclick="viewProperty(\'' +
+<button
+class="btn view"
+onclick="viewProperty('${property.id}')"
+>
 
-property.id +
+👁️ View
 
-'\')">' +
-
-'👁️ View' +
-
-'</button>' +
-
-
-'<button class="btn edit" onclick="editProperty(\'' +
-
-property.id +
-
-'\')">' +
-
-'✏️ Edit' +
-
-'</button>' +
+</button>
 
 
-'<button class="btn delete" onclick="deleteProperty(\'' +
+<button
+class="btn edit"
+onclick="editProperty('${property.id}')"
+>
 
-property.id +
+✏️ Edit
 
-'\')">' +
-
-'🗑️ Delete' +
-
-'</button>' +
-
-
-'</div>' +
+</button>
 
 
-'</div>';
+<button
+class="btn delete"
+onclick="deleteProperty('${property.id}')"
+>
+
+🗑️ Delete
+
+</button>
 
 
-container.appendChild(
-card
-);
+</div>
 
+
+</div>
+
+`;
+
+
+container.appendChild(card);
 
 }
 );
 
 
 
+/* ============================= */
 /* VIEW PROPERTY */
+/* ============================= */
 
 function viewProperty(id){
-
 
 const property =
 allProperties.find(
 function(item){
 
-return item.id === id;
+return String(item.id) ===
+String(id);
 
 }
 );
 
 
-if(property){
+if(!property){
+
+alert(
+"❌ Property not found."
+);
+
+return;
+
+}
+
 
 localStorage.setItem(
 
@@ -722,26 +687,40 @@ window.location.href =
 
 }
 
-}
 
 
-
+/* ============================= */
 /* EDIT PROPERTY */
+/* ============================= */
 
 function editProperty(id){
-
 
 const property =
 allProperties.find(
 function(item){
 
-return item.id === id;
+return String(item.id) ===
+String(id);
 
 }
 );
 
 
-if(property){
+if(!property){
+
+alert(
+"❌ Property not found."
+);
+
+return;
+
+}
+
+
+/*
+Save selected property
+for edit-property.html
+*/
 
 localStorage.setItem(
 
@@ -752,22 +731,52 @@ JSON.stringify(property)
 );
 
 
-  window.location.href = "edit-property.html";
+/*
+Open edit page
+*/
+
+window.location.href =
+"edit-property.html";
 
 }
 
-}
 
 
-
+/* ============================= */
 /* DELETE PROPERTY */
+/* ============================= */
 
 function deleteProperty(id){
+
+const property =
+allProperties.find(
+function(item){
+
+return String(item.id) ===
+String(id);
+
+}
+);
+
+
+if(!property){
+
+alert(
+"❌ Property not found."
+);
+
+return;
+
+}
 
 
 const confirmDelete =
 confirm(
-"Are you sure you want to delete this property?"
+
+"🗑️ Are you sure you want to delete this property?\n\n" +
+
+(property.title || "Property")
+
 );
 
 
@@ -778,15 +787,24 @@ return;
 }
 
 
+/*
+Remove property
+*/
+
 allProperties =
 allProperties.filter(
-function(property){
+function(item){
 
-return property.id !== id;
+return String(item.id) !==
+String(id);
 
 }
 );
 
+
+/*
+Save updated list
+*/
 
 localStorage.setItem(
 
@@ -798,15 +816,17 @@ JSON.stringify(allProperties)
 
 
 alert(
-"🗑️ Property deleted successfully!"
+"✅ Property deleted successfully!"
 );
 
 
+/*
+Reload page
+*/
+
 window.location.reload();
 
-
 }
-
 
 </script>
 
