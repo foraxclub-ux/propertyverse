@@ -256,6 +256,7 @@ padding:18px;
 
 </div>
 
+
 <a
 href="dashboard.html"
 class="back"
@@ -353,12 +354,14 @@ Buy • Sell • Rent • Interior
 
 <script>
 
-/* ============================= */
+
+/* ================================= */
 /* LOGIN PROTECTION */
-/* ============================= */
+/* ================================= */
 
 const isLoggedIn =
 localStorage.getItem("pv_logged_in");
+
 
 if(isLoggedIn !== "true"){
 
@@ -368,9 +371,10 @@ window.location.href =
 }
 
 
-/* ============================= */
+
+/* ================================= */
 /* CURRENT USER */
-/* ============================= */
+/* ================================= */
 
 const currentUser =
 localStorage.getItem(
@@ -378,9 +382,25 @@ localStorage.getItem(
 );
 
 
-/* ============================= */
-/* GET ENQUIRIES */
-/* ============================= */
+
+/* ================================= */
+/* GET ALL PROPERTIES */
+/* ================================= */
+
+let allProperties =
+JSON.parse(
+
+localStorage.getItem(
+"pv_properties"
+) || "[]"
+
+);
+
+
+
+/* ================================= */
+/* GET ALL ENQUIRIES */
+/* ================================= */
 
 let allEnquiries =
 JSON.parse(
@@ -392,34 +412,126 @@ localStorage.getItem(
 );
 
 
-/* ============================= */
-/* ONLY MY LEADS */
-/* ============================= */
+
+/* ================================= */
+/* FIND MY LEADS */
+/* ================================= */
 
 const myEnquiries =
 allEnquiries.filter(
+
 function(enquiry){
 
-return enquiry.ownerUser ===
-currentUser;
+
+/*
+1. Direct ownerUser match
+*/
+
+if(
+enquiry.ownerUser &&
+String(enquiry.ownerUser) ===
+String(currentUser)
+){
+
+return true;
 
 }
+
+
+
+/*
+2. Direct postedBy match
+*/
+
+if(
+enquiry.postedBy &&
+String(enquiry.postedBy) ===
+String(currentUser)
+){
+
+return true;
+
+}
+
+
+
+/*
+3. Find property using propertyId
+*/
+
+if(enquiry.propertyId){
+
+const property =
+allProperties.find(
+
+function(item){
+
+return String(item.id) ===
+String(enquiry.propertyId);
+
+}
+
 );
 
 
-/* ============================= */
+if(
+property &&
+property.postedBy &&
+String(property.postedBy) ===
+String(currentUser)
+){
+
+return true;
+
+}
+
+}
+
+
+
+/*
+4. Old enquiry using property owner ID
+*/
+
+if(
+enquiry.ownerId &&
+String(enquiry.ownerId) ===
+String(currentUser)
+){
+
+return true;
+
+}
+
+
+
+/*
+No match
+*/
+
+return false;
+
+}
+
+);
+
+
+
+/* ================================= */
 /* ELEMENTS */
-/* ============================= */
+/* ================================= */
 
 const container =
 document.getElementById(
 "enquiriesContainer"
 );
 
+
 const emptyMessage =
 document.getElementById(
 "emptyMessage"
 );
+
 
 const leadCount =
 document.getElementById(
@@ -427,12 +539,15 @@ document.getElementById(
 );
 
 
-/* ============================= */
-/* COUNT */
-/* ============================= */
+
+/* ================================= */
+/* SHOW COUNT */
+/* ================================= */
 
 leadCount.innerText =
+
 myEnquiries.length +
+
 (
 myEnquiries.length === 1
 ? " Lead"
@@ -440,11 +555,14 @@ myEnquiries.length === 1
 );
 
 
-/* ============================= */
-/* EMPTY */
-/* ============================= */
 
-if(myEnquiries.length === 0){
+/* ================================= */
+/* EMPTY MESSAGE */
+/* ================================= */
+
+if(
+myEnquiries.length === 0
+){
 
 emptyMessage.style.display =
 "block";
@@ -452,27 +570,138 @@ emptyMessage.style.display =
 }
 
 
-/* ============================= */
-/* SHOW LEADS */
-/* ============================= */
+
+/* ================================= */
+/* SHOW ENQUIRIES */
+/* ================================= */
 
 myEnquiries.forEach(
+
 function(enquiry){
+
 
 const box =
 document.createElement(
 "div"
 );
 
+
 box.className =
 "enquiry";
 
 
-const phone =
-String(
-enquiry.phone || ""
-).replace(/\D/g,"");
 
+/* CUSTOMER PHONE */
+
+const phone =
+
+String(
+enquiry.phone ||
+enquiry.customerPhone ||
+""
+)
+.replace(/\D/g,"");
+
+
+
+/* CUSTOMER NAME */
+
+const customerName =
+
+enquiry.customerName ||
+enquiry.name ||
+enquiry.customer ||
+"Customer";
+
+
+
+/* PROPERTY TITLE */
+
+const propertyTitle =
+
+enquiry.propertyTitle ||
+enquiry.propertyName ||
+"Property";
+
+
+
+/* PROPERTY CITY */
+
+const propertyCity =
+
+enquiry.propertyCity ||
+enquiry.city ||
+"Location not specified";
+
+
+
+/* MESSAGE */
+
+const message =
+
+enquiry.message ||
+"No message provided.";
+
+
+
+/* DATE */
+
+const createdAt =
+
+enquiry.createdAt ||
+enquiry.date ||
+"";
+
+
+
+/* PROPERTY ID */
+
+const propertyId =
+
+enquiry.propertyId ||
+"";
+
+
+
+/* FIND PROPERTY */
+
+let propertyInfo = null;
+
+
+if(propertyId){
+
+propertyInfo =
+allProperties.find(
+
+function(property){
+
+return String(property.id) ===
+String(propertyId);
+
+}
+
+);
+
+}
+
+
+
+/* IF PROPERTY FOUND */
+
+let finalPropertyTitle =
+propertyInfo
+? propertyInfo.title
+: propertyTitle;
+
+
+let finalPropertyCity =
+propertyInfo
+? propertyInfo.city
+: propertyCity;
+
+
+
+/* CREATE CARD */
 
 box.innerHTML = `
 
@@ -480,13 +709,13 @@ box.innerHTML = `
 
 <div class="customer">
 
-👤 ${enquiry.customerName || "Customer"}
+👤 ${escapeHTML(customerName)}
 
 </div>
 
 <div class="date">
 
-${enquiry.createdAt || ""}
+${escapeHTML(createdAt)}
 
 </div>
 
@@ -497,13 +726,13 @@ ${enquiry.createdAt || ""}
 
 <strong>
 
-🏠 ${enquiry.propertyTitle || "Property"}
+🏠 ${escapeHTML(finalPropertyTitle)}
 
 </strong>
 
 <span>
 
-📍 ${enquiry.propertyCity || "Location not specified"}
+📍 ${escapeHTML(finalPropertyCity)}
 
 </span>
 
@@ -512,7 +741,7 @@ ${enquiry.createdAt || ""}
 
 <div class="message">
 
-💬 ${enquiry.message || "No message provided."}
+💬 ${escapeHTML(message)}
 
 </div>
 
@@ -520,6 +749,10 @@ ${enquiry.createdAt || ""}
 <div class="contact-buttons">
 
 
+${
+phone
+?
+`
 <a
 class="btn call"
 href="tel:${phone}"
@@ -528,8 +761,16 @@ href="tel:${phone}"
 📞 Call Customer
 
 </a>
+`
+:
+""
+}
 
 
+${
+phone
+?
+`
 <a
 class="btn whatsapp"
 href="https://wa.me/91${phone}"
@@ -539,11 +780,15 @@ target="_blank"
 💬 WhatsApp
 
 </a>
+`
+:
+""
+}
 
 
 <button
 class="btn delete"
-onclick="deleteEnquiry('${enquiry.id}')"
+onclick="deleteEnquiry('${escapeAttribute(enquiry.id)}')"
 >
 
 🗑️ Delete
@@ -556,23 +801,56 @@ onclick="deleteEnquiry('${enquiry.id}')"
 `;
 
 
-container.appendChild(box);
+
+container.appendChild(
+box
+);
+
 
 }
+
 );
 
 
 
-/* ============================= */
+/* ================================= */
+/* SAFE HTML */
+/* ================================= */
+
+function escapeHTML(value){
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+function escapeAttribute(value){
+
+return String(value)
+.replace(/'/g,"\\'")
+.replace(/"/g,"&quot;");
+
+}
+
+
+
+/* ================================= */
 /* DELETE ENQUIRY */
-/* ============================= */
+/* ================================= */
 
 function deleteEnquiry(id){
+
 
 const confirmDelete =
 confirm(
 "Are you sure you want to delete this enquiry?"
 );
+
 
 if(!confirmDelete){
 
@@ -581,16 +859,24 @@ return;
 }
 
 
+
+/* DELETE */
+
 allEnquiries =
 allEnquiries.filter(
+
 function(enquiry){
 
 return String(enquiry.id) !==
 String(id);
 
 }
+
 );
 
+
+
+/* SAVE */
 
 localStorage.setItem(
 
@@ -603,9 +889,11 @@ allEnquiries
 );
 
 
+
 alert(
 "✅ Enquiry deleted successfully!"
 );
+
 
 
 window.location.reload();
