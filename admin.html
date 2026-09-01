@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Admin Dashboard | BharatWorld Properties</title>
 
@@ -73,6 +77,7 @@ header{
     color:white;
 }
 
+
 /* CONTAINER */
 
 .container{
@@ -96,6 +101,7 @@ header{
 .title-box p{
     color:#666;
 }
+
 
 /* STATS */
 
@@ -130,6 +136,7 @@ header{
     margin-top:5px;
 }
 
+
 /* SECTIONS */
 
 .section{
@@ -143,6 +150,7 @@ header{
 .section h2{
     margin-bottom:18px;
 }
+
 
 /* TABLE */
 
@@ -172,6 +180,7 @@ tr:hover{
     background:#f8f9fb;
 }
 
+
 /* BUTTONS */
 
 .action-btn{
@@ -193,6 +202,7 @@ tr:hover{
     color:white;
 }
 
+
 /* EMPTY */
 
 .empty{
@@ -200,6 +210,7 @@ tr:hover{
     padding:30px;
     color:#777;
 }
+
 
 /* FOOTER */
 
@@ -220,6 +231,7 @@ footer p{
     margin-top:10px;
 }
 
+
 /* MOBILE */
 
 @media(max-width:800px){
@@ -237,6 +249,11 @@ footer p{
         text-align:center;
     }
 
+    .header-right{
+        justify-content:center;
+        width:100%;
+    }
+
     .stats{
         grid-template-columns:1fr;
     }
@@ -249,10 +266,12 @@ footer p{
 }
 
 </style>
+
 </head>
 
 
 <body>
+
 
 <header>
 
@@ -264,14 +283,23 @@ footer p{
 
 </div>
 
+
 <div class="header-right">
 
-<a href="index.html" class="home-btn">
+<a href="index.html"
+class="home-btn">
+
 🏠 Home
+
 </a>
 
-<button class="logout-btn" onclick="adminLogout()">
+
+<button
+class="logout-btn"
+onclick="adminLogout()">
+
 🚪 Logout
+
 </button>
 
 </div>
@@ -279,8 +307,11 @@ footer p{
 </header>
 
 
+
 <div class="container">
 
+
+<!-- TITLE -->
 
 <div class="title-box">
 
@@ -293,19 +324,24 @@ Manage users, properties and enquiries from one place.
 </div>
 
 
+
 <!-- STATS -->
 
 <div class="stats">
 
+
 <div class="stat">
 
-<div class="stat-icon">👥</div>
+<div class="stat-icon">
+👥
+</div>
 
 <div
 class="stat-number"
-id="userCount"
->
+id="userCount">
+
 0
+
 </div>
 
 <div class="stat-name">
@@ -315,15 +351,19 @@ Total Users
 </div>
 
 
+
 <div class="stat">
 
-<div class="stat-icon">🏠</div>
+<div class="stat-icon">
+🏠
+</div>
 
 <div
 class="stat-number"
-id="propertyCount"
->
+id="propertyCount">
+
 0
+
 </div>
 
 <div class="stat-name">
@@ -333,15 +373,19 @@ Total Properties
 </div>
 
 
+
 <div class="stat">
 
-<div class="stat-icon">📩</div>
+<div class="stat-icon">
+📩
+</div>
 
 <div
 class="stat-number"
-id="enquiryCount"
->
+id="enquiryCount">
+
 0
+
 </div>
 
 <div class="stat-name">
@@ -351,15 +395,19 @@ Total Enquiries
 </div>
 
 
+
 <div class="stat">
 
-<div class="stat-icon">✅</div>
+<div class="stat-icon">
+✅
+</div>
 
 <div
 class="stat-number"
-id="verifiedCount"
->
+id="verifiedCount">
+
 0
+
 </div>
 
 <div class="stat-name">
@@ -368,7 +416,9 @@ Verified Properties
 
 </div>
 
+
 </div>
+
 
 
 <!-- USERS -->
@@ -379,6 +429,7 @@ Verified Properties
 👥 All Users
 </h2>
 
+
 <div class="table-wrap">
 
 <table>
@@ -388,13 +439,21 @@ Verified Properties
 <tr>
 
 <th>Name</th>
+
 <th>Email</th>
+
 <th>Phone</th>
+
+<th>Role</th>
+
+<th>Status</th>
+
 <th>Action</th>
 
 </tr>
 
 </thead>
+
 
 <tbody id="usersTable">
 
@@ -407,6 +466,7 @@ Verified Properties
 </div>
 
 
+
 <!-- PROPERTIES -->
 
 <div class="section">
@@ -414,6 +474,7 @@ Verified Properties
 <h2>
 🏠 All Properties
 </h2>
+
 
 <div class="table-wrap">
 
@@ -424,15 +485,21 @@ Verified Properties
 <tr>
 
 <th>Property</th>
+
 <th>Location</th>
+
 <th>Price</th>
+
 <th>Owner</th>
+
 <th>Status</th>
+
 <th>Action</th>
 
 </tr>
 
 </thead>
+
 
 <tbody id="propertiesTable">
 
@@ -445,6 +512,7 @@ Verified Properties
 </div>
 
 
+
 <!-- ENQUIRIES -->
 
 <div class="section">
@@ -452,6 +520,7 @@ Verified Properties
 <h2>
 📩 All Enquiries
 </h2>
+
 
 <div class="table-wrap">
 
@@ -462,13 +531,17 @@ Verified Properties
 <tr>
 
 <th>Buyer</th>
+
 <th>Property</th>
+
 <th>Owner</th>
+
 <th>Phone</th>
 
 </tr>
 
 </thead>
+
 
 <tbody id="enquiriesTable">
 
@@ -482,6 +555,7 @@ Verified Properties
 
 
 </div>
+
 
 
 <footer>
@@ -501,41 +575,48 @@ Admin Management System
 </footer>
 
 
+
 <script>
 
-/* ================================= */
-/* ADMIN LOGIN PROTECTION */
-/* ================================= */
 
-/*
-   Temporary admin protection.
+/* ========================================= */
+/* ADMIN SECURITY */
+/* ========================================= */
 
-   Admin mode:
-   localStorage.setItem("pv_admin","true");
-*/
-
-if(localStorage.getItem("pv_admin") !== "true"){
+if(
+localStorage.getItem("adminLoggedIn") !== "true"
+){
 
 alert("🔐 Admin access required.");
 
-window.location.href="login.html";
+window.location.href="admin-login.html";
 
 }
 
 
-/* ================================= */
-/* GET DATA */
-/* ================================= */
+/* ========================================= */
+/* GET USERS */
+/* ========================================= */
 
 const users =
 JSON.parse(
-localStorage.getItem("pv_users") || "[]"
+localStorage.getItem("users") || "[]"
 );
+
+
+/* ========================================= */
+/* GET PROPERTIES */
+/* ========================================= */
 
 const properties =
 JSON.parse(
 localStorage.getItem("pv_properties") || "[]"
 );
+
+
+/* ========================================= */
+/* GET ENQUIRIES */
+/* ========================================= */
 
 const enquiries =
 JSON.parse(
@@ -543,23 +624,33 @@ localStorage.getItem("pv_enquiries") || "[]"
 );
 
 
-/* ================================= */
-/* COUNTS */
-/* ================================= */
+/* ========================================= */
+/* USER COUNT */
+/* ========================================= */
 
 document.getElementById("userCount").innerText =
 users.length;
 
+
+/* ========================================= */
+/* PROPERTY COUNT */
+/* ========================================= */
+
 document.getElementById("propertyCount").innerText =
 properties.length;
+
+
+/* ========================================= */
+/* ENQUIRY COUNT */
+/* ========================================= */
 
 document.getElementById("enquiryCount").innerText =
 enquiries.length;
 
 
-/* ================================= */
+/* ========================================= */
 /* VERIFIED COUNT */
-/* ================================= */
+/* ========================================= */
 
 const verifiedProperties =
 properties.filter(function(property){
@@ -568,13 +659,14 @@ return property.verified === true;
 
 });
 
+
 document.getElementById("verifiedCount").innerText =
 verifiedProperties.length;
 
 
-/* ================================= */
+/* ========================================= */
 /* USERS TABLE */
-/* ================================= */
+/* ========================================= */
 
 const usersTable =
 document.getElementById("usersTable");
@@ -583,11 +675,19 @@ document.getElementById("usersTable");
 if(users.length === 0){
 
 usersTable.innerHTML = `
+
 <tr>
-<td colspan="4" class="empty">
-No users found.
+
+<td
+colspan="6"
+class="empty">
+
+No registered users found.
+
 </td>
+
 </tr>
+
 `;
 
 }
@@ -601,24 +701,55 @@ return `
 <tr>
 
 <td>
-${escapeHTML(user.name || "Unknown")}
+${escapeHTML(
+user.name ||
+user.fullName ||
+"Unknown"
+)}
 </td>
 
-<td>
-${escapeHTML(user.email || "Not available")}
-</td>
 
 <td>
-${escapeHTML(user.phone || "Not available")}
+${escapeHTML(
+user.email ||
+"Not available"
+)}
 </td>
+
+
+<td>
+${escapeHTML(
+user.phone ||
+user.mobile ||
+"Not available"
+)}
+</td>
+
+
+<td>
+${escapeHTML(
+user.role ||
+"user"
+)}
+</td>
+
+
+<td>
+${escapeHTML(
+user.status ||
+"active"
+)}
+</td>
+
 
 <td>
 
 <button
 class="action-btn delete"
-onclick="deleteUser(${index})"
->
+onclick="deleteUser(${index})">
+
 🗑️ Delete
+
 </button>
 
 </td>
@@ -632,9 +763,9 @@ onclick="deleteUser(${index})"
 }
 
 
-/* ================================= */
+/* ========================================= */
 /* PROPERTIES TABLE */
-/* ================================= */
+/* ========================================= */
 
 const propertiesTable =
 document.getElementById("propertiesTable");
@@ -643,11 +774,19 @@ document.getElementById("propertiesTable");
 if(properties.length === 0){
 
 propertiesTable.innerHTML = `
+
 <tr>
-<td colspan="6" class="empty">
+
+<td
+colspan="6"
+class="empty">
+
 No properties found.
+
 </td>
+
 </tr>
+
 `;
 
 }
@@ -659,37 +798,68 @@ properties.map(function(property,index){
 const verified =
 property.verified === true;
 
+
 return `
 
 <tr>
 
 <td>
-${escapeHTML(property.title || "Property")}
+
+${escapeHTML(
+property.title ||
+"Property"
+)}
+
 </td>
 
-<td>
-${escapeHTML(property.city || "Unknown")}
-</td>
 
 <td>
-${escapeHTML(property.price || "On Request")}
+
+${escapeHTML(
+property.city ||
+property.location ||
+"Unknown"
+)}
+
 </td>
 
+
 <td>
-${escapeHTML(property.owner || property.postedBy || "Unknown")}
+
+${escapeHTML(
+property.price ||
+"On Request"
+)}
+
 </td>
+
+
+<td>
+
+${escapeHTML(
+property.owner ||
+property.postedBy ||
+"Unknown"
+)}
+
+</td>
+
 
 <td>
 
 ${
 verified
-? "✅ Verified"
-: "⏳ Pending"
+?
+"✅ Verified"
+:
+"⏳ Pending"
 }
 
 </td>
 
+
 <td>
+
 
 ${
 verified
@@ -697,21 +867,27 @@ verified
 ""
 :
 `
+
 <button
 class="action-btn verify"
-onclick="verifyProperty(${index})"
->
+onclick="verifyProperty(${index})">
+
 ✅ Verify
+
 </button>
+
 `
 }
 
+
 <button
 class="action-btn delete"
-onclick="deleteProperty(${index})"
->
+onclick="deleteProperty(${index})">
+
 🗑️ Delete
+
 </button>
+
 
 </td>
 
@@ -724,9 +900,9 @@ onclick="deleteProperty(${index})"
 }
 
 
-/* ================================= */
+/* ========================================= */
 /* ENQUIRIES TABLE */
-/* ================================= */
+/* ========================================= */
 
 const enquiriesTable =
 document.getElementById("enquiriesTable");
@@ -735,11 +911,19 @@ document.getElementById("enquiriesTable");
 if(enquiries.length === 0){
 
 enquiriesTable.innerHTML = `
+
 <tr>
-<td colspan="4" class="empty">
+
+<td
+colspan="4"
+class="empty">
+
 No enquiries found.
+
 </td>
+
 </tr>
+
 `;
 
 }
@@ -753,35 +937,47 @@ return `
 <tr>
 
 <td>
+
 ${escapeHTML(
 enquiry.name ||
 enquiry.buyerName ||
 "Unknown"
 )}
+
 </td>
 
+
 <td>
+
 ${escapeHTML(
 enquiry.propertyTitle ||
 enquiry.title ||
 "Property"
 )}
+
 </td>
 
+
 <td>
+
 ${escapeHTML(
 enquiry.ownerName ||
 enquiry.owner ||
 enquiry.ownerUser ||
 "Unknown"
 )}
+
 </td>
 
+
 <td>
+
 ${escapeHTML(
 enquiry.phone ||
+enquiry.mobile ||
 "Not available"
 )}
+
 </td>
 
 </tr>
@@ -793,9 +989,60 @@ enquiry.phone ||
 }
 
 
-/* ================================= */
+/* ========================================= */
+/* DELETE USER */
+/* ========================================= */
+
+function deleteUser(index){
+
+if(
+!confirm(
+"⚠️ Are you sure you want to delete this user?"
+)
+){
+
+return;
+
+}
+
+
+const allUsers =
+JSON.parse(
+localStorage.getItem("users") || "[]"
+);
+
+
+if(!allUsers[index]){
+
+alert("❌ User not found.");
+
+return;
+
+}
+
+
+allUsers.splice(index,1);
+
+
+localStorage.setItem(
+"users",
+JSON.stringify(allUsers)
+);
+
+
+alert(
+"🗑️ User deleted successfully!"
+);
+
+
+location.reload();
+
+}
+
+
+/* ========================================= */
 /* VERIFY PROPERTY */
-/* ================================= */
+/* ========================================= */
 
 function verifyProperty(index){
 
@@ -803,6 +1050,7 @@ const allProperties =
 JSON.parse(
 localStorage.getItem("pv_properties") || "[]"
 );
+
 
 if(!allProperties[index]){
 
@@ -812,125 +1060,122 @@ return;
 
 }
 
+
 allProperties[index].verified = true;
+
 
 localStorage.setItem(
 "pv_properties",
 JSON.stringify(allProperties)
 );
 
+
 alert(
 "✅ Property verified successfully!"
 );
+
 
 location.reload();
 
 }
 
 
-/* ================================= */
+/* ========================================= */
 /* DELETE PROPERTY */
-/* ================================= */
+/* ========================================= */
 
 function deleteProperty(index){
 
-if(!confirm(
+if(
+!confirm(
 "⚠️ Are you sure you want to delete this property?"
-)){
+)
+){
 
 return;
 
 }
+
 
 const allProperties =
 JSON.parse(
 localStorage.getItem("pv_properties") || "[]"
 );
 
+
+if(!allProperties[index]){
+
+alert("❌ Property not found.");
+
+return;
+
+}
+
+
 allProperties.splice(index,1);
+
 
 localStorage.setItem(
 "pv_properties",
 JSON.stringify(allProperties)
 );
 
+
 alert(
 "🗑️ Property deleted successfully!"
 );
 
-location.reload();
-
-}
-
-
-/* ================================= */
-/* DELETE USER */
-/* ================================= */
-
-function deleteUser(index){
-
-if(!confirm(
-"⚠️ Are you sure you want to delete this user?"
-)){
-
-return;
-
-}
-
-const allUsers =
-JSON.parse(
-localStorage.getItem("pv_users") || "[]"
-);
-
-allUsers.splice(index,1);
-
-localStorage.setItem(
-"pv_users",
-JSON.stringify(allUsers)
-);
-
-alert(
-"🗑️ User deleted successfully!"
-);
 
 location.reload();
 
 }
 
 
-/* ================================= */
+/* ========================================= */
 /* ADMIN LOGOUT */
-/* ================================= */
+/* ========================================= */
 
 function adminLogout(){
 
-localStorage.removeItem("pv_admin");
+localStorage.removeItem(
+"adminLoggedIn"
+);
+
 
 alert(
 "✅ Admin logged out successfully!"
 );
 
-window.location.href="login.html";
+
+window.location.href =
+"admin-login.html";
 
 }
 
 
-/* ================================= */
+/* ========================================= */
 /* HTML SECURITY */
-/* ================================= */
+/* ========================================= */
 
 function escapeHTML(value){
 
 return String(value)
+
 .replace(/&/g,"&amp;")
+
 .replace(/</g,"&lt;")
+
 .replace(/>/g,"&gt;")
+
 .replace(/"/g,"&quot;")
+
 .replace(/'/g,"&#039;");
 
 }
 
 </script>
 
+
 </body>
-  </html>
+
+    </html>
