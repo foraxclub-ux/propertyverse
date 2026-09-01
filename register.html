@@ -358,12 +358,18 @@ Login
 
 <script>
 
+/* ========================================= */
+/* REGISTER USER */
+/* ========================================= */
+
 document
 .getElementById("registerForm")
 .addEventListener("submit", function(e){
 
 e.preventDefault();
 
+
+/* GET FORM VALUES */
 
 const name =
 document
@@ -396,10 +402,16 @@ document
 .getElementById("successMessage");
 
 
-errorMessage.style.display = "none";
+/* HIDE OLD MESSAGES */
 
-successMessage.style.display = "none";
+errorMessage.style.display =
+"none";
 
+successMessage.style.display =
+"none";
+
+
+/* VALIDATION */
 
 if(
 name === "" ||
@@ -418,9 +430,7 @@ return;
 }
 
 
-if(
-password.length < 4
-){
+if(password.length < 4){
 
 errorMessage.innerText =
 "⚠️ Password must contain at least 4 characters.";
@@ -433,17 +443,33 @@ return;
 }
 
 
-const existingEmail =
-localStorage.getItem("pv_email");
+/* ========================================= */
+/* GET ALL REGISTERED USERS */
+/* ========================================= */
+
+let users =
+JSON.parse(
+localStorage.getItem("users") || "[]"
+);
 
 
-if(
-existingEmail &&
-existingEmail.toLowerCase() === email
-){
+/* ========================================= */
+/* CHECK EXISTING EMAIL */
+/* ========================================= */
+
+const existingUser =
+users.find(function(user){
+
+return String(user.email)
+.toLowerCase() === email;
+
+});
+
+
+if(existingUser){
 
 errorMessage.innerText =
-"⚠️ This account already exists. Please login.";
+"⚠️ This email is already registered. Please login.";
 
 errorMessage.style.display =
 "block";
@@ -453,23 +479,70 @@ return;
 }
 
 
+/* ========================================= */
+/* CREATE NEW USER */
+/* ========================================= */
+
+const newUser = {
+
+id:
+"USR" + Date.now(),
+
+name:
+name,
+
+email:
+email,
+
+password:
+password,
+
+phone:
+"",
+
+role:
+"user",
+
+status:
+"active",
+
+registeredAt:
+new Date().toLocaleString("en-IN")
+
+};
+
+
+/* ========================================= */
+/* SAVE USER */
+/* ========================================= */
+
+users.push(newUser);
+
+
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
+
+
+/* ========================================= */
+/* KEEP EXISTING LOGIN SYSTEM WORKING */
+/* ========================================= */
+
 localStorage.setItem(
 "pv_name",
 name
 );
-
 
 localStorage.setItem(
 "pv_email",
 email
 );
 
-
 localStorage.setItem(
 "pv_password",
 password
 );
-
 
 localStorage.setItem(
 "pv_logged_in",
@@ -477,13 +550,20 @@ localStorage.setItem(
 );
 
 
+/* ========================================= */
+/* SUCCESS MESSAGE */
+/* ========================================= */
+
 successMessage.innerText =
 "✅ Account created successfully! Redirecting to login...";
-
 
 successMessage.style.display =
 "block";
 
+
+/* ========================================= */
+/* REDIRECT TO LOGIN */
+/* ========================================= */
 
 setTimeout(function(){
 
@@ -492,7 +572,6 @@ window.location.href =
 
 },1500);
 
-
 });
 
 </script>
@@ -500,4 +579,4 @@ window.location.href =
 
 </body>
 
-</html>
+  </html>
