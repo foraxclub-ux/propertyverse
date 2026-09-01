@@ -1,734 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Users & Members | BharatWorld Properties</title>
+<title>Admin Users - BharatWorld Properties</title>
 
 <style>
-
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 body{
-background:#f4f6f9;
-color:#081B33;
+  font-family:Arial,sans-serif;
+  background:#f2f5f9;
+  color:#10233f;
 }
 
-/* HEADER */
-
-header{
-background:#081B33;
-color:white;
-padding:18px 25px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:15px;
-flex-wrap:wrap;
+.header{
+  background:#071a33;
+  color:white;
+  padding:22px 16px;
+  text-align:center;
 }
 
-.logo{
-color:#FFD700;
-font-size:24px;
-font-weight:bold;
+.header h1{
+  color:#ffd400;
+  font-size:28px;
 }
 
-.logo small{
-display:block;
-color:white;
-font-size:10px;
-letter-spacing:2px;
-margin-top:3px;
+.header p{
+  margin-top:6px;
+  color:#ddd;
 }
-
-.back{
-background:#E63946;
-color:white;
-padding:10px 15px;
-border-radius:7px;
-text-decoration:none;
-font-weight:bold;
-}
-
-/* CONTAINER */
 
 .container{
-max-width:1100px;
-margin:30px auto;
-padding:0 18px;
+  max-width:1000px;
+  margin:25px auto;
+  padding:0 15px;
 }
 
-/* TITLE */
-
-.page-title{
-background:white;
-padding:25px;
-border-radius:15px;
-box-shadow:0 5px 20px rgba(0,0,0,.08);
-margin-bottom:20px;
+.card{
+  background:white;
+  border-radius:15px;
+  padding:20px;
+  margin-bottom:20px;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
 }
 
-.page-title h1{
-font-size:30px;
-margin-bottom:8px;
+.title{
+  font-size:24px;
+  font-weight:bold;
+  margin-bottom:15px;
 }
-
-.page-title p{
-color:#666;
-}
-
-/* STATS */
 
 .stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px;
-margin-bottom:25px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-bottom:20px;
 }
 
 .stat{
-background:white;
-padding:20px;
-border-radius:14px;
-box-shadow:0 5px 20px rgba(0,0,0,.08);
+  background:#071a33;
+  color:white;
+  padding:18px;
+  border-radius:12px;
+  text-align:center;
 }
 
-.stat strong{
-display:block;
-font-size:13px;
-color:#777;
-margin-bottom:8px;
+.stat b{
+  display:block;
+  font-size:28px;
+  color:#ffd400;
+  margin-top:5px;
 }
 
-.stat span{
-font-size:28px;
-font-weight:bold;
+.user{
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:15px;
+  margin-top:12px;
 }
 
-/* USERS */
-
-.users-box{
-background:white;
-padding:22px;
-border-radius:15px;
-box-shadow:0 5px 20px rgba(0,0,0,.08);
+.user h3{
+  margin-bottom:8px;
 }
 
-.users-box h2{
-margin-bottom:18px;
-}
-
-/* SEARCH */
-
-.search{
-width:100%;
-padding:14px;
-border:1px solid #ddd;
-border-radius:8px;
-font-size:16px;
-margin-bottom:20px;
-}
-
-/* USER CARD */
-
-.user-card{
-border:1px solid #e3e6eb;
-border-radius:12px;
-padding:18px;
-margin-bottom:15px;
-background:#fafbfc;
-}
-
-.user-top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-flex-wrap:wrap;
-}
-
-.user-name{
-font-size:20px;
-font-weight:bold;
-}
-
-.badge{
-background:#e7f8ed;
-color:#16803c;
-padding:6px 10px;
-border-radius:6px;
-font-size:12px;
-font-weight:bold;
-}
-
-.user-info{
-margin-top:12px;
-line-height:1.8;
-color:#555;
-}
-
-.actions{
-display:flex;
-gap:10px;
-margin-top:15px;
-flex-wrap:wrap;
-}
-
-.btn{
-border:0;
-padding:10px 15px;
-border-radius:7px;
-font-weight:bold;
-cursor:pointer;
-}
-
-.view{
-background:#081B33;
-color:white;
+.user p{
+  color:#555;
+  margin:5px 0;
 }
 
 .delete{
-background:#E63946;
-color:white;
+  background:#e63946;
+  color:white;
+  border:0;
+  padding:10px 15px;
+  border-radius:8px;
+  margin-top:10px;
+  cursor:pointer;
+}
+
+.logout{
+  background:#071a33;
+  color:white;
+  border:0;
+  padding:12px 20px;
+  border-radius:8px;
+  cursor:pointer;
 }
 
 .empty{
-text-align:center;
-padding:45px 15px;
-color:#777;
+  text-align:center;
+  padding:30px;
+  color:#777;
 }
 
-.empty h3{
-font-size:22px;
-margin-bottom:8px;
+@media(max-width:600px){
+  .stats{
+    grid-template-columns:1fr;
+  }
 }
-
-/* MOBILE */
-
-@media(max-width:700px){
-
-.stats{
-grid-template-columns:1fr;
-}
-
-.page-title h1{
-font-size:25px;
-}
-
-.user-top{
-align-items:flex-start;
-}
-
-}
-
-/* FOOTER */
-
-footer{
-margin-top:50px;
-background:#050F1F;
-color:white;
-text-align:center;
-padding:30px 15px;
-}
-
-footer h2{
-color:#FFD700;
-}
-
-footer p{
-color:#ccc;
-margin-top:8px;
-}
-
 </style>
-
 </head>
 
 <body>
 
-<!-- HEADER -->
-
-<header>
-
-<div class="logo">
-🏠 BharatWorld
-<small>PROPERTIES • ADMIN</small>
+<div class="header">
+  <h1>🏠 BharatWorld</h1>
+  <p>PROPERTIES — Admin Users</p>
 </div>
-
-<a href="admin.html" class="back">
-← Admin Dashboard
-</a>
-
-</header>
-
-
-<!-- MAIN -->
 
 <div class="container">
 
-<div class="page-title">
+  <div class="card">
+    <div class="title">👥 Registered Users</div>
 
-<h1>👥 Users & Members</h1>
+    <div class="stats">
+      <div class="stat">
+        Total Users
+        <b id="totalUsers">0</b>
+      </div>
 
-<p>
-Manage BharatWorld Properties registered users and members.
-</p>
+      <div class="stat">
+        Active Users
+        <b id="activeUsers">0</b>
+      </div>
 
-</div>
+      <div class="stat">
+        Saved Properties
+        <b id="savedCount">0</b>
+      </div>
+    </div>
 
+    <div id="usersList"></div>
+  </div>
 
-<!-- STATS -->
-
-<div class="stats">
-
-<div class="stat">
-
-<strong>👥 TOTAL USERS</strong>
-
-<span id="totalUsers">
-0
-</span>
-
-</div>
-
-
-<div class="stat">
-
-<strong>🏠 PROPERTY OWNERS</strong>
-
-<span id="propertyOwners">
-0
-</span>
+  <div class="card">
+    <button class="logout" onclick="logout()">🚪 Admin Logout</button>
+  </div>
 
 </div>
-
-
-<div class="stat">
-
-<strong>📋 REGISTERED MEMBERS</strong>
-
-<span id="registeredMembers">
-0
-</span>
-
-</div>
-
-</div>
-
-
-<!-- USERS -->
-
-<div class="users-box">
-
-<h2>👤 All Users</h2>
-
-<input
-type="text"
-id="searchUser"
-class="search"
-placeholder="🔎 Search by name, email or mobile..."
-oninput="showUsers()"
->
-
-<div id="usersList"></div>
-
-</div>
-
-</div>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-<h2>🏠 BharatWorld Properties</h2>
-
-<p>Buy • Sell • Rent • Interior</p>
-
-<p>
-© 2026 BharatWorld Properties. All Rights Reserved.
-</p>
-
-</footer>
-
 
 <script>
 
-/* =========================================
-   LOAD USERS
-========================================= */
-
-function getUsers(){
-
-let users = [];
-
-try{
-
-users = JSON.parse(
-localStorage.getItem("pv_users") || "[]"
-);
-
-}catch(error){
-
-users = [];
-
-}
-
-return Array.isArray(users) ? users : [];
-
+/* ADMIN SECURITY CHECK */
+if(localStorage.getItem("adminLoggedIn") !== "true"){
+  window.location.href = "admin-login.html";
 }
 
 
-/* =========================================
-   SHOW USERS
-========================================= */
+/* LOAD USERS */
+function loadUsers(){
 
-function showUsers(){
+  let users = JSON.parse(
+    localStorage.getItem("users") || "[]"
+  );
 
-const users = getUsers();
+  let saved = JSON.parse(
+    localStorage.getItem("savedProperties") || "[]"
+  );
 
-const search =
-document.getElementById("searchUser")
-.value
-.toLowerCase()
-.trim();
+  document.getElementById("totalUsers").innerText =
+    users.length;
 
-const list =
-document.getElementById("usersList");
+  document.getElementById("activeUsers").innerText =
+    users.length;
 
-const filtered =
-users.filter(function(user){
+  document.getElementById("savedCount").innerText =
+    saved.length;
 
-const text = (
+  const list =
+    document.getElementById("usersList");
 
-(user.name || "") +
-" " +
-(user.email || "") +
-" " +
-(user.phone || "") +
-" " +
-(user.mobile || "")
+  if(users.length === 0){
 
-).toLowerCase();
+    list.innerHTML =
+      '<div class="empty">No registered users found.</div>';
 
-return text.includes(search);
+    return;
+  }
 
-});
+  list.innerHTML = "";
 
+  users.forEach((user,index)=>{
 
-/* EMPTY */
+    const name =
+      user.name ||
+      user.fullName ||
+      "User";
 
-if(filtered.length === 0){
+    const email =
+      user.email ||
+      "Email not available";
 
-list.innerHTML = `
+    const mobile =
+      user.mobile ||
+      user.phone ||
+      "Mobile not available";
 
-<div class="empty">
+    list.innerHTML += `
 
-<h3>👤 No Users Found</h3>
+      <div class="user">
 
-<p>
-No registered users are available.
-</p>
+        <h3>👤 ${name}</h3>
 
-</div>
+        <p>📧 ${email}</p>
 
-`;
+        <p>📱 ${mobile}</p>
 
-return;
+        <button
+          class="delete"
+          onclick="deleteUser(${index})">
+          🗑️ Delete User
+        </button>
+
+      </div>
+
+    `;
+
+  });
 
 }
 
 
-/* USERS */
-
-list.innerHTML = "";
-
-filtered.forEach(function(user,index){
-
-const name =
-user.name ||
-user.fullName ||
-"Unnamed User";
-
-const email =
-user.email ||
-"Email not available";
-
-const phone =
-user.phone ||
-user.mobile ||
-"Mobile not available";
-
-const userId =
-user.id ||
-user.userId ||
-("USER-" + (index + 1));
-
-
-const card =
-document.createElement("div");
-
-card.className =
-"user-card";
-
-
-card.innerHTML = `
-
-<div class="user-top">
-
-<div class="user-name">
-👤 ${escapeHTML(name)}
-</div>
-
-<div class="badge">
-✓ REGISTERED
-</div>
-
-</div>
-
-<div class="user-info">
-
-<div>
-🆔 <strong>User ID:</strong>
-${escapeHTML(String(userId))}
-</div>
-
-<div>
-📧 <strong>Email:</strong>
-${escapeHTML(email)}
-</div>
-
-<div>
-📱 <strong>Mobile:</strong>
-${escapeHTML(String(phone))}
-</div>
-
-</div>
-
-<div class="actions">
-
-<button
-class="btn view"
-onclick="viewUser(${index})"
->
-👁 View
-</button>
-
-<button
-class="btn delete"
-onclick="deleteUser(${index})"
->
-🗑 Delete
-</button>
-
-</div>
-
-`;
-
-
-list.appendChild(card);
-
-});
-
-}
-
-
-/* =========================================
-   VIEW USER
-========================================= */
-
-function viewUser(index){
-
-const users =
-getUsers();
-
-const user =
-users[index];
-
-if(!user){
-
-alert("❌ User not found.");
-
-return;
-
-}
-
-
-const name =
-user.name ||
-user.fullName ||
-"Unnamed User";
-
-const email =
-user.email ||
-"Not available";
-
-const phone =
-user.phone ||
-user.mobile ||
-"Not available";
-
-
-alert(
-
-"👤 USER DETAILS\n\n" +
-
-"Name: " + name +
-"\n\nEmail: " + email +
-"\n\nMobile: " + phone
-
-);
-
-}
-
-
-/* =========================================
-   DELETE USER
-========================================= */
-
+/* DELETE USER */
 function deleteUser(index){
 
-const users =
-getUsers();
+  if(!confirm("Delete this user permanently?")){
+    return;
+  }
 
-const user =
-users[index];
+  let users = JSON.parse(
+    localStorage.getItem("users") || "[]"
+  );
 
-if(!user){
+  users.splice(index,1);
 
-return;
+  localStorage.setItem(
+    "users",
+    JSON.stringify(users)
+  );
 
+  loadUsers();
 }
 
 
-const name =
-user.name ||
-user.fullName ||
-"this user";
+/* LOGOUT */
+function logout(){
 
+  localStorage.removeItem("adminLoggedIn");
 
-const confirmDelete =
-confirm(
-
-"⚠️ Are you sure you want to delete " +
-name +
-"?\n\nThis action cannot be undone."
-
-);
-
-
-if(!confirmDelete){
-
-return;
-
+  window.location.href =
+    "admin-login.html";
 }
 
 
-users.splice(index,1);
-
-
-localStorage.setItem(
-"pv_users",
-JSON.stringify(users)
-);
-
-
-alert(
-"✅ User deleted successfully."
-);
-
-
-showUsers();
-
-updateStats();
-
-}
-
-
-/* =========================================
-   STATS
-========================================= */
-
-function updateStats(){
-
-const users =
-getUsers();
-
-
-document.getElementById(
-"totalUsers"
-).innerText =
-users.length;
-
-
-/* Property owners */
-
-let owners = 0;
-
-users.forEach(function(user){
-
-if(
-user.properties ||
-user.role === "owner" ||
-user.role === "agent"
-){
-
-owners++;
-
-}
-
-});
-
-
-document.getElementById(
-"propertyOwners"
-).innerText =
-owners;
-
-
-/* Registered members */
-
-document.getElementById(
-"registeredMembers"
-).innerText =
-users.length;
-
-}
-
-
-/* =========================================
-   HTML SECURITY
-========================================= */
-
-function escapeHTML(value){
-
-return String(value)
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
-}
-
-
-/* =========================================
-   START
-========================================= */
-
-updateStats();
-
-showUsers();
+loadUsers();
 
 </script>
 
 </body>
-
-  </html>
+</html>
