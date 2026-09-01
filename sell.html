@@ -173,6 +173,10 @@ cursor:pointer;
 margin-top:10px;
 }
 
+.cancel-btn:hover{
+background:#102b4c;
+}
+
 .note{
 background:#fff8d8;
 border-left:5px solid #FFD700;
@@ -261,9 +265,7 @@ gap:0;
 
 </head>
 
-
 <body>
-
 
 <header>
 
@@ -274,7 +276,6 @@ gap:0;
 <small>PROPERTIES</small>
 
 </div>
-
 
 <nav>
 
@@ -315,7 +316,6 @@ Login
 </header>
 
 
-
 <section class="hero">
 
 <h1 id="pageTitle">
@@ -329,9 +329,7 @@ List your property and connect with potential buyers or tenants.
 </section>
 
 
-
 <div class="form-container">
-
 
 <h2 id="formTitle">
 📋 Property Details
@@ -341,6 +339,7 @@ List your property and connect with potential buyers or tenants.
 <div class="note" id="normalNote">
 
 <strong>Important:</strong>
+
 Please enter accurate property information.
 Your listing will appear on the Listing page after submission.
 
@@ -350,6 +349,7 @@ Your listing will appear on the Listing page after submission.
 <div class="edit-note" id="editNote">
 
 ✏️ You are editing an existing property.
+
 Update the information below and click
 <strong>Update Property</strong>.
 
@@ -364,7 +364,6 @@ class="success"
 ✅ Property listed successfully!
 
 </div>
-
 
 
 <form id="propertyForm">
@@ -387,11 +386,9 @@ required>
 </div>
 
 
-
 <!-- CITY + TYPE -->
 
 <div class="row">
-
 
 <div class="form-group">
 
@@ -406,7 +403,6 @@ placeholder="Example: Ahmedabad"
 required>
 
 </div>
-
 
 
 <div class="form-group">
@@ -451,11 +447,9 @@ Commercial
 </div>
 
 
-
 <!-- LISTING TYPE + PRICE -->
 
 <div class="row">
-
 
 <div class="form-group">
 
@@ -485,7 +479,6 @@ For Rent
 </div>
 
 
-
 <div class="form-group">
 
 <label>
@@ -503,11 +496,9 @@ required>
 </div>
 
 
-
 <!-- BHK + AREA -->
 
 <div class="row">
-
 
 <div class="form-group">
 
@@ -542,7 +533,6 @@ BHK
 </div>
 
 
-
 <div class="form-group">
 
 <label>
@@ -557,7 +547,6 @@ placeholder="Example: 2200 Sq.ft">
 </div>
 
 </div>
-
 
 
 <!-- DESCRIPTION -->
@@ -576,17 +565,14 @@ required></textarea>
 </div>
 
 
-
 <h2 style="margin-top:30px;">
 👤 Owner Contact
 </h2>
 
 
-
 <!-- OWNER + PHONE -->
 
 <div class="row">
-
 
 <div class="form-group">
 
@@ -601,7 +587,6 @@ placeholder="Your Name"
 required>
 
 </div>
-
 
 
 <div class="form-group">
@@ -621,7 +606,6 @@ required>
 </div>
 
 
-
 <button
 type="submit"
 class="submit-btn"
@@ -631,7 +615,6 @@ id="submitButton"
 ➕ Publish Property
 
 </button>
-
 
 
 <button
@@ -649,7 +632,6 @@ onclick="cancelEdit()"
 </form>
 
 </div>
-
 
 
 <footer>
@@ -701,111 +683,104 @@ Contact
 </footer>
 
 
-
 <script>
 
-
-/* ================================================= */
-/* LOGIN CHECK */
-/* ================================================= */
+/* =================================================
+   LOGIN CHECK
+================================================= */
 
 const loggedIn =
 localStorage.getItem("pv_logged_in");
 
-
 if(loggedIn !== "true"){
 
-alert(
-"🔐 Please login first to post your property."
-);
+    alert(
+        "🔐 Please login first to post your property."
+    );
 
-window.location.href =
-"login.html";
+    window.location.href =
+    "login.html";
 
 }
 
 
-
-/* ================================================= */
-/* CURRENT USER */
-/* ================================================= */
+/* =================================================
+   CURRENT USER
+================================================= */
 
 const currentUser =
 localStorage.getItem(
-"pv_current_user"
+    "pv_current_user"
 );
 
 
-
-/* ================================================= */
-/* EDIT PROPERTY */
-/* ================================================= */
+/* =================================================
+   EDIT PROPERTY DATA
+================================================= */
 
 let editPropertyData =
 JSON.parse(
 
-localStorage.getItem(
-"pv_edit_property"
-) || "null"
+    localStorage.getItem(
+        "pv_edit_property"
+    ) || "null"
 
 );
 
 
-
-/* ================================================= */
-/* ELEMENTS */
-/* ================================================= */
+/* =================================================
+   ELEMENTS
+================================================= */
 
 const propertyForm =
 document.getElementById(
-"propertyForm"
+    "propertyForm"
 );
 
 const pageTitle =
 document.getElementById(
-"pageTitle"
+    "pageTitle"
 );
 
 const pageSubtitle =
 document.getElementById(
-"pageSubtitle"
+    "pageSubtitle"
 );
 
 const formTitle =
 document.getElementById(
-"formTitle"
+    "formTitle"
 );
 
 const normalNote =
 document.getElementById(
-"normalNote"
+    "normalNote"
 );
 
 const editNote =
 document.getElementById(
-"editNote"
+    "editNote"
 );
 
 const submitButton =
 document.getElementById(
-"submitButton"
+    "submitButton"
 );
 
 const cancelButton =
 document.getElementById(
-"cancelButton"
+    "cancelButton"
 );
 
 const successMessage =
 document.getElementById(
-"successMessage"
+    "successMessage"
 );
 
 
-
-/* ================================================= */
-/* FILL EDIT DATA */
-/* ================================================= */
+/* =================================================
+   LOAD EDIT PROPERTY
+================================================= */
 
 if(editPropertyData){
 
@@ -817,11 +792,11 @@ if(editPropertyData){
     ){
 
         alert(
-        "❌ You can only edit your own property."
+            "❌ You can only edit your own property."
         );
 
         localStorage.removeItem(
-        "pv_edit_property"
+            "pv_edit_property"
         );
 
         window.location.href =
@@ -830,7 +805,7 @@ if(editPropertyData){
     }
 
 
-    /* PAGE CHANGE */
+    /* CHANGE PAGE TEXT */
 
     pageTitle.innerText =
     "✏️ Edit Your Property";
@@ -841,14 +816,17 @@ if(editPropertyData){
     formTitle.innerText =
     "✏️ Edit Property Details";
 
+
     normalNote.style.display =
     "none";
 
     editNote.style.display =
     "block";
 
+
     submitButton.innerText =
     "💾 Update Property";
+
 
     cancelButton.style.display =
     "block";
@@ -856,277 +834,359 @@ if(editPropertyData){
 
     /* TITLE */
 
-    document
-    .getElementById("propertyTitle")
-    .value =
+    document.getElementById(
+        "propertyTitle"
+    ).value =
     editPropertyData.title || "";
 
 
     /* CITY */
 
-    document
-    .getElementById("propertyCity")
-    .value =
+    document.getElementById(
+        "propertyCity"
+    ).value =
     editPropertyData.city || "";
 
 
     /* TYPE */
 
-    document
-    .getElementById("propertyType")
-    .value =
+    document.getElementById(
+        "propertyType"
+    ).value =
     editPropertyData.type || "";
 
 
     /* LISTING TYPE */
 
-    document
-    .getElementById("listingType")
-    .value =
+    document.getElementById(
+        "listingType"
+    ).value =
     editPropertyData.listingType || "";
 
 
     /* PRICE */
 
-    document
-    .getElementById("propertyPrice")
-    .value =
+    document.getElementById(
+        "propertyPrice"
+    ).value =
     editPropertyData.price || "";
 
 
     /* BHK */
 
-    document
-    .getElementById("propertyBhk")
-    .value =
+    document.getElementById(
+        "propertyBhk"
+    ).value =
     editPropertyData.bhk || "1 BHK";
 
 
     /* AREA */
 
-    document
-    .getElementById("propertyArea")
-    .value =
+    document.getElementById(
+        "propertyArea"
+    ).value =
     editPropertyData.area || "";
 
 
     /* DESCRIPTION */
 
-    document
-    .getElementById("propertyDescription")
-    .value =
+    document.getElementById(
+        "propertyDescription"
+    ).value =
     editPropertyData.description || "";
 
 
     /* OWNER */
 
-    document
-    .getElementById("ownerName")
-    .value =
+    document.getElementById(
+        "ownerName"
+    ).value =
     editPropertyData.owner || "";
 
 
     /* PHONE */
 
-    document
-    .getElementById("ownerPhone")
-    .value =
+    document.getElementById(
+        "ownerPhone"
+    ).value =
     editPropertyData.phone || "";
 
 }
 
 
-
-/* ================================================= */
-/* FORM SUBMIT */
-/* ================================================= */
+/* =================================================
+   FORM SUBMIT
+================================================= */
 
 propertyForm.addEventListener(
-"submit",
-function(e){
+    "submit",
+    function(e){
 
-    e.preventDefault();
-
-
-    /* GET VALUES */
-
-    const title =
-    document
-    .getElementById("propertyTitle")
-    .value
-    .trim();
+        e.preventDefault();
 
 
-    const city =
-    document
-    .getElementById("propertyCity")
-    .value
-    .trim();
+        /* GET VALUES */
+
+        const title =
+        document
+        .getElementById("propertyTitle")
+        .value
+        .trim();
 
 
-    const type =
-    document
-    .getElementById("propertyType")
-    .value;
+        const city =
+        document
+        .getElementById("propertyCity")
+        .value
+        .trim();
 
 
-    const listingType =
-    document
-    .getElementById("listingType")
-    .value;
+        const type =
+        document
+        .getElementById("propertyType")
+        .value;
 
 
-    const price =
-    document
-    .getElementById("propertyPrice")
-    .value
-    .replace(/,/g,"")
-    .trim();
+        const listingType =
+        document
+        .getElementById("listingType")
+        .value;
 
 
-    const bhk =
-    document
-    .getElementById("propertyBhk")
-    .value;
+        const price =
+        document
+        .getElementById("propertyPrice")
+        .value
+        .replace(/,/g,"")
+        .trim();
 
 
-    const area =
-    document
-    .getElementById("propertyArea")
-    .value
-    .trim();
+        const bhk =
+        document
+        .getElementById("propertyBhk")
+        .value;
 
 
-    const description =
-    document
-    .getElementById("propertyDescription")
-    .value
-    .trim();
+        const area =
+        document
+        .getElementById("propertyArea")
+        .value
+        .trim();
 
 
-    const owner =
-    document
-    .getElementById("ownerName")
-    .value
-    .trim();
+        const description =
+        document
+        .getElementById("propertyDescription")
+        .value
+        .trim();
 
 
-    const phone =
-    document
-    .getElementById("ownerPhone")
-    .value
-    .replace(/\D/g,"");
+        const owner =
+        document
+        .getElementById("ownerName")
+        .value
+        .trim();
 
 
-
-    /* PHONE VALIDATION */
-
-    if(phone.length !== 10){
-
-        alert(
-        "⚠️ Please enter a valid 10 digit mobile number."
-        );
-
-        return;
-
-    }
+        const phone =
+        document
+        .getElementById("ownerPhone")
+        .value
+        .replace(/\D/g,"");
 
 
+        /* PHONE VALIDATION */
 
-    /* PRICE VALIDATION */
-
-    if(
-        price === "" ||
-        Number(price) <= 0
-    ){
-
-        alert(
-        "⚠️ Please enter a valid property price."
-        );
-
-        return;
-
-    }
-
-
-
-    /* ================================================= */
-    /* EDIT EXISTING PROPERTY */
-    /* ================================================= */
-
-    if(editPropertyData){
-
-        let properties =
-        JSON.parse(
-
-            localStorage.getItem(
-                "pv_properties"
-            ) || "[]"
-
-        );
-
-
-        const index =
-        properties.findIndex(
-
-            function(property){
-
-                return String(property.id) ===
-                String(editPropertyData.id);
-
-            }
-
-        );
-
-
-        if(index === -1){
+        if(phone.length !== 10){
 
             alert(
-            "❌ Property not found."
+                "⚠️ Please enter a valid 10 digit mobile number."
             );
-
-            localStorage.removeItem(
-            "pv_edit_property"
-            );
-
-            window.location.href =
-            "my-properties.html";
 
             return;
 
         }
 
 
-
-        /* SECURITY CHECK */
+        /* PRICE VALIDATION */
 
         if(
-            String(properties[index].postedBy) !==
-            String(currentUser)
+            price === "" ||
+            Number(price) <= 0
         ){
 
             alert(
-            "❌ You cannot edit this property."
+                "⚠️ Please enter a valid property price."
             );
-
-            localStorage.removeItem(
-            "pv_edit_property"
-            );
-
-            window.location.href =
-            "my-properties.html";
 
             return;
 
         }
 
 
+        /* =================================================
+           EDIT EXISTING PROPERTY
+        ================================================= */
 
-        /* UPDATE */
+        if(editPropertyData){
 
-        properties[index] = {
+            let properties =
+            JSON.parse(
 
-            ...properties[index],
+                localStorage.getItem(
+                    "pv_properties"
+                ) || "[]"
+
+            );
+
+
+            /* FIND PROPERTY */
+
+            const index =
+            properties.findIndex(
+
+                function(property){
+
+                    return String(property.id) ===
+                    String(editPropertyData.id);
+
+                }
+
+            );
+
+
+            /* NOT FOUND */
+
+            if(index === -1){
+
+                alert(
+                    "❌ Property not found."
+                );
+
+                localStorage.removeItem(
+                    "pv_edit_property"
+                );
+
+                window.location.href =
+                "my-properties.html";
+
+                return;
+
+            }
+
+
+            /* SECURITY CHECK */
+
+            if(
+                String(properties[index].postedBy) !==
+                String(currentUser)
+            ){
+
+                alert(
+                    "❌ You cannot edit this property."
+                );
+
+                localStorage.removeItem(
+                    "pv_edit_property"
+                );
+
+                window.location.href =
+                "my-properties.html";
+
+                return;
+
+            }
+
+
+            /* UPDATE PROPERTY */
+
+            properties[index] = {
+
+                ...properties[index],
+
+                title:title,
+
+                city:city,
+
+                type:type,
+
+                listingType:listingType,
+
+                price:Number(price),
+
+                bhk:bhk,
+
+                area:
+                area || "Area not specified",
+
+                description:description,
+
+                owner:owner,
+
+                phone:phone,
+
+                updatedAt:
+                new Date().toLocaleString()
+
+            };
+
+
+            /* SAVE */
+
+            localStorage.setItem(
+
+                "pv_properties",
+
+                JSON.stringify(
+                    properties
+                )
+
+            );
+
+
+            /* REMOVE EDIT MODE */
+
+            localStorage.removeItem(
+                "pv_edit_property"
+            );
+
+
+            /* SUCCESS */
+
+            successMessage.innerText =
+            "✅ Property updated successfully!";
+
+            successMessage.style.display =
+            "block";
+
+
+            /* REDIRECT */
+
+            setTimeout(
+                function(){
+
+                    window.location.href =
+                    "my-properties.html";
+
+                },
+                1200
+            );
+
+
+            return;
+
+        }
+
+
+        /* =================================================
+           CREATE NEW PROPERTY
+        ================================================= */
+
+        const property = {
+
+            id:
+            "PV" +
+            Date.now(),
 
             title:title,
 
@@ -1149,11 +1209,35 @@ function(e){
 
             phone:phone,
 
-            updatedAt:
-            new Date().toLocaleString()
+            postedBy:
+            currentUser,
+
+            createdAt:
+            new Date().toLocaleString(),
+
+            image:
+            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
 
         };
 
+
+        /* GET OLD PROPERTIES */
+
+        let properties =
+        JSON.parse(
+
+            localStorage.getItem(
+                "pv_properties"
+            ) || "[]"
+
+        );
+
+
+        /* ADD NEW PROPERTY */
+
+        properties.push(
+            property
+        );
 
 
         /* SAVE */
@@ -1169,167 +1253,39 @@ function(e){
         );
 
 
-
-        /* REMOVE EDIT MODE */
-
-        localStorage.removeItem(
-            "pv_edit_property"
-        );
-
-
-
         /* SUCCESS */
 
         successMessage.innerText =
-        "✅ Property updated successfully!";
-
+        "✅ Property listed successfully!";
 
         successMessage.style.display =
         "block";
 
 
+        /* RESET */
+
+        propertyForm.reset();
+
 
         /* REDIRECT */
 
         setTimeout(
-
             function(){
 
                 window.location.href =
-                "my-properties.html";
+                "listing.html";
 
             },
-
             1200
-
         );
 
-
-        return;
-
     }
+);
 
 
-
-    /* ================================================= */
-    /* CREATE NEW PROPERTY */
-    /* ================================================= */
-
-    const property = {
-
-        id:
-        "PV" +
-        Date.now(),
-
-        title:title,
-
-        city:city,
-
-        type:type,
-
-        listingType:listingType,
-
-        price:Number(price),
-
-        bhk:bhk,
-
-        area:
-        area || "Area not specified",
-
-        description:description,
-
-        owner:owner,
-
-        phone:phone,
-
-        postedBy:
-        currentUser,
-
-        createdAt:
-        new Date().toLocaleString(),
-
-        image:
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
-
-    };
-
-
-
-    /* GET OLD PROPERTIES */
-
-    let properties =
-    JSON.parse(
-
-        localStorage.getItem(
-            "pv_properties"
-        ) || "[]"
-
-    );
-
-
-
-    /* ADD */
-
-    properties.push(
-        property
-    );
-
-
-
-    /* SAVE */
-
-    localStorage.setItem(
-
-        "pv_properties",
-
-        JSON.stringify(
-            properties
-        )
-
-    );
-
-
-
-    /* SUCCESS */
-
-    successMessage.innerText =
-    "✅ Property listed successfully!";
-
-    successMessage.style.display =
-    "block";
-
-
-
-    /* RESET */
-
-    propertyForm.reset();
-
-
-
-    /* REDIRECT */
-
-    setTimeout(
-
-        function(){
-
-            window.location.href =
-            "listing.html";
-
-        },
-
-        1200
-
-    );
-
-
-
-});
-
-
-
-/* ================================================= */
-/* CANCEL EDIT */
-/* ================================================= */
+/* =================================================
+   CANCEL EDIT
+================================================= */
 
 function cancelEdit(){
 
@@ -1344,7 +1300,6 @@ function cancelEdit(){
 
 </script>
 
-
 </body>
 
-  </html>
+</html>
