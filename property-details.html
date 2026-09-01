@@ -49,8 +49,8 @@ margin-top:3px;
 .back{
 color:white;
 text-decoration:none;
-padding:10px 15px;
-border-radius:7px;
+padding:9px 14px;
+border-radius:6px;
 }
 
 .back:hover{
@@ -58,36 +58,27 @@ background:#E63946;
 }
 
 .container{
-max-width:1100px;
-margin:40px auto;
-padding:0 20px 60px;
+max-width:1050px;
+margin:40px auto 70px;
+padding:0 20px;
 }
 
 .property-box{
 background:white;
 border-radius:18px;
 overflow:hidden;
-box-shadow:0 8px 25px rgba(0,0,0,.12);
-display:flex;
-flex-wrap:wrap;
+box-shadow:0 8px 30px rgba(0,0,0,.12);
 }
 
-.image-section{
-width:50%;
-min-width:320px;
-}
-
-.image-section img{
+.property-image{
 width:100%;
-height:100%;
-min-height:420px;
+height:430px;
 object-fit:cover;
+display:block;
 }
 
-.details-section{
-flex:1;
-padding:35px;
-min-width:320px;
+.content{
+padding:30px;
 }
 
 .badge{
@@ -98,86 +89,101 @@ padding:7px 11px;
 border-radius:6px;
 font-size:13px;
 font-weight:bold;
-margin-bottom:15px;
+margin-bottom:12px;
 }
 
-.details-section h1{
+h1{
 font-size:34px;
-margin-bottom:15px;
+margin-bottom:10px;
 }
 
 .price{
 font-size:30px;
 font-weight:bold;
 color:#E63946;
-margin-bottom:20px;
+margin-bottom:18px;
 }
 
 .location{
-color:#666;
 font-size:17px;
+color:#555;
 margin-bottom:25px;
 }
 
-.info-grid{
+.details-grid{
 display:grid;
-grid-template-columns:repeat(2,1fr);
+grid-template-columns:repeat(4,1fr);
 gap:15px;
-margin-bottom:25px;
+margin-bottom:30px;
 }
 
-.info-item{
+.detail{
 background:#f5f7fa;
-padding:15px;
+padding:18px;
 border-radius:10px;
+text-align:center;
 }
 
-.info-item strong{
+.detail strong{
 display:block;
-margin-bottom:5px;
+font-size:18px;
+margin-bottom:6px;
+}
+
+.detail span{
+color:#666;
+font-size:13px;
+}
+
+.section{
+margin-top:30px;
+}
+
+.section h2{
+font-size:23px;
+margin-bottom:12px;
 }
 
 .description{
-margin-top:20px;
-padding-top:20px;
-border-top:1px solid #eee;
+color:#555;
+line-height:1.8;
+font-size:16px;
 }
 
-.description h2{
-margin-bottom:10px;
-font-size:21px;
+.contact-box{
+margin-top:30px;
+background:#f5f7fa;
+padding:22px;
+border-radius:12px;
 }
 
-.description p{
-color:#666;
-line-height:1.7;
+.contact-box h2{
+margin-bottom:12px;
 }
 
-.owner-box{
-background:#fff8e1;
-margin-top:25px;
-padding:18px;
-border-radius:10px;
+.owner{
+font-size:17px;
+margin-bottom:7px;
 }
 
-.owner-box h3{
-margin-bottom:8px;
+.phone{
+font-size:17px;
+font-weight:bold;
 }
 
 .buttons{
 display:flex;
-flex-wrap:wrap;
 gap:10px;
+flex-wrap:wrap;
 margin-top:25px;
 }
 
 .btn{
 display:inline-block;
-padding:13px 20px;
+padding:13px 18px;
 border-radius:8px;
 text-decoration:none;
 font-weight:bold;
-text-align:center;
 border:0;
 cursor:pointer;
 font-size:15px;
@@ -193,110 +199,54 @@ background:#25D366;
 color:white;
 }
 
-.listing{
+.save{
 background:#081B33;
 color:white;
 }
 
-.enquiry-btn{
+.save.saved{
 background:#FFD700;
 color:#081B33;
 }
 
-.enquiry-box{
+.back-btn{
+background:#ddd;
+color:#081B33;
+}
+
+.error{
+display:none;
+text-align:center;
 background:white;
-margin-top:25px;
-padding:25px;
+padding:50px 20px;
 border-radius:15px;
-box-shadow:0 5px 20px rgba(0,0,0,.10);
+box-shadow:0 5px 18px rgba(0,0,0,.08);
 }
 
-.enquiry-box h2{
-margin-bottom:8px;
+.error h2{
+margin-bottom:12px;
 }
 
-.enquiry-subtitle{
+.error p{
 color:#666;
 margin-bottom:20px;
 }
 
-.field{
-margin-bottom:15px;
-}
-
-.field label{
-display:block;
-font-weight:bold;
-margin-bottom:7px;
-}
-
-.field input,
-.field textarea{
-width:100%;
-padding:13px;
-border:1px solid #ddd;
-border-radius:8px;
-font-size:15px;
-outline:none;
-}
-
-.field input:focus,
-.field textarea:focus{
-border-color:#E63946;
-}
-
-.field textarea{
-min-height:110px;
-resize:vertical;
-}
-
-.send-btn{
-width:100%;
-background:#E63946;
+.browse{
+display:inline-block;
+background:#081B33;
 color:white;
-border:0;
-padding:15px;
+padding:12px 20px;
 border-radius:8px;
-font-size:17px;
+text-decoration:none;
 font-weight:bold;
-cursor:pointer;
-}
-
-.success-message{
-display:none;
-background:#e7f8ed;
-color:#16803c;
-padding:14px;
-border-radius:8px;
-margin-bottom:15px;
-text-align:center;
-font-weight:bold;
-}
-
-.not-found{
-background:white;
-max-width:600px;
-margin:80px auto;
-padding:40px 25px;
-text-align:center;
-border-radius:15px;
-box-shadow:0 5px 20px rgba(0,0,0,.1);
-}
-
-.not-found h1{
-margin-bottom:15px;
-}
-
-.not-found p{
-color:#666;
-margin-bottom:25px;
 }
 
 footer{
 background:#050F1F;
 color:white;
 text-align:center;
-padding:35px 20px;
+padding:30px 20px;
 }
 
 footer h2{
@@ -310,40 +260,32 @@ margin-top:10px;
 
 @media(max-width:700px){
 
-header{
-justify-content:center;
-text-align:center;
-}
-
-.property-box{
-display:block;
-}
-
-.image-section{
-width:100%;
-min-width:100%;
-}
-
-.image-section img{
-min-height:280px;
+.property-image{
 height:280px;
 }
 
-.details-section{
-padding:25px 20px;
-min-width:100%;
+.content{
+padding:20px;
 }
 
-.details-section h1{
+h1{
 font-size:28px;
 }
 
-.info-grid{
-grid-template-columns:1fr;
+.price{
+font-size:25px;
 }
 
-.btn{
-width:100%;
+.details-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:400px){
+
+.details-grid{
+grid-template-columns:1fr 1fr;
 }
 
 }
@@ -352,17 +294,20 @@ width:100%;
 
 </head>
 
+
 <body>
+
 
 <header>
 
 <div class="logo">
 
-🇮🇳 BharatWorld
+🏠 BharatWorld
 
 <small>PROPERTIES</small>
 
 </div>
+
 
 <a href="listing.html" class="back">
 
@@ -373,221 +318,108 @@ width:100%;
 </header>
 
 
-<div id="propertyContainer"></div>
-
-
-<footer>
-
-<h2>🇮🇳 BharatWorld Properties</h2>
-
-<p>From Bharat to the World.</p>
-
-<p>© 2026 BharatWorld Properties. All Rights Reserved.</p>
-
-</footer>
-
-
-<script>
-
-/* ============================= */
-/* GET SELECTED PROPERTY */
-/* ============================= */
-
-const selectedProperty = JSON.parse(
-localStorage.getItem("pv_selected_property")
-);
-
-const container =
-document.getElementById("propertyContainer");
-
-
-/* ============================= */
-/* PROPERTY NOT FOUND */
-/* ============================= */
-
-if(!selectedProperty){
-
-container.innerHTML = `
-
-<div class="not-found">
-
-<h1>🏠 Property Not Found</h1>
-
-<p>
-Please select a property from the listings page.
-</p>
-
-<a href="listing.html" class="btn listing">
-View Properties
-</a>
-
-</div>
-
-`;
-
-}
-
-
-/* ============================= */
-/* SHOW PROPERTY */
-/* ============================= */
-
-else{
-
-const propertyImage =
-selectedProperty.image ||
-"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80";
-
-
-/* PRICE */
-
-let formattedPrice =
-selectedProperty.price || "Price on Request";
-
-if(
-selectedProperty.price &&
-!String(selectedProperty.price).includes("₹")
-){
-
-const numberPrice =
-Number(
-String(selectedProperty.price).replace(/,/g,"")
-);
-
-if(!isNaN(numberPrice)){
-
-formattedPrice =
-"₹" +
-numberPrice.toLocaleString("en-IN");
-
-}
-
-}
-
-
-/* PROPERTY DATA */
-
-const title =
-selectedProperty.title ||
-"Property";
-
-const city =
-selectedProperty.city ||
-"Location not specified";
-
-const type =
-selectedProperty.type ||
-"Not specified";
-
-const bhk =
-selectedProperty.bhk ||
-"Not specified";
-
-const listingType =
-selectedProperty.listingType ||
-"For Sale";
-
-const area =
-selectedProperty.area ||
-"Not specified";
-
-const description =
-selectedProperty.description ||
-"No property description available.";
-
-const owner =
-selectedProperty.owner ||
-"Property Owner";
-
-const phone =
-String(
-selectedProperty.phone ||
-"9999999999"
-).replace(/\D/g,"");
-
-
-/* DISPLAY */
-
-container.innerHTML = `
 
 <div class="container">
 
-<div class="property-box">
 
-
-<div class="image-section">
-
-<img
-src="${propertyImage}"
-alt="Property Image"
-onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80'"
+<div
+class="property-box"
+id="propertyBox"
+style="display:none;"
 >
 
-</div>
+<img
+id="propertyImage"
+class="property-image"
+src=""
+alt="Property Image"
+>
 
 
-<div class="details-section">
+<div class="content">
 
-<span class="badge">
-✓ PROPERTY LISTED
+
+<span
+id="propertyBadge"
+class="badge"
+>
+✓ VERIFIED PROPERTY
 </span>
 
-<h1>
-${title}
+
+<h1 id="propertyTitle">
+Property
 </h1>
 
-<div class="price">
-${formattedPrice}
+
+<div
+id="propertyPrice"
+class="price"
+>
+Price on Request
 </div>
 
-<div class="location">
-📍 ${city}
+
+<div
+id="propertyLocation"
+class="location"
+>
+📍 Location
 </div>
 
 
-<div class="info-grid">
+
+<div class="details-grid">
 
 
-<div class="info-item">
+<div class="detail">
 
-<strong>
-🏢 Property Type
+<strong id="propertyType">
+-
 </strong>
 
-${type}
+<span>
+Property Type
+</span>
 
 </div>
 
 
-<div class="info-item">
+<div class="detail">
 
-<strong>
-🛏 BHK
+<strong id="propertyBhk">
+-
 </strong>
 
-${bhk}
+<span>
+BHK
+</span>
 
 </div>
 
 
-<div class="info-item">
+<div class="detail">
 
-<strong>
-📐 Area
+<strong id="propertyArea">
+-
 </strong>
 
-${area}
+<span>
+Area
+</span>
 
 </div>
 
 
-<div class="info-item">
+<div class="detail">
 
-<strong>
-🏷️ Listing Type
+<strong id="propertyListing">
+-
 </strong>
 
-${listingType}
+<span>
+Listing
+</span>
 
 </div>
 
@@ -595,73 +427,84 @@ ${listingType}
 </div>
 
 
-<div class="description">
+
+<div class="section">
 
 <h2>
 📝 Property Description
 </h2>
 
-<p>
-${description}
-</p>
+<div
+id="propertyDescription"
+class="description"
+>
+No description available.
+</div>
 
 </div>
 
 
-<div class="owner-box">
 
-<h3>
-👤 ${owner}
-</h3>
+<div class="contact-box">
 
-<p>
-📞 +91 ${phone}
-</p>
+<h2>
+👤 Contact Owner
+</h2>
 
+
+<div
+id="ownerName"
+class="owner"
+>
+Owner: Property Owner
 </div>
+
+
+<div
+id="ownerPhone"
+class="phone"
+>
+📞 Contact number available
+</div>
+
 
 
 <div class="buttons">
 
 
 <a
-href="tel:+91${phone}"
+id="callButton"
+href="#"
 class="btn call"
 >
-
-📞 Call Now
-
+📞 Call Owner
 </a>
 
 
 <a
-href="https://wa.me/91${phone}"
-target="_blank"
+id="whatsappButton"
+href="#"
 class="btn whatsapp"
+target="_blank"
 >
-
 💬 WhatsApp
-
 </a>
 
 
 <button
-onclick="showEnquiryForm()"
-class="btn enquiry-btn"
+id="saveButton"
+class="btn save"
+onclick="saveProperty()"
 >
-
-📩 Send Enquiry
-
+❤️ Save Property
 </button>
 
 
 <a
 href="listing.html"
-class="btn listing"
+class="btn back-btn"
 >
-
-← All Listings
-
+← More Properties
 </a>
 
 
@@ -671,163 +514,373 @@ class="btn listing"
 
 </div>
 
+</div>
 
-<!-- ENQUIRY FORM -->
+
 
 <div
-class="enquiry-box"
-id="enquiryBox"
-style="display:none;"
+id="errorMessage"
+class="error"
 >
 
 <h2>
-📩 Send Enquiry
+❌ Property Not Found
 </h2>
 
-<p class="enquiry-subtitle">
-
-Interested in this property?
-Send your requirement to the property owner.
-
+<p>
+This property could not be found. Please go back and select a property again.
 </p>
 
-
-<div
-id="successMessage"
-class="success-message"
+<a
+href="listing.html"
+class="browse"
 >
-
-✅ Enquiry sent successfully!
-
-</div>
-
-
-<form id="enquiryForm">
-
-
-<div class="field">
-
-<label>
-👤 Your Name
-</label>
-
-<input
-type="text"
-id="customerName"
-placeholder="Enter your name"
-required
->
+🏠 Browse Properties
+</a>
 
 </div>
 
 
-<div class="field">
-
-<label>
-📞 Mobile Number
-</label>
-
-<input
-type="tel"
-id="customerPhone"
-placeholder="10 digit mobile number"
-maxlength="10"
-required
->
-
 </div>
 
 
-<div class="field">
 
-<label>
-📝 Message
-</label>
+<footer>
 
-<textarea
-id="customerMessage"
-placeholder="I am interested in this property..."
-required
-></textarea>
+<h2>
+🏠 BharatWorld Properties
+</h2>
 
-</div>
+<p>
+Buy • Sell • Rent • Interior
+</p>
 
+<p>
+© 2026 BharatWorld Properties. All Rights Reserved.
+</p>
 
-<button
-type="submit"
-class="send-btn"
->
-
-📩 Send Enquiry
-
-</button>
+</footer>
 
 
-</form>
 
-</div>
-
-</div>
-
-`;
+<script>
 
 
-/* ============================= */
-/* SHOW ENQUIRY FORM */
-/* ============================= */
+/* ================================= */
+/* LOGIN CHECK */
+/* ================================= */
 
-window.showEnquiryForm = function(){
-
-const box =
-document.getElementById("enquiryBox");
-
-box.style.display = "block";
-
-box.scrollIntoView({
-behavior:"smooth"
-});
-
-};
+const loggedIn =
+localStorage.getItem("pv_logged_in");
 
 
-/* ============================= */
-/* SUBMIT ENQUIRY */
-/* ============================= */
+if(loggedIn !== "true"){
 
-document
-.getElementById("enquiryForm")
-.addEventListener("submit",function(e){
+window.location.href =
+"login.html";
 
-e.preventDefault();
+}
 
 
-const customerName =
-document
-.getElementById("customerName")
-.value
+
+/* ================================= */
+/* GET SELECTED PROPERTY */
+/* ================================= */
+
+const selectedProperty =
+JSON.parse(
+
+localStorage.getItem(
+"pv_selected_property"
+) || "null"
+
+);
+
+
+
+/* ================================= */
+/* ELEMENTS */
+/* ================================= */
+
+const propertyBox =
+document.getElementById(
+"propertyBox"
+);
+
+const errorMessage =
+document.getElementById(
+"errorMessage"
+);
+
+
+
+/* ================================= */
+/* DEFAULT IMAGE */
+/* ================================= */
+
+const defaultImage =
+"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80";
+
+
+
+/* ================================= */
+/* SHOW PROPERTY */
+/* ================================= */
+
+if(!selectedProperty){
+
+errorMessage.style.display =
+"block";
+
+}
+
+else{
+
+propertyBox.style.display =
+"block";
+
+
+/* IMAGE */
+
+const image =
+selectedProperty.image ||
+defaultImage;
+
+document.getElementById(
+"propertyImage"
+).src = image;
+
+
+
+/* TITLE */
+
+document.getElementById(
+"propertyTitle"
+).innerText =
+
+selectedProperty.title ||
+"Property";
+
+
+
+/* PRICE */
+
+let price =
+selectedProperty.price;
+
+
+if(price){
+
+const cleanPrice =
+String(price)
+.replace(/[₹,]/g,"")
 .trim();
 
-
-const customerPhone =
-document
-.getElementById("customerPhone")
-.value
-.replace(/\D/g,"");
+const numberPrice =
+Number(cleanPrice);
 
 
-const customerMessage =
-document
-.getElementById("customerMessage")
-.value
-.trim();
+if(!isNaN(numberPrice)){
+
+document.getElementById(
+"propertyPrice"
+).innerText =
+
+"₹" +
+numberPrice.toLocaleString(
+"en-IN"
+);
+
+}
+
+else{
+
+document.getElementById(
+"propertyPrice"
+).innerText =
+price;
+
+}
+
+}
+
+else{
+
+document.getElementById(
+"propertyPrice"
+).innerText =
+"Price on Request";
+
+}
 
 
-/* PHONE CHECK */
 
-if(customerPhone.length !== 10){
+/* LOCATION */
+
+document.getElementById(
+"propertyLocation"
+).innerText =
+
+"📍 " +
+(
+selectedProperty.city ||
+"Location not specified"
+);
+
+
+
+/* TYPE */
+
+document.getElementById(
+"propertyType"
+).innerText =
+
+selectedProperty.type ||
+"Property";
+
+
+
+/* BHK */
+
+document.getElementById(
+"propertyBhk"
+).innerText =
+
+selectedProperty.bhk ||
+"Not specified";
+
+
+
+/* AREA */
+
+document.getElementById(
+"propertyArea"
+).innerText =
+
+selectedProperty.area ||
+"Not specified";
+
+
+
+/* LISTING */
+
+document.getElementById(
+"propertyListing"
+).innerText =
+
+selectedProperty.listingType ||
+"For Sale";
+
+
+
+/* DESCRIPTION */
+
+document.getElementById(
+"propertyDescription"
+).innerText =
+
+selectedProperty.description ||
+"No description available.";
+
+
+
+/* OWNER */
+
+document.getElementById(
+"ownerName"
+).innerText =
+
+"👤 Owner: " +
+(
+selectedProperty.owner ||
+"Property Owner"
+);
+
+
+
+/* PHONE */
+
+const phone =
+String(
+selectedProperty.phone ||
+""
+).replace(/\D/g,"");
+
+
+
+if(phone){
+
+document.getElementById(
+"ownerPhone"
+).innerText =
+
+"📞 " + phone;
+
+
+/* CALL */
+
+document.getElementById(
+"callButton"
+).href =
+"tel:+91" + phone;
+
+
+/* WHATSAPP */
+
+document.getElementById(
+"whatsappButton"
+).href =
+
+"https://wa.me/91" +
+phone;
+
+}
+
+else{
+
+document.getElementById(
+"ownerPhone"
+).innerText =
+
+"📞 Contact number not available";
+
+}
+
+
+
+/* ================================= */
+/* CHECK SAVED STATUS */
+/* ================================= */
+
+updateSaveButton();
+
+}
+
+
+
+/* ================================= */
+/* SAVE PROPERTY */
+/* ================================= */
+
+function saveProperty(){
+
+if(!selectedProperty){
+
+return;
+
+}
+
+
+const currentUser =
+localStorage.getItem(
+"pv_current_user"
+);
+
+
+if(!currentUser){
 
 alert(
-"⚠️ Please enter a valid 10 digit mobile number."
+"🔐 Please login first."
 );
 
 return;
@@ -835,97 +888,193 @@ return;
 }
 
 
-/* ============================= */
-/* CREATE ENQUIRY */
-/* ============================= */
 
-const enquiry = {
-
-id:
-"ENQ" + Date.now(),
-
-customerName:
-customerName,
-
-phone:
-customerPhone,
-
-message:
-customerMessage,
-
-propertyId:
-selectedProperty.id,
-
-propertyTitle:
-selectedProperty.title,
-
-propertyCity:
-selectedProperty.city,
-
-ownerUser:
-selectedProperty.postedBy,
-
-createdAt:
-new Date().toLocaleString()
-
-};
+const storageKey =
+"pv_saved_properties_" +
+currentUser;
 
 
-/* ============================= */
-/* GET OLD ENQUIRIES */
-/* ============================= */
 
-let enquiries =
+let savedProperties =
 JSON.parse(
-localStorage.getItem("pv_enquiries") || "[]"
+
+localStorage.getItem(
+storageKey
+) || "[]"
+
 );
 
 
-/* ============================= */
-/* SAVE */
-/* ============================= */
 
-enquiries.push(enquiry);
+/* PROPERTY ID */
+
+const propertyId =
+selectedProperty.id ||
+selectedProperty.title;
+
+
+
+/* CHECK */
+
+const alreadySaved =
+savedProperties.some(
+
+function(property){
+
+return String(
+property.id ||
+property.title
+) ===
+String(propertyId);
+
+}
+
+);
+
+
+
+if(alreadySaved){
+
+alert(
+"❤️ This property is already saved."
+);
+
+return;
+
+}
+
+
+
+/* ADD */
+
+savedProperties.push(
+selectedProperty
+);
+
+
+
+/* SAVE */
 
 localStorage.setItem(
-"pv_enquiries",
-JSON.stringify(enquiries)
+
+storageKey,
+
+JSON.stringify(
+savedProperties
+)
+
 );
 
-
-/* ============================= */
-/* SUCCESS */
-/* ============================= */
-
-document
-.getElementById("successMessage")
-.style.display = "block";
-
-
-document
-.getElementById("enquiryForm")
-.reset();
 
 
 alert(
-"✅ Enquiry sent successfully!"
+"❤️ Property saved successfully!"
 );
 
 
-setTimeout(function(){
 
-document
-.getElementById("enquiryBox")
-.style.display = "none";
+updateSaveButton();
 
-},2500);
+}
 
-});
+
+
+/* ================================= */
+/* UPDATE SAVE BUTTON */
+/* ================================= */
+
+function updateSaveButton(){
+
+const currentUser =
+localStorage.getItem(
+"pv_current_user"
+);
+
+
+if(!currentUser){
+
+return;
+
+}
+
+
+const storageKey =
+"pv_saved_properties_" +
+currentUser;
+
+
+
+const savedProperties =
+JSON.parse(
+
+localStorage.getItem(
+storageKey
+) || "[]"
+
+);
+
+
+
+const propertyId =
+selectedProperty &&
+(
+selectedProperty.id ||
+selectedProperty.title
+);
+
+
+
+const alreadySaved =
+savedProperties.some(
+
+function(property){
+
+return String(
+property.id ||
+property.title
+) ===
+String(propertyId);
+
+}
+
+);
+
+
+
+const button =
+document.getElementById(
+"saveButton"
+);
+
+
+
+if(alreadySaved){
+
+button.innerText =
+"❤️ Saved";
+
+button.classList.add(
+"saved"
+);
+
+}
+
+else{
+
+button.innerText =
+"❤️ Save Property";
+
+button.classList.remove(
+"saved"
+);
+
+}
 
 }
 
 </script>
 
+
 </body>
 
-</html>
+  </html>
