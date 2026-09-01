@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard | BharatWorld Properties</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    color:#081B33;
+}
+
+/* HEADER */
+
+header{
+    background:#081B33;
+    color:white;
+    padding:18px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.logo{
+    color:#FFD700;
+    font-size:23px;
+    font-weight:bold;
+}
+
+.logo small{
+    display:block;
+    color:white;
+    font-size:10px;
+    letter-spacing:2px;
+    margin-top:3px;
+}
+
+.header-right{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.home-btn,
+.logout-btn{
+    border:0;
+    padding:10px 15px;
+    border-radius:7px;
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.home-btn{
+    background:white;
+    color:#081B33;
+}
+
+.logout-btn{
+    background:#E63946;
+    color:white;
+}
+
+/* CONTAINER */
+
+.container{
+    max-width:1150px;
+    margin:35px auto;
+    padding:0 20px;
+}
+
+.title-box{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+    margin-bottom:25px;
+}
+
+.title-box h1{
+    margin-bottom:8px;
+}
+
+.title-box p{
+    color:#666;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-bottom:30px;
+}
+
+.stat{
+    background:white;
+    padding:22px;
+    border-radius:15px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+    text-align:center;
+}
+
+.stat-icon{
+    font-size:35px;
+    margin-bottom:8px;
+}
+
+.stat-number{
+    font-size:28px;
+    font-weight:bold;
+    color:#081B33;
+}
+
+.stat-name{
+    color:#666;
+    margin-top:5px;
+}
+
+/* SECTIONS */
+
+.section{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+    margin-bottom:25px;
+}
+
+.section h2{
+    margin-bottom:18px;
+}
+
+/* TABLE */
+
+.table-wrap{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:700px;
+}
+
+th,
+td{
+    padding:13px;
+    border-bottom:1px solid #eee;
+    text-align:left;
+}
+
+th{
+    background:#081B33;
+    color:white;
+}
+
+tr:hover{
+    background:#f8f9fb;
+}
+
+/* BUTTONS */
+
+.action-btn{
+    border:0;
+    padding:7px 10px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+    margin:2px;
+}
+
+.verify{
+    background:#16803c;
+    color:white;
+}
+
+.delete{
+    background:#E63946;
+    color:white;
+}
+
+/* EMPTY */
+
+.empty{
+    text-align:center;
+    padding:30px;
+    color:#777;
+}
+
+/* FOOTER */
+
+footer{
+    background:#050F1F;
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+    margin-top:50px;
+}
+
+footer h2{
+    color:#FFD700;
+}
+
+footer p{
+    color:#ccc;
+    margin-top:10px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:500px){
+
+    header{
+        justify-content:center;
+        text-align:center;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .title-box,
+    .section{
+        padding:18px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<header>
+
+<div class="logo">
+
+🏠 BharatWorld
+
+<small>ADMIN PANEL</small>
+
+</div>
+
+<div class="header-right">
+
+<a href="index.html" class="home-btn">
+🏠 Home
+</a>
+
+<button class="logout-btn" onclick="adminLogout()">
+🚪 Logout
+</button>
+
+</div>
+
+</header>
+
+
+<div class="container">
+
+
+<div class="title-box">
+
+<h1>👑 Admin Dashboard</h1>
+
+<p>
+Manage users, properties and enquiries from one place.
+</p>
+
+</div>
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat">
+
+<div class="stat-icon">👥</div>
+
+<div
+class="stat-number"
+id="userCount"
+>
+0
+</div>
+
+<div class="stat-name">
+Total Users
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-icon">🏠</div>
+
+<div
+class="stat-number"
+id="propertyCount"
+>
+0
+</div>
+
+<div class="stat-name">
+Total Properties
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-icon">📩</div>
+
+<div
+class="stat-number"
+id="enquiryCount"
+>
+0
+</div>
+
+<div class="stat-name">
+Total Enquiries
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-icon">✅</div>
+
+<div
+class="stat-number"
+id="verifiedCount"
+>
+0
+</div>
+
+<div class="stat-name">
+Verified Properties
+</div>
+
+</div>
+
+</div>
+
+
+<!-- USERS -->
+
+<div class="section">
+
+<h2>
+👥 All Users
+</h2>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Name</th>
+<th>Email</th>
+<th>Phone</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="usersTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+<!-- PROPERTIES -->
+
+<div class="section">
+
+<h2>
+🏠 All Properties
+</h2>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Property</th>
+<th>Location</th>
+<th>Price</th>
+<th>Owner</th>
+<th>Status</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="propertiesTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+<!-- ENQUIRIES -->
+
+<div class="section">
+
+<h2>
+📩 All Enquiries
+</h2>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Buyer</th>
+<th>Property</th>
+<th>Owner</th>
+<th>Phone</th>
+
+</tr>
+
+</thead>
+
+<tbody id="enquiriesTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<footer>
+
+<h2>
+🏠 BharatWorld Properties
+</h2>
+
+<p>
+Admin Management System
+</p>
+
+<p>
+© 2026 BharatWorld Properties. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* ================================= */
+/* ADMIN LOGIN PROTECTION */
+/* ================================= */
+
+/*
+   Temporary admin protection.
+
+   Admin mode:
+   localStorage.setItem("pv_admin","true");
+*/
+
+if(localStorage.getItem("pv_admin") !== "true"){
+
+alert("🔐 Admin access required.");
+
+window.location.href="login.html";
+
+}
+
+
+/* ================================= */
+/* GET DATA */
+/* ================================= */
+
+const users =
+JSON.parse(
+localStorage.getItem("pv_users") || "[]"
+);
+
+const properties =
+JSON.parse(
+localStorage.getItem("pv_properties") || "[]"
+);
+
+const enquiries =
+JSON.parse(
+localStorage.getItem("pv_enquiries") || "[]"
+);
+
+
+/* ================================= */
+/* COUNTS */
+/* ================================= */
+
+document.getElementById("userCount").innerText =
+users.length;
+
+document.getElementById("propertyCount").innerText =
+properties.length;
+
+document.getElementById("enquiryCount").innerText =
+enquiries.length;
+
+
+/* ================================= */
+/* VERIFIED COUNT */
+/* ================================= */
+
+const verifiedProperties =
+properties.filter(function(property){
+
+return property.verified === true;
+
+});
+
+document.getElementById("verifiedCount").innerText =
+verifiedProperties.length;
+
+
+/* ================================= */
+/* USERS TABLE */
+/* ================================= */
+
+const usersTable =
+document.getElementById("usersTable");
+
+
+if(users.length === 0){
+
+usersTable.innerHTML = `
+<tr>
+<td colspan="4" class="empty">
+No users found.
+</td>
+</tr>
+`;
+
+}
+else{
+
+usersTable.innerHTML =
+users.map(function(user,index){
+
+return `
+
+<tr>
+
+<td>
+${escapeHTML(user.name || "Unknown")}
+</td>
+
+<td>
+${escapeHTML(user.email || "Not available")}
+</td>
+
+<td>
+${escapeHTML(user.phone || "Not available")}
+</td>
+
+<td>
+
+<button
+class="action-btn delete"
+onclick="deleteUser(${index})"
+>
+🗑️ Delete
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+}).join("");
+
+}
+
+
+/* ================================= */
+/* PROPERTIES TABLE */
+/* ================================= */
+
+const propertiesTable =
+document.getElementById("propertiesTable");
+
+
+if(properties.length === 0){
+
+propertiesTable.innerHTML = `
+<tr>
+<td colspan="6" class="empty">
+No properties found.
+</td>
+</tr>
+`;
+
+}
+else{
+
+propertiesTable.innerHTML =
+properties.map(function(property,index){
+
+const verified =
+property.verified === true;
+
+return `
+
+<tr>
+
+<td>
+${escapeHTML(property.title || "Property")}
+</td>
+
+<td>
+${escapeHTML(property.city || "Unknown")}
+</td>
+
+<td>
+${escapeHTML(property.price || "On Request")}
+</td>
+
+<td>
+${escapeHTML(property.owner || property.postedBy || "Unknown")}
+</td>
+
+<td>
+
+${
+verified
+? "✅ Verified"
+: "⏳ Pending"
+}
+
+</td>
+
+<td>
+
+${
+verified
+?
+""
+:
+`
+<button
+class="action-btn verify"
+onclick="verifyProperty(${index})"
+>
+✅ Verify
+</button>
+`
+}
+
+<button
+class="action-btn delete"
+onclick="deleteProperty(${index})"
+>
+🗑️ Delete
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+}).join("");
+
+}
+
+
+/* ================================= */
+/* ENQUIRIES TABLE */
+/* ================================= */
+
+const enquiriesTable =
+document.getElementById("enquiriesTable");
+
+
+if(enquiries.length === 0){
+
+enquiriesTable.innerHTML = `
+<tr>
+<td colspan="4" class="empty">
+No enquiries found.
+</td>
+</tr>
+`;
+
+}
+else{
+
+enquiriesTable.innerHTML =
+enquiries.map(function(enquiry){
+
+return `
+
+<tr>
+
+<td>
+${escapeHTML(
+enquiry.name ||
+enquiry.buyerName ||
+"Unknown"
+)}
+</td>
+
+<td>
+${escapeHTML(
+enquiry.propertyTitle ||
+enquiry.title ||
+"Property"
+)}
+</td>
+
+<td>
+${escapeHTML(
+enquiry.ownerName ||
+enquiry.owner ||
+enquiry.ownerUser ||
+"Unknown"
+)}
+</td>
+
+<td>
+${escapeHTML(
+enquiry.phone ||
+"Not available"
+)}
+</td>
+
+</tr>
+
+`;
+
+}).join("");
+
+}
+
+
+/* ================================= */
+/* VERIFY PROPERTY */
+/* ================================= */
+
+function verifyProperty(index){
+
+const allProperties =
+JSON.parse(
+localStorage.getItem("pv_properties") || "[]"
+);
+
+if(!allProperties[index]){
+
+alert("❌ Property not found.");
+
+return;
+
+}
+
+allProperties[index].verified = true;
+
+localStorage.setItem(
+"pv_properties",
+JSON.stringify(allProperties)
+);
+
+alert(
+"✅ Property verified successfully!"
+);
+
+location.reload();
+
+}
+
+
+/* ================================= */
+/* DELETE PROPERTY */
+/* ================================= */
+
+function deleteProperty(index){
+
+if(!confirm(
+"⚠️ Are you sure you want to delete this property?"
+)){
+
+return;
+
+}
+
+const allProperties =
+JSON.parse(
+localStorage.getItem("pv_properties") || "[]"
+);
+
+allProperties.splice(index,1);
+
+localStorage.setItem(
+"pv_properties",
+JSON.stringify(allProperties)
+);
+
+alert(
+"🗑️ Property deleted successfully!"
+);
+
+location.reload();
+
+}
+
+
+/* ================================= */
+/* DELETE USER */
+/* ================================= */
+
+function deleteUser(index){
+
+if(!confirm(
+"⚠️ Are you sure you want to delete this user?"
+)){
+
+return;
+
+}
+
+const allUsers =
+JSON.parse(
+localStorage.getItem("pv_users") || "[]"
+);
+
+allUsers.splice(index,1);
+
+localStorage.setItem(
+"pv_users",
+JSON.stringify(allUsers)
+);
+
+alert(
+"🗑️ User deleted successfully!"
+);
+
+location.reload();
+
+}
+
+
+/* ================================= */
+/* ADMIN LOGOUT */
+/* ================================= */
+
+function adminLogout(){
+
+localStorage.removeItem("pv_admin");
+
+alert(
+"✅ Admin logged out successfully!"
+);
+
+window.location.href="login.html";
+
+}
+
+
+/* ================================= */
+/* HTML SECURITY */
+/* ================================= */
+
+function escapeHTML(value){
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+</script>
+
+</body>
+  </html>
