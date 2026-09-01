@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title id="pageTitle">Post Your Property | BharatWorld Properties</title>
+<title>Post Your Property | BharatWorld Properties</title>
 
 <style>
 
@@ -184,12 +184,12 @@ line-height:1.5;
 .edit-note{
 display:none;
 background:#e8f0ff;
-color:#2457a6;
 border-left:5px solid #2457a6;
+color:#2457a6;
 padding:15px;
 margin-bottom:20px;
 line-height:1.5;
-border-radius:5px;
+font-weight:bold;
 }
 
 .success{
@@ -278,21 +278,37 @@ gap:0;
 
 <nav>
 
-<a href="index.html">Home</a>
+<a href="index.html">
+Home
+</a>
 
-<a href="buy.html">Buy</a>
+<a href="buy.html">
+Buy
+</a>
 
-<a href="sell.html" class="active">Sell</a>
+<a href="sell.html" class="active">
+Sell
+</a>
 
-<a href="rent.html">Rent</a>
+<a href="rent.html">
+Rent
+</a>
 
-<a href="interior.html">Interior</a>
+<a href="interior.html">
+Interior
+</a>
 
-<a href="listing.html">Listing</a>
+<a href="listing.html">
+Listing
+</a>
 
-<a href="contact.html">Contact</a>
+<a href="contact.html">
+Contact
+</a>
 
-<a href="dashboard.html">Dashboard</a>
+<a href="login.html">
+Login
+</a>
 
 </nav>
 
@@ -302,11 +318,11 @@ gap:0;
 
 <section class="hero">
 
-<h1 id="heroTitle">
+<h1 id="pageTitle">
 🏠 Post Your Property
 </h1>
 
-<p id="heroText">
+<p id="pageSubtitle">
 List your property and connect with potential buyers or tenants.
 </p>
 
@@ -317,16 +333,12 @@ List your property and connect with potential buyers or tenants.
 <div class="form-container">
 
 
-<h2 id="formHeading">
+<h2 id="formTitle">
 📋 Property Details
 </h2>
 
 
-
-<div
-class="note"
-id="newNote"
->
+<div class="note" id="normalNote">
 
 <strong>Important:</strong>
 Please enter accurate property information.
@@ -335,18 +347,13 @@ Your listing will appear on the Listing page after submission.
 </div>
 
 
+<div class="edit-note" id="editNote">
 
-<div
-class="edit-note"
-id="editNote"
->
-
-<strong>✏️ Edit Mode:</strong>
-You are updating an existing property.
-After saving, your changes will be applied to your listing.
+✏️ You are editing an existing property.
+Update the information below and click
+<strong>Update Property</strong>.
 
 </div>
-
 
 
 <div
@@ -363,6 +370,8 @@ class="success"
 <form id="propertyForm">
 
 
+<!-- PROPERTY TITLE -->
+
 <div class="form-group">
 
 <label>
@@ -378,6 +387,8 @@ required>
 </div>
 
 
+
+<!-- CITY + TYPE -->
 
 <div class="row">
 
@@ -441,6 +452,8 @@ Commercial
 
 
 
+<!-- LISTING TYPE + PRICE -->
+
 <div class="row">
 
 
@@ -490,6 +503,8 @@ required>
 </div>
 
 
+
+<!-- BHK + AREA -->
 
 <div class="row">
 
@@ -545,6 +560,8 @@ placeholder="Example: 2200 Sq.ft">
 
 
 
+<!-- DESCRIPTION -->
+
 <div class="form-group">
 
 <label>
@@ -561,12 +578,12 @@ required></textarea>
 
 
 <h2 style="margin-top:30px;">
-
 👤 Owner Contact
-
 </h2>
 
 
+
+<!-- OWNER + PHONE -->
 
 <div class="row">
 
@@ -597,7 +614,6 @@ Phone Number
 type="tel"
 id="ownerPhone"
 placeholder="10 digit mobile number"
-maxlength="10"
 required>
 
 </div>
@@ -625,7 +641,7 @@ id="cancelButton"
 onclick="cancelEdit()"
 >
 
-✖️ Cancel Edit
+✖ Cancel Edit
 
 </button>
 
@@ -648,13 +664,33 @@ From Bharat to the World.
 
 <p>
 
-<a href="index.html">Home</a>
-<a href="buy.html">Buy</a>
-<a href="sell.html">Sell</a>
-<a href="rent.html">Rent</a>
-<a href="interior.html">Interior</a>
-<a href="listing.html">Listing</a>
-<a href="contact.html">Contact</a>
+<a href="index.html">
+Home
+</a>
+
+<a href="buy.html">
+Buy
+</a>
+
+<a href="sell.html">
+Sell
+</a>
+
+<a href="rent.html">
+Rent
+</a>
+
+<a href="interior.html">
+Interior
+</a>
+
+<a href="listing.html">
+Listing
+</a>
+
+<a href="contact.html">
+Contact
+</a>
 
 </p>
 
@@ -669,9 +705,9 @@ From Bharat to the World.
 <script>
 
 
-/* ================================= */
-/* CHECK LOGIN */
-/* ================================= */
+/* ================================================= */
+/* LOGIN CHECK */
+/* ================================================= */
 
 const loggedIn =
 localStorage.getItem("pv_logged_in");
@@ -690,9 +726,9 @@ window.location.href =
 
 
 
-/* ================================= */
+/* ================================================= */
 /* CURRENT USER */
-/* ================================= */
+/* ================================================= */
 
 const currentUser =
 localStorage.getItem(
@@ -701,11 +737,11 @@ localStorage.getItem(
 
 
 
-/* ================================= */
-/* CHECK EDIT MODE */
-/* ================================= */
+/* ================================================= */
+/* EDIT PROPERTY */
+/* ================================================= */
 
-let editProperty =
+let editPropertyData =
 JSON.parse(
 
 localStorage.getItem(
@@ -716,33 +752,38 @@ localStorage.getItem(
 
 
 
-let isEditMode =
-false;
-
-
-
-/* ================================= */
+/* ================================================= */
 /* ELEMENTS */
-/* ================================= */
+/* ================================================= */
+
+const propertyForm =
+document.getElementById(
+"propertyForm"
+);
 
 const pageTitle =
 document.getElementById(
 "pageTitle"
 );
 
-const heroTitle =
+const pageSubtitle =
 document.getElementById(
-"heroTitle"
+"pageSubtitle"
 );
 
-const heroText =
+const formTitle =
 document.getElementById(
-"heroText"
+"formTitle"
 );
 
-const formHeading =
+const normalNote =
 document.getElementById(
-"formHeading"
+"normalNote"
+);
+
+const editNote =
+document.getElementById(
+"editNote"
 );
 
 const submitButton =
@@ -755,607 +796,555 @@ document.getElementById(
 "cancelButton"
 );
 
-const newNote =
+const successMessage =
 document.getElementById(
-"newNote"
-);
-
-const editNote =
-document.getElementById(
-"editNote"
+"successMessage"
 );
 
 
 
-/* ================================= */
-/* LOAD EDIT PROPERTY */
-/* ================================= */
+/* ================================================= */
+/* FILL EDIT DATA */
+/* ================================================= */
 
-if(editProperty){
+if(editPropertyData){
 
+    /* SECURITY CHECK */
 
-/* SECURITY CHECK */
+    if(
+        String(editPropertyData.postedBy) !==
+        String(currentUser)
+    ){
 
-if(
-String(editProperty.postedBy) !==
-String(currentUser)
-){
+        alert(
+        "❌ You can only edit your own property."
+        );
 
-alert(
-"❌ You can only edit your own property."
-);
+        localStorage.removeItem(
+        "pv_edit_property"
+        );
 
-localStorage.removeItem(
-"pv_edit_property"
-);
+        window.location.href =
+        "my-properties.html";
 
-window.location.href =
-"my-properties.html";
-
-}
-
-
-/* EDIT MODE */
-
-else{
-
-isEditMode = true;
+    }
 
 
-/* PAGE TEXT */
+    /* PAGE CHANGE */
 
-pageTitle.innerText =
-"Edit Property | BharatWorld Properties";
+    pageTitle.innerText =
+    "✏️ Edit Your Property";
 
-heroTitle.innerText =
-"✏️ Edit Your Property";
+    pageSubtitle.innerText =
+    "Update your property information.";
 
-heroText.innerText =
-"Update your property information and save the changes.";
+    formTitle.innerText =
+    "✏️ Edit Property Details";
 
-formHeading.innerText =
-"✏️ Edit Property Details";
+    normalNote.style.display =
+    "none";
 
-submitButton.innerText =
-"💾 Update Property";
+    editNote.style.display =
+    "block";
 
-cancelButton.style.display =
-"block";
+    submitButton.innerText =
+    "💾 Update Property";
 
-newNote.style.display =
-"none";
-
-editNote.style.display =
-"block";
+    cancelButton.style.display =
+    "block";
 
 
+    /* TITLE */
 
-/* FILL FORM */
-
-document.getElementById(
-"propertyTitle"
-).value =
-editProperty.title || "";
-
+    document
+    .getElementById("propertyTitle")
+    .value =
+    editPropertyData.title || "";
 
 
-document.getElementById(
-"propertyCity"
-).value =
-editProperty.city || "";
+    /* CITY */
+
+    document
+    .getElementById("propertyCity")
+    .value =
+    editPropertyData.city || "";
 
 
+    /* TYPE */
 
-document.getElementById(
-"propertyType"
-).value =
-editProperty.type || "";
-
-
-
-document.getElementById(
-"listingType"
-).value =
-editProperty.listingType || "";
+    document
+    .getElementById("propertyType")
+    .value =
+    editPropertyData.type || "";
 
 
+    /* LISTING TYPE */
 
-document.getElementById(
-"propertyPrice"
-).value =
-editProperty.price || "";
-
-
-
-document.getElementById(
-"propertyBhk"
-).value =
-editProperty.bhk || "1 BHK";
+    document
+    .getElementById("listingType")
+    .value =
+    editPropertyData.listingType || "";
 
 
+    /* PRICE */
 
-document.getElementById(
-"propertyArea"
-).value =
-editProperty.area || "";
-
-
-
-document.getElementById(
-"propertyDescription"
-).value =
-editProperty.description || "";
+    document
+    .getElementById("propertyPrice")
+    .value =
+    editPropertyData.price || "";
 
 
+    /* BHK */
 
-document.getElementById(
-"ownerName"
-).value =
-editProperty.owner || "";
+    document
+    .getElementById("propertyBhk")
+    .value =
+    editPropertyData.bhk || "1 BHK";
 
 
+    /* AREA */
 
-document.getElementById(
-"ownerPhone"
-).value =
-editProperty.phone || "";
+    document
+    .getElementById("propertyArea")
+    .value =
+    editPropertyData.area || "";
 
-}
+
+    /* DESCRIPTION */
+
+    document
+    .getElementById("propertyDescription")
+    .value =
+    editPropertyData.description || "";
+
+
+    /* OWNER */
+
+    document
+    .getElementById("ownerName")
+    .value =
+    editPropertyData.owner || "";
+
+
+    /* PHONE */
+
+    document
+    .getElementById("ownerPhone")
+    .value =
+    editPropertyData.phone || "";
 
 }
 
 
 
-/* ================================= */
+/* ================================================= */
 /* FORM SUBMIT */
-/* ================================= */
+/* ================================================= */
 
-document
-.getElementById("propertyForm")
-.addEventListener(
+propertyForm.addEventListener(
 "submit",
 function(e){
 
-e.preventDefault();
+    e.preventDefault();
 
 
+    /* GET VALUES */
 
-/* ================================= */
-/* GET FORM VALUES */
-/* ================================= */
+    const title =
+    document
+    .getElementById("propertyTitle")
+    .value
+    .trim();
 
-const title =
-document
-.getElementById("propertyTitle")
-.value
-.trim();
 
+    const city =
+    document
+    .getElementById("propertyCity")
+    .value
+    .trim();
 
 
-const city =
-document
-.getElementById("propertyCity")
-.value
-.trim();
+    const type =
+    document
+    .getElementById("propertyType")
+    .value;
 
 
+    const listingType =
+    document
+    .getElementById("listingType")
+    .value;
 
-const type =
-document
-.getElementById("propertyType")
-.value;
 
+    const price =
+    document
+    .getElementById("propertyPrice")
+    .value
+    .replace(/,/g,"")
+    .trim();
 
 
-const listingType =
-document
-.getElementById("listingType")
-.value;
+    const bhk =
+    document
+    .getElementById("propertyBhk")
+    .value;
 
 
+    const area =
+    document
+    .getElementById("propertyArea")
+    .value
+    .trim();
 
-const price =
-document
-.getElementById("propertyPrice")
-.value
-.replace(/,/g,"")
-.trim();
 
+    const description =
+    document
+    .getElementById("propertyDescription")
+    .value
+    .trim();
 
 
-const bhk =
-document
-.getElementById("propertyBhk")
-.value;
+    const owner =
+    document
+    .getElementById("ownerName")
+    .value
+    .trim();
 
 
+    const phone =
+    document
+    .getElementById("ownerPhone")
+    .value
+    .replace(/\D/g,"");
 
-const area =
-document
-.getElementById("propertyArea")
-.value
-.trim();
 
 
+    /* PHONE VALIDATION */
 
-const description =
-document
-.getElementById("propertyDescription")
-.value
-.trim();
+    if(phone.length !== 10){
 
+        alert(
+        "⚠️ Please enter a valid 10 digit mobile number."
+        );
 
+        return;
 
-const owner =
-document
-.getElementById("ownerName")
-.value
-.trim();
+    }
 
 
 
-const phone =
-document
-.getElementById("ownerPhone")
-.value
-.replace(/\D/g,"");
+    /* PRICE VALIDATION */
 
+    if(
+        price === "" ||
+        Number(price) <= 0
+    ){
 
+        alert(
+        "⚠️ Please enter a valid property price."
+        );
 
-/* ================================= */
-/* PHONE VALIDATION */
-/* ================================= */
+        return;
 
-if(phone.length !== 10){
+    }
 
-alert(
-"⚠️ Please enter a valid 10 digit mobile number."
-);
 
-return;
 
-}
+    /* ================================================= */
+    /* EDIT EXISTING PROPERTY */
+    /* ================================================= */
 
+    if(editPropertyData){
 
+        let properties =
+        JSON.parse(
 
-/* ================================= */
-/* PRICE VALIDATION */
-/* ================================= */
+            localStorage.getItem(
+                "pv_properties"
+            ) || "[]"
 
-if(
-price === "" ||
-Number(price) <= 0
-){
+        );
 
-alert(
-"⚠️ Please enter a valid property price."
-);
 
-return;
+        const index =
+        properties.findIndex(
 
-}
+            function(property){
 
+                return String(property.id) ===
+                String(editPropertyData.id);
 
+            }
 
-/* ================================= */
-/* GET PROPERTIES */
-/* ================================= */
+        );
 
-let properties =
-JSON.parse(
 
-localStorage.getItem(
-"pv_properties"
-) || "[]"
+        if(index === -1){
 
-);
+            alert(
+            "❌ Property not found."
+            );
 
+            localStorage.removeItem(
+            "pv_edit_property"
+            );
 
+            window.location.href =
+            "my-properties.html";
 
-/* ================================= */
-/* EDIT EXISTING PROPERTY */
-/* ================================= */
+            return;
 
-if(isEditMode){
+        }
 
 
-const propertyIndex =
-properties.findIndex(
 
-function(property){
+        /* SECURITY CHECK */
 
-return String(property.id) ===
-String(editProperty.id);
+        if(
+            String(properties[index].postedBy) !==
+            String(currentUser)
+        ){
 
-}
+            alert(
+            "❌ You cannot edit this property."
+            );
 
-);
+            localStorage.removeItem(
+            "pv_edit_property"
+            );
 
+            window.location.href =
+            "my-properties.html";
 
+            return;
 
-/* PROPERTY NOT FOUND */
+        }
 
-if(propertyIndex === -1){
 
-alert(
-"❌ Property could not be found."
-);
 
-localStorage.removeItem(
-"pv_edit_property"
-);
+        /* UPDATE */
 
-window.location.href =
-"my-properties.html";
+        properties[index] = {
 
-return;
+            ...properties[index],
 
-}
+            title:title,
 
+            city:city,
 
+            type:type,
 
-/* SECURITY CHECK AGAIN */
+            listingType:listingType,
 
-if(
-String(properties[propertyIndex].postedBy) !==
-String(currentUser)
-){
+            price:Number(price),
 
-alert(
-"❌ You are not allowed to edit this property."
-);
+            bhk:bhk,
 
-localStorage.removeItem(
-"pv_edit_property"
-);
+            area:
+            area || "Area not specified",
 
-window.location.href =
-"my-properties.html";
+            description:description,
 
-return;
+            owner:owner,
 
-}
+            phone:phone,
 
+            updatedAt:
+            new Date().toLocaleString()
 
+        };
 
-/* UPDATE ONLY PROPERTY DATA */
 
-properties[propertyIndex] = {
 
-...properties[propertyIndex],
+        /* SAVE */
 
-title:title,
+        localStorage.setItem(
 
-city:city,
+            "pv_properties",
 
-type:type,
+            JSON.stringify(
+                properties
+            )
 
-listingType:listingType,
+        );
 
-price:Number(price),
 
-bhk:bhk,
 
-area:
-area || "Area not specified",
+        /* REMOVE EDIT MODE */
 
-description:description,
+        localStorage.removeItem(
+            "pv_edit_property"
+        );
 
-owner:owner,
 
-phone:phone,
 
-updatedAt:
-new Date().toLocaleString()
+        /* SUCCESS */
 
-};
+        successMessage.innerText =
+        "✅ Property updated successfully!";
 
 
+        successMessage.style.display =
+        "block";
 
-/* SAVE */
 
-localStorage.setItem(
 
-"pv_properties",
+        /* REDIRECT */
 
-JSON.stringify(
-properties
-)
+        setTimeout(
 
-);
+            function(){
 
+                window.location.href =
+                "my-properties.html";
 
+            },
 
-/* CLEAR EDIT MODE */
+            1200
 
-localStorage.removeItem(
-"pv_edit_property"
-);
+        );
 
 
+        return;
 
-/* SUCCESS */
+    }
 
-document
-.getElementById(
-"successMessage"
-)
-.innerText =
-"✅ Property updated successfully!";
 
 
+    /* ================================================= */
+    /* CREATE NEW PROPERTY */
+    /* ================================================= */
 
-document
-.getElementById(
-"successMessage"
-)
-.style.display =
-"block";
+    const property = {
 
+        id:
+        "PV" +
+        Date.now(),
 
+        title:title,
 
-/* REDIRECT */
+        city:city,
 
-setTimeout(
+        type:type,
 
-function(){
+        listingType:listingType,
 
-window.location.href =
-"my-properties.html";
+        price:Number(price),
 
-},
+        bhk:bhk,
 
-1200
+        area:
+        area || "Area not specified",
 
-);
+        description:description,
 
+        owner:owner,
 
-return;
+        phone:phone,
 
-}
+        postedBy:
+        currentUser,
 
+        createdAt:
+        new Date().toLocaleString(),
 
+        image:
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
 
-/* ================================= */
-/* CREATE NEW PROPERTY */
-/* ================================= */
+    };
 
-const newProperty = {
 
-id:
-"PV" +
-Date.now(),
 
-title:title,
+    /* GET OLD PROPERTIES */
 
-city:city,
+    let properties =
+    JSON.parse(
 
-type:type,
+        localStorage.getItem(
+            "pv_properties"
+        ) || "[]"
 
-listingType:listingType,
+    );
 
-price:Number(price),
 
-bhk:bhk,
 
-area:
-area || "Area not specified",
+    /* ADD */
 
-description:description,
+    properties.push(
+        property
+    );
 
-owner:owner,
 
-phone:phone,
 
-postedBy:
-currentUser,
+    /* SAVE */
 
-createdAt:
-new Date().toLocaleString(),
+    localStorage.setItem(
 
-image:
-"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+        "pv_properties",
 
-};
+        JSON.stringify(
+            properties
+        )
 
+    );
 
 
-/* ================================= */
-/* ADD PROPERTY */
-/* ================================= */
 
-properties.push(
-newProperty
-);
+    /* SUCCESS */
 
+    successMessage.innerText =
+    "✅ Property listed successfully!";
 
+    successMessage.style.display =
+    "block";
 
-/* ================================= */
-/* SAVE PROPERTIES */
-/* ================================= */
 
-localStorage.setItem(
 
-"pv_properties",
+    /* RESET */
 
-JSON.stringify(
-properties
-)
+    propertyForm.reset();
 
-);
 
 
+    /* REDIRECT */
 
-/* ================================= */
-/* SUCCESS */
-/* ================================= */
+    setTimeout(
 
-document
-.getElementById(
-"successMessage"
-)
-.innerText =
-"✅ Property listed successfully!";
+        function(){
 
+            window.location.href =
+            "listing.html";
 
+        },
 
-document
-.getElementById(
-"successMessage"
-)
-.style.display =
-"block";
+        1200
 
+    );
 
 
-/* RESET */
-
-document
-.getElementById(
-"propertyForm"
-)
-.reset();
-
-
-
-/* REDIRECT */
-
-setTimeout(
-
-function(){
-
-window.location.href =
-"listing.html";
-
-},
-
-1200
-
-);
 
 });
 
 
 
-/* ================================= */
+/* ================================================= */
 /* CANCEL EDIT */
-/* ================================= */
+/* ================================================= */
 
 function cancelEdit(){
 
-localStorage.removeItem(
-"pv_edit_property"
-);
+    localStorage.removeItem(
+        "pv_edit_property"
+    );
 
-window.location.href =
-"my-properties.html";
+    window.location.href =
+    "my-properties.html";
 
 }
-
 
 </script>
 
 
 </body>
 
-</html>
+  </html>
