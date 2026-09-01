@@ -22,6 +22,8 @@ background:#f5f7fa;
 color:#081B33;
 }
 
+/* HEADER */
+
 header{
 background:#081B33;
 padding:16px 25px;
@@ -57,27 +59,36 @@ border-radius:6px;
 background:#E63946;
 }
 
+/* CONTAINER */
+
 .container{
 max-width:1100px;
 margin:35px auto;
 padding:0 20px;
 }
 
+/* WELCOME */
+
 .welcome{
 background:white;
-padding:25px;
+padding:28px;
 border-radius:15px;
 box-shadow:0 5px 15px rgba(0,0,0,.1);
 margin-bottom:25px;
+border-left:5px solid #FFD700;
 }
 
 .welcome h1{
 margin-bottom:8px;
+font-size:28px;
 }
 
 .welcome p{
 color:#666;
+line-height:1.6;
 }
+
+/* CARDS */
 
 .cards{
 display:flex;
@@ -93,25 +104,34 @@ padding:25px;
 border-radius:15px;
 box-shadow:0 5px 15px rgba(0,0,0,.1);
 text-align:center;
+transition:.25s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 25px rgba(0,0,0,.14);
 }
 
 .card .icon{
-font-size:38px;
+font-size:40px;
 margin-bottom:12px;
 }
 
 .card h3{
 margin-bottom:8px;
+font-size:20px;
 }
 
 .card p{
 color:#666;
 margin-bottom:18px;
 line-height:1.5;
+font-size:14px;
 }
 
 .property-count,
-.lead-count{
+.lead-count,
+.saved-count{
 display:inline-block;
 padding:5px 10px;
 border-radius:20px;
@@ -130,6 +150,11 @@ background:#e8f0ff;
 color:#2457a6;
 }
 
+.saved-count{
+background:#ffe8ec;
+color:#E63946;
+}
+
 .btn{
 display:inline-block;
 background:#081B33;
@@ -139,6 +164,7 @@ padding:10px 16px;
 border-radius:7px;
 font-weight:bold;
 margin:4px;
+font-size:14px;
 }
 
 .btn:hover{
@@ -156,6 +182,42 @@ background:#E63946;
 .browse{
 background:#081B33;
 }
+
+.enquiry{
+background:#2457a6;
+}
+
+/* QUICK ACTIONS */
+
+.quick-actions{
+background:white;
+margin-top:25px;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+text-align:center;
+}
+
+.quick-actions h2{
+margin-bottom:15px;
+}
+
+.quick-actions a{
+display:inline-block;
+padding:11px 16px;
+margin:5px;
+border-radius:7px;
+text-decoration:none;
+font-weight:bold;
+background:#081B33;
+color:white;
+}
+
+.quick-actions a:hover{
+background:#E63946;
+}
+
+/* LOGOUT */
 
 .logout{
 display:block;
@@ -176,6 +238,8 @@ font-size:15px;
 background:#c92f3b;
 }
 
+/* FOOTER */
+
 footer{
 background:#050F1F;
 color:white;
@@ -184,6 +248,17 @@ padding:30px 20px;
 margin-top:50px;
 }
 
+footer h2{
+color:#FFD700;
+}
+
+footer p{
+margin-top:10px;
+color:#ccc;
+}
+
+/* MOBILE */
+
 @media(max-width:600px){
 
 header{
@@ -191,9 +266,23 @@ justify-content:center;
 text-align:center;
 }
 
+.welcome{
+text-align:center;
+}
+
+.welcome h1{
+font-size:24px;
+}
+
 .card{
 width:100%;
 max-width:350px;
+}
+
+.quick-actions a{
+display:block;
+margin:8px auto;
+max-width:300px;
 }
 
 }
@@ -206,6 +295,8 @@ max-width:350px;
 <body>
 
 
+<!-- HEADER -->
+
 <header>
 
 <div class="logo">
@@ -217,7 +308,10 @@ max-width:350px;
 </div>
 
 
-<a href="index.html" class="home">
+<a
+href="index.html"
+class="home"
+>
 
 ← Home
 
@@ -227,8 +321,12 @@ max-width:350px;
 
 
 
+<!-- MAIN -->
+
 <div class="container">
 
+
+<!-- WELCOME -->
 
 <div class="welcome">
 
@@ -248,12 +346,12 @@ Manage your properties, saved listings and enquiries from one place.
 
 
 
+<!-- DASHBOARD CARDS -->
+
 <div class="cards">
 
 
-<!-- =============================== -->
 <!-- MY PROPERTIES -->
-<!-- =============================== -->
 
 <div class="card">
 
@@ -280,7 +378,7 @@ id="propertyCount"
 
 <p>
 
-View and manage your property listings.
+View and manage the properties you have listed.
 
 </p>
 
@@ -306,9 +404,7 @@ class="btn add"
 
 
 
-<!-- =============================== -->
 <!-- SAVED PROPERTIES -->
-<!-- =============================== -->
 
 <div class="card">
 
@@ -324,9 +420,18 @@ Saved Properties
 
 </h3>
 
+<div
+class="saved-count"
+id="savedCount"
+>
+
+0 Saved
+
+</div>
+
 <p>
 
-Your favourite properties will appear here.
+View properties you have saved for later.
 
 </p>
 
@@ -344,7 +449,7 @@ href="buy.html"
 class="btn browse"
 >
 
-🏠 Browse Properties
+🏠 Browse
 
 </a>
 
@@ -352,9 +457,7 @@ class="btn browse"
 
 
 
-<!-- =============================== -->
 <!-- MY ENQUIRIES -->
-<!-- =============================== -->
 
 <div class="card">
 
@@ -387,10 +490,10 @@ Check and manage enquiries received for your properties.
 
 <a
 href="my-enquiries.html"
-class="btn"
+class="btn enquiry"
 >
 
-View Enquiries
+📩 View Enquiries
 
 </a>
 
@@ -398,9 +501,7 @@ View Enquiries
 
 
 
-<!-- =============================== -->
 <!-- ADD PROPERTY -->
-<!-- =============================== -->
 
 <div class="card">
 
@@ -412,7 +513,7 @@ View Enquiries
 
 <h3>
 
-Add Property
+Post Property
 
 </h3>
 
@@ -427,7 +528,7 @@ href="sell.html"
 class="btn add"
 >
 
-Add Property
+➕ Post Property
 
 </a>
 
@@ -437,6 +538,64 @@ Add Property
 </div>
 
 
+
+<!-- QUICK ACTIONS -->
+
+<div class="quick-actions">
+
+<h2>
+
+⚡ Quick Actions
+
+</h2>
+
+
+<a href="buy.html">
+
+🏠 Buy Property
+
+</a>
+
+
+<a href="rent.html">
+
+🔑 Rent Property
+
+</a>
+
+
+<a href="sell.html">
+
+💰 Sell Property
+
+</a>
+
+
+<a href="interior.html">
+
+🎨 Interior Services
+
+</a>
+
+
+<a href="listing.html">
+
+⭐ All Listings
+
+</a>
+
+
+<a href="contact.html">
+
+📞 Contact Us
+
+</a>
+
+</div>
+
+
+
+<!-- LOGOUT -->
 
 <button
 class="logout"
@@ -452,21 +611,23 @@ onclick="logoutUser()"
 
 
 
+<!-- FOOTER -->
+
 <footer>
 
-<h2 style="color:#FFD700;">
+<h2>
 
 🏠 BharatWorld Properties
 
 </h2>
 
-<p style="margin-top:10px;color:#ccc;">
+<p>
 
 Buy • Sell • Rent • Interior
 
 </p>
 
-<p style="margin-top:15px;">
+<p>
 
 © 2026 BharatWorld Properties. All Rights Reserved.
 
@@ -479,9 +640,9 @@ Buy • Sell • Rent • Interior
 <script>
 
 
-/* =============================== */
+/* ================================= */
 /* LOGIN PROTECTION */
-/* =============================== */
+/* ================================= */
 
 const isLoggedIn =
 localStorage.getItem("pv_logged_in");
@@ -496,28 +657,9 @@ window.location.href =
 
 
 
-/* =============================== */
-/* SHOW USER NAME */
-/* =============================== */
-
-const userName =
-localStorage.getItem("pv_name");
-
-
-if(userName){
-
-document
-.getElementById("welcomeUser")
-.innerText =
-"👋 Welcome, " + userName + "!";
-
-}
-
-
-
-/* =============================== */
+/* ================================= */
 /* CURRENT USER */
-/* =============================== */
+/* ================================= */
 
 const currentUser =
 localStorage.getItem(
@@ -526,9 +668,32 @@ localStorage.getItem(
 
 
 
-/* =============================== */
-/* GET PROPERTIES */
-/* =============================== */
+/* ================================= */
+/* USER NAME */
+/* ================================= */
+
+const userName =
+localStorage.getItem(
+"pv_name"
+);
+
+
+if(userName){
+
+document
+.getElementById("welcomeUser")
+.innerText =
+"👋 Welcome, " +
+userName +
+"!";
+
+}
+
+
+
+/* ================================= */
+/* ALL PROPERTIES */
+/* ================================= */
 
 const allProperties =
 JSON.parse(
@@ -541,25 +706,27 @@ localStorage.getItem(
 
 
 
-/* =============================== */
+/* ================================= */
 /* MY PROPERTIES */
-/* =============================== */
+/* ================================= */
 
 const myProperties =
 allProperties.filter(
+
 function(property){
 
-return property.postedBy ===
-currentUser;
+return String(property.postedBy) ===
+String(currentUser);
 
 }
+
 );
 
 
 
-/* =============================== */
+/* ================================= */
 /* PROPERTY COUNT */
-/* =============================== */
+/* ================================= */
 
 const propertyCount =
 document.getElementById(
@@ -577,9 +744,52 @@ myProperties.length === 1
 
 
 
-/* =============================== */
-/* GET ENQUIRIES */
-/* =============================== */
+/* ================================= */
+/* SAVED PROPERTIES */
+/* ================================= */
+
+let savedProperties = [];
+
+
+if(currentUser){
+
+savedProperties =
+JSON.parse(
+
+localStorage.getItem(
+"pv_saved_properties_" +
+currentUser
+) || "[]"
+
+);
+
+}
+
+
+
+/* ================================= */
+/* SAVED COUNT */
+/* ================================= */
+
+const savedCount =
+document.getElementById(
+"savedCount"
+);
+
+
+savedCount.innerText =
+savedProperties.length +
+(
+savedProperties.length === 1
+? " Saved"
+: " Saved"
+);
+
+
+
+/* ================================= */
+/* ALL ENQUIRIES */
+/* ================================= */
 
 const allEnquiries =
 JSON.parse(
@@ -592,25 +802,27 @@ localStorage.getItem(
 
 
 
-/* =============================== */
+/* ================================= */
 /* MY ENQUIRIES */
-/* =============================== */
+/* ================================= */
 
 const myEnquiries =
 allEnquiries.filter(
+
 function(enquiry){
 
-return enquiry.ownerUser ===
-currentUser;
+return String(enquiry.ownerUser) ===
+String(currentUser);
 
 }
+
 );
 
 
 
-/* =============================== */
+/* ================================= */
 /* ENQUIRY COUNT */
-/* =============================== */
+/* ================================= */
 
 const leadCount =
 document.getElementById(
@@ -628,11 +840,24 @@ myEnquiries.length === 1
 
 
 
-/* =============================== */
+/* ================================= */
 /* LOGOUT */
-/* =============================== */
+/* ================================= */
 
 function logoutUser(){
+
+const confirmLogout =
+confirm(
+"🚪 Are you sure you want to logout?"
+);
+
+
+if(!confirmLogout){
+
+return;
+
+}
+
 
 localStorage.removeItem(
 "pv_logged_in"
