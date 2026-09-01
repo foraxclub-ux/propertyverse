@@ -67,7 +67,7 @@ margin:40px auto 70px;
 padding:0 20px;
 }
 
-/* PROPERTY */
+/* PROPERTY BOX */
 
 .property-box{
 background:white;
@@ -112,6 +112,8 @@ color:#E63946;
 margin-bottom:20px;
 }
 
+/* INFO */
+
 .info-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
@@ -137,7 +139,7 @@ font-size:16px;
 font-weight:bold;
 }
 
-/* DESCRIPTION */
+/* SECTION */
 
 .section{
 margin-top:28px;
@@ -217,9 +219,106 @@ background:#25D366;
 color:white;
 }
 
+.enquiry{
+background:#2457a6;
+color:white;
+}
+
 .listings{
 background:#081B33;
 color:white;
+}
+
+/* ENQUIRY BOX */
+
+.enquiry-box{
+display:none;
+margin-top:30px;
+background:#f5f7fa;
+padding:25px;
+border-radius:15px;
+border:2px solid #e8f0ff;
+}
+
+.enquiry-box h2{
+margin-bottom:8px;
+}
+
+.enquiry-box p{
+color:#666;
+margin-bottom:20px;
+}
+
+.form-group{
+margin-bottom:16px;
+}
+
+.form-group label{
+display:block;
+font-weight:bold;
+margin-bottom:7px;
+}
+
+.form-group input,
+.form-group textarea{
+width:100%;
+padding:13px;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:15px;
+outline:none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+border-color:#2457a6;
+}
+
+.form-group textarea{
+min-height:120px;
+resize:vertical;
+}
+
+.send-btn{
+width:100%;
+border:0;
+background:#2457a6;
+color:white;
+padding:14px;
+border-radius:8px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.send-btn:hover{
+background:#17427f;
+}
+
+.close-btn{
+width:100%;
+border:0;
+background:#081B33;
+color:white;
+padding:12px;
+border-radius:8px;
+font-size:15px;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
+}
+
+/* SUCCESS */
+
+.success{
+display:none;
+background:#e7f8ed;
+color:#16803c;
+padding:15px;
+border-radius:8px;
+margin-bottom:15px;
+text-align:center;
+font-weight:bold;
 }
 
 /* NOT FOUND */
@@ -298,6 +397,10 @@ width:100%;
 text-align:center;
 }
 
+.enquiry-box{
+padding:18px;
+}
+
 }
 
 </style>
@@ -319,6 +422,7 @@ text-align:center;
 <small>PROPERTIES</small>
 
 </div>
+
 
 <a
 href="listing.html"
@@ -398,16 +502,11 @@ Price on Request
 📍 LOCATION
 </strong>
 
-<span
-id="propertyCity"
->
-
+<span id="propertyCity">
 Not specified
-
 </span>
 
 </div>
-
 
 
 <div class="info-item">
@@ -416,16 +515,11 @@ Not specified
 🏢 PROPERTY TYPE
 </strong>
 
-<span
-id="propertyType"
->
-
+<span id="propertyType">
 Not specified
-
 </span>
 
 </div>
-
 
 
 <div class="info-item">
@@ -434,16 +528,11 @@ Not specified
 🛏 BHK
 </strong>
 
-<span
-id="propertyBhk"
->
-
+<span id="propertyBhk">
 Not specified
-
 </span>
 
 </div>
-
 
 
 <div class="info-item">
@@ -452,16 +541,11 @@ Not specified
 📐 AREA
 </strong>
 
-<span
-id="propertyArea"
->
-
+<span id="propertyArea">
 Not specified
-
 </span>
 
 </div>
-
 
 
 <div class="info-item">
@@ -470,16 +554,11 @@ Not specified
 🏷️ LISTING
 </strong>
 
-<span
-id="listingType"
->
-
+<span id="listingType">
 For Sale
-
 </span>
 
 </div>
-
 
 
 <div class="info-item">
@@ -488,12 +567,8 @@ For Sale
 🆔 PROPERTY ID
 </strong>
 
-<span
-id="propertyId"
->
-
+<span id="propertyId">
 Not available
-
 </span>
 
 </div>
@@ -574,6 +649,16 @@ onclick="saveProperty()"
 </button>
 
 
+<button
+class="btn enquiry"
+onclick="openEnquiry()"
+>
+
+📩 Send Enquiry
+
+</button>
+
+
 <a
 href="#"
 class="btn call"
@@ -606,6 +691,124 @@ class="btn listings"
 
 </a>
 
+
+</div>
+
+
+
+<!-- ENQUIRY FORM -->
+
+<div
+class="enquiry-box"
+id="enquiryBox"
+>
+
+<h2>
+📩 Send Property Enquiry
+</h2>
+
+<p>
+Enter your details and the property owner will receive your enquiry.
+</p>
+
+
+<div
+id="enquirySuccess"
+class="success"
+>
+
+✅ Enquiry sent successfully!
+
+</div>
+
+
+<form id="enquiryForm">
+
+
+<div class="form-group">
+
+<label>
+Your Name
+</label>
+
+<input
+type="text"
+id="enquirerName"
+placeholder="Enter your name"
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Phone Number
+</label>
+
+<input
+type="tel"
+id="enquirerPhone"
+placeholder="10 digit mobile number"
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Email
+</label>
+
+<input
+type="email"
+id="enquirerEmail"
+placeholder="Enter your email"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Message
+</label>
+
+<textarea
+id="enquirerMessage"
+placeholder="I am interested in this property..."
+required
+>I am interested in this property. Please contact me.</textarea>
+
+</div>
+
+
+<button
+type="submit"
+class="send-btn"
+>
+
+📩 Send Enquiry
+
+</button>
+
+
+<button
+type="button"
+class="close-btn"
+onclick="closeEnquiry()"
+>
+
+✖ Close
+
+</button>
+
+
+</form>
 
 </div>
 
@@ -681,6 +884,7 @@ localStorage.getItem(
 ) || "null"
 
 );
+
 
 
 /* ================================= */
@@ -773,6 +977,7 @@ document.getElementById(
 );
 
 
+
 /* ================================= */
 /* PROPERTY NOT FOUND */
 /* ================================= */
@@ -786,6 +991,7 @@ notFound.style.display =
 "block";
 
 }
+
 
 
 /* ================================= */
@@ -889,7 +1095,7 @@ selectedProperty.area ||
 
 
 
-/* LISTING TYPE */
+/* LISTING */
 
 listingType.innerText =
 selectedProperty.listingType ||
@@ -970,6 +1176,330 @@ checkSaved();
 }
 
 
+
+/* ================================= */
+/* OPEN ENQUIRY */
+/* ================================= */
+
+function openEnquiry(){
+
+const loggedIn =
+localStorage.getItem(
+"pv_logged_in"
+);
+
+
+if(loggedIn !== "true"){
+
+alert(
+"🔐 Please login first to send an enquiry."
+);
+
+window.location.href =
+"login.html";
+
+return;
+
+}
+
+
+/* OWNER CANNOT ENQUIRE ON OWN PROPERTY */
+
+const currentUser =
+localStorage.getItem(
+"pv_current_user"
+);
+
+
+if(
+selectedProperty &&
+String(selectedProperty.postedBy) ===
+String(currentUser)
+){
+
+alert(
+"⚠️ You cannot send an enquiry for your own property."
+);
+
+return;
+
+}
+
+
+const enquiryBox =
+document.getElementById(
+"enquiryBox"
+);
+
+
+enquiryBox.style.display =
+"block";
+
+
+enquiryBox.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+}
+
+
+
+/* ================================= */
+/* CLOSE ENQUIRY */
+/* ================================= */
+
+function closeEnquiry(){
+
+document.getElementById(
+"enquiryBox"
+).style.display =
+"none";
+
+}
+
+
+
+/* ================================= */
+/* SEND ENQUIRY */
+/* ================================= */
+
+document
+.getElementById(
+"enquiryForm"
+)
+.addEventListener(
+"submit",
+function(e){
+
+e.preventDefault();
+
+
+if(!selectedProperty){
+
+alert(
+"❌ Property not found."
+);
+
+return;
+
+}
+
+
+/* CURRENT USER */
+
+const currentUser =
+localStorage.getItem(
+"pv_current_user"
+);
+
+
+
+/* VALUES */
+
+const name =
+document
+.getElementById(
+"enquirerName"
+)
+.value
+.trim();
+
+
+const phone =
+document
+.getElementById(
+"enquirerPhone"
+)
+.value
+.replace(/\D/g,"");
+
+
+const email =
+document
+.getElementById(
+"enquirerEmail"
+)
+.value
+.trim();
+
+
+const message =
+document
+.getElementById(
+"enquirerMessage"
+)
+.value
+.trim();
+
+
+
+/* PHONE VALIDATION */
+
+if(phone.length !== 10){
+
+alert(
+"⚠️ Please enter a valid 10 digit mobile number."
+);
+
+return;
+
+}
+
+
+
+/* OWNER USER */
+
+const ownerUser =
+selectedProperty.postedBy ||
+"";
+
+
+
+if(!ownerUser){
+
+alert(
+"⚠️ Owner account information is not available for this property."
+);
+
+return;
+
+}
+
+
+
+/* CREATE ENQUIRY */
+
+const enquiry = {
+
+id:
+"ENQ" +
+Date.now(),
+
+propertyId:
+selectedProperty.id ||
+"",
+
+propertyTitle:
+selectedProperty.title ||
+"Property",
+
+ownerUser:
+ownerUser,
+
+senderUser:
+currentUser || "",
+
+name:
+name,
+
+phone:
+phone,
+
+email:
+email,
+
+message:
+message,
+
+createdAt:
+new Date().toLocaleString()
+
+};
+
+
+
+/* GET OLD ENQUIRIES */
+
+let allEnquiries =
+JSON.parse(
+
+localStorage.getItem(
+"pv_enquiries"
+) || "[]"
+
+);
+
+
+
+/* SAVE */
+
+allEnquiries.push(
+enquiry
+);
+
+
+localStorage.setItem(
+
+"pv_enquiries",
+
+JSON.stringify(
+allEnquiries
+)
+
+);
+
+
+
+/* SUCCESS */
+
+document
+.getElementById(
+"enquirySuccess"
+)
+.style.display =
+"block";
+
+
+
+/* RESET */
+
+document
+.getElementById(
+"enquiryForm"
+)
+.reset();
+
+
+
+document
+.getElementById(
+"enquirerMessage"
+)
+.value =
+"I am interested in this property. Please contact me.";
+
+
+
+/* HIDE FORM AFTER SUCCESS */
+
+setTimeout(
+function(){
+
+document
+.getElementById(
+"enquiryBox"
+)
+.style.display =
+"none";
+
+document
+.getElementById(
+"enquirySuccess"
+)
+.style.display =
+"none";
+
+},
+1800
+);
+
+
+}
+);
+
+
+
 /* ================================= */
 /* SAVE PROPERTY */
 /* ================================= */
@@ -1025,7 +1555,8 @@ currentUser
 );
 
 
-/* CHECK ALREADY SAVED */
+
+/* CHECK */
 
 const alreadySaved =
 savedProperties.some(
@@ -1040,9 +1571,9 @@ String(selectedProperty.id);
 );
 
 
+
 if(alreadySaved){
 
-/* REMOVE */
 
 savedProperties =
 savedProperties.filter(
@@ -1084,7 +1615,6 @@ alert(
 
 else{
 
-/* SAVE */
 
 savedProperties.push(
 selectedProperty
@@ -1119,8 +1649,9 @@ alert(
 }
 
 
+
 /* ================================= */
-/* CHECK SAVED STATUS */
+/* CHECK SAVED */
 /* ================================= */
 
 function checkSaved(){
