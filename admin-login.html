@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Login | BharatWorld Properties</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#081B33;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.login-box{
+background:white;
+width:100%;
+max-width:420px;
+padding:35px 25px;
+border-radius:18px;
+box-shadow:0 10px 40px rgba(0,0,0,.3);
+}
+
+.logo{
+text-align:center;
+font-size:28px;
+font-weight:bold;
+color:#081B33;
+margin-bottom:5px;
+}
+
+.logo span{
+color:#FFD700;
+}
+
+.subtitle{
+text-align:center;
+color:#777;
+margin-bottom:30px;
+}
+
+h2{
+text-align:center;
+margin-bottom:25px;
+color:#081B33;
+}
+
+label{
+display:block;
+font-weight:bold;
+margin-bottom:7px;
+}
+
+input{
+width:100%;
+padding:13px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:16px;
+margin-bottom:18px;
+outline:none;
+}
+
+input:focus{
+border-color:#081B33;
+}
+
+.login-btn{
+width:100%;
+padding:14px;
+border:0;
+border-radius:8px;
+background:#081B33;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.login-btn:hover{
+background:#102d4f;
+}
+
+.home-btn{
+display:block;
+text-align:center;
+margin-top:18px;
+color:#081B33;
+text-decoration:none;
+font-weight:bold;
+}
+
+.note{
+margin-top:22px;
+padding:12px;
+background:#fff8d8;
+border-radius:8px;
+font-size:12px;
+color:#665800;
+line-height:1.5;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="login-box">
+
+
+<div class="logo">
+🏠 Bharat<span>World</span>
+</div>
+
+<div class="subtitle">
+PROPERTIES
+</div>
+
+
+<h2>
+👑 Admin Login
+</h2>
+
+
+<form onsubmit="adminLogin(event)">
+
+
+<label>
+Admin Email
+</label>
+
+<input
+type="email"
+id="adminEmail"
+placeholder="Enter admin email"
+required
+>
+
+
+<label>
+Admin Password
+</label>
+
+<input
+type="password"
+id="adminPassword"
+placeholder="Enter admin password"
+required
+>
+
+
+<button
+type="submit"
+class="login-btn"
+>
+🔐 Login as Admin
+</button>
+
+
+</form>
+
+
+<a
+href="index.html"
+class="home-btn"
+>
+← Back to Website
+</a>
+
+
+<div class="note">
+
+⚠️ This is a prototype admin login.
+For the final live business website, admin authentication must be moved to a secure backend/database.
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+/* ================================= */
+/* ADMIN CREDENTIALS */
+/* ================================= */
+
+/*
+   IMPORTANT:
+   Change these two values.
+*/
+
+const ADMIN_EMAIL =
+"admin@bharatworldproperties.com";
+
+const ADMIN_PASSWORD =
+"Admin@12345";
+
+
+/* ================================= */
+/* ADMIN LOGIN */
+/* ================================= */
+
+function adminLogin(event){
+
+event.preventDefault();
+
+
+const email =
+document.getElementById(
+"adminEmail"
+).value.trim();
+
+
+const password =
+document.getElementById(
+"adminPassword"
+).value;
+
+
+if(
+email === ADMIN_EMAIL &&
+password === ADMIN_PASSWORD
+){
+
+localStorage.setItem(
+"pv_admin",
+"true"
+);
+
+alert(
+"✅ Admin login successful!"
+);
+
+window.location.href =
+"admin.html";
+
+}
+
+else{
+
+alert(
+"❌ Incorrect admin email or password."
+);
+
+}
+
+}
+
+</script>
+
+
+</body>
+
+</html>
