@@ -22,6 +22,8 @@ background:#f5f7fa;
 color:#081B33;
 }
 
+/* HEADER */
+
 header{
 background:#081B33;
 padding:16px 25px;
@@ -57,11 +59,15 @@ border-radius:6px;
 background:#E63946;
 }
 
+/* CONTAINER */
+
 .container{
-max-width:1050px;
+max-width:1100px;
 margin:40px auto 70px;
 padding:0 20px;
 }
+
+/* PROPERTY */
 
 .property-box{
 background:white;
@@ -72,10 +78,12 @@ box-shadow:0 8px 30px rgba(0,0,0,.12);
 
 .property-image{
 width:100%;
-height:430px;
+height:450px;
 object-fit:cover;
 display:block;
 }
+
+/* CONTENT */
 
 .content{
 padding:30px;
@@ -85,7 +93,7 @@ padding:30px;
 display:inline-block;
 background:#e7f8ed;
 color:#16803c;
-padding:7px 11px;
+padding:7px 12px;
 border-radius:6px;
 font-size:13px;
 font-weight:bold;
@@ -94,53 +102,49 @@ margin-bottom:12px;
 
 h1{
 font-size:34px;
-margin-bottom:10px;
+margin-bottom:12px;
 }
 
 .price{
 font-size:30px;
 font-weight:bold;
 color:#E63946;
-margin-bottom:18px;
+margin-bottom:20px;
 }
 
-.location{
-font-size:17px;
-color:#555;
-margin-bottom:25px;
-}
-
-.details-grid{
+.info-grid{
 display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:15px;
-margin-bottom:30px;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+margin:20px 0;
 }
 
-.detail{
+.info-item{
 background:#f5f7fa;
-padding:18px;
-border-radius:10px;
-text-align:center;
+padding:15px;
+border-radius:9px;
 }
 
-.detail strong{
+.info-item strong{
 display:block;
-font-size:18px;
-margin-bottom:6px;
+font-size:13px;
+color:#777;
+margin-bottom:5px;
 }
 
-.detail span{
-color:#666;
-font-size:13px;
+.info-item span{
+font-size:16px;
+font-weight:bold;
 }
+
+/* DESCRIPTION */
 
 .section{
-margin-top:30px;
+margin-top:28px;
 }
 
 .section h2{
-font-size:23px;
+font-size:22px;
 margin-bottom:12px;
 }
 
@@ -150,26 +154,30 @@ line-height:1.8;
 font-size:16px;
 }
 
-.contact-box{
-margin-top:30px;
+/* OWNER */
+
+.owner-box{
+margin-top:25px;
 background:#f5f7fa;
-padding:22px;
+padding:20px;
 border-radius:12px;
 }
 
-.contact-box h2{
-margin-bottom:12px;
+.owner-box h2{
+margin-bottom:15px;
 }
 
-.owner{
-font-size:17px;
-margin-bottom:7px;
-}
-
-.phone{
-font-size:17px;
+.owner-name{
+font-size:19px;
 font-weight:bold;
+margin-bottom:8px;
 }
+
+.owner-phone{
+color:#666;
+}
+
+/* BUTTONS */
 
 .buttons{
 display:flex;
@@ -179,14 +187,24 @@ margin-top:25px;
 }
 
 .btn{
-display:inline-block;
+border:0;
 padding:13px 18px;
 border-radius:8px;
-text-decoration:none;
-font-weight:bold;
-border:0;
-cursor:pointer;
 font-size:15px;
+font-weight:bold;
+text-decoration:none;
+cursor:pointer;
+display:inline-block;
+}
+
+.save{
+background:#FFD700;
+color:#081B33;
+}
+
+.saved{
+background:#16803c;
+color:white;
 }
 
 .call{
@@ -199,54 +217,38 @@ background:#25D366;
 color:white;
 }
 
-.save{
+.listings{
 background:#081B33;
 color:white;
 }
 
-.save.saved{
-background:#FFD700;
-color:#081B33;
-}
+/* NOT FOUND */
 
-.back-btn{
-background:#ddd;
-color:#081B33;
-}
-
-.error{
+.not-found{
 display:none;
-text-align:center;
 background:white;
-padding:50px 20px;
+text-align:center;
+padding:60px 20px;
 border-radius:15px;
-box-shadow:0 5px 18px rgba(0,0,0,.08);
+box-shadow:0 5px 20px rgba(0,0,0,.1);
 }
 
-.error h2{
+.not-found h2{
 margin-bottom:12px;
 }
 
-.error p{
+.not-found p{
 color:#666;
 margin-bottom:20px;
 }
 
-.browse{
-display:inline-block;
-background:#081B33;
-color:white;
-padding:12px 20px;
-border-radius:8px;
-text-decoration:none;
-font-weight:bold;
-}
+/* FOOTER */
 
 footer{
 background:#050F1F;
 color:white;
 text-align:center;
-padding:30px 20px;
+padding:35px 20px;
 }
 
 footer h2{
@@ -258,10 +260,17 @@ color:#ccc;
 margin-top:10px;
 }
 
-@media(max-width:700px){
+/* MOBILE */
+
+@media(max-width:600px){
+
+header{
+justify-content:center;
+text-align:center;
+}
 
 .property-image{
-height:280px;
+height:260px;
 }
 
 .content{
@@ -269,23 +278,24 @@ padding:20px;
 }
 
 h1{
-font-size:28px;
+font-size:27px;
 }
 
 .price{
 font-size:25px;
 }
 
-.details-grid{
-grid-template-columns:repeat(2,1fr);
+.info-grid{
+grid-template-columns:1fr;
 }
 
+.buttons{
+flex-direction:column;
 }
 
-@media(max-width:400px){
-
-.details-grid{
-grid-template-columns:1fr 1fr;
+.btn{
+width:100%;
+text-align:center;
 }
 
 }
@@ -298,6 +308,8 @@ grid-template-columns:1fr 1fr;
 <body>
 
 
+<!-- HEADER -->
+
 <header>
 
 <div class="logo">
@@ -308,8 +320,10 @@ grid-template-columns:1fr 1fr;
 
 </div>
 
-
-<a href="listing.html" class="back">
+<a
+href="listing.html"
+class="back"
+>
 
 ← Back to Listings
 
@@ -319,14 +333,18 @@ grid-template-columns:1fr 1fr;
 
 
 
+<!-- MAIN -->
+
 <div class="container">
 
+
+<!-- PROPERTY -->
 
 <div
 class="property-box"
 id="propertyBox"
-style="display:none;"
 >
+
 
 <img
 id="propertyImage"
@@ -340,85 +358,142 @@ alt="Property Image"
 
 
 <span
-id="propertyBadge"
 class="badge"
+id="propertyBadge"
 >
+
 ✓ VERIFIED PROPERTY
+
 </span>
 
 
-<h1 id="propertyTitle">
+<h1
+id="propertyTitle"
+>
+
 Property
+
 </h1>
 
 
 <div
-id="propertyPrice"
 class="price"
+id="propertyPrice"
 >
+
 Price on Request
+
 </div>
 
 
-<div
-id="propertyLocation"
-class="location"
+
+<!-- INFORMATION -->
+
+<div class="info-grid">
+
+
+<div class="info-item">
+
+<strong>
+📍 LOCATION
+</strong>
+
+<span
+id="propertyCity"
 >
-📍 Location
-</div>
 
+Not specified
 
-
-<div class="details-grid">
-
-
-<div class="detail">
-
-<strong id="propertyType">
--
-</strong>
-
-<span>
-Property Type
 </span>
 
 </div>
 
 
-<div class="detail">
 
-<strong id="propertyBhk">
--
+<div class="info-item">
+
+<strong>
+🏢 PROPERTY TYPE
 </strong>
 
-<span>
-BHK
+<span
+id="propertyType"
+>
+
+Not specified
+
 </span>
 
 </div>
 
 
-<div class="detail">
 
-<strong id="propertyArea">
--
+<div class="info-item">
+
+<strong>
+🛏 BHK
 </strong>
 
-<span>
-Area
+<span
+id="propertyBhk"
+>
+
+Not specified
+
 </span>
 
 </div>
 
 
-<div class="detail">
 
-<strong id="propertyListing">
--
+<div class="info-item">
+
+<strong>
+📐 AREA
 </strong>
 
-<span>
-Listing
+<span
+id="propertyArea"
+>
+
+Not specified
+
+</span>
+
+</div>
+
+
+
+<div class="info-item">
+
+<strong>
+🏷️ LISTING
+</strong>
+
+<span
+id="listingType"
+>
+
+For Sale
+
+</span>
+
+</div>
+
+
+
+<div class="info-item">
+
+<strong>
+🆔 PROPERTY ID
+</strong>
+
+<span
+id="propertyId"
+>
+
+Not available
+
 </span>
 
 </div>
@@ -427,6 +502,8 @@ Listing
 </div>
 
 
+
+<!-- DESCRIPTION -->
 
 <div class="section">
 
@@ -434,93 +511,116 @@ Listing
 📝 Property Description
 </h2>
 
-<div
-id="propertyDescription"
+<p
 class="description"
+id="propertyDescription"
 >
+
 No description available.
-</div>
+
+</p>
 
 </div>
 
 
 
-<div class="contact-box">
+<!-- OWNER -->
+
+<div class="section">
+
+<div class="owner-box">
 
 <h2>
-👤 Contact Owner
+👤 Owner Details
 </h2>
 
-
 <div
+class="owner-name"
 id="ownerName"
-class="owner"
 >
-Owner: Property Owner
-</div>
 
+Property Owner
+
+</div>
 
 <div
+class="owner-phone"
 id="ownerPhone"
-class="phone"
 >
-📞 Contact number available
+
+Phone not available
+
+</div>
+
+</div>
+
 </div>
 
 
+
+<!-- BUTTONS -->
 
 <div class="buttons">
 
 
-<a
-id="callButton"
-href="#"
-class="btn call"
->
-📞 Call Owner
-</a>
-
-
-<a
-id="whatsappButton"
-href="#"
-class="btn whatsapp"
-target="_blank"
->
-💬 WhatsApp
-</a>
-
-
 <button
-id="saveButton"
 class="btn save"
+id="saveButton"
 onclick="saveProperty()"
 >
+
 ❤️ Save Property
+
 </button>
 
 
 <a
-href="listing.html"
-class="btn back-btn"
+href="#"
+class="btn call"
+id="callButton"
 >
-← More Properties
+
+📞 Call Owner
+
+</a>
+
+
+<a
+href="#"
+class="btn whatsapp"
+id="whatsappButton"
+target="_blank"
+>
+
+💬 WhatsApp
+
+</a>
+
+
+<a
+href="listing.html"
+class="btn listings"
+>
+
+🏠 More Properties
+
 </a>
 
 
 </div>
 
-</div>
 
 </div>
 
 </div>
 
 
+
+<!-- NOT FOUND -->
 
 <div
-id="errorMessage"
-class="error"
+class="not-found"
+id="notFound"
 >
 
 <h2>
@@ -528,14 +628,16 @@ class="error"
 </h2>
 
 <p>
-This property could not be found. Please go back and select a property again.
+The property you are looking for is not available.
 </p>
 
 <a
 href="listing.html"
-class="browse"
+class="btn listings"
 >
-🏠 Browse Properties
+
+← Back to Listings
+
 </a>
 
 </div>
@@ -544,6 +646,8 @@ class="browse"
 </div>
 
 
+
+<!-- FOOTER -->
 
 <footer>
 
@@ -565,24 +669,6 @@ Buy • Sell • Rent • Interior
 
 <script>
 
-
-/* ================================= */
-/* LOGIN CHECK */
-/* ================================= */
-
-const loggedIn =
-localStorage.getItem("pv_logged_in");
-
-
-if(loggedIn !== "true"){
-
-window.location.href =
-"login.html";
-
-}
-
-
-
 /* ================================= */
 /* GET SELECTED PROPERTY */
 /* ================================= */
@@ -597,7 +683,6 @@ localStorage.getItem(
 );
 
 
-
 /* ================================= */
 /* ELEMENTS */
 /* ================================= */
@@ -607,57 +692,129 @@ document.getElementById(
 "propertyBox"
 );
 
-const errorMessage =
+const notFound =
 document.getElementById(
-"errorMessage"
+"notFound"
+);
+
+const propertyImage =
+document.getElementById(
+"propertyImage"
+);
+
+const propertyTitle =
+document.getElementById(
+"propertyTitle"
+);
+
+const propertyPrice =
+document.getElementById(
+"propertyPrice"
+);
+
+const propertyCity =
+document.getElementById(
+"propertyCity"
+);
+
+const propertyType =
+document.getElementById(
+"propertyType"
+);
+
+const propertyBhk =
+document.getElementById(
+"propertyBhk"
+);
+
+const propertyArea =
+document.getElementById(
+"propertyArea"
+);
+
+const listingType =
+document.getElementById(
+"listingType"
+);
+
+const propertyDescription =
+document.getElementById(
+"propertyDescription"
+);
+
+const ownerName =
+document.getElementById(
+"ownerName"
+);
+
+const ownerPhone =
+document.getElementById(
+"ownerPhone"
+);
+
+const propertyId =
+document.getElementById(
+"propertyId"
+);
+
+const saveButton =
+document.getElementById(
+"saveButton"
+);
+
+const callButton =
+document.getElementById(
+"callButton"
+);
+
+const whatsappButton =
+document.getElementById(
+"whatsappButton"
 );
 
 
-
 /* ================================= */
-/* DEFAULT IMAGE */
+/* PROPERTY NOT FOUND */
 /* ================================= */
 
-const defaultImage =
-"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80";
+if(!selectedProperty){
 
+propertyBox.style.display =
+"none";
+
+notFound.style.display =
+"block";
+
+}
 
 
 /* ================================= */
 /* SHOW PROPERTY */
 /* ================================= */
 
-if(!selectedProperty){
-
-errorMessage.style.display =
-"block";
-
-}
-
-else{
-
-propertyBox.style.display =
-"block";
+if(selectedProperty){
 
 
 /* IMAGE */
 
-const image =
+propertyImage.src =
 selectedProperty.image ||
-defaultImage;
+"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80";
 
-document.getElementById(
-"propertyImage"
-).src = image;
+
+propertyImage.onerror =
+function(){
+
+this.src =
+"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80";
+
+};
 
 
 
 /* TITLE */
 
-document.getElementById(
-"propertyTitle"
-).innerText =
-
+propertyTitle.innerText =
 selectedProperty.title ||
 "Property";
 
@@ -665,40 +822,27 @@ selectedProperty.title ||
 
 /* PRICE */
 
-let price =
-selectedProperty.price;
-
-
-if(price){
-
-const cleanPrice =
-String(price)
-.replace(/[₹,]/g,"")
-.trim();
+if(selectedProperty.price){
 
 const numberPrice =
-Number(cleanPrice);
+Number(
+String(selectedProperty.price)
+.replace(/[₹,]/g,"")
+);
 
 
 if(!isNaN(numberPrice)){
 
-document.getElementById(
-"propertyPrice"
-).innerText =
-
+propertyPrice.innerText =
 "₹" +
-numberPrice.toLocaleString(
-"en-IN"
-);
+numberPrice.toLocaleString("en-IN");
 
 }
 
 else{
 
-document.getElementById(
-"propertyPrice"
-).innerText =
-price;
+propertyPrice.innerText =
+selectedProperty.price;
 
 }
 
@@ -706,35 +850,24 @@ price;
 
 else{
 
-document.getElementById(
-"propertyPrice"
-).innerText =
+propertyPrice.innerText =
 "Price on Request";
 
 }
 
 
 
-/* LOCATION */
+/* CITY */
 
-document.getElementById(
-"propertyLocation"
-).innerText =
-
-"📍 " +
-(
+propertyCity.innerText =
 selectedProperty.city ||
-"Location not specified"
-);
+"Location not specified";
 
 
 
 /* TYPE */
 
-document.getElementById(
-"propertyType"
-).innerText =
-
+propertyType.innerText =
 selectedProperty.type ||
 "Property";
 
@@ -742,10 +875,7 @@ selectedProperty.type ||
 
 /* BHK */
 
-document.getElementById(
-"propertyBhk"
-).innerText =
-
+propertyBhk.innerText =
 selectedProperty.bhk ||
 "Not specified";
 
@@ -753,21 +883,15 @@ selectedProperty.bhk ||
 
 /* AREA */
 
-document.getElementById(
-"propertyArea"
-).innerText =
-
+propertyArea.innerText =
 selectedProperty.area ||
 "Not specified";
 
 
 
-/* LISTING */
+/* LISTING TYPE */
 
-document.getElementById(
-"propertyListing"
-).innerText =
-
+listingType.innerText =
 selectedProperty.listingType ||
 "For Sale";
 
@@ -775,10 +899,7 @@ selectedProperty.listingType ||
 
 /* DESCRIPTION */
 
-document.getElementById(
-"propertyDescription"
-).innerText =
-
+propertyDescription.innerText =
 selectedProperty.description ||
 "No description available.";
 
@@ -786,15 +907,9 @@ selectedProperty.description ||
 
 /* OWNER */
 
-document.getElementById(
-"ownerName"
-).innerText =
-
-"👤 Owner: " +
-(
+ownerName.innerText =
 selectedProperty.owner ||
-"Property Owner"
-);
+"Property Owner";
 
 
 
@@ -802,60 +917,57 @@ selectedProperty.owner ||
 
 const phone =
 String(
-selectedProperty.phone ||
-""
+selectedProperty.phone || ""
 ).replace(/\D/g,"");
 
 
+if(phone.length === 10){
 
-if(phone){
+ownerPhone.innerText =
+"📞 +91 " + phone;
 
-document.getElementById(
-"ownerPhone"
-).innerText =
-
-"📞 " + phone;
-
-
-/* CALL */
-
-document.getElementById(
-"callButton"
-).href =
+callButton.href =
 "tel:+91" + phone;
 
-
-/* WHATSAPP */
-
-document.getElementById(
-"whatsappButton"
-).href =
-
+whatsappButton.href =
 "https://wa.me/91" +
-phone;
+phone +
+"?text=" +
+encodeURIComponent(
+"Hello, I am interested in your property: " +
+(selectedProperty.title || "Property")
+);
 
 }
 
 else{
 
-document.getElementById(
-"ownerPhone"
-).innerText =
+ownerPhone.innerText =
+"Phone not available";
 
-"📞 Contact number not available";
+callButton.style.display =
+"none";
 
-}
-
-
-
-/* ================================= */
-/* CHECK SAVED STATUS */
-/* ================================= */
-
-updateSaveButton();
+whatsappButton.style.display =
+"none";
 
 }
 
+
+
+/* PROPERTY ID */
+
+propertyId.innerText =
+selectedProperty.id ||
+"Not available";
+
+
+
+/* CHECK SAVED */
+
+checkSaved();
+
+}
 
 
 /* ================================= */
@@ -864,7 +976,21 @@ updateSaveButton();
 
 function saveProperty(){
 
-if(!selectedProperty){
+
+const loggedIn =
+localStorage.getItem(
+"pv_logged_in"
+);
+
+
+if(loggedIn !== "true"){
+
+alert(
+"🔐 Please login first to save a property."
+);
+
+window.location.href =
+"login.html";
 
 return;
 
@@ -880,84 +1006,61 @@ localStorage.getItem(
 if(!currentUser){
 
 alert(
-"🔐 Please login first."
+"⚠️ User account not found."
 );
 
 return;
 
 }
-
-
-
-const storageKey =
-"pv_saved_properties_" +
-currentUser;
-
 
 
 let savedProperties =
 JSON.parse(
 
 localStorage.getItem(
-storageKey
+"pv_saved_properties_" +
+currentUser
 ) || "[]"
 
 );
 
 
-
-/* PROPERTY ID */
-
-const propertyId =
-selectedProperty.id ||
-selectedProperty.title;
-
-
-
-/* CHECK */
+/* CHECK ALREADY SAVED */
 
 const alreadySaved =
 savedProperties.some(
 
 function(property){
 
-return String(
-property.id ||
-property.title
-) ===
-String(propertyId);
+return String(property.id) ===
+String(selectedProperty.id);
 
 }
 
 );
-
 
 
 if(alreadySaved){
 
-alert(
-"❤️ This property is already saved."
-);
+/* REMOVE */
 
-return;
+savedProperties =
+savedProperties.filter(
+
+function(property){
+
+return String(property.id) !==
+String(selectedProperty.id);
 
 }
 
-
-
-/* ADD */
-
-savedProperties.push(
-selectedProperty
 );
 
 
-
-/* SAVE */
-
 localStorage.setItem(
 
-storageKey,
+"pv_saved_properties_" +
+currentUser,
 
 JSON.stringify(
 savedProperties
@@ -966,24 +1069,62 @@ savedProperties
 );
 
 
+saveButton.innerText =
+"❤️ Save Property";
+
+saveButton.className =
+"btn save";
+
+
+alert(
+"💔 Property removed from Saved Properties."
+);
+
+}
+
+else{
+
+/* SAVE */
+
+savedProperties.push(
+selectedProperty
+);
+
+
+localStorage.setItem(
+
+"pv_saved_properties_" +
+currentUser,
+
+JSON.stringify(
+savedProperties
+)
+
+);
+
+
+saveButton.innerText =
+"✓ Saved Property";
+
+saveButton.className =
+"btn saved";
+
 
 alert(
 "❤️ Property saved successfully!"
 );
 
-
-
-updateSaveButton();
+}
 
 }
 
 
-
 /* ================================= */
-/* UPDATE SAVE BUTTON */
+/* CHECK SAVED STATUS */
 /* ================================= */
 
-function updateSaveButton(){
+function checkSaved(){
+
 
 const currentUser =
 localStorage.getItem(
@@ -998,30 +1139,15 @@ return;
 }
 
 
-const storageKey =
-"pv_saved_properties_" +
-currentUser;
-
-
-
-const savedProperties =
+let savedProperties =
 JSON.parse(
 
 localStorage.getItem(
-storageKey
+"pv_saved_properties_" +
+currentUser
 ) || "[]"
 
 );
-
-
-
-const propertyId =
-selectedProperty &&
-(
-selectedProperty.id ||
-selectedProperty.title
-);
-
 
 
 const alreadySaved =
@@ -1029,44 +1155,31 @@ savedProperties.some(
 
 function(property){
 
-return String(
-property.id ||
-property.title
-) ===
-String(propertyId);
+return String(property.id) ===
+String(selectedProperty.id);
 
 }
 
 );
 
 
-
-const button =
-document.getElementById(
-"saveButton"
-);
-
-
-
 if(alreadySaved){
 
-button.innerText =
-"❤️ Saved";
+saveButton.innerText =
+"✓ Saved Property";
 
-button.classList.add(
-"saved"
-);
+saveButton.className =
+"btn saved";
 
 }
 
 else{
 
-button.innerText =
+saveButton.innerText =
 "❤️ Save Property";
 
-button.classList.remove(
-"saved"
-);
+saveButton.className =
+"btn save";
 
 }
 
