@@ -371,10 +371,15 @@ Buy • Sell • Rent • Interior
 
 <script>
 
+/* =========================================
+   BHARATWORLD PROPERTIES
+   MY PROPERTIES SYSTEM
+========================================= */
 
-/* ============================= */
-/* LOGIN PROTECTION */
-/* ============================= */
+
+/* =========================================
+   LOGIN PROTECTION
+========================================= */
 
 const isLoggedIn =
 localStorage.getItem("pv_logged_in");
@@ -388,23 +393,128 @@ window.location.href =
 }
 
 
+/* =========================================
+   CURRENT USER EMAIL
+========================================= */
 
-/* ============================= */
-/* CURRENT USER */
-/* ============================= */
+const currentUserEmail =
+String(
+localStorage.getItem("pv_current_user") || ""
+)
+.trim()
+.toLowerCase();
 
-const currentUser =
-localStorage.getItem(
-"pv_current_user"
+
+if(!currentUserEmail){
+
+localStorage.removeItem("pv_logged_in");
+
+window.location.href =
+"login.html";
+
+}
+
+
+/* =========================================
+   GET CURRENT USER
+========================================= */
+
+let users = [];
+
+try{
+
+users =
+JSON.parse(
+localStorage.getItem("users") || "[]"
+);
+
+}catch(error){
+
+users = [];
+
+}
+
+
+let currentUser =
+users.find(
+function(user){
+
+return (
+user &&
+String(user.email || "")
+.trim()
+.toLowerCase() ===
+currentUserEmail
+);
+
+}
 );
 
 
+/* =========================================
+   LEGACY USER SUPPORT
+========================================= */
 
-/* ============================= */
-/* GET ALL PROPERTIES */
-/* ============================= */
+if(!currentUser){
 
-let allProperties =
+currentUser = {
+
+id:
+"LEGACY_USER",
+
+email:
+currentUserEmail,
+
+name:
+localStorage.getItem("pv_name") ||
+"User",
+
+status:
+"active"
+
+};
+
+}
+
+
+/* =========================================
+   ACCOUNT STATUS
+========================================= */
+
+if(
+String(currentUser.status || "active")
+.toLowerCase() !==
+"active"
+){
+
+alert(
+"🚫 Your account is inactive."
+);
+
+logoutAndRedirect();
+
+}
+
+
+/* =========================================
+   CURRENT USER ID
+========================================= */
+
+const currentUserId =
+String(
+currentUser.id || "LEGACY_USER"
+);
+
+
+/* =========================================
+   GET ALL PROPERTIES
+========================================= */
+
+let allProperties = [];
+
+try{
+
+allProperties =
 JSON.parse(
 
 localStorage.getItem(
@@ -413,29 +523,16 @@ localStorage.getItem(
 
 );
 
+}catch(error){
 
-
-/* ============================= */
-/* GET MY PROPERTIES */
-/* ============================= */
-
-let myProperties =
-allProperties.filter(
-
-function(property){
-
-return String(property.postedBy) ===
-String(currentUser);
+allProperties = [];
 
 }
 
-);
 
-
-
-/* ============================= */
-/* ELEMENTS */
-/* ============================= */
+/* =========================================
+   ELEMENTS
+========================================= */
 
 const container =
 document.getElementById(
@@ -453,10 +550,90 @@ document.getElementById(
 );
 
 
+/* =========================================
+   CHECK PROPERTY OWNERSHIP
+========================================= */
 
-/* ============================= */
-/* PROPERTY COUNT */
-/* ============================= */
+function isMyProperty(property){
+
+if(!property){
+
+return false;
+
+}
+
+
+/*
+   New property ownership system
+*/
+
+if(
+property.postedById &&
+String(property.postedById) ===
+currentUserId
+){
+
+return true;
+
+}
+
+
+/*
+   Existing email ownership system
+*/
+
+if(
+property.postedBy &&
+String(property.postedBy)
+.trim()
+.toLowerCase() ===
+currentUserEmail
+){
+
+return true;
+
+}
+
+
+/*
+   Some older records may use ownerUser
+*/
+
+if(
+property.ownerUser &&
+String(property.ownerUser)
+.trim()
+.toLowerCase() ===
+currentUserEmail
+){
+
+return true;
+
+}
+
+
+return false;
+
+}
+
+
+/* =========================================
+   GET ONLY MY PROPERTIES
+========================================= */
+
+let myProperties =
+allProperties.filter(
+function(property){
+
+return isMyProperty(property);
+
+}
+);
+
+
+/* =========================================
+   PROPERTY COUNT
+========================================= */
 
 propertyCount.innerText =
 myProperties.length +
@@ -467,10 +644,9 @@ myProperties.length === 1
 );
 
 
-
-/* ============================= */
-/* EMPTY STATE */
-/* ============================= */
+/* =========================================
+   EMPTY STATE
+========================================= */
 
 if(myProperties.length === 0){
 
@@ -480,34 +656,25 @@ emptyMessage.style.display =
 }
 
 
+/* =========================================
+   FORMAT PRICE
+========================================= */
 
-/* ============================= */
-/* SHOW MY PROPERTIES */
-/* ============================= */
+function formatPrice(price){
 
-myProperties.forEach(
+if(
+price === undefined ||
+price === null ||
+price === ""
+){
 
-function(property){
+return "Price on Request";
 
+}
 
-const card =
-document.createElement("div");
-
-card.className =
-"card";
-
-
-
-/* PRICE */
-
-let formattedPrice =
-"Price on Request";
-
-
-if(property.price){
 
 const cleanPrice =
-String(property.price)
+String(price)
 .replace(/[₹,]/g,"")
 .trim();
 
@@ -518,30 +685,44 @@ Number(cleanPrice);
 
 if(!isNaN(numberPrice)){
 
-formattedPrice =
-"₹" +
+return "₹" +
 numberPrice.toLocaleString("en-IN");
 
 }
 
-else{
 
-formattedPrice =
-property.price;
-
-}
+return String(price);
 
 }
 
 
+/* =========================================
+   CREATE PROPERTY CARD
+========================================= */
 
-/* IMAGE */
+myProperties.forEach(
+function(property){
+
+
+const card =
+document.createElement("div");
+
+card.className =
+"card";
+
 
 const image =
 property.image ||
 "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80";
 
 
+const formattedPrice =
+formatPrice(property.price);
+
+
+/* =========================================
+   CARD HTML
+========================================= */
 
 card.innerHTML = `
 
@@ -564,35 +745,35 @@ onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?
 
 <h2>
 
-${property.title || "Property"}
+${escapeHTML(property.title || "Property")}
 
 </h2>
 
 
 <div class="price">
 
-${formattedPrice}
+${escapeHTML(formattedPrice)}
 
 </div>
 
 
 <div class="info">
 
-📍 ${property.city || "Location not specified"}
+📍 ${escapeHTML(property.city || "Location not specified")}
 
 <br>
 
-🏢 ${property.type || "Property"}
+🏢 ${escapeHTML(property.type || "Property")}
 
 <br>
 
-🛏 ${property.bhk || "Not specified"}
+🛏 ${escapeHTML(property.bhk || "Not specified")}
 
-• 📐 ${property.area || "Not specified"}
+• 📐 ${escapeHTML(property.area || "Not specified")}
 
 <br>
 
-🏷️ ${property.listingType || "For Sale"}
+🏷️ ${escapeHTML(property.listingType || "For Sale")}
 
 </div>
 
@@ -602,7 +783,7 @@ ${formattedPrice}
 
 <button
 class="btn view"
-onclick="viewProperty('${property.id}')"
+onclick="viewProperty('${escapeAttribute(property.id)}')"
 >
 
 👁️ View
@@ -612,7 +793,7 @@ onclick="viewProperty('${property.id}')"
 
 <button
 class="btn edit"
-onclick="editProperty('${property.id}')"
+onclick="editProperty('${escapeAttribute(property.id)}')"
 >
 
 ✏️ Edit
@@ -622,7 +803,7 @@ onclick="editProperty('${property.id}')"
 
 <button
 class="btn delete"
-onclick="deleteProperty('${property.id}')"
+onclick="deleteProperty('${escapeAttribute(property.id)}')"
 >
 
 🗑️ Delete
@@ -640,47 +821,75 @@ onclick="deleteProperty('${property.id}')"
 
 container.appendChild(card);
 
-
 }
-
 );
 
 
+/* =========================================
+   HTML SECURITY HELPERS
+========================================= */
 
-/* ============================= */
-/* VIEW PROPERTY */
-/* ============================= */
+function escapeHTML(value){
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+function escapeAttribute(value){
+
+return String(value)
+.replace(/\\/g,"\\\\")
+.replace(/'/g,"\\'");
+
+}
+
+
+/* =========================================
+   FIND OWN PROPERTY
+========================================= */
+
+function findMyProperty(id){
+
+return allProperties.find(
+function(property){
+
+return (
+String(property.id) === String(id) &&
+isMyProperty(property)
+);
+
+}
+);
+
+}
+
+
+/* =========================================
+   VIEW PROPERTY
+========================================= */
 
 function viewProperty(id){
 
-
 const property =
-allProperties.find(
-
-function(item){
-
-return String(item.id) ===
-String(id);
-
-}
-
-);
-
+findMyProperty(id);
 
 
 if(!property){
 
 alert(
-"❌ Property not found."
+"❌ You are not authorized to view this property."
 );
 
 return;
 
 }
 
-
-
-/* SAVE SELECTED PROPERTY */
 
 localStorage.setItem(
 
@@ -691,41 +900,26 @@ JSON.stringify(property)
 );
 
 
-
-/* OPEN DETAILS */
-
 window.location.href =
 "property-details.html";
 
 }
 
 
-
-/* ============================= */
-/* EDIT PROPERTY */
-/* ============================= */
+/* =========================================
+   EDIT PROPERTY
+========================================= */
 
 function editProperty(id){
 
-
 const property =
-allProperties.find(
-
-function(item){
-
-return String(item.id) ===
-String(id);
-
-}
-
-);
-
+findMyProperty(id);
 
 
 if(!property){
 
 alert(
-"❌ Property not found."
+"❌ You are not authorized to edit this property."
 );
 
 return;
@@ -733,8 +927,9 @@ return;
 }
 
 
-
-/* SAVE EDIT PROPERTY */
+/*
+   Save property for sell.html
+*/
 
 localStorage.setItem(
 
@@ -745,8 +940,9 @@ JSON.stringify(property)
 );
 
 
-
-/* OPEN SELL PAGE */
+/*
+   Open edit page
+*/
 
 window.location.href =
 "sell.html";
@@ -754,37 +950,26 @@ window.location.href =
 }
 
 
-
-/* ============================= */
-/* DELETE PROPERTY */
-/* ============================= */
+/* =========================================
+   DELETE PROPERTY
+========================================= */
 
 function deleteProperty(id){
 
-
 const property =
-allProperties.find(
-
-function(item){
-
-return String(item.id) ===
-String(id);
-
-}
-
-);
-
+findMyProperty(id);
 
 
 if(!property){
+
+alert(
+"❌ You are not authorized to delete this property."
+);
 
 return;
 
 }
 
-
-
-/* CONFIRM */
 
 const confirmDelete =
 confirm(
@@ -794,7 +979,6 @@ confirm(
 );
 
 
-
 if(!confirmDelete){
 
 return;
@@ -802,24 +986,24 @@ return;
 }
 
 
-
-/* DELETE */
+/* =========================================
+   DELETE ONLY SELECTED PROPERTY
+========================================= */
 
 allProperties =
 allProperties.filter(
-
 function(item){
 
 return String(item.id) !==
 String(id);
 
 }
-
 );
 
 
-
-/* SAVE */
+/* =========================================
+   SAVE DATABASE
+========================================= */
 
 localStorage.setItem(
 
@@ -832,16 +1016,100 @@ allProperties
 );
 
 
+/* =========================================
+   CLEAN RELATED EDIT DATA
+========================================= */
+
+const editPropertyData =
+localStorage.getItem(
+"pv_edit_property"
+);
+
+
+if(editPropertyData){
+
+try{
+
+const editingProperty =
+JSON.parse(editPropertyData);
+
+
+if(
+String(editingProperty.id) ===
+String(id)
+){
+
+localStorage.removeItem(
+"pv_edit_property"
+);
+
+}
+
+}catch(error){
+
+localStorage.removeItem(
+"pv_edit_property"
+);
+
+}
+
+}
+
+
+/* =========================================
+   SUCCESS
+========================================= */
 
 alert(
 "✅ Property deleted successfully!"
 );
 
 
-
-/* REFRESH */
+/* =========================================
+   RELOAD
+========================================= */
 
 window.location.reload();
+
+}
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+function logoutAndRedirect(){
+
+localStorage.removeItem(
+"pv_logged_in"
+);
+
+localStorage.removeItem(
+"pv_current_user"
+);
+
+localStorage.removeItem(
+"pv_current_user_id"
+);
+
+localStorage.removeItem(
+"pv_name"
+);
+
+localStorage.removeItem(
+"pv_email"
+);
+
+localStorage.removeItem(
+"pv_password"
+);
+
+localStorage.removeItem(
+"pv_user"
+);
+
+window.location.href =
+"login.html";
 
 }
 
@@ -851,4 +1119,4 @@ window.location.reload();
 
 </body>
 
-</html>
+  </html>
