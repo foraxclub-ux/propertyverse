@@ -149,6 +149,11 @@ cursor:pointer;
 background:#c92f3b;
 }
 
+.login-btn:disabled{
+opacity:.7;
+cursor:not-allowed;
+}
+
 .register{
 text-align:center;
 margin-top:22px;
@@ -297,9 +302,6 @@ Login
 id="errorMessage"
 class="message error"
 >
-
-❌ Wrong Email/Mobile or Password
-
 </div>
 
 
@@ -344,34 +346,37 @@ Create Account
 
 <script>
 
+/* =========================================
+   BHARATWORLD PROPERTIES
+   USER LOGIN SYSTEM
+========================================= */
+
+
 document
 .getElementById("loginForm")
-.addEventListener("submit", function(e){
+.addEventListener(
+"submit",
+function(e){
 
 e.preventDefault();
 
 
-const email =
+/* =========================================
+   GET FORM VALUES
+========================================= */
+
+const loginValue =
 document
 .getElementById("email")
 .value
-.trim();
+.trim()
+.toLowerCase();
 
 
 const password =
 document
 .getElementById("password")
 .value;
-
-
-const savedEmail =
-localStorage
-.getItem("pv_email");
-
-
-const savedPassword =
-localStorage
-.getItem("pv_password");
 
 
 const errorMessage =
@@ -384,15 +389,166 @@ document
 .getElementById("successMessage");
 
 
-errorMessage.style.display = "none";
+const loginButton =
+document
+.querySelector(".login-btn");
 
-successMessage.style.display = "none";
+
+/* =========================================
+   RESET MESSAGES
+========================================= */
+
+errorMessage.style.display =
+"none";
+
+successMessage.style.display =
+"none";
+
+
+/* =========================================
+   BASIC VALIDATION
+========================================= */
+
+if(
+loginValue === "" ||
+password === ""
+){
+
+errorMessage.innerText =
+"⚠️ Please enter email/mobile and password.";
+
+errorMessage.style.display =
+"block";
+
+return;
+
+}
+
+
+/* =========================================
+   GET USERS DATABASE
+========================================= */
+
+let users = [];
+
+try{
+
+users =
+JSON.parse(
+localStorage.getItem("users") || "[]"
+);
+
+}catch(error){
+
+users = [];
+
+}
+
+
+/* =========================================
+   FIND USER
+========================================= */
+
+let user =
+users.find(
+function(item){
+
+if(!item){
+return false;
+}
+
+
+/* Email */
+
+const userEmail =
+String(
+item.email || ""
+)
+.toLowerCase()
+.trim();
+
+
+/* Phone */
+
+const userPhone =
+String(
+item.phone || ""
+)
+.toLowerCase()
+.trim();
+
+
+return (
+loginValue === userEmail ||
+(
+userPhone !== "" &&
+loginValue === userPhone
+)
+);
+
+}
+);
+
+
+/* =========================================
+   OLD LOGIN SYSTEM FALLBACK
+========================================= */
+
+if(!user){
+
+const savedEmail =
+String(
+localStorage.getItem("pv_email") || ""
+)
+.toLowerCase()
+.trim();
+
+
+const savedPassword =
+localStorage.getItem("pv_password") || "";
 
 
 if(
-!savedEmail ||
-!savedPassword
+loginValue === savedEmail &&
+password === savedPassword
 ){
+
+user = {
+
+id:
+"LEGACY_USER",
+
+name:
+localStorage.getItem("pv_name") ||
+"User",
+
+email:
+savedEmail,
+
+password:
+savedPassword,
+
+phone:
+"",
+
+role:
+"user",
+
+status:
+"active"
+
+};
+
+}
+
+}
+
+
+/* =========================================
+   ACCOUNT NOT FOUND
+========================================= */
+
+if(!user){
 
 errorMessage.innerText =
 "❌ Account not found. Please create an account first.";
@@ -405,10 +561,50 @@ return;
 }
 
 
+/* =========================================
+   PASSWORD CHECK
+========================================= */
+
 if(
-email === savedEmail &&
-password === savedPassword
+String(user.password || "") !==
+password
 ){
+
+errorMessage.innerText =
+"❌ Wrong Email/Mobile or Password.";
+
+errorMessage.style.display =
+"block";
+
+return;
+
+}
+
+
+/* =========================================
+   ACCOUNT STATUS CHECK
+========================================= */
+
+if(
+String(user.status || "active")
+.toLowerCase() !==
+"active"
+){
+
+errorMessage.innerText =
+"🚫 Your account is currently inactive. Please contact support.";
+
+errorMessage.style.display =
+"block";
+
+return;
+
+}
+
+
+/* =========================================
+   SAVE LOGIN SESSION
+========================================= */
 
 localStorage.setItem(
 "pv_logged_in",
@@ -418,36 +614,64 @@ localStorage.setItem(
 
 localStorage.setItem(
 "pv_current_user",
-email
+user.email
 );
 
+
+localStorage.setItem(
+"pv_current_user_id",
+user.id || ""
+);
+
+
+localStorage.setItem(
+"pv_name",
+user.name || ""
+);
+
+
+localStorage.setItem(
+"pv_email",
+user.email || ""
+);
+
+
+/* =========================================
+   SUCCESS
+========================================= */
+
+successMessage.innerText =
+"✅ Login Successful! Redirecting...";
 
 successMessage.style.display =
 "block";
 
 
-setTimeout(function(){
+loginButton.disabled =
+true;
+
+
+loginButton.innerText =
+"Logging in...";
+
+
+/* =========================================
+   DASHBOARD REDIRECT
+========================================= */
+
+setTimeout(
+function(){
 
 window.location.href =
 "dashboard.html";
 
-},1000);
-
-
-}else{
-
-
-errorMessage.innerText =
-"❌ Wrong Email/Mobile or Password";
-
-
-errorMessage.style.display =
-"block";
+},
+1000
+);
 
 
 }
-
-});
+);
 
 </script>
 
