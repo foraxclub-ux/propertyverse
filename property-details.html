@@ -923,6 +923,30 @@ document.getElementById(
 
 
 /* =================================================
+   GET ALL USERS
+================================================= */
+
+let allUsers = [];
+
+try{
+
+allUsers =
+JSON.parse(
+localStorage.getItem("users") || "[]"
+);
+
+if(!Array.isArray(allUsers)){
+allUsers = [];
+}
+
+}catch(error){
+
+allUsers = [];
+
+}
+
+
+/* =================================================
    PROPERTY NOT FOUND
 ================================================= */
 
@@ -1041,10 +1065,11 @@ selectedProperty.description ||
 "No description available.";
 
 
-/* OWNER */
+/* OWNER NAME */
 
 ownerName.innerText =
 selectedProperty.owner ||
+selectedProperty.ownerName ||
 "Property Owner";
 
 
@@ -1052,7 +1077,9 @@ selectedProperty.owner ||
 
 const phone =
 String(
-selectedProperty.phone || ""
+selectedProperty.phone ||
+selectedProperty.ownerPhone ||
+""
 ).replace(/\D/g,"");
 
 
@@ -1102,6 +1129,150 @@ checkSaved();
 
 
 /* =================================================
+   FIND OWNER ACCOUNT
+   ================================================= */
+
+function findOwnerAccount(){
+
+if(!selectedProperty){
+
+return null;
+
+}
+
+
+/* -----------------------------------------------
+   POSSIBLE OWNER IDs
+----------------------------------------------- */
+
+const possibleIds = [
+
+selectedProperty.postedById,
+
+selectedProperty.ownerUserId,
+
+selectedProperty.ownerId
+
+].filter(Boolean);
+
+
+/* -----------------------------------------------
+   POSSIBLE OWNER EMAILS
+----------------------------------------------- */
+
+const possibleEmails = [
+
+selectedProperty.postedBy,
+
+selectedProperty.ownerUser,
+
+selectedProperty.ownerEmail,
+
+selectedProperty.email,
+
+selectedProperty.owner &&
+typeof selectedProperty.owner === "string" &&
+selectedProperty.owner.includes("@")
+? selectedProperty.owner
+: ""
+
+].filter(Boolean).map(function(email){
+
+return String(email).trim().toLowerCase();
+
+});
+
+
+/* -----------------------------------------------
+   OWNER PHONE
+----------------------------------------------- */
+
+const possiblePhones = [
+
+selectedProperty.phone,
+
+selectedProperty.ownerPhone,
+
+selectedProperty.ownerMobile,
+
+selectedProperty.mobile
+
+].filter(Boolean).map(function(phone){
+
+return String(phone)
+.replace(/\D/g,"");
+
+});
+
+
+/* -----------------------------------------------
+   SEARCH BY USER ID
+----------------------------------------------- */
+
+let ownerUser =
+allUsers.find(function(user){
+
+return possibleIds.some(function(id){
+
+return String(user.id || "") ===
+String(id);
+
+});
+
+});
+
+
+/* -----------------------------------------------
+   SEARCH BY EMAIL
+----------------------------------------------- */
+
+if(!ownerUser){
+
+ownerUser =
+allUsers.find(function(user){
+
+return possibleEmails.includes(
+String(user.email || "")
+.trim()
+.toLowerCase()
+);
+
+});
+
+}
+
+
+/* -----------------------------------------------
+   SEARCH BY PHONE
+----------------------------------------------- */
+
+if(!ownerUser){
+
+ownerUser =
+allUsers.find(function(user){
+
+const userPhone =
+String(user.phone || "")
+.replace(/\D/g,"");
+
+return userPhone &&
+possiblePhones.includes(userPhone);
+
+});
+
+}
+
+
+/* -----------------------------------------------
+   RETURN OWNER
+----------------------------------------------- */
+
+return ownerUser || null;
+
+}
+
+
+/* =================================================
    CHECK WHETHER CURRENT USER OWNS PROPERTY
 ================================================= */
 
@@ -1118,18 +1289,48 @@ return false;
 
 const sameUserId =
 currentUserId &&
-selectedProperty.postedById &&
-String(selectedProperty.postedById) ===
-String(currentUserId);
+(
+String(selectedProperty.postedById || "") ===
+String(currentUserId)
+||
+String(selectedProperty.ownerUserId || "") ===
+String(currentUserId)
+||
+String(selectedProperty.ownerId || "") ===
+String(currentUserId)
+);
+
+
+/* EMAIL VALUES */
+
+const propertyEmails = [
+
+selectedProperty.postedBy,
+
+selectedProperty.ownerUser,
+
+selectedProperty.ownerEmail,
+
+selectedProperty.email
+
+].filter(Boolean).map(function(email){
+
+return String(email)
+.trim()
+.toLowerCase();
+
+});
 
 
 /* EMAIL MATCH */
 
 const sameUserEmail =
 currentUserEmail &&
-selectedProperty.postedBy &&
-String(selectedProperty.postedBy).toLowerCase() ===
-String(currentUserEmail).toLowerCase();
+propertyEmails.includes(
+String(currentUserEmail)
+.trim()
+.toLowerCase()
+);
 
 
 return Boolean(
@@ -1160,7 +1361,7 @@ return;
 }
 
 
-/* OWNER CANNOT ENQUIRE ON OWN PROPERTY */
+/* OWNER CANNOT ENQUIRE */
 
 if(isOwnProperty()){
 
@@ -1173,11 +1374,31 @@ return;
 }
 
 
+/* FIND OWNER */
+
+const ownerUser =
+findOwnerAccount();
+
+
+/* OWNER ACCOUNT CHECK */
+
+if(!ownerUser){
+
+alert(
+"⚠️ Owner account information is not available for this property."
+);
+
+return;
+
+}
+
+
+/* OPEN FORM */
+
 const enquiryBox =
 document.getElementById(
 "enquiryBox"
 );
-
 
 enquiryBox.style.display =
 "block";
@@ -1185,17 +1406,15 @@ enquiryBox.style.display =
 
 /* AUTO-FILL CURRENT USER */
 
-let users =
-JSON.parse(
-localStorage.getItem("users") || "[]"
-);
-
-
 const currentUser =
-users.find(function(user){
+allUsers.find(function(user){
 
-return String(user.email).toLowerCase() ===
-String(currentUserEmail).toLowerCase();
+return String(user.email || "")
+.trim()
+.toLowerCase() ===
+String(currentUserEmail)
+.trim()
+.toLowerCase();
 
 });
 
@@ -1301,6 +1520,23 @@ return;
 }
 
 
+/* FIND OWNER ACCOUNT */
+
+const ownerUser =
+findOwnerAccount();
+
+
+if(!ownerUser){
+
+alert(
+"⚠️ Owner account information is not available for this property."
+);
+
+return;
+
+}
+
+
 /* VALUES */
 
 const name =
@@ -1364,27 +1600,23 @@ return;
 
 
 /* =================================================
-   OWNER USER INFORMATION
+   OWNER ACCOUNT INFORMATION
 ================================================= */
 
 const ownerUserId =
+ownerUser.id ||
 selectedProperty.postedById ||
+selectedProperty.ownerUserId ||
+selectedProperty.ownerId ||
 "";
+
 
 const ownerUserEmail =
+ownerUser.email ||
 selectedProperty.postedBy ||
+selectedProperty.ownerUser ||
+selectedProperty.ownerEmail ||
 "";
-
-
-if(!ownerUserId && !ownerUserEmail){
-
-alert(
-"⚠️ Owner account information is not available for this property."
-);
-
-return;
-
-}
 
 
 /* =================================================
@@ -1413,6 +1645,18 @@ ownerUserId,
 
 ownerUser:
 ownerUserEmail,
+
+ownerName:
+ownerUser.name ||
+selectedProperty.owner ||
+selectedProperty.ownerName ||
+"Property Owner",
+
+ownerPhone:
+ownerUser.phone ||
+selectedProperty.phone ||
+selectedProperty.ownerPhone ||
+"",
 
 
 /* SENDER */
@@ -1450,14 +1694,28 @@ new Date().toLocaleString(
    GET OLD ENQUIRIES
 ================================================= */
 
-let allEnquiries =
-JSON.parse(
+let allEnquiries = [];
 
+try{
+
+allEnquiries =
+JSON.parse(
 localStorage.getItem(
 "pv_enquiries"
 ) || "[]"
-
 );
+
+if(!Array.isArray(allEnquiries)){
+
+allEnquiries = [];
+
+}
+
+}catch(error){
+
+allEnquiries = [];
+
+}
 
 
 /* =================================================
@@ -1480,269 +1738,4 @@ allEnquiries
 );
 
 
-/* =================================================
-   SUCCESS
-================================================= */
-
-document
-.getElementById(
-"enquirySuccess"
-)
-.style.display =
-"block";
-
-
-/* RESET */
-
-document
-.getElementById(
-"enquiryForm"
-)
-.reset();
-
-
-document
-.getElementById(
-"enquirerMessage"
-)
-.value =
-"I am interested in this property. Please contact me.";
-
-
-/* HIDE FORM */
-
-setTimeout(
-function(){
-
-document
-.getElementById(
-"enquiryBox"
-)
-.style.display =
-"none";
-
-document
-.getElementById(
-"enquirySuccess"
-)
-.style.display =
-"none";
-
-},
-1800
-);
-
-}
-);
-
-
-/* =================================================
-   SAVE PROPERTY
-================================================= */
-
-function saveProperty(){
-
-if(!loggedIn){
-
-alert(
-"🔐 Please login first to save a property."
-);
-
-window.location.href =
-"login.html";
-
-return;
-
-}
-
-
-if(!selectedProperty){
-
-alert(
-"❌ Property not found."
-);
-
-return;
-
-}
-
-
-if(!currentUserEmail){
-
-alert(
-"⚠️ User account not found."
-);
-
-return;
-
-}
-
-
-let savedProperties =
-JSON.parse(
-
-localStorage.getItem(
-"pv_saved_properties_" +
-currentUserEmail
-) || "[]"
-
-);
-
-
-/* CHECK */
-
-const alreadySaved =
-savedProperties.some(
-
-function(property){
-
-return String(property.id) ===
-String(selectedProperty.id);
-
-}
-
-);
-
-
-if(alreadySaved){
-
-savedProperties =
-savedProperties.filter(
-
-function(property){
-
-return String(property.id) !==
-String(selectedProperty.id);
-
-}
-
-);
-
-
-localStorage.setItem(
-
-"pv_saved_properties_" +
-currentUserEmail,
-
-JSON.stringify(
-savedProperties
-)
-
-);
-
-
-saveButton.innerText =
-"❤️ Save Property";
-
-saveButton.className =
-"btn save";
-
-
-alert(
-"💔 Property removed from Saved Properties."
-);
-
-}else{
-
-savedProperties.push(
-selectedProperty
-);
-
-
-localStorage.setItem(
-
-"pv_saved_properties_" +
-currentUserEmail,
-
-JSON.stringify(
-savedProperties
-)
-
-);
-
-
-saveButton.innerText =
-"✓ Saved Property";
-
-saveButton.className =
-"btn saved";
-
-
-alert(
-"❤️ Property saved successfully!"
-);
-
-}
-
-}
-
-
-/* =================================================
-   CHECK SAVED
-================================================= */
-
-function checkSaved(){
-
-if(!currentUserEmail){
-
-return;
-
-}
-
-
-if(!selectedProperty){
-
-return;
-
-}
-
-
-let savedProperties =
-JSON.parse(
-
-localStorage.getItem(
-"pv_saved_properties_" +
-currentUserEmail
-) || "[]"
-
-);
-
-
-const alreadySaved =
-savedProperties.some(
-
-function(property){
-
-return String(property.id) ===
-String(selectedProperty.id);
-
-}
-
-);
-
-
-if(alreadySaved){
-
-saveButton.innerText =
-"✓ Saved Property";
-
-saveButton.className =
-"btn saved";
-
-}else{
-
-saveButton.innerText =
-"❤️ Save Property";
-
-saveButton.className =
-"btn save";
-
-}
-
-}
-
-</script>
-
-</body>
-
-  </html>
+/* ==
