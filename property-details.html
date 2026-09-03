@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -21,8 +20,6 @@ body{
 background:#f5f7fa;
 color:#081B33;
 }
-
-/* HEADER */
 
 header{
 background:#081B33;
@@ -59,15 +56,11 @@ border-radius:6px;
 background:#E63946;
 }
 
-/* CONTAINER */
-
 .container{
 max-width:1100px;
 margin:40px auto 70px;
 padding:0 20px;
 }
-
-/* PROPERTY BOX */
 
 .property-box{
 background:white;
@@ -82,8 +75,6 @@ height:450px;
 object-fit:cover;
 display:block;
 }
-
-/* CONTENT */
 
 .content{
 padding:30px;
@@ -112,8 +103,6 @@ color:#E63946;
 margin-bottom:20px;
 }
 
-/* INFO */
-
 .info-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
@@ -139,8 +128,6 @@ font-size:16px;
 font-weight:bold;
 }
 
-/* SECTION */
-
 .section{
 margin-top:28px;
 }
@@ -155,8 +142,6 @@ color:#555;
 line-height:1.8;
 font-size:16px;
 }
-
-/* OWNER */
 
 .owner-box{
 margin-top:25px;
@@ -178,8 +163,6 @@ margin-bottom:8px;
 .owner-phone{
 color:#666;
 }
-
-/* BUTTONS */
 
 .buttons{
 display:flex;
@@ -228,8 +211,6 @@ color:white;
 background:#081B33;
 color:white;
 }
-
-/* ENQUIRY BOX */
 
 .enquiry-box{
 display:none;
@@ -291,10 +272,6 @@ font-weight:bold;
 cursor:pointer;
 }
 
-.send-btn:hover{
-background:#17427f;
-}
-
 .close-btn{
 width:100%;
 border:0;
@@ -308,8 +285,6 @@ cursor:pointer;
 margin-top:10px;
 }
 
-/* SUCCESS */
-
 .success{
 display:none;
 background:#e7f8ed;
@@ -320,8 +295,6 @@ margin-bottom:15px;
 text-align:center;
 font-weight:bold;
 }
-
-/* NOT FOUND */
 
 .not-found{
 display:none;
@@ -341,8 +314,6 @@ color:#666;
 margin-bottom:20px;
 }
 
-/* FOOTER */
-
 footer{
 background:#050F1F;
 color:white;
@@ -358,8 +329,6 @@ footer p{
 color:#ccc;
 margin-top:10px;
 }
-
-/* MOBILE */
 
 @media(max-width:600px){
 
@@ -404,21 +373,15 @@ padding:18px;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<!-- HEADER -->
-
 <header>
 
 <div class="logo">
-
 🏠 BharatWorld
-
 <small>PROPERTIES</small>
-
 </div>
 
 <a href="listing.html" class="back">
@@ -428,11 +391,7 @@ padding:18px;
 </header>
 
 
-<!-- MAIN -->
-
 <div class="container">
-
-<!-- PROPERTY -->
 
 <div class="property-box" id="propertyBox">
 
@@ -445,104 +404,55 @@ alt="Property Image"
 
 <div class="content">
 
-<span
-class="badge"
-id="propertyBadge"
->
+<span class="badge">
 ✓ VERIFIED PROPERTY
 </span>
 
-<h1 id="propertyTitle">
-Property
-</h1>
+<h1 id="propertyTitle">Property</h1>
 
-<div
-class="price"
-id="propertyPrice"
->
+<div class="price" id="propertyPrice">
 Price on Request
 </div>
 
 
-<!-- INFORMATION -->
-
 <div class="info-grid">
 
 <div class="info-item">
-
 <strong>📍 LOCATION</strong>
-
-<span id="propertyCity">
-Not specified
-</span>
-
+<span id="propertyCity">Not specified</span>
 </div>
 
-
 <div class="info-item">
-
 <strong>🏢 PROPERTY TYPE</strong>
-
-<span id="propertyType">
-Not specified
-</span>
-
+<span id="propertyType">Not specified</span>
 </div>
 
-
 <div class="info-item">
-
 <strong>🛏 BHK</strong>
-
-<span id="propertyBhk">
-Not specified
-</span>
-
+<span id="propertyBhk">Not specified</span>
 </div>
 
-
 <div class="info-item">
-
 <strong>📐 AREA</strong>
-
-<span id="propertyArea">
-Not specified
-</span>
-
+<span id="propertyArea">Not specified</span>
 </div>
 
-
 <div class="info-item">
-
 <strong>🏷️ LISTING</strong>
-
-<span id="listingType">
-For Sale
-</span>
-
+<span id="listingType">For Sale</span>
 </div>
-
 
 <div class="info-item">
-
 <strong>🆔 PROPERTY ID</strong>
-
-<span id="propertyId">
-Not available
-</span>
-
+<span id="propertyId">Not available</span>
 </div>
 
 </div>
 
-
-<!-- DESCRIPTION -->
 
 <div class="section">
 
-<h2>
-📝 Property Description
-</h2>
+<h2>📝 Property Description</h2>
 
 <p
 class="description"
@@ -554,15 +464,11 @@ No description available.
 </div>
 
 
-<!-- OWNER -->
-
 <div class="section">
 
 <div class="owner-box">
 
-<h2>
-👤 Owner Details
-</h2>
+<h2>👤 Owner Details</h2>
 
 <div
 class="owner-name"
@@ -583,8 +489,6 @@ Phone not available
 </div>
 
 
-<!-- BUTTONS -->
-
 <div class="buttons">
 
 <button
@@ -595,14 +499,12 @@ onclick="saveProperty()"
 ❤️ Save Property
 </button>
 
-
 <button
 class="btn enquiry"
 onclick="openEnquiry()"
 >
 📩 Send Enquiry
 </button>
-
 
 <a
 href="#"
@@ -612,7 +514,6 @@ id="callButton"
 📞 Call Owner
 </a>
 
-
 <a
 href="#"
 class="btn whatsapp"
@@ -621,7 +522,6 @@ target="_blank"
 >
 💬 WhatsApp
 </a>
-
 
 <a
 href="listing.html"
@@ -633,21 +533,16 @@ class="btn listings"
 </div>
 
 
-<!-- ENQUIRY FORM -->
-
 <div
 class="enquiry-box"
 id="enquiryBox"
 >
 
-<h2>
-📩 Send Property Enquiry
-</h2>
+<h2>📩 Send Property Enquiry</h2>
 
 <p>
 Enter your details and the property owner will receive your enquiry.
 </p>
-
 
 <div
 id="enquirySuccess"
@@ -656,15 +551,11 @@ class="success"
 ✅ Enquiry sent successfully!
 </div>
 
-
 <form id="enquiryForm">
-
 
 <div class="form-group">
 
-<label>
-Your Name
-</label>
+<label>Your Name</label>
 
 <input
 type="text"
@@ -675,12 +566,9 @@ required
 
 </div>
 
-
 <div class="form-group">
 
-<label>
-Phone Number
-</label>
+<label>Phone Number</label>
 
 <input
 type="tel"
@@ -691,12 +579,9 @@ required
 
 </div>
 
-
 <div class="form-group">
 
-<label>
-Email
-</label>
+<label>Email</label>
 
 <input
 type="email"
@@ -706,12 +591,9 @@ placeholder="Enter your email"
 
 </div>
 
-
 <div class="form-group">
 
-<label>
-Message
-</label>
+<label>Message</label>
 
 <textarea
 id="enquirerMessage"
@@ -721,14 +603,12 @@ required
 
 </div>
 
-
 <button
 type="submit"
 class="send-btn"
 >
 📩 Send Enquiry
 </button>
-
 
 <button
 type="button"
@@ -747,16 +627,12 @@ onclick="closeEnquiry()"
 </div>
 
 
-<!-- NOT FOUND -->
-
 <div
 class="not-found"
 id="notFound"
 >
 
-<h2>
-❌ Property Not Found
-</h2>
+<h2>❌ Property Not Found</h2>
 
 <p>
 The property you are looking for is not available.
@@ -774,17 +650,11 @@ class="btn listings"
 </div>
 
 
-<!-- FOOTER -->
-
 <footer>
 
-<h2>
-🏠 BharatWorld Properties
-</h2>
+<h2>🏠 BharatWorld Properties</h2>
 
-<p>
-Buy • Sell • Rent • Interior
-</p>
+<p>Buy • Sell • Rent • Interior</p>
 
 <p>
 © 2026 BharatWorld Properties. All Rights Reserved.
@@ -795,30 +665,139 @@ Buy • Sell • Rent • Interior
 
 <script>
 
-/* =================================
-GET SELECTED PROPERTY
-================================= */
+/* =========================================
+   DEMO PROPERTIES
+========================================= */
+
+const demoProperties = {
+
+"DEMO001": {
+id:"DEMO001",
+title:"Luxury Villa",
+price:"12500000",
+city:"Ahmedabad",
+type:"Villa",
+bhk:"3 BHK",
+area:"2500 sq.ft",
+listingType:"For Sale",
+description:"Premium luxury villa located in Ahmedabad with modern design, spacious rooms and excellent connectivity.",
+owner:"BharatWorld Properties",
+phone:"9876543210",
+image:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+},
+
+"DEMO002": {
+id:"DEMO002",
+title:"Modern Apartment",
+price:"7500000",
+city:"Surat",
+type:"Apartment",
+bhk:"3 BHK",
+area:"1800 sq.ft",
+listingType:"For Sale",
+description:"Modern apartment in a prime Surat location with excellent amenities and connectivity.",
+owner:"BharatWorld Properties",
+phone:"9876543210",
+image:"https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80"
+},
+
+"DEMO003": {
+id:"DEMO003",
+title:"Premium House",
+price:"9500000",
+city:"Ahmedabad",
+type:"Independent House",
+bhk:"4 BHK",
+area:"2200 sq.ft",
+listingType:"For Sale",
+description:"Beautiful independent house suitable for family living in Ahmedabad.",
+owner:"BharatWorld Properties",
+phone:"9876543210",
+image:"https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=80"
+}
+
+};
+
+
+/* =========================================
+   GET PROPERTY
+========================================= */
 
 let selectedProperty = null;
 
+
+/* First: localStorage */
+
 try{
 
-selectedProperty = JSON.parse(
-localStorage.getItem("pv_selected_property") || "null"
-);
+const stored =
+localStorage.getItem("pv_selected_property");
+
+if(stored){
+
+selectedProperty =
+JSON.parse(stored);
+
+}
 
 }catch(error){
 
-console.error("Property data error:",error);
-
-selectedProperty = null;
+console.log("Storage read error:",error);
 
 }
 
 
-/* =================================
-ELEMENTS
-================================= */
+/* Second: URL ID fallback */
+
+const urlParams =
+new URLSearchParams(window.location.search);
+
+const urlId =
+urlParams.get("id");
+
+
+if(urlId && demoProperties[urlId]){
+
+selectedProperty =
+demoProperties[urlId];
+
+}
+
+
+/* Third: if ID exists in URL, search user properties */
+
+if(urlId && !selectedProperty){
+
+try{
+
+const properties =
+JSON.parse(
+localStorage.getItem("pv_properties") || "[]"
+);
+
+if(Array.isArray(properties)){
+
+selectedProperty =
+properties.find(function(property){
+
+return String(property.id) === String(urlId);
+
+});
+
+}
+
+}catch(error){
+
+console.log("User property read error:",error);
+
+}
+
+}
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
 
 const propertyBox =
 document.getElementById("propertyBox");
@@ -872,46 +851,41 @@ const whatsappButton =
 document.getElementById("whatsappButton");
 
 
-/* =================================
-DEFAULT IMAGE
-================================= */
+/* =========================================
+   DEFAULT IMAGE
+========================================= */
 
 const defaultImage =
 "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80";
 
 
-/* =================================
-PROPERTY NOT FOUND
-================================= */
+/* =========================================
+   DISPLAY PROPERTY
+========================================= */
 
-if(!selectedProperty){
+function displayProperty(property){
+
+if(!property){
 
 propertyBox.style.display = "none";
-
 notFound.style.display = "block";
+
+return;
 
 }
 
-
-/* =================================
-SHOW PROPERTY
-================================= */
-
-if(selectedProperty){
-
-console.log("SELECTED PROPERTY:",selectedProperty);
+console.log("PROPERTY LOADED:",property);
 
 
 /* IMAGE */
 
 propertyImage.src =
-selectedProperty.image ||
-defaultImage;
+property.image || defaultImage;
 
-propertyImage.onerror = function(){
+propertyImage.onerror =
+function(){
 
 this.onerror = null;
-
 this.src = defaultImage;
 
 };
@@ -920,23 +894,24 @@ this.src = defaultImage;
 /* TITLE */
 
 propertyTitle.innerText =
-selectedProperty.title ||
-"Property";
+property.title || "Property";
 
 
 /* PRICE */
 
 if(
-selectedProperty.price !== undefined &&
-selectedProperty.price !== null &&
-String(selectedProperty.price).trim() !== ""
+property.price !== undefined &&
+property.price !== null &&
+String(property.price).trim() !== ""
 ){
 
-const cleanPrice =
-String(selectedProperty.price)
-.replace(/[₹,\s]/g,"");
+let priceText =
+String(property.price).trim();
 
-const numberPrice =
+let cleanPrice =
+priceText.replace(/[₹,\s]/g,"");
+
+let numberPrice =
 Number(cleanPrice);
 
 if(!isNaN(numberPrice)){
@@ -947,7 +922,7 @@ propertyPrice.innerText =
 }else{
 
 propertyPrice.innerText =
-selectedProperty.price;
+priceText;
 
 }
 
@@ -962,85 +937,85 @@ propertyPrice.innerText =
 /* CITY */
 
 propertyCity.innerText =
-selectedProperty.city ||
-selectedProperty.location ||
-"Location not specified";
+property.city ||
+property.location ||
+"Not specified";
 
 
 /* TYPE */
 
 propertyType.innerText =
-selectedProperty.type ||
-selectedProperty.propertyType ||
-"Property";
+property.type ||
+property.propertyType ||
+"Not specified";
 
 
 /* BHK */
 
 propertyBhk.innerText =
-selectedProperty.bhk ||
-selectedProperty.BHK ||
+property.bhk ||
+property.BHK ||
 "Not specified";
 
 
 /* AREA */
 
 propertyArea.innerText =
-selectedProperty.area ||
-selectedProperty.size ||
+property.area ||
+property.size ||
 "Not specified";
 
 
 /* LISTING */
 
 listingType.innerText =
-selectedProperty.listingType ||
-selectedProperty.listing ||
+property.listingType ||
+property.listing ||
 "For Sale";
 
 
 /* DESCRIPTION */
 
 propertyDescription.innerText =
-selectedProperty.description ||
+property.description ||
 "No description available.";
 
 
 /* OWNER */
 
 ownerName.innerText =
-selectedProperty.owner ||
-selectedProperty.ownerName ||
+property.owner ||
+property.ownerName ||
 "Property Owner";
 
 
 /* PHONE */
 
-const propertyPhone =
+const phone =
 String(
-selectedProperty.phone ||
-selectedProperty.ownerPhone ||
-selectedProperty.ownerMobile ||
-selectedProperty.mobile ||
+property.phone ||
+property.ownerPhone ||
+property.ownerMobile ||
+property.mobile ||
 ""
 ).replace(/\D/g,"");
 
 
-if(propertyPhone.length === 10){
+if(phone.length === 10){
 
 ownerPhone.innerText =
-"📞 +91 " + propertyPhone;
+"📞 +91 " + phone;
 
 callButton.href =
-"tel:+91" + propertyPhone;
+"tel:+91" + phone;
 
 whatsappButton.href =
 "https://wa.me/91" +
-propertyPhone +
+phone +
 "?text=" +
 encodeURIComponent(
 "Hello, I am interested in your property: " +
-(selectedProperty.title || "Property")
+(property.title || "Property")
 );
 
 }else{
@@ -1060,21 +1035,28 @@ whatsappButton.style.display =
 /* PROPERTY ID */
 
 propertyId.innerText =
-selectedProperty.id ||
-selectedProperty.propertyId ||
+property.id ||
+property.propertyId ||
 "Not available";
 
 
-/* CHECK SAVED */
+/* SAVE STATUS */
 
 checkSaved();
 
 }
 
 
-/* =================================
-GET CURRENT USER
-================================= */
+/* =========================================
+   LOAD PROPERTY
+========================================= */
+
+displayProperty(selectedProperty);
+
+
+/* =========================================
+   CURRENT USER
+========================================= */
 
 function getCurrentUser(){
 
@@ -1099,12 +1081,15 @@ users = [];
 
 }
 
+
 let user =
 users.find(function(u){
 
-return String(u.id || "") === String(id);
+return String(u.id || "") ===
+String(id);
 
 });
+
 
 if(!user){
 
@@ -1118,14 +1103,15 @@ String(email).toLowerCase();
 
 }
 
+
 return user || null;
 
 }
 
 
-/* =================================
-CHECK OWN PROPERTY
-================================= */
+/* =========================================
+   OWN PROPERTY
+========================================= */
 
 function isOwnProperty(){
 
@@ -1142,13 +1128,12 @@ const currentId =
 localStorage.getItem("pv_current_user_id") || "";
 
 
-/* ID CHECK */
-
 const ownerId =
 selectedProperty.postedById ||
 selectedProperty.ownerUserId ||
 selectedProperty.ownerId ||
 "";
+
 
 if(
 currentId &&
@@ -1161,13 +1146,12 @@ return true;
 }
 
 
-/* EMAIL CHECK */
-
 const ownerEmail =
 selectedProperty.postedBy ||
 selectedProperty.ownerUser ||
 selectedProperty.ownerEmail ||
 "";
+
 
 if(
 currentEmail &&
@@ -1180,21 +1164,21 @@ return true;
 
 }
 
+
 return false;
 
 }
 
 
-/* =================================
-OPEN ENQUIRY
-================================= */
+/* =========================================
+   OPEN ENQUIRY
+========================================= */
 
 function openEnquiry(){
 
-const loggedIn =
-localStorage.getItem("pv_logged_in");
-
-if(loggedIn !== "true"){
+if(
+localStorage.getItem("pv_logged_in") !== "true"
+){
 
 alert(
 "🔐 Please login first to send an enquiry."
@@ -1208,8 +1192,6 @@ return;
 }
 
 
-/* OWN PROPERTY CHECK */
-
 if(isOwnProperty()){
 
 alert(
@@ -1221,35 +1203,23 @@ return;
 }
 
 
-/* CURRENT USER */
-
 const currentUser =
 getCurrentUser();
 
 
-/* AUTO FILL */
-
 if(currentUser){
 
-document.getElementById(
-"enquirerName"
-).value =
+document.getElementById("enquirerName").value =
 currentUser.name || "";
 
-document.getElementById(
-"enquirerEmail"
-).value =
+document.getElementById("enquirerEmail").value =
 currentUser.email || "";
 
-document.getElementById(
-"enquirerPhone"
-).value =
+document.getElementById("enquirerPhone").value =
 currentUser.phone || "";
 
 }
 
-
-/* OPEN */
 
 const enquiryBox =
 document.getElementById("enquiryBox");
@@ -1258,33 +1228,28 @@ enquiryBox.style.display =
 "block";
 
 enquiryBox.scrollIntoView({
-
 behavior:"smooth",
-
 block:"center"
-
 });
 
 }
 
 
-/* =================================
-CLOSE ENQUIRY
-================================= */
+/* =========================================
+   CLOSE ENQUIRY
+========================================= */
 
 function closeEnquiry(){
 
-document.getElementById(
-"enquiryBox"
-).style.display =
+document.getElementById("enquiryBox").style.display =
 "none";
 
 }
 
 
-/* =================================
-FIND OWNER ACCOUNT
-================================= */
+/* =========================================
+   FIND OWNER
+========================================= */
 
 function findOwnerAccount(){
 
@@ -1310,13 +1275,12 @@ users = [];
 }
 
 
-/* OWNER ID */
-
 const ownerId =
 selectedProperty.postedById ||
 selectedProperty.ownerUserId ||
 selectedProperty.ownerId ||
 "";
+
 
 if(ownerId){
 
@@ -1337,13 +1301,12 @@ return byId;
 }
 
 
-/* OWNER EMAIL */
-
 const ownerEmail =
 selectedProperty.postedBy ||
 selectedProperty.ownerUser ||
 selectedProperty.ownerEmail ||
 "";
+
 
 if(ownerEmail){
 
@@ -1363,14 +1326,15 @@ return byEmail;
 
 }
 
+
 return null;
 
 }
 
 
-/* =================================
-SEND ENQUIRY
-================================= */
+/* =========================================
+   SEND ENQUIRY
+========================================= */
 
 document
 .getElementById("enquiryForm")
@@ -1383,25 +1347,18 @@ e.preventDefault();
 
 if(!selectedProperty){
 
-alert(
-"❌ Property not found."
-);
+alert("❌ Property not found.");
 
 return;
 
 }
 
 
-/* LOGIN CHECK */
-
 if(
-localStorage.getItem("pv_logged_in") !==
-"true"
+localStorage.getItem("pv_logged_in") !== "true"
 ){
 
-alert(
-"🔐 Please login first."
-);
+alert("🔐 Please login first.");
 
 window.location.href =
 "login.html";
@@ -1410,8 +1367,6 @@ return;
 
 }
 
-
-/* OWN PROPERTY CHECK */
 
 if(isOwnProperty()){
 
@@ -1424,57 +1379,41 @@ return;
 }
 
 
-/* CURRENT USER */
-
 const currentUser =
 getCurrentUser();
 
 const currentUserEmail =
-localStorage.getItem(
-"pv_current_user"
-) || "";
+localStorage.getItem("pv_current_user") || "";
 
 const currentUserId =
-localStorage.getItem(
-"pv_current_user_id"
-) || "";
+localStorage.getItem("pv_current_user_id") || "";
 
-
-/* VALUES */
 
 const name =
-document.getElementById(
-"enquirerName"
-).value.trim();
+document.getElementById("enquirerName")
+.value.trim();
 
 const phone =
-document.getElementById(
-"enquirerPhone"
-).value
-.replace(/\D/g,"");
+document.getElementById("enquirerPhone")
+.value.replace(/\D/g,"");
 
 const email =
-document.getElementById(
-"enquirerEmail"
-).value.trim();
+document.getElementById("enquirerEmail")
+.value.trim();
 
 const message =
-document.getElementById(
-"enquirerMessage"
-).value.trim();
+document.getElementById("enquirerMessage")
+.value.trim();
 
-
-/* VALIDATION */
 
 if(!name){
 
-alert(
-"⚠️ Please enter your name."
-);
+alert("⚠️ Please enter your name.");
 
 return;
 
 }
+
 
 if(phone.length !== 10){
 
@@ -1485,6 +1424,7 @@ alert(
 return;
 
 }
+
 
 if(!message){
 
@@ -1497,43 +1437,40 @@ return;
 }
 
 
-/* OWNER ACCOUNT */
-
 const ownerUser =
 findOwnerAccount();
 
 
-/* OWNER INFORMATION */
-
 const ownerUserId =
-ownerUser?.id ||
+(ownerUser && ownerUser.id) ||
 selectedProperty.postedById ||
 selectedProperty.ownerUserId ||
 selectedProperty.ownerId ||
 "";
 
+
 const ownerEmail =
-ownerUser?.email ||
+(ownerUser && ownerUser.email) ||
 selectedProperty.postedBy ||
 selectedProperty.ownerUser ||
 selectedProperty.ownerEmail ||
 "";
 
+
 const ownerNameValue =
-ownerUser?.name ||
+(ownerUser && ownerUser.name) ||
 selectedProperty.owner ||
 selectedProperty.ownerName ||
 "Property Owner";
 
+
 const ownerPhoneValue =
-ownerUser?.phone ||
+(ownerUser && ownerUser.phone) ||
 selectedProperty.phone ||
 selectedProperty.ownerPhone ||
 selectedProperty.ownerMobile ||
 "";
 
-
-/* CREATE ENQUIRY */
 
 const enquiry = {
 
@@ -1568,7 +1505,8 @@ senderUser:
 currentUserEmail,
 
 senderName:
-currentUser?.name || name,
+(currentUser && currentUser.name) ||
+name,
 
 name:
 name,
@@ -1587,8 +1525,6 @@ new Date().toLocaleString("en-IN")
 
 };
 
-
-/* OLD ENQUIRIES */
 
 let allEnquiries = [];
 
@@ -1612,9 +1548,8 @@ allEnquiries = [];
 }
 
 
-/* SAVE */
-
 allEnquiries.push(enquiry);
+
 
 localStorage.setItem(
 "pv_enquiries",
@@ -1622,123 +1557,10 @@ JSON.stringify(allEnquiries)
 );
 
 
-/* SUCCESS */
-
 document.getElementById(
 "enquirySuccess"
 ).style.display =
 "block";
 
 
-/* RESET */
-
-document.getElementById(
-"enquiryForm"
-).reset();
-
-
-document.getElementById(
-"enquirerMessage"
-).value =
-"I am interested in this property. Please contact me.";
-
-
-/* HIDE AFTER SUCCESS */
-
-setTimeout(function(){
-
-document.getElementById(
-"enquiryBox"
-).style.display =
-"none";
-
-document.getElementById(
-"enquirySuccess"
-).style.display =
-"none";
-
-},1800);
-
-}
-);
-
-
-/* =================================
-SAVE PROPERTY
-================================= */
-
-function saveProperty(){
-
-if(!selectedProperty){
-
-alert(
-"❌ Property not found."
-);
-
-return;
-
-}
-
-
-const loggedIn =
-localStorage.getItem("pv_logged_in");
-
-if(loggedIn !== "true"){
-
-alert(
-"🔐 Please login first to save a property."
-);
-
-window.location.href =
-"login.html";
-
-return;
-
-}
-
-
-const currentUser =
-localStorage.getItem(
-"pv_current_user"
-);
-
-if(!currentUser){
-
-alert(
-"⚠️ User account not found."
-);
-
-return;
-
-}
-
-
-let savedProperties = [];
-
-try{
-
-savedProperties =
-JSON.parse(
-localStorage.getItem(
-"pv_saved_properties_" +
-currentUser
-) || "[]"
-);
-
-if(!Array.isArray(savedProperties)){
-
-savedProperties = [];
-
-}
-
-}catch(error){
-
-savedProperties = [];
-
-}
-
-
-/* PROPERTY ID */
-
-const selectedId =
-Strin
+do
