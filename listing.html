@@ -451,6 +451,9 @@ Luxury 3 BHK Villa
 🛏 3 BHK
 <br>
 
+📐 2500 sq.ft
+<br>
+
 🏷️ For Sale
 
 </div>
@@ -527,6 +530,9 @@ Premium 4 BHK Villa
 🛏 4 BHK
 <br>
 
+📐 3200 sq.ft
+<br>
+
 🏷️ For Sale
 
 </div>
@@ -601,6 +607,9 @@ Modern 2 BHK Apartment
 <br>
 
 🛏 2 BHK
+<br>
+
+📐 1200 sq.ft
 <br>
 
 🏷️ For Rent
@@ -719,9 +728,6 @@ Buy • Sell • Rent • Interior
 const currentUser =
 localStorage.getItem("pv_current_user") || "";
 
-const currentUserId =
-localStorage.getItem("pv_current_user_id") || "";
-
 
 /* =========================================
    DEMO PROPERTIES
@@ -750,7 +756,7 @@ listingType:"For Sale",
 description:
 "Beautiful luxury 3 BHK villa located in Ahmedabad.",
 
-owner:"Property Owner",
+owner:"BharatWorld Properties",
 
 phone:"9999999999",
 
@@ -780,7 +786,7 @@ listingType:"For Sale",
 description:
 "Premium 4 BHK villa with spacious rooms in Surat.",
 
-owner:"Property Owner",
+owner:"BharatWorld Properties",
 
 phone:"9999999999",
 
@@ -810,7 +816,7 @@ listingType:"For Rent",
 description:
 "Modern 2 BHK apartment available for rent in Ahmedabad.",
 
-owner:"Property Owner",
+owner:"BharatWorld Properties",
 
 phone:"9999999999",
 
@@ -903,12 +909,8 @@ saved.push(property);
 
 
 localStorage.setItem(
-
-"pv_saved_properties_" +
-currentUser,
-
+"pv_saved_properties_" + currentUser,
 JSON.stringify(saved)
-
 );
 
 
@@ -947,6 +949,7 @@ saveProperty(property);
 
 /* =========================================
    SHOW DEMO PROPERTY
+   IMPORTANT: PROPERTY ID IN URL
 ========================================= */
 
 function showDemoProperty(id){
@@ -966,40 +969,11 @@ return;
 }
 
 
-/* SAVE EXACT PROPERTY */
-
-localStorage.setItem(
-
-"pv_selected_property",
-
-JSON.stringify(property)
-
-);
-
-
-/* VERIFY */
-
-const selected =
-localStorage.getItem(
-"pv_selected_property"
-);
-
-
-if(!selected){
-
-alert(
-"⚠️ Property details save nahi ho paayi."
-);
-
-return;
-
-}
-
-
-/* OPEN DETAILS */
+/* OPEN DETAILS WITH ID */
 
 window.location.href =
-"property-details.html";
+"property-details.html?id=" +
+encodeURIComponent(id);
 
 }
 
@@ -1012,14 +986,11 @@ function loadUserProperties(){
 
 let properties = [];
 
-
 try{
 
 const stored =
 JSON.parse(
-localStorage.getItem(
-"pv_properties"
-) || "[]"
+localStorage.getItem("pv_properties") || "[]"
 );
 
 properties =
@@ -1035,15 +1006,10 @@ properties = [];
 
 
 const propertiesBox =
-document.getElementById(
-"propertiesBox"
-);
-
+document.getElementById("propertiesBox");
 
 const emptyMessage =
-document.getElementById(
-"emptyMessage"
-);
+document.getElementById("emptyMessage");
 
 
 if(!properties.length){
@@ -1062,7 +1028,6 @@ properties.forEach(function(property){
 
 const card =
 document.createElement("div");
-
 
 card.className =
 "card";
@@ -1125,6 +1090,10 @@ ${formattedPrice}
 
 <br>
 
+📐 ${property.area || "Not specified"}
+
+<br>
+
 🏷️ ${property.listingType || "For Sale"}
 
 </div>
@@ -1166,7 +1135,6 @@ onclick="saveUserProperty('${String(property.id)}')"
 
 `;
 
-
 propertiesBox.appendChild(card);
 
 });
@@ -1180,26 +1148,25 @@ emptyMessage.style.display =
 
 /* =========================================
    VIEW USER PROPERTY
+   IMPORTANT: PROPERTY ID IN URL
 ========================================= */
 
 function viewUserProperty(id){
 
 let properties = [];
 
-
 try{
 
-const stored =
+properties =
 JSON.parse(
-localStorage.getItem(
-"pv_properties"
-) || "[]"
+localStorage.getItem("pv_properties") || "[]"
 );
 
-properties =
-Array.isArray(stored)
-? stored
-: [];
+if(!Array.isArray(properties)){
+
+properties = [];
+
+}
 
 }catch(error){
 
@@ -1228,40 +1195,11 @@ return;
 }
 
 
-/* SAVE SELECTED PROPERTY */
-
-localStorage.setItem(
-
-"pv_selected_property",
-
-JSON.stringify(property)
-
-);
-
-
-/* VERIFY */
-
-const selected =
-localStorage.getItem(
-"pv_selected_property"
-);
-
-
-if(!selected){
-
-alert(
-"⚠️ Property details save nahi ho paayi."
-);
-
-return;
-
-}
-
-
-/* OPEN */
+/* OPEN DETAILS WITH ID */
 
 window.location.href =
-"property-details.html";
+"property-details.html?id=" +
+encodeURIComponent(id);
 
 }
 
@@ -1274,20 +1212,18 @@ function saveUserProperty(id){
 
 let properties = [];
 
-
 try{
 
-const stored =
+properties =
 JSON.parse(
-localStorage.getItem(
-"pv_properties"
-) || "[]"
+localStorage.getItem("pv_properties") || "[]"
 );
 
-properties =
-Array.isArray(stored)
-? stored
-: [];
+if(!Array.isArray(properties)){
+
+properties = [];
+
+}
 
 }catch(error){
 
