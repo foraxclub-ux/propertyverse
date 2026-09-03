@@ -256,9 +256,7 @@ Join BharatWorld Properties today
 
 
 <label>
-
 👤 Full Name
-
 </label>
 
 
@@ -271,9 +269,7 @@ required
 
 
 <label>
-
 📧 Email
-
 </label>
 
 
@@ -286,9 +282,7 @@ required
 
 
 <label>
-
 🔑 Password
-
 </label>
 
 
@@ -315,7 +309,6 @@ Create Account
 id="errorMessage"
 class="message error"
 >
-
 </div>
 
 
@@ -323,7 +316,6 @@ class="message error"
 id="successMessage"
 class="message success"
 >
-
 </div>
 
 
@@ -358,18 +350,129 @@ Login
 
 <script>
 
-/* ========================================= */
-/* REGISTER USER */
-/* ========================================= */
+/* =========================================
+   BHARATWORLD PROPERTIES
+   REGISTER SYSTEM
+========================================= */
+
+
+/* =========================================
+   MIGRATE OLD USER DATA
+========================================= */
+
+function migrateOldUser(){
+
+let users = [];
+
+try{
+
+users =
+JSON.parse(
+localStorage.getItem("users") || "[]"
+);
+
+}catch(error){
+
+users = [];
+
+}
+
+
+/*
+   Agar users system empty hai
+   lekin purana pv_email data available hai
+*/
+
+if(
+users.length === 0 &&
+localStorage.getItem("pv_email")
+){
+
+const oldEmail =
+localStorage
+.getItem("pv_email")
+.trim()
+.toLowerCase();
+
+const oldName =
+localStorage
+.getItem("pv_name") ||
+"Existing User";
+
+const oldPassword =
+localStorage
+.getItem("pv_password") ||
+"";
+
+
+if(oldEmail !== ""){
+
+const oldUser = {
+
+id:
+"USR" + Date.now(),
+
+name:
+oldName,
+
+email:
+oldEmail,
+
+password:
+oldPassword,
+
+phone:
+"",
+
+role:
+"user",
+
+status:
+"active",
+
+registeredAt:
+new Date().toLocaleString("en-IN")
+
+};
+
+
+users.push(oldUser);
+
+
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
+
+}
+
+}
+
+}
+
+
+/* Run migration */
+
+migrateOldUser();
+
+
+
+/* =========================================
+   REGISTER FORM
+========================================= */
 
 document
 .getElementById("registerForm")
-.addEventListener("submit", function(e){
+.addEventListener(
+"submit",
+function(e){
 
 e.preventDefault();
 
 
-/* GET FORM VALUES */
+/* =========================================
+   FORM VALUES
+========================================= */
 
 const name =
 document
@@ -402,7 +505,9 @@ document
 .getElementById("successMessage");
 
 
-/* HIDE OLD MESSAGES */
+/* =========================================
+   RESET MESSAGES
+========================================= */
 
 errorMessage.style.display =
 "none";
@@ -411,7 +516,10 @@ successMessage.style.display =
 "none";
 
 
-/* VALIDATION */
+
+/* =========================================
+   VALIDATION
+========================================= */
 
 if(
 name === "" ||
@@ -443,27 +551,45 @@ return;
 }
 
 
-/* ========================================= */
-/* GET ALL REGISTERED USERS */
-/* ========================================= */
 
-let users =
+/* =========================================
+   GET USERS
+========================================= */
+
+let users = [];
+
+try{
+
+users =
 JSON.parse(
 localStorage.getItem("users") || "[]"
 );
 
+}catch(error){
 
-/* ========================================= */
-/* CHECK EXISTING EMAIL */
-/* ========================================= */
+users = [];
+
+}
+
+
+
+/* =========================================
+   CHECK DUPLICATE EMAIL
+========================================= */
 
 const existingUser =
-users.find(function(user){
+users.find(
+function(user){
 
-return String(user.email)
-.toLowerCase() === email;
+return (
+user &&
+String(user.email || "")
+.toLowerCase()
+.trim() === email
+);
 
-});
+}
+);
 
 
 if(existingUser){
@@ -479,9 +605,10 @@ return;
 }
 
 
-/* ========================================= */
-/* CREATE NEW USER */
-/* ========================================= */
+
+/* =========================================
+   CREATE USER
+========================================= */
 
 const newUser = {
 
@@ -512,12 +639,18 @@ new Date().toLocaleString("en-IN")
 };
 
 
-/* ========================================= */
-/* SAVE USER */
-/* ========================================= */
+
+/* =========================================
+   ADD USER
+========================================= */
 
 users.push(newUser);
 
+
+
+/* =========================================
+   SAVE MAIN USER DATABASE
+========================================= */
 
 localStorage.setItem(
 "users",
@@ -525,9 +658,21 @@ JSON.stringify(users)
 );
 
 
-/* ========================================= */
-/* KEEP EXISTING LOGIN SYSTEM WORKING */
-/* ========================================= */
+
+/* =========================================
+   BACKUP USER DATABASE
+========================================= */
+
+localStorage.setItem(
+"pv_users",
+JSON.stringify(users)
+);
+
+
+
+/* =========================================
+   OLD LOGIN SYSTEM
+========================================= */
 
 localStorage.setItem(
 "pv_name",
@@ -550,9 +695,10 @@ localStorage.setItem(
 );
 
 
-/* ========================================= */
-/* SUCCESS MESSAGE */
-/* ========================================= */
+
+/* =========================================
+   SUCCESS MESSAGE
+========================================= */
 
 successMessage.innerText =
 "✅ Account created successfully! Redirecting to login...";
@@ -561,22 +707,44 @@ successMessage.style.display =
 "block";
 
 
-/* ========================================= */
-/* REDIRECT TO LOGIN */
-/* ========================================= */
 
-setTimeout(function(){
+/* =========================================
+   DISABLE BUTTON
+========================================= */
+
+const button =
+document.querySelector(
+".register-btn"
+);
+
+button.disabled = true;
+
+button.style.opacity =
+"0.7";
+
+
+
+/* =========================================
+   REDIRECT LOGIN
+========================================= */
+
+setTimeout(
+function(){
 
 window.location.href =
 "login.html";
 
-},1500);
+},
+1500
+);
 
-});
+
+}
+);
 
 </script>
 
 
 </body>
 
-  </html>
+</html>
