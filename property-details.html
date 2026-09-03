@@ -22,8 +22,6 @@ background:#f5f7fa;
 color:#081B33;
 }
 
-/* HEADER */
-
 header{
 background:#081B33;
 padding:16px 25px;
@@ -59,15 +57,11 @@ border-radius:6px;
 background:#E63946;
 }
 
-/* CONTAINER */
-
 .container{
 max-width:1100px;
 margin:40px auto 70px;
 padding:0 20px;
 }
-
-/* PROPERTY BOX */
 
 .property-box{
 background:white;
@@ -82,8 +76,6 @@ height:450px;
 object-fit:cover;
 display:block;
 }
-
-/* CONTENT */
 
 .content{
 padding:30px;
@@ -112,8 +104,6 @@ color:#E63946;
 margin-bottom:20px;
 }
 
-/* INFO */
-
 .info-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
@@ -139,8 +129,6 @@ font-size:16px;
 font-weight:bold;
 }
 
-/* SECTION */
-
 .section{
 margin-top:28px;
 }
@@ -155,8 +143,6 @@ color:#555;
 line-height:1.8;
 font-size:16px;
 }
-
-/* OWNER */
 
 .owner-box{
 margin-top:25px;
@@ -178,8 +164,6 @@ margin-bottom:8px;
 .owner-phone{
 color:#666;
 }
-
-/* BUTTONS */
 
 .buttons{
 display:flex;
@@ -228,8 +212,6 @@ color:white;
 background:#081B33;
 color:white;
 }
-
-/* ENQUIRY BOX */
 
 .enquiry-box{
 display:none;
@@ -308,8 +290,6 @@ cursor:pointer;
 margin-top:10px;
 }
 
-/* SUCCESS */
-
 .success{
 display:none;
 background:#e7f8ed;
@@ -320,8 +300,6 @@ margin-bottom:15px;
 text-align:center;
 font-weight:bold;
 }
-
-/* NOT FOUND */
 
 .not-found{
 display:none;
@@ -341,8 +319,6 @@ color:#666;
 margin-bottom:20px;
 }
 
-/* FOOTER */
-
 footer{
 background:#050F1F;
 color:white;
@@ -358,8 +334,6 @@ footer p{
 color:#ccc;
 margin-top:10px;
 }
-
-/* MOBILE */
 
 @media(max-width:600px){
 
@@ -407,11 +381,7 @@ padding:18px;
 
 </head>
 
-
 <body>
-
-
-<!-- HEADER -->
 
 <header>
 
@@ -422,7 +392,6 @@ padding:18px;
 <small>PROPERTIES</small>
 
 </div>
-
 
 <a
 href="listing.html"
@@ -436,19 +405,12 @@ class="back"
 </header>
 
 
-
-<!-- MAIN -->
-
 <div class="container">
-
-
-<!-- PROPERTY -->
 
 <div
 class="property-box"
 id="propertyBox"
 >
-
 
 <img
 id="propertyImage"
@@ -457,9 +419,7 @@ src=""
 alt="Property Image"
 >
 
-
 <div class="content">
-
 
 <span
 class="badge"
@@ -470,7 +430,6 @@ id="propertyBadge"
 
 </span>
 
-
 <h1
 id="propertyTitle"
 >
@@ -478,7 +437,6 @@ id="propertyTitle"
 Property
 
 </h1>
-
 
 <div
 class="price"
@@ -490,11 +448,7 @@ Price on Request
 </div>
 
 
-
-<!-- INFORMATION -->
-
 <div class="info-grid">
-
 
 <div class="info-item">
 
@@ -573,12 +527,8 @@ Not available
 
 </div>
 
-
 </div>
 
-
-
-<!-- DESCRIPTION -->
 
 <div class="section">
 
@@ -597,9 +547,6 @@ No description available.
 
 </div>
 
-
-
-<!-- OWNER -->
 
 <div class="section">
 
@@ -632,11 +579,7 @@ Phone not available
 </div>
 
 
-
-<!-- BUTTONS -->
-
 <div class="buttons">
-
 
 <button
 class="btn save"
@@ -691,12 +634,8 @@ class="btn listings"
 
 </a>
 
-
 </div>
 
-
-
-<!-- ENQUIRY FORM -->
 
 <div
 class="enquiry-box"
@@ -723,7 +662,6 @@ class="success"
 
 
 <form id="enquiryForm">
-
 
 <div class="form-group">
 
@@ -807,19 +745,14 @@ onclick="closeEnquiry()"
 
 </button>
 
-
 </form>
 
 </div>
 
-
 </div>
 
 </div>
 
-
-
-<!-- NOT FOUND -->
 
 <div
 class="not-found"
@@ -845,12 +778,8 @@ class="btn listings"
 
 </div>
 
-
 </div>
 
-
-
-<!-- FOOTER -->
 
 <footer>
 
@@ -869,27 +798,43 @@ Buy • Sell • Rent • Interior
 </footer>
 
 
-
 <script>
 
-/* ================================= */
-/* GET SELECTED PROPERTY */
-/* ================================= */
+/* =================================================
+   GET SELECTED PROPERTY
+================================================= */
 
 const selectedProperty =
 JSON.parse(
-
 localStorage.getItem(
 "pv_selected_property"
 ) || "null"
-
 );
 
 
+/* =================================================
+   CURRENT LOGIN INFORMATION
+================================================= */
 
-/* ================================= */
-/* ELEMENTS */
-/* ================================= */
+const loggedIn =
+localStorage.getItem(
+"pv_logged_in"
+) === "true";
+
+const currentUserEmail =
+localStorage.getItem(
+"pv_current_user"
+) || "";
+
+const currentUserId =
+localStorage.getItem(
+"pv_current_user_id"
+) || "";
+
+
+/* =================================================
+   ELEMENTS
+================================================= */
 
 const propertyBox =
 document.getElementById(
@@ -977,10 +922,9 @@ document.getElementById(
 );
 
 
-
-/* ================================= */
-/* PROPERTY NOT FOUND */
-/* ================================= */
+/* =================================================
+   PROPERTY NOT FOUND
+================================================= */
 
 if(!selectedProperty){
 
@@ -993,29 +937,28 @@ notFound.style.display =
 }
 
 
-
-/* ================================= */
-/* SHOW PROPERTY */
-/* ================================= */
+/* =================================================
+   SHOW PROPERTY
+================================================= */
 
 if(selectedProperty){
 
-
 /* IMAGE */
+
+const defaultImage =
+"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80";
 
 propertyImage.src =
 selectedProperty.image ||
-"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80";
-
+defaultImage;
 
 propertyImage.onerror =
 function(){
 
 this.src =
-"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80";
+defaultImage;
 
 };
-
 
 
 /* TITLE */
@@ -1023,7 +966,6 @@ this.src =
 propertyTitle.innerText =
 selectedProperty.title ||
 "Property";
-
 
 
 /* PRICE */
@@ -1036,31 +978,25 @@ String(selectedProperty.price)
 .replace(/[₹,]/g,"")
 );
 
-
 if(!isNaN(numberPrice)){
 
 propertyPrice.innerText =
 "₹" +
 numberPrice.toLocaleString("en-IN");
 
-}
-
-else{
+}else{
 
 propertyPrice.innerText =
 selectedProperty.price;
 
 }
 
-}
-
-else{
+}else{
 
 propertyPrice.innerText =
 "Price on Request";
 
 }
-
 
 
 /* CITY */
@@ -1070,13 +1006,11 @@ selectedProperty.city ||
 "Location not specified";
 
 
-
 /* TYPE */
 
 propertyType.innerText =
 selectedProperty.type ||
 "Property";
-
 
 
 /* BHK */
@@ -1086,13 +1020,11 @@ selectedProperty.bhk ||
 "Not specified";
 
 
-
 /* AREA */
 
 propertyArea.innerText =
 selectedProperty.area ||
 "Not specified";
-
 
 
 /* LISTING */
@@ -1102,7 +1034,6 @@ selectedProperty.listingType ||
 "For Sale";
 
 
-
 /* DESCRIPTION */
 
 propertyDescription.innerText =
@@ -1110,13 +1041,11 @@ selectedProperty.description ||
 "No description available.";
 
 
-
 /* OWNER */
 
 ownerName.innerText =
 selectedProperty.owner ||
 "Property Owner";
-
 
 
 /* PHONE */
@@ -1144,9 +1073,7 @@ encodeURIComponent(
 (selectedProperty.title || "Property")
 );
 
-}
-
-else{
+}else{
 
 ownerPhone.innerText =
 "Phone not available";
@@ -1160,13 +1087,11 @@ whatsappButton.style.display =
 }
 
 
-
 /* PROPERTY ID */
 
 propertyId.innerText =
 selectedProperty.id ||
 "Not available";
-
 
 
 /* CHECK SAVED */
@@ -1176,20 +1101,52 @@ checkSaved();
 }
 
 
+/* =================================================
+   CHECK WHETHER CURRENT USER OWNS PROPERTY
+================================================= */
 
-/* ================================= */
-/* OPEN ENQUIRY */
-/* ================================= */
+function isOwnProperty(){
+
+if(!selectedProperty){
+
+return false;
+
+}
+
+
+/* USER ID MATCH */
+
+const sameUserId =
+currentUserId &&
+selectedProperty.postedById &&
+String(selectedProperty.postedById) ===
+String(currentUserId);
+
+
+/* EMAIL MATCH */
+
+const sameUserEmail =
+currentUserEmail &&
+selectedProperty.postedBy &&
+String(selectedProperty.postedBy).toLowerCase() ===
+String(currentUserEmail).toLowerCase();
+
+
+return Boolean(
+sameUserId ||
+sameUserEmail
+);
+
+}
+
+
+/* =================================================
+   OPEN ENQUIRY
+================================================= */
 
 function openEnquiry(){
 
-const loggedIn =
-localStorage.getItem(
-"pv_logged_in"
-);
-
-
-if(loggedIn !== "true"){
+if(!loggedIn){
 
 alert(
 "🔐 Please login first to send an enquiry."
@@ -1205,17 +1162,7 @@ return;
 
 /* OWNER CANNOT ENQUIRE ON OWN PROPERTY */
 
-const currentUser =
-localStorage.getItem(
-"pv_current_user"
-);
-
-
-if(
-selectedProperty &&
-String(selectedProperty.postedBy) ===
-String(currentUser)
-){
+if(isOwnProperty()){
 
 alert(
 "⚠️ You cannot send an enquiry for your own property."
@@ -1236,6 +1183,47 @@ enquiryBox.style.display =
 "block";
 
 
+/* AUTO-FILL CURRENT USER */
+
+let users =
+JSON.parse(
+localStorage.getItem("users") || "[]"
+);
+
+
+const currentUser =
+users.find(function(user){
+
+return String(user.email).toLowerCase() ===
+String(currentUserEmail).toLowerCase();
+
+});
+
+
+if(currentUser){
+
+document.getElementById(
+"enquirerName"
+).value =
+currentUser.name || "";
+
+document.getElementById(
+"enquirerEmail"
+).value =
+currentUser.email || "";
+
+if(currentUser.phone){
+
+document.getElementById(
+"enquirerPhone"
+).value =
+currentUser.phone;
+
+}
+
+}
+
+
 enquiryBox.scrollIntoView({
 behavior:"smooth",
 block:"center"
@@ -1244,10 +1232,9 @@ block:"center"
 }
 
 
-
-/* ================================= */
-/* CLOSE ENQUIRY */
-/* ================================= */
+/* =================================================
+   CLOSE ENQUIRY
+================================================= */
 
 function closeEnquiry(){
 
@@ -1259,10 +1246,9 @@ document.getElementById(
 }
 
 
-
-/* ================================= */
-/* SEND ENQUIRY */
-/* ================================= */
+/* =================================================
+   SEND ENQUIRY
+================================================= */
 
 document
 .getElementById(
@@ -1286,13 +1272,33 @@ return;
 }
 
 
-/* CURRENT USER */
+/* LOGIN CHECK */
 
-const currentUser =
-localStorage.getItem(
-"pv_current_user"
+if(!loggedIn){
+
+alert(
+"🔐 Please login first."
 );
 
+window.location.href =
+"login.html";
+
+return;
+
+}
+
+
+/* OWNER CHECK */
+
+if(isOwnProperty()){
+
+alert(
+"⚠️ You cannot send an enquiry for your own property."
+);
+
+return;
+
+}
 
 
 /* VALUES */
@@ -1333,8 +1339,18 @@ document
 .trim();
 
 
+/* VALIDATION */
 
-/* PHONE VALIDATION */
+if(!name){
+
+alert(
+"⚠️ Please enter your name."
+);
+
+return;
+
+}
+
 
 if(phone.length !== 10){
 
@@ -1347,16 +1363,20 @@ return;
 }
 
 
+/* =================================================
+   OWNER USER INFORMATION
+================================================= */
 
-/* OWNER USER */
+const ownerUserId =
+selectedProperty.postedById ||
+"";
 
-const ownerUser =
+const ownerUserEmail =
 selectedProperty.postedBy ||
 "";
 
 
-
-if(!ownerUser){
+if(!ownerUserId && !ownerUserEmail){
 
 alert(
 "⚠️ Owner account information is not available for this property."
@@ -1367,8 +1387,9 @@ return;
 }
 
 
-
-/* CREATE ENQUIRY */
+/* =================================================
+   CREATE ENQUIRY
+================================================= */
 
 const enquiry = {
 
@@ -1384,11 +1405,26 @@ propertyTitle:
 selectedProperty.title ||
 "Property",
 
+
+/* OWNER */
+
+ownerUserId:
+ownerUserId,
+
 ownerUser:
-ownerUser,
+ownerUserEmail,
+
+
+/* SENDER */
+
+senderUserId:
+currentUserId,
 
 senderUser:
-currentUser || "",
+currentUserEmail,
+
+
+/* DETAILS */
 
 name:
 name,
@@ -1403,13 +1439,16 @@ message:
 message,
 
 createdAt:
-new Date().toLocaleString()
+new Date().toLocaleString(
+"en-IN"
+)
 
 };
 
 
-
-/* GET OLD ENQUIRIES */
+/* =================================================
+   GET OLD ENQUIRIES
+================================================= */
 
 let allEnquiries =
 JSON.parse(
@@ -1421,8 +1460,9 @@ localStorage.getItem(
 );
 
 
-
-/* SAVE */
+/* =================================================
+   SAVE ENQUIRY
+================================================= */
 
 allEnquiries.push(
 enquiry
@@ -1440,8 +1480,9 @@ allEnquiries
 );
 
 
-
-/* SUCCESS */
+/* =================================================
+   SUCCESS
+================================================= */
 
 document
 .getElementById(
@@ -1449,7 +1490,6 @@ document
 )
 .style.display =
 "block";
-
 
 
 /* RESET */
@@ -1461,7 +1501,6 @@ document
 .reset();
 
 
-
 document
 .getElementById(
 "enquirerMessage"
@@ -1470,8 +1509,7 @@ document
 "I am interested in this property. Please contact me.";
 
 
-
-/* HIDE FORM AFTER SUCCESS */
+/* HIDE FORM */
 
 setTimeout(
 function(){
@@ -1494,26 +1532,17 @@ document
 1800
 );
 
-
 }
 );
 
 
-
-/* ================================= */
-/* SAVE PROPERTY */
-/* ================================= */
+/* =================================================
+   SAVE PROPERTY
+================================================= */
 
 function saveProperty(){
 
-
-const loggedIn =
-localStorage.getItem(
-"pv_logged_in"
-);
-
-
-if(loggedIn !== "true"){
+if(!loggedIn){
 
 alert(
 "🔐 Please login first to save a property."
@@ -1527,13 +1556,18 @@ return;
 }
 
 
-const currentUser =
-localStorage.getItem(
-"pv_current_user"
+if(!selectedProperty){
+
+alert(
+"❌ Property not found."
 );
 
+return;
 
-if(!currentUser){
+}
+
+
+if(!currentUserEmail){
 
 alert(
 "⚠️ User account not found."
@@ -1549,11 +1583,10 @@ JSON.parse(
 
 localStorage.getItem(
 "pv_saved_properties_" +
-currentUser
+currentUserEmail
 ) || "[]"
 
 );
-
 
 
 /* CHECK */
@@ -1571,9 +1604,7 @@ String(selectedProperty.id);
 );
 
 
-
 if(alreadySaved){
-
 
 savedProperties =
 savedProperties.filter(
@@ -1591,7 +1622,7 @@ String(selectedProperty.id);
 localStorage.setItem(
 
 "pv_saved_properties_" +
-currentUser,
+currentUserEmail,
 
 JSON.stringify(
 savedProperties
@@ -1611,10 +1642,7 @@ alert(
 "💔 Property removed from Saved Properties."
 );
 
-}
-
-else{
-
+}else{
 
 savedProperties.push(
 selectedProperty
@@ -1624,7 +1652,7 @@ selectedProperty
 localStorage.setItem(
 
 "pv_saved_properties_" +
-currentUser,
+currentUserEmail,
 
 JSON.stringify(
 savedProperties
@@ -1649,21 +1677,20 @@ alert(
 }
 
 
-
-/* ================================= */
-/* CHECK SAVED */
-/* ================================= */
+/* =================================================
+   CHECK SAVED
+================================================= */
 
 function checkSaved(){
 
+if(!currentUserEmail){
 
-const currentUser =
-localStorage.getItem(
-"pv_current_user"
-);
+return;
+
+}
 
 
-if(!currentUser){
+if(!selectedProperty){
 
 return;
 
@@ -1675,7 +1702,7 @@ JSON.parse(
 
 localStorage.getItem(
 "pv_saved_properties_" +
-currentUser
+currentUserEmail
 ) || "[]"
 
 );
@@ -1702,9 +1729,7 @@ saveButton.innerText =
 saveButton.className =
 "btn saved";
 
-}
-
-else{
+}else{
 
 saveButton.innerText =
 "❤️ Save Property";
@@ -1717,7 +1742,6 @@ saveButton.className =
 }
 
 </script>
-
 
 </body>
 
