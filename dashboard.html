@@ -88,6 +88,13 @@ color:#666;
 line-height:1.6;
 }
 
+.user-email{
+margin-top:8px;
+font-size:14px;
+color:#2457a6;
+font-weight:bold;
+}
+
 /* CARDS */
 
 .cards{
@@ -342,6 +349,13 @@ Manage your properties, saved listings and enquiries from one place.
 
 </p>
 
+<div
+class="user-email"
+id="userEmail"
+>
+
+</div>
+
 </div>
 
 
@@ -356,15 +370,11 @@ Manage your properties, saved listings and enquiries from one place.
 <div class="card">
 
 <div class="icon">
-
 🏠
-
 </div>
 
 <h3>
-
 My Properties
-
 </h3>
 
 <div
@@ -409,15 +419,11 @@ class="btn add"
 <div class="card">
 
 <div class="icon">
-
 ❤️
-
 </div>
 
 <h3>
-
 Saved Properties
-
 </h3>
 
 <div
@@ -462,15 +468,11 @@ class="btn browse"
 <div class="card">
 
 <div class="icon">
-
 📩
-
 </div>
 
 <h3>
-
 My Enquiries
-
 </h3>
 
 <div
@@ -501,20 +503,16 @@ class="btn enquiry"
 
 
 
-<!-- ADD PROPERTY -->
+<!-- POST PROPERTY -->
 
 <div class="card">
 
 <div class="icon">
-
 ➕
-
 </div>
 
 <h3>
-
 Post Property
-
 </h3>
 
 <p>
@@ -544,51 +542,37 @@ class="btn add"
 <div class="quick-actions">
 
 <h2>
-
 ⚡ Quick Actions
-
 </h2>
 
 
 <a href="buy.html">
-
 🏠 Buy Property
-
 </a>
 
 
 <a href="rent.html">
-
 🔑 Rent Property
-
 </a>
 
 
 <a href="sell.html">
-
 💰 Sell Property
-
 </a>
 
 
 <a href="interior.html">
-
 🎨 Interior Services
-
 </a>
 
 
 <a href="listing.html">
-
 ⭐ All Listings
-
 </a>
 
 
 <a href="contact.html">
-
 📞 Contact Us
-
 </a>
 
 </div>
@@ -616,21 +600,15 @@ onclick="logoutUser()"
 <footer>
 
 <h2>
-
 🏠 BharatWorld Properties
-
 </h2>
 
 <p>
-
 Buy • Sell • Rent • Interior
-
 </p>
 
 <p>
-
 © 2026 BharatWorld Properties. All Rights Reserved.
-
 </p>
 
 </footer>
@@ -639,10 +617,15 @@ Buy • Sell • Rent • Interior
 
 <script>
 
+/* =========================================
+   BHARATWORLD PROPERTIES
+   DASHBOARD SYSTEM
+========================================= */
 
-/* ================================= */
-/* LOGIN PROTECTION */
-/* ================================= */
+
+/* =========================================
+   LOGIN PROTECTION
+========================================= */
 
 const isLoggedIn =
 localStorage.getItem("pv_logged_in");
@@ -656,29 +639,132 @@ window.location.href =
 }
 
 
+/* =========================================
+   CURRENT USER EMAIL
+========================================= */
 
-/* ================================= */
-/* CURRENT USER */
-/* ================================= */
+const currentUserEmail =
+String(
+localStorage.getItem("pv_current_user") || ""
+)
+.trim()
+.toLowerCase();
 
-const currentUser =
-localStorage.getItem(
-"pv_current_user"
+
+if(!currentUserEmail){
+
+localStorage.removeItem("pv_logged_in");
+
+window.location.href =
+"login.html";
+
+}
+
+
+/* =========================================
+   GET USERS DATABASE
+========================================= */
+
+let users = [];
+
+try{
+
+users =
+JSON.parse(
+localStorage.getItem("users") || "[]"
+);
+
+}catch(error){
+
+users = [];
+
+}
+
+
+/* =========================================
+   FIND CURRENT USER
+========================================= */
+
+let currentUser =
+users.find(
+function(user){
+
+return (
+user &&
+String(user.email || "")
+.trim()
+.toLowerCase() ===
+currentUserEmail
+);
+
+}
 );
 
 
+/* =========================================
+   LEGACY USER FALLBACK
+========================================= */
 
-/* ================================= */
-/* USER NAME */
-/* ================================= */
+if(!currentUser){
+
+currentUser = {
+
+id:
+"LEGACY_USER",
+
+name:
+localStorage.getItem("pv_name") ||
+"User",
+
+email:
+currentUserEmail,
+
+password:
+localStorage.getItem("pv_password") ||
+"",
+
+phone:
+"",
+
+role:
+"user",
+
+status:
+"active"
+
+};
+
+}
+
+
+/* =========================================
+   ACCOUNT STATUS
+========================================= */
+
+if(
+String(currentUser.status || "active")
+.toLowerCase() !==
+"active"
+){
+
+alert(
+"🚫 Your account is inactive. Please contact BharatWorld Properties."
+);
+
+logoutUser();
+
+}
+
+
+/* =========================================
+   USER NAME
+========================================= */
 
 const userName =
-localStorage.getItem(
-"pv_name"
-);
+currentUser.name ||
+localStorage.getItem("pv_name") ||
+"User";
 
-
-if(userName){
 
 document
 .getElementById("welcomeUser")
@@ -687,46 +773,101 @@ document
 userName +
 "!";
 
+
+/* =========================================
+   USER EMAIL
+========================================= */
+
+document
+.getElementById("userEmail")
+.innerText =
+"📧 " +
+(currentUser.email || currentUserEmail);
+
+
+/* =========================================
+   CURRENT USER ID
+========================================= */
+
+const currentUserId =
+currentUser.id ||
+"LEGACY_USER";
+
+
+/* =========================================
+   ALL PROPERTIES
+========================================= */
+
+let allProperties = [];
+
+try{
+
+allProperties =
+JSON.parse(
+localStorage.getItem("pv_properties") || "[]"
+);
+
+}catch(error){
+
+allProperties = [];
+
 }
 
 
-
-/* ================================= */
-/* ALL PROPERTIES */
-/* ================================= */
-
-const allProperties =
-JSON.parse(
-
-localStorage.getItem(
-"pv_properties"
-) || "[]"
-
-);
-
-
-
-/* ================================= */
-/* MY PROPERTIES */
-/* ================================= */
+/* =========================================
+   MY PROPERTIES
+========================================= */
 
 const myProperties =
 allProperties.filter(
-
 function(property){
 
-return String(property.postedBy) ===
-String(currentUser);
+if(!property){
+return false;
+}
+
+
+/*
+   New system:
+   postedById
+*/
+
+if(
+property.postedById &&
+String(property.postedById) ===
+String(currentUserId)
+){
+
+return true;
 
 }
 
+
+/*
+   Existing system:
+   postedBy email
+*/
+
+if(
+property.postedBy &&
+String(property.postedBy)
+.toLowerCase() ===
+currentUserEmail
+){
+
+return true;
+
+}
+
+return false;
+
+}
 );
 
 
-
-/* ================================= */
-/* PROPERTY COUNT */
-/* ================================= */
+/* =========================================
+   PROPERTY COUNT
+========================================= */
 
 const propertyCount =
 document.getElementById(
@@ -743,33 +884,35 @@ myProperties.length === 1
 );
 
 
-
-/* ================================= */
-/* SAVED PROPERTIES */
-/* ================================= */
+/* =========================================
+   SAVED PROPERTIES
+========================================= */
 
 let savedProperties = [];
 
 
-if(currentUser){
+try{
 
 savedProperties =
 JSON.parse(
 
 localStorage.getItem(
 "pv_saved_properties_" +
-currentUser
+currentUserEmail
 ) || "[]"
 
 );
 
+}catch(error){
+
+savedProperties = [];
+
 }
 
 
-
-/* ================================= */
-/* SAVED COUNT */
-/* ================================= */
+/* =========================================
+   SAVED COUNT
+========================================= */
 
 const savedCount =
 document.getElementById(
@@ -779,19 +922,18 @@ document.getElementById(
 
 savedCount.innerText =
 savedProperties.length +
-(
-savedProperties.length === 1
-? " Saved"
-: " Saved"
-);
+" Saved";
 
 
+/* =========================================
+   ALL ENQUIRIES
+========================================= */
 
-/* ================================= */
-/* ALL ENQUIRIES */
-/* ================================= */
+let allEnquiries = [];
 
-const allEnquiries =
+try{
+
+allEnquiries =
 JSON.parse(
 
 localStorage.getItem(
@@ -800,29 +942,66 @@ localStorage.getItem(
 
 );
 
+}catch(error){
 
-
-/* ================================= */
-/* MY ENQUIRIES */
-/* ================================= */
-
-const myEnquiries =
-allEnquiries.filter(
-
-function(enquiry){
-
-return String(enquiry.ownerUser) ===
-String(currentUser);
+allEnquiries = [];
 
 }
 
+
+/* =========================================
+   MY ENQUIRIES
+========================================= */
+
+const myEnquiries =
+allEnquiries.filter(
+function(enquiry){
+
+if(!enquiry){
+return false;
+}
+
+
+/*
+   Owner email
+*/
+
+if(
+enquiry.ownerUser &&
+String(enquiry.ownerUser)
+.toLowerCase() ===
+currentUserEmail
+){
+
+return true;
+
+}
+
+
+/*
+   Owner ID
+*/
+
+if(
+enquiry.ownerUserId &&
+String(enquiry.ownerUserId) ===
+String(currentUserId)
+){
+
+return true;
+
+}
+
+
+return false;
+
+}
 );
 
 
-
-/* ================================= */
-/* ENQUIRY COUNT */
-/* ================================= */
+/* =========================================
+   ENQUIRY COUNT
+========================================= */
 
 const leadCount =
 document.getElementById(
@@ -839,10 +1018,9 @@ myEnquiries.length === 1
 );
 
 
-
-/* ================================= */
-/* LOGOUT */
-/* ================================= */
+/* =========================================
+   LOGOUT
+========================================= */
 
 function logoutUser(){
 
@@ -859,6 +1037,8 @@ return;
 }
 
 
+/* Remove session */
+
 localStorage.removeItem(
 "pv_logged_in"
 );
@@ -868,7 +1048,29 @@ localStorage.removeItem(
 );
 
 localStorage.removeItem(
+"pv_current_user_id"
+);
+
+
+/*
+   Keep profile information if needed,
+   but remove active login identity.
+*/
+
+localStorage.removeItem(
 "pv_name"
+);
+
+localStorage.removeItem(
+"pv_email"
+);
+
+localStorage.removeItem(
+"pv_password"
+);
+
+localStorage.removeItem(
+"pv_user"
 );
 
 
@@ -887,4 +1089,4 @@ window.location.href =
 
 </body>
 
-</html>
+  </html>
