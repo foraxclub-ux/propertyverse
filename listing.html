@@ -360,19 +360,12 @@ footer a{
 <nav>
 
 <a href="index.html">Home</a>
-
 <a href="buy.html">Buy</a>
-
 <a href="sell.html">Sell</a>
-
 <a href="rent.html">Rent</a>
-
 <a href="interior.html">Interior</a>
-
 <a href="listing.html" class="active">Listing</a>
-
 <a href="contact.html">Contact</a>
-
 <a href="login.html">Login</a>
 
 </nav>
@@ -701,17 +694,11 @@ Buy • Sell • Rent • Interior
 <p>
 
 <a href="index.html">Home</a>
-
 <a href="buy.html">Buy</a>
-
 <a href="sell.html">Sell</a>
-
 <a href="rent.html">Rent</a>
-
 <a href="interior.html">Interior</a>
-
 <a href="listing.html">Listing</a>
-
 <a href="contact.html">Contact</a>
 
 </p>
@@ -742,7 +729,7 @@ localStorage.getItem("pv_current_user_id") || "";
 
 const demoProperties = {
 
-"DEMO001": {
+DEMO001: {
 
 id:"DEMO001",
 
@@ -755,6 +742,8 @@ city:"Ahmedabad, Gujarat",
 type:"Villa",
 
 bhk:"3 BHK",
+
+area:"2500 sq.ft",
 
 listingType:"For Sale",
 
@@ -770,7 +759,7 @@ image:
 
 },
 
-"DEMO002": {
+DEMO002: {
 
 id:"DEMO002",
 
@@ -783,6 +772,8 @@ city:"Surat, Gujarat",
 type:"Villa",
 
 bhk:"4 BHK",
+
+area:"3200 sq.ft",
 
 listingType:"For Sale",
 
@@ -798,7 +789,7 @@ image:
 
 },
 
-"DEMO003": {
+DEMO003: {
 
 id:"DEMO003",
 
@@ -811,6 +802,8 @@ city:"Ahmedabad, Gujarat",
 type:"Apartment",
 
 bhk:"2 BHK",
+
+area:"1200 sq.ft",
 
 listingType:"For Rent",
 
@@ -836,16 +829,21 @@ image:
 function getSavedProperties(){
 
 if(!currentUser){
+
 return [];
+
 }
 
 try{
 
-return JSON.parse(
+const saved =
+JSON.parse(
 localStorage.getItem(
 "pv_saved_properties_" + currentUser
 ) || "[]"
 );
+
+return Array.isArray(saved) ? saved : [];
 
 }catch(error){
 
@@ -870,19 +868,22 @@ alert(
 "🔐 Please login first to save a property."
 );
 
-window.location.href="login.html";
+window.location.href = "login.html";
 
 return;
 
 }
 
 
-let saved=getSavedProperties();
+let saved =
+getSavedProperties();
 
 
-const alreadySaved=saved.some(function(item){
+const alreadySaved =
+saved.some(function(item){
 
-return String(item.id) === String(property.id);
+return String(item.id) ===
+String(property.id);
 
 });
 
@@ -903,7 +904,8 @@ saved.push(property);
 
 localStorage.setItem(
 
-"pv_saved_properties_" + currentUser,
+"pv_saved_properties_" +
+currentUser,
 
 JSON.stringify(saved)
 
@@ -923,12 +925,15 @@ alert(
 
 function saveDemoProperty(id){
 
-const property=demoProperties[id];
+const property =
+demoProperties[id];
 
 
 if(!property){
 
-alert("⚠️ Demo property not found.");
+alert(
+"⚠️ Demo property not found."
+);
 
 return;
 
@@ -946,23 +951,22 @@ saveProperty(property);
 
 function showDemoProperty(id){
 
-const property=demoProperties[id];
+const property =
+demoProperties[id];
 
 
 if(!property){
 
-alert("⚠️ Property details not found.");
+alert(
+"⚠️ Property details not found."
+);
 
 return;
 
 }
 
 
-/*
-   IMPORTANT:
-   Property details page ko complete
-   property object yahin se milega.
-*/
+/* SAVE EXACT PROPERTY */
 
 localStorage.setItem(
 
@@ -973,16 +977,15 @@ JSON.stringify(property)
 );
 
 
-/*
-   Double check:
-   data successfully save hua ya nahi
-*/
+/* VERIFY */
 
-const savedProperty=
-localStorage.getItem("pv_selected_property");
+const selected =
+localStorage.getItem(
+"pv_selected_property"
+);
 
 
-if(!savedProperty){
+if(!selected){
 
 alert(
 "⚠️ Property details save nahi ho paayi."
@@ -993,11 +996,9 @@ return;
 }
 
 
-/*
-   Property details page open
-*/
+/* OPEN DETAILS */
 
-window.location.href=
+window.location.href =
 "property-details.html";
 
 }
@@ -1009,79 +1010,92 @@ window.location.href=
 
 function loadUserProperties(){
 
-let properties=[];
+let properties = [];
 
 
 try{
 
-properties=JSON.parse(
-
-localStorage.getItem("pv_properties") || "[]"
-
+const stored =
+JSON.parse(
+localStorage.getItem(
+"pv_properties"
+) || "[]"
 );
+
+properties =
+Array.isArray(stored)
+? stored
+: [];
 
 }catch(error){
 
-properties=[];
+properties = [];
 
 }
 
 
-const propertiesBox=
-document.getElementById("propertiesBox");
+const propertiesBox =
+document.getElementById(
+"propertiesBox"
+);
 
 
-const emptyMessage=
-document.getElementById("emptyMessage");
+const emptyMessage =
+document.getElementById(
+"emptyMessage"
+);
 
-
-/*
-   Agar user ne koi property post nahi ki
-*/
 
 if(!properties.length){
 
-emptyMessage.style.display="none";
+emptyMessage.style.display =
+"none";
 
 return;
 
 }
 
 
-/*
-   User posted properties
-*/
+/* USER PROPERTIES */
 
 properties.forEach(function(property){
 
-const card=
+const card =
 document.createElement("div");
 
-card.className="card";
+
+card.className =
+"card";
 
 
-const imageUrl=
+const imageUrl =
 property.image ||
 "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80";
 
 
-const formattedPrice=
+const formattedPrice =
 property.price
 ?
 "₹" +
-Number(property.price).toLocaleString("en-IN")
+Number(property.price)
+.toLocaleString("en-IN")
 :
 "Price on Request";
 
 
-card.innerHTML=`
+const cleanPhone =
+String(
+property.phone || ""
+).replace(/\D/g,"");
+
+
+card.innerHTML = `
 
 <img
 src="${imageUrl}"
 alt="Property Image"
 onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'"
 >
-
 
 <div class="content">
 
@@ -1115,41 +1129,36 @@ ${formattedPrice}
 
 </div>
 
-
 <div class="buttons">
 
 <button
 class="btn details"
-onclick="viewUserProperty(${JSON.stringify(String(property.id))})"
+onclick="viewUserProperty('${String(property.id)}')"
 >
 👁️ View
 </button>
 
-
 <a
-href="tel:+91${String(property.phone || "").replace(/\D/g,"")}"
+href="tel:+91${cleanPhone}"
 class="btn call"
 >
 📞 Call
 </a>
 
-
 <a
-href="https://wa.me/91${String(property.phone || "").replace(/\D/g,"")}"
+href="https://wa.me/91${cleanPhone}"
 class="btn whatsapp"
 target="_blank"
 >
 💬 WhatsApp
 </a>
 
-
 <button
 class="btn save"
-onclick="saveUserProperty(${JSON.stringify(String(property.id))})"
+onclick="saveUserProperty('${String(property.id)}')"
 >
 ❤️ Save
 </button>
-
 
 </div>
 
@@ -1163,12 +1172,8 @@ propertiesBox.appendChild(card);
 });
 
 
-/*
-   User properties mil gayi hain,
-   isliye empty message hidden rahega.
-*/
-
-emptyMessage.style.display="none";
+emptyMessage.style.display =
+"none";
 
 }
 
@@ -1179,28 +1184,35 @@ emptyMessage.style.display="none";
 
 function viewUserProperty(id){
 
-let properties=[];
+let properties = [];
 
 
 try{
 
-properties=JSON.parse(
-
-localStorage.getItem("pv_properties") || "[]"
-
+const stored =
+JSON.parse(
+localStorage.getItem(
+"pv_properties"
+) || "[]"
 );
+
+properties =
+Array.isArray(stored)
+? stored
+: [];
 
 }catch(error){
 
-properties=[];
+properties = [];
 
 }
 
 
-const property=
+const property =
 properties.find(function(item){
 
-return String(item.id) === String(id);
+return String(item.id) ===
+String(id);
 
 });
 
@@ -1216,11 +1228,7 @@ return;
 }
 
 
-/*
-   MAIN FIX:
-   Selected property ko localStorage me save
-   karke hi details page open hoga.
-*/
+/* SAVE SELECTED PROPERTY */
 
 localStorage.setItem(
 
@@ -1231,12 +1239,12 @@ JSON.stringify(property)
 );
 
 
-/*
-   Verify data
-*/
+/* VERIFY */
 
-const selected=
-localStorage.getItem("pv_selected_property");
+const selected =
+localStorage.getItem(
+"pv_selected_property"
+);
 
 
 if(!selected){
@@ -1250,11 +1258,9 @@ return;
 }
 
 
-/*
-   Open details
-*/
+/* OPEN */
 
-window.location.href=
+window.location.href =
 "property-details.html";
 
 }
@@ -1266,28 +1272,35 @@ window.location.href=
 
 function saveUserProperty(id){
 
-let properties=[];
+let properties = [];
 
 
 try{
 
-properties=JSON.parse(
-
-localStorage.getItem("pv_properties") || "[]"
-
+const stored =
+JSON.parse(
+localStorage.getItem(
+"pv_properties"
+) || "[]"
 );
+
+properties =
+Array.isArray(stored)
+? stored
+: [];
 
 }catch(error){
 
-properties=[];
+properties = [];
 
 }
 
 
-const property=
+const property =
 properties.find(function(item){
 
-return String(item.id) === String(id);
+return String(item.id) ===
+String(id);
 
 });
 
@@ -1315,7 +1328,6 @@ saveProperty(property);
 loadUserProperties();
 
 </script>
-
 
 </body>
 
