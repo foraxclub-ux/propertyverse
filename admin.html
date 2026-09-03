@@ -5,8 +5,7 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Admin Dashboard | BharatWorld Properties</title>
 
@@ -583,13 +582,38 @@ Admin Management System
 /* ADMIN SECURITY */
 /* ========================================= */
 
-if(
-localStorage.getItem("adminLoggedIn") !== "true"
-){
+/*
+   Support BOTH old and new admin login systems.
+*/
 
-alert("🔐 Admin access required.");
+const newAdmin =
+localStorage.getItem("adminLoggedIn") === "true";
 
-window.location.href="admin-login.html";
+const oldAdmin =
+localStorage.getItem("pv_admin") === "true";
+
+
+if(newAdmin || oldAdmin){
+
+    /* Keep both systems synchronized */
+
+    localStorage.setItem(
+        "adminLoggedIn",
+        "true"
+    );
+
+    localStorage.setItem(
+        "pv_admin",
+        "true"
+    );
+
+}
+else{
+
+    alert("🔐 Admin access required.");
+
+    window.location.href =
+        "admin-login.html";
 
 }
 
@@ -598,51 +622,86 @@ window.location.href="admin-login.html";
 /* GET USERS */
 /* ========================================= */
 
-const users =
-JSON.parse(
-localStorage.getItem("users") || "[]"
-);
+let users = [];
+
+try{
+
+    users =
+    JSON.parse(
+        localStorage.getItem("users") || "[]"
+    );
+
+    if(!Array.isArray(users)){
+        users = [];
+    }
+
+}
+catch(error){
+
+    users = [];
+
+}
 
 
 /* ========================================= */
 /* GET PROPERTIES */
 /* ========================================= */
 
-const properties =
-JSON.parse(
-localStorage.getItem("pv_properties") || "[]"
-);
+let properties = [];
+
+try{
+
+    properties =
+    JSON.parse(
+        localStorage.getItem("pv_properties") || "[]"
+    );
+
+    if(!Array.isArray(properties)){
+        properties = [];
+    }
+
+}
+catch(error){
+
+    properties = [];
+
+}
 
 
 /* ========================================= */
 /* GET ENQUIRIES */
 /* ========================================= */
 
-const enquiries =
-JSON.parse(
-localStorage.getItem("pv_enquiries") || "[]"
-);
+let enquiries = [];
+
+try{
+
+    enquiries =
+    JSON.parse(
+        localStorage.getItem("pv_enquiries") || "[]"
+    );
+
+    if(!Array.isArray(enquiries)){
+        enquiries = [];
+    }
+
+}
+catch(error){
+
+    enquiries = [];
+
+}
 
 
 /* ========================================= */
-/* USER COUNT */
+/* COUNTS */
 /* ========================================= */
 
 document.getElementById("userCount").innerText =
 users.length;
 
-
-/* ========================================= */
-/* PROPERTY COUNT */
-/* ========================================= */
-
 document.getElementById("propertyCount").innerText =
 properties.length;
-
-
-/* ========================================= */
-/* ENQUIRY COUNT */
-/* ========================================= */
 
 document.getElementById("enquiryCount").innerText =
 enquiries.length;
@@ -655,7 +714,7 @@ enquiries.length;
 const verifiedProperties =
 properties.filter(function(property){
 
-return property.verified === true;
+    return property.verified === true;
 
 });
 
@@ -674,91 +733,91 @@ document.getElementById("usersTable");
 
 if(users.length === 0){
 
-usersTable.innerHTML = `
+    usersTable.innerHTML = `
 
-<tr>
+    <tr>
 
-<td
-colspan="6"
-class="empty">
+    <td
+    colspan="6"
+    class="empty">
 
-No registered users found.
+    No registered users found.
 
-</td>
+    </td>
 
-</tr>
+    </tr>
 
-`;
+    `;
 
 }
 else{
 
-usersTable.innerHTML =
-users.map(function(user,index){
+    usersTable.innerHTML =
+    users.map(function(user,index){
 
-return `
+        return `
 
-<tr>
+        <tr>
 
-<td>
-${escapeHTML(
-user.name ||
-user.fullName ||
-"Unknown"
-)}
-</td>
-
-
-<td>
-${escapeHTML(
-user.email ||
-"Not available"
-)}
-</td>
+        <td>
+        ${escapeHTML(
+            user.name ||
+            user.fullName ||
+            "Unknown"
+        )}
+        </td>
 
 
-<td>
-${escapeHTML(
-user.phone ||
-user.mobile ||
-"Not available"
-)}
-</td>
+        <td>
+        ${escapeHTML(
+            user.email ||
+            "Not available"
+        )}
+        </td>
 
 
-<td>
-${escapeHTML(
-user.role ||
-"user"
-)}
-</td>
+        <td>
+        ${escapeHTML(
+            user.phone ||
+            user.mobile ||
+            "Not available"
+        )}
+        </td>
 
 
-<td>
-${escapeHTML(
-user.status ||
-"active"
-)}
-</td>
+        <td>
+        ${escapeHTML(
+            user.role ||
+            "user"
+        )}
+        </td>
 
 
-<td>
+        <td>
+        ${escapeHTML(
+            user.status ||
+            "active"
+        )}
+        </td>
 
-<button
-class="action-btn delete"
-onclick="deleteUser(${index})">
 
-🗑️ Delete
+        <td>
 
-</button>
+        <button
+        class="action-btn delete"
+        onclick="deleteUser(${index})">
 
-</td>
+        🗑️ Delete
 
-</tr>
+        </button>
 
-`;
+        </td>
 
-}).join("");
+        </tr>
+
+        `;
+
+    }).join("");
 
 }
 
@@ -773,129 +832,117 @@ document.getElementById("propertiesTable");
 
 if(properties.length === 0){
 
-propertiesTable.innerHTML = `
+    propertiesTable.innerHTML = `
 
-<tr>
+    <tr>
 
-<td
-colspan="6"
-class="empty">
+    <td
+    colspan="6"
+    class="empty">
 
-No properties found.
+    No properties found.
 
-</td>
+    </td>
 
-</tr>
+    </tr>
 
-`;
+    `;
 
 }
 else{
 
-propertiesTable.innerHTML =
-properties.map(function(property,index){
+    propertiesTable.innerHTML =
+    properties.map(function(property,index){
 
-const verified =
-property.verified === true;
-
-
-return `
-
-<tr>
-
-<td>
-
-${escapeHTML(
-property.title ||
-"Property"
-)}
-
-</td>
+        const verified =
+        property.verified === true;
 
 
-<td>
+        return `
 
-${escapeHTML(
-property.city ||
-property.location ||
-"Unknown"
-)}
+        <tr>
 
-</td>
-
-
-<td>
-
-${escapeHTML(
-property.price ||
-"On Request"
-)}
-
-</td>
+        <td>
+        ${escapeHTML(
+            property.title ||
+            "Property"
+        )}
+        </td>
 
 
-<td>
-
-${escapeHTML(
-property.owner ||
-property.postedBy ||
-"Unknown"
-)}
-
-</td>
+        <td>
+        ${escapeHTML(
+            property.city ||
+            property.location ||
+            "Unknown"
+        )}
+        </td>
 
 
-<td>
-
-${
-verified
-?
-"✅ Verified"
-:
-"⏳ Pending"
-}
-
-</td>
+        <td>
+        ${escapeHTML(
+            property.price ||
+            "On Request"
+        )}
+        </td>
 
 
-<td>
+        <td>
+        ${escapeHTML(
+            property.owner ||
+            property.postedBy ||
+            "Unknown"
+        )}
+        </td>
 
 
-${
-verified
-?
-""
-:
-`
+        <td>
 
-<button
-class="action-btn verify"
-onclick="verifyProperty(${index})">
+        ${
+            verified
+            ?
+            "✅ Verified"
+            :
+            "⏳ Pending"
+        }
 
-✅ Verify
-
-</button>
-
-`
-}
+        </td>
 
 
-<button
-class="action-btn delete"
-onclick="deleteProperty(${index})">
+        <td>
 
-🗑️ Delete
+        ${
+            verified
+            ?
+            ""
+            :
+            `
+            <button
+            class="action-btn verify"
+            onclick="verifyProperty(${index})">
 
-</button>
+            ✅ Verify
+
+            </button>
+            `
+        }
 
 
-</td>
+        <button
+        class="action-btn delete"
+        onclick="deleteProperty(${index})">
 
-</tr>
+        🗑️ Delete
 
-`;
+        </button>
 
-}).join("");
+        </td>
+
+        </tr>
+
+        `;
+
+    }).join("");
 
 }
 
@@ -910,81 +957,81 @@ document.getElementById("enquiriesTable");
 
 if(enquiries.length === 0){
 
-enquiriesTable.innerHTML = `
+    enquiriesTable.innerHTML = `
 
-<tr>
+    <tr>
 
-<td
-colspan="4"
-class="empty">
+    <td
+    colspan="4"
+    class="empty">
 
-No enquiries found.
+    No enquiries found.
 
-</td>
+    </td>
 
-</tr>
+    </tr>
 
-`;
+    `;
 
 }
 else{
 
-enquiriesTable.innerHTML =
-enquiries.map(function(enquiry){
+    enquiriesTable.innerHTML =
+    enquiries.map(function(enquiry){
 
-return `
+        return `
 
-<tr>
+        <tr>
 
-<td>
+        <td>
 
-${escapeHTML(
-enquiry.name ||
-enquiry.buyerName ||
-"Unknown"
-)}
+        ${escapeHTML(
+            enquiry.name ||
+            enquiry.buyerName ||
+            "Unknown"
+        )}
 
-</td>
-
-
-<td>
-
-${escapeHTML(
-enquiry.propertyTitle ||
-enquiry.title ||
-"Property"
-)}
-
-</td>
+        </td>
 
 
-<td>
+        <td>
 
-${escapeHTML(
-enquiry.ownerName ||
-enquiry.owner ||
-enquiry.ownerUser ||
-"Unknown"
-)}
+        ${escapeHTML(
+            enquiry.propertyTitle ||
+            enquiry.title ||
+            "Property"
+        )}
 
-</td>
+        </td>
 
 
-<td>
+        <td>
 
-${escapeHTML(
-enquiry.phone ||
-enquiry.mobile ||
-"Not available"
-)}
+        ${escapeHTML(
+            enquiry.ownerName ||
+            enquiry.owner ||
+            enquiry.ownerUser ||
+            "Unknown"
+        )}
 
-</td>
+        </td>
 
-</tr>
 
-`;
+        <td>
 
-}).join("");
+        ${escapeHTML(
+            enquiry.phone ||
+            enquiry.mobile ||
+            "Not available"
+        )}
+
+        </td>
+
+        </tr>
+
+        `;
+
+    }).join("");
 
 }
 
@@ -995,47 +1042,58 @@ enquiry.mobile ||
 
 function deleteUser(index){
 
-if(
-!confirm(
-"⚠️ Are you sure you want to delete this user?"
-)
-){
+    if(
+        !confirm(
+            "⚠️ Are you sure you want to delete this user?"
+        )
+    ){
 
-return;
+        return;
 
-}
-
-
-const allUsers =
-JSON.parse(
-localStorage.getItem("users") || "[]"
-);
+    }
 
 
-if(!allUsers[index]){
+    let allUsers = [];
 
-alert("❌ User not found.");
+    try{
 
-return;
+        allUsers =
+        JSON.parse(
+            localStorage.getItem("users") || "[]"
+        );
 
-}
+    }
+    catch(error){
 
+        allUsers = [];
 
-allUsers.splice(index,1);
-
-
-localStorage.setItem(
-"users",
-JSON.stringify(allUsers)
-);
-
-
-alert(
-"🗑️ User deleted successfully!"
-);
+    }
 
 
-location.reload();
+    if(!allUsers[index]){
+
+        alert("❌ User not found.");
+
+        return;
+
+    }
+
+
+    allUsers.splice(index,1);
+
+
+    localStorage.setItem(
+        "users",
+        JSON.stringify(allUsers)
+    );
+
+
+    alert(
+        "🗑️ User deleted successfully!"
+    );
+
+
+    location.reload();
 
 }
 
@@ -1046,36 +1104,48 @@ location.reload();
 
 function verifyProperty(index){
 
-const allProperties =
-JSON.parse(
-localStorage.getItem("pv_properties") || "[]"
-);
+    let allProperties = [];
+
+    try{
+
+        allProperties =
+        JSON.parse(
+            localStorage.getItem("pv_properties") || "[]"
+        );
+
+    }
+    catch(error){
+
+        allProperties = [];
+
+    }
 
 
-if(!allProperties[index]){
+    if(!allProperties[index]){
 
-alert("❌ Property not found.");
+        alert("❌ Property not found.");
 
-return;
+        return;
 
-}
-
-
-allProperties[index].verified = true;
+    }
 
 
-localStorage.setItem(
-"pv_properties",
-JSON.stringify(allProperties)
-);
+    allProperties[index].verified =
+    true;
 
 
-alert(
-"✅ Property verified successfully!"
-);
+    localStorage.setItem(
+        "pv_properties",
+        JSON.stringify(allProperties)
+    );
 
 
-location.reload();
+    alert(
+        "✅ Property verified successfully!"
+    );
+
+
+    location.reload();
 
 }
 
@@ -1086,47 +1156,58 @@ location.reload();
 
 function deleteProperty(index){
 
-if(
-!confirm(
-"⚠️ Are you sure you want to delete this property?"
-)
-){
+    if(
+        !confirm(
+            "⚠️ Are you sure you want to delete this property?"
+        )
+    ){
 
-return;
+        return;
 
-}
-
-
-const allProperties =
-JSON.parse(
-localStorage.getItem("pv_properties") || "[]"
-);
+    }
 
 
-if(!allProperties[index]){
+    let allProperties = [];
 
-alert("❌ Property not found.");
+    try{
 
-return;
+        allProperties =
+        JSON.parse(
+            localStorage.getItem("pv_properties") || "[]"
+        );
 
-}
+    }
+    catch(error){
 
+        allProperties = [];
 
-allProperties.splice(index,1);
-
-
-localStorage.setItem(
-"pv_properties",
-JSON.stringify(allProperties)
-);
-
-
-alert(
-"🗑️ Property deleted successfully!"
-);
+    }
 
 
-location.reload();
+    if(!allProperties[index]){
+
+        alert("❌ Property not found.");
+
+        return;
+
+    }
+
+
+    allProperties.splice(index,1);
+
+
+    localStorage.setItem(
+        "pv_properties",
+        JSON.stringify(allProperties)
+    );
+
+
+    alert(
+        "🗑️ Property deleted successfully!"
+    );
+
+
+    location.reload();
 
 }
 
@@ -1137,18 +1218,22 @@ location.reload();
 
 function adminLogout(){
 
-localStorage.removeItem(
-"adminLoggedIn"
-);
+    localStorage.removeItem(
+        "adminLoggedIn"
+    );
+
+    localStorage.removeItem(
+        "pv_admin"
+    );
 
 
-alert(
-"✅ Admin logged out successfully!"
-);
+    alert(
+        "✅ Admin logged out successfully!"
+    );
 
 
-window.location.href =
-"admin-login.html";
+    window.location.href =
+        "admin-login.html";
 
 }
 
@@ -1159,17 +1244,17 @@ window.location.href =
 
 function escapeHTML(value){
 
-return String(value)
+    return String(value)
 
-.replace(/&/g,"&amp;")
+    .replace(/&/g,"&amp;")
 
-.replace(/</g,"&lt;")
+    .replace(/</g,"&lt;")
 
-.replace(/>/g,"&gt;")
+    .replace(/>/g,"&gt;")
 
-.replace(/"/g,"&quot;")
+    .replace(/"/g,"&quot;")
 
-.replace(/'/g,"&#039;");
+    .replace(/'/g,"&#039;");
 
 }
 
@@ -1178,4 +1263,4 @@ return String(value)
 
 </body>
 
-    </html>
+</html>
