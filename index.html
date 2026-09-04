@@ -493,8 +493,14 @@ footer p{
 
 footer a{
     color:white;
-    margin:8px;
+    margin:7px;
     text-decoration:none;
+    display:inline-block;
+}
+
+footer a:hover{
+    color:#FFD700;
+    text-decoration:underline;
 }
 
 footer hr{
@@ -506,6 +512,17 @@ footer hr{
 
 .copyright{
     color:#aaa;
+}
+
+/* LEGAL LINKS */
+
+.legal-links{
+    margin-top:12px;
+}
+
+.legal-links a{
+    color:#FFD700;
+    font-size:14px;
 }
 
 /* MOBILE */
@@ -571,12 +588,15 @@ footer hr{
         max-width:300px;
     }
 
+    footer a{
+        margin:6px 4px;
+    }
+
 }
 
 </style>
 
 </head>
-
 
 <body>
 
@@ -612,7 +632,6 @@ footer hr{
 <p>
 Buy • Sell • Rent • Commercial • Invest
 </p>
-
 
 <div class="search-box">
 
@@ -667,7 +686,6 @@ What Are You Looking For?
 Everything you need for your property journey.
 </p>
 
-
 <div class="service-container">
 
 <div class="service-card">
@@ -677,7 +695,6 @@ Everything you need for your property journey.
 <a href="buy.html">Explore →</a>
 </div>
 
-
 <div class="service-card">
 <div class="icon">🏢</div>
 <h3>Sell Property</h3>
@@ -685,14 +702,12 @@ Everything you need for your property journey.
 <a href="sell.html">Sell Property →</a>
 </div>
 
-
 <div class="service-card">
 <div class="icon">🏡</div>
 <h3>Rent Property</h3>
 <p>Find houses, apartments and commercial spaces.</p>
 <a href="rent.html">Find Rental →</a>
 </div>
-
 
 <div class="service-card">
 <div class="icon">🎨</div>
@@ -716,7 +731,6 @@ property buyers, sellers, renters and businesses
 across India's growing property ecosystem.
 </p>
 
-
 <div class="opportunity">
 
 <video controls playsinline preload="metadata">
@@ -730,7 +744,6 @@ Your browser does not support video playback.
 </video>
 
 </div>
-
 
 <a href="contact.html" class="gold-btn">
 📞 Enquire Now
@@ -749,9 +762,7 @@ Your browser does not support video playback.
 Explore selected properties from Gujarat.
 </p>
 
-
 <div class="property-container">
-
 
 <!-- PROPERTY 1 -->
 
@@ -776,7 +787,8 @@ alt="Luxury Villa">
 <p>📍 Ahmedabad, Gujarat</p>
 <p>🛏 3 BHK • 📐 2200 Sq.ft</p>
 
-<a href="#"
+<a
+href="#"
 class="details-btn featured-details"
 data-title="Luxury 3 BHK Villa"
 data-price="8500000"
@@ -820,7 +832,8 @@ alt="Premium Villa">
 <p>📍 Surat, Gujarat</p>
 <p>🛏 4 BHK • 📐 2800 Sq.ft</p>
 
-<a href="#"
+<a
+href="#"
 class="details-btn featured-details"
 data-title="Premium Villa"
 data-price="12000000"
@@ -864,7 +877,8 @@ alt="Premium House">
 <p>📍 Vadodara, Gujarat</p>
 <p>🛏 3 BHK • 📐 1900 Sq.ft</p>
 
-<a href="#"
+<a
+href="#"
 class="details-btn featured-details"
 data-title="Premium House"
 data-price="9500000"
@@ -899,7 +913,6 @@ Why Choose BharatWorld?
 Built around trust, convenience and technology.
 </p>
 
-
 <div class="why-container">
 
 <div class="why-card">
@@ -910,7 +923,6 @@ A future-ready verification workflow for property listings.
 </p>
 </div>
 
-
 <div class="why-card">
 <div class="icon">🤖</div>
 <h3>Smart Search</h3>
@@ -919,7 +931,6 @@ Search properties using location, purpose, budget and type.
 </p>
 </div>
 
-
 <div class="why-card">
 <div class="icon">🏦</div>
 <h3>Home Loan Support</h3>
@@ -927,7 +938,6 @@ Search properties using location, purpose, budget and type.
 Connect users with suitable property and financing assistance.
 </p>
 </div>
-
 
 <div class="why-card">
 <div class="icon">📞</div>
@@ -952,7 +962,6 @@ Help buyers, sellers and renters throughout their property journey.
 Explore properties in India's growing cities.
 </p>
 
-
 <div class="city-container">
 
 <a href="buy.html">Ahmedabad</a>
@@ -976,7 +985,6 @@ Explore properties in India's growing cities.
 User experiences and testimonials can be added as the platform grows.
 </p>
 
-
 <div class="review-container">
 
 <div class="review-card">
@@ -986,14 +994,12 @@ User experiences and testimonials can be added as the platform grows.
 <small>Ahmedabad</small>
 </div>
 
-
 <div class="review-card">
 <div class="stars">⭐⭐⭐⭐⭐</div>
 <p>“Easy way to search and explore property options.”</p>
 <h3>Priya</h3>
 <small>Surat</small>
 </div>
-
 
 <div class="review-card">
 <div class="stars">⭐⭐⭐⭐⭐</div>
@@ -1056,6 +1062,16 @@ From Bharat to the World.
 </p>
 
 <hr>
+
+<p class="legal-links">
+
+<a href="privacy.html">Privacy Policy</a>
+
+<a href="terms.html">Terms & Conditions</a>
+
+<a href="disclaimer.html">Disclaimer</a>
+
+</p>
 
 <p class="copyright">
 © 2026 BharatWorld Properties. All Rights Reserved.
@@ -1172,7 +1188,6 @@ document.querySelectorAll(".featured-details")
 
 </script>
 
-
 </body>
-    </html>
+</html>
 
