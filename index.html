@@ -514,8 +514,6 @@ footer hr{
     color:#aaa;
 }
 
-/* LEGAL LINKS */
-
 .legal-links{
     margin-top:12px;
 }
@@ -603,69 +601,141 @@ footer hr{
 <header>
 
 <div class="logo">
+
 🏠 BharatWorld
+
 <small>PROPERTIES</small>
+
 </div>
 
 <nav>
+
 <a href="index.html" class="active">Home</a>
+
 <a href="buy.html">Buy</a>
+
 <a href="sell.html">Sell</a>
+
 <a href="rent.html">Rent</a>
+
 <a href="interior.html">Interior</a>
+
 <a href="listing.html">Listing</a>
+
 <a href="contact.html">Contact</a>
-<a href="login.html">Login</a>
+
+<!-- IMPORTANT LOGIN / DASHBOARD BUTTON -->
+
+<a href="login.html" id="authLink">Login</a>
+
 </nav>
 
 </header>
 
 
+<!-- HERO -->
+
 <section class="hero">
 
 <div class="hero-badge">
+
 🇮🇳 FROM BHARAT TO THE WORLD
+
 </div>
 
-<h1>Find Your <span>Dream Property</span></h1>
+<h1>
+
+Find Your <span>Dream Property</span>
+
+</h1>
 
 <p>
+
 Buy • Sell • Rent • Commercial • Invest
+
 </p>
+
 
 <div class="search-box">
 
 <input
 id="homeLocation"
 type="text"
-placeholder="📍 Location">
+placeholder="📍 Location"
+>
 
 <select id="homePurpose">
-<option value="Buy / Rent">Buy / Rent</option>
-<option value="Buy">Buy</option>
-<option value="Rent">Rent</option>
+
+<option value="Buy / Rent">
+Buy / Rent
+</option>
+
+<option value="Buy">
+Buy
+</option>
+
+<option value="Rent">
+Rent
+</option>
+
 </select>
+
 
 <select id="homeBudget">
-<option value="Budget">Budget</option>
-<option value="Under ₹50 Lakh">Under ₹50 Lakh</option>
-<option value="₹50 Lakh - ₹1 Crore">₹50 Lakh - ₹1 Crore</option>
-<option value="₹1 Crore+">₹1 Crore+</option>
+
+<option value="Budget">
+Budget
+</option>
+
+<option value="Under ₹50 Lakh">
+Under ₹50 Lakh
+</option>
+
+<option value="₹50 Lakh - ₹1 Crore">
+₹50 Lakh - ₹1 Crore
+</option>
+
+<option value="₹1 Crore+">
+₹1 Crore+
+</option>
+
 </select>
 
+
 <select id="homeType">
-<option value="Property Type">Property Type</option>
-<option value="Apartment">Apartment</option>
-<option value="Villa">Villa</option>
-<option value="House">House</option>
-<option value="Plot">Plot</option>
-<option value="Commercial">Commercial</option>
+
+<option value="Property Type">
+Property Type
+</option>
+
+<option value="Apartment">
+Apartment
+</option>
+
+<option value="Villa">
+Villa
+</option>
+
+<option value="House">
+House
+</option>
+
+<option value="Plot">
+Plot
+</option>
+
+<option value="Commercial">
+Commercial
+</option>
+
 </select>
+
 
 <button
 class="search-btn"
 type="button"
-onclick="searchHomeProperties()">
+onclick="searchHomeProperties()"
+>
 
 🔍 Search Property
 
@@ -676,68 +746,128 @@ onclick="searchHomeProperties()">
 </section>
 
 
+<!-- SERVICES -->
+
 <section class="services">
 
 <h2 class="section-title">
+
 What Are You Looking For?
+
 </h2>
 
 <p class="section-subtitle">
+
 Everything you need for your property journey.
+
 </p>
+
 
 <div class="service-container">
 
+
 <div class="service-card">
+
 <div class="icon">🏠</div>
+
 <h3>Buy Property</h3>
-<p>Find homes, apartments, villas and plots.</p>
-<a href="buy.html">Explore →</a>
+
+<p>
+Find homes, apartments, villas and plots.
+</p>
+
+<a href="buy.html">
+Explore →
+</a>
+
 </div>
 
+
 <div class="service-card">
+
 <div class="icon">🏢</div>
+
 <h3>Sell Property</h3>
-<p>List your property and reach potential buyers.</p>
-<a href="sell.html">Sell Property →</a>
+
+<p>
+List your property and reach potential buyers.
+</p>
+
+<a href="sell.html">
+Sell Property →
+</a>
+
 </div>
 
+
 <div class="service-card">
+
 <div class="icon">🏡</div>
+
 <h3>Rent Property</h3>
-<p>Find houses, apartments and commercial spaces.</p>
-<a href="rent.html">Find Rental →</a>
+
+<p>
+Find houses, apartments and commercial spaces.
+</p>
+
+<a href="rent.html">
+Find Rental →
+</a>
+
 </div>
 
+
 <div class="service-card">
+
 <div class="icon">🎨</div>
+
 <h3>Interior Design</h3>
-<p>Create beautiful interiors for your dream home.</p>
-<a href="interior.html">Explore Interior →</a>
+
+<p>
+Create beautiful interiors for your dream home.
+</p>
+
+<a href="interior.html">
+Explore Interior →
+</a>
+
 </div>
+
 
 </div>
 
 </section>
 
 
+<!-- BHARATWORLD -->
+
 <section class="india-section">
 
-<h2>🇮🇳 BharatWorld Properties</h2>
+<h2>
+🇮🇳 BharatWorld Properties
+</h2>
 
 <p>
+
 A modern real-estate platform designed to connect
 property buyers, sellers, renters and businesses
 across India's growing property ecosystem.
+
 </p>
+
 
 <div class="opportunity">
 
-<video controls playsinline preload="metadata">
+<video
+controls
+playsinline
+preload="metadata"
+>
 
 <source
 src="VID_20250802_130551.mp4"
-type="video/mp4">
+type="video/mp4"
+>
 
 Your browser does not support video playback.
 
@@ -745,24 +875,38 @@ Your browser does not support video playback.
 
 </div>
 
-<a href="contact.html" class="gold-btn">
+
+<a
+href="contact.html"
+class="gold-btn"
+>
+
 📞 Enquire Now
+
 </a>
 
 </section>
 
 
+<!-- FEATURED -->
+
 <section class="featured">
 
 <h2 class="section-title">
+
 ⭐ Featured Properties
+
 </h2>
 
 <p class="section-subtitle">
+
 Explore selected properties from Gujarat.
+
 </p>
 
+
 <div class="property-container">
+
 
 <!-- PROPERTY 1 -->
 
@@ -770,35 +914,56 @@ Explore selected properties from Gujarat.
 
 <img
 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
-alt="Luxury Villa">
+alt="Luxury Villa"
+>
 
 <div class="property-content">
 
 <span class="verified">
+
 ✓ RERA VERIFIED
+
 </span>
 
-<h3>Luxury 3 BHK Villa</h3>
+<h3>
+Luxury 3 BHK Villa
+</h3>
 
 <div class="price">
 ₹85,00,000
 </div>
 
-<p>📍 Ahmedabad, Gujarat</p>
-<p>🛏 3 BHK • 📐 2200 Sq.ft</p>
+<p>
+📍 Ahmedabad, Gujarat
+</p>
+
+<p>
+🛏 3 BHK • 📐 2200 Sq.ft
+</p>
+
 
 <a
 href="#"
 class="details-btn featured-details"
+
 data-title="Luxury 3 BHK Villa"
+
 data-price="8500000"
+
 data-city="Ahmedabad, Gujarat"
+
 data-type="Villa"
+
 data-bhk="3 BHK"
+
 data-area="2200 Sq.ft"
+
 data-listing="For Sale"
+
 data-description="Beautiful luxury 3 BHK villa located in Ahmedabad."
-data-phone="9999999999">
+
+data-phone="9999999999"
+>
 
 View Details
 
@@ -815,35 +980,56 @@ View Details
 
 <img
 src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80"
-alt="Premium Villa">
+alt="Premium Villa"
+>
 
 <div class="property-content">
 
 <span class="verified">
+
 ✓ VERIFIED
+
 </span>
 
-<h3>Premium Villa</h3>
+<h3>
+Premium Villa
+</h3>
 
 <div class="price">
 ₹1,20,00,000
 </div>
 
-<p>📍 Surat, Gujarat</p>
-<p>🛏 4 BHK • 📐 2800 Sq.ft</p>
+<p>
+📍 Surat, Gujarat
+</p>
+
+<p>
+🛏 4 BHK • 📐 2800 Sq.ft
+</p>
+
 
 <a
 href="#"
 class="details-btn featured-details"
+
 data-title="Premium Villa"
+
 data-price="12000000"
+
 data-city="Surat, Gujarat"
+
 data-type="Villa"
+
 data-bhk="4 BHK"
+
 data-area="2800 Sq.ft"
+
 data-listing="For Sale"
+
 data-description="Premium 4 BHK villa with spacious rooms in Surat."
-data-phone="9999999999">
+
+data-phone="9999999999"
+>
 
 View Details
 
@@ -860,35 +1046,56 @@ View Details
 
 <img
 src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=800&q=80"
-alt="Premium House">
+alt="Premium House"
+>
 
 <div class="property-content">
 
 <span class="verified">
+
 ✓ VERIFIED
+
 </span>
 
-<h3>Premium House</h3>
+<h3>
+Premium House
+</h3>
 
 <div class="price">
 ₹95,00,000
 </div>
 
-<p>📍 Vadodara, Gujarat</p>
-<p>🛏 3 BHK • 📐 1900 Sq.ft</p>
+<p>
+📍 Vadodara, Gujarat
+</p>
+
+<p>
+🛏 3 BHK • 📐 1900 Sq.ft
+</p>
+
 
 <a
 href="#"
 class="details-btn featured-details"
+
 data-title="Premium House"
+
 data-price="9500000"
+
 data-city="Vadodara, Gujarat"
+
 data-type="House"
+
 data-bhk="3 BHK"
+
 data-area="1900 Sq.ft"
+
 data-listing="For Sale"
+
 data-description="Beautiful premium house located in Vadodara."
-data-phone="9999999999">
+
+data-phone="9999999999"
+>
 
 View Details
 
@@ -898,120 +1105,230 @@ View Details
 
 </div>
 
+
 </div>
 
 </section>
 
+
+<!-- WHY -->
 
 <section class="why">
 
 <h2 class="section-title">
+
 Why Choose BharatWorld?
+
 </h2>
 
 <p class="section-subtitle">
+
 Built around trust, convenience and technology.
+
 </p>
+
 
 <div class="why-container">
 
+
 <div class="why-card">
+
 <div class="icon">✅</div>
-<h3>Verified Properties</h3>
+
+<h3>
+Verified Properties
+</h3>
+
 <p>
 A future-ready verification workflow for property listings.
 </p>
+
 </div>
 
+
 <div class="why-card">
+
 <div class="icon">🤖</div>
-<h3>Smart Search</h3>
+
+<h3>
+Smart Search
+</h3>
+
 <p>
 Search properties using location, purpose, budget and type.
 </p>
+
 </div>
 
+
 <div class="why-card">
+
 <div class="icon">🏦</div>
-<h3>Home Loan Support</h3>
+
+<h3>
+Home Loan Support
+</h3>
+
 <p>
 Connect users with suitable property and financing assistance.
 </p>
+
 </div>
 
+
 <div class="why-card">
+
 <div class="icon">📞</div>
-<h3>Customer Support</h3>
+
+<h3>
+Customer Support
+</h3>
+
 <p>
 Help buyers, sellers and renters throughout their property journey.
 </p>
+
 </div>
+
 
 </div>
 
 </section>
 
+
+<!-- CITIES -->
 
 <section class="cities">
 
 <h2 class="section-title">
+
 📍 Top Cities
+
 </h2>
 
 <p class="section-subtitle">
+
 Explore properties in India's growing cities.
+
 </p>
+
 
 <div class="city-container">
 
-<a href="buy.html">Ahmedabad</a>
-<a href="buy.html">Surat</a>
-<a href="buy.html">Vadodara</a>
-<a href="buy.html">Rajkot</a>
-<a href="buy.html">Gandhinagar</a>
+<a href="buy.html">
+Ahmedabad
+</a>
+
+<a href="buy.html">
+Surat
+</a>
+
+<a href="buy.html">
+Vadodara
+</a>
+
+<a href="buy.html">
+Rajkot
+</a>
+
+<a href="buy.html">
+Gandhinagar
+</a>
 
 </div>
 
 </section>
 
+
+<!-- REVIEWS -->
 
 <section class="reviews">
 
 <h2 class="section-title">
+
 💬 What Our Customers Say
+
 </h2>
 
 <p class="section-subtitle">
+
 User experiences and testimonials can be added as the platform grows.
+
 </p>
+
 
 <div class="review-container">
 
-<div class="review-card">
-<div class="stars">⭐⭐⭐⭐⭐</div>
-<p>“Great platform concept for exploring properties.”</p>
-<h3>Rahul</h3>
-<small>Ahmedabad</small>
-</div>
 
 <div class="review-card">
-<div class="stars">⭐⭐⭐⭐⭐</div>
-<p>“Easy way to search and explore property options.”</p>
-<h3>Priya</h3>
-<small>Surat</small>
+
+<div class="stars">
+⭐⭐⭐⭐⭐
 </div>
 
-<div class="review-card">
-<div class="stars">⭐⭐⭐⭐⭐</div>
-<p>“A promising platform for India's property market.”</p>
-<h3>Amit</h3>
-<small>Vadodara</small>
+<p>
+“Great platform concept for exploring properties.”
+</p>
+
+<h3>
+Rahul
+</h3>
+
+<small>
+Ahmedabad
+</small>
+
 </div>
+
+
+<div class="review-card">
+
+<div class="stars">
+⭐⭐⭐⭐⭐
+</div>
+
+<p>
+“Easy way to search and explore property options.”
+</p>
+
+<h3>
+Priya
+</h3>
+
+<small>
+Surat
+</small>
+
+</div>
+
+
+<div class="review-card">
+
+<div class="stars">
+⭐⭐⭐⭐⭐
+</div>
+
+<p>
+“A promising platform for India's property market.”
+</p>
+
+<h3>
+Amit
+</h3>
+
+<small>
+Vadodara
+</small>
+
+</div>
+
 
 </div>
 
 </section>
 
+
+<!-- CTA -->
 
 <section class="cta">
 
@@ -1023,14 +1340,22 @@ Ready to Find Your Dream Property?
 Explore properties or connect with our team.
 </p>
 
-<a href="contact.html" class="contact-btn">
+
+<a
+href="contact.html"
+class="contact-btn"
+>
+
 📞 Contact Us
+
 </a>
+
 
 <a
 href="https://wa.me/919999999999"
 target="_blank"
-class="whatsapp-btn">
+class="whatsapp-btn"
+>
 
 💬 WhatsApp Us
 
@@ -1038,6 +1363,8 @@ class="whatsapp-btn">
 
 </section>
 
+
+<!-- FOOTER -->
 
 <footer>
 
@@ -1049,32 +1376,64 @@ class="whatsapp-btn">
 From Bharat to the World.
 </p>
 
+
 <p style="margin-top:25px;">
 
-<a href="index.html">Home</a>
-<a href="buy.html">Buy</a>
-<a href="sell.html">Sell</a>
-<a href="rent.html">Rent</a>
-<a href="interior.html">Interior</a>
-<a href="listing.html">Listing</a>
-<a href="contact.html">Contact</a>
+<a href="index.html">
+Home
+</a>
+
+<a href="buy.html">
+Buy
+</a>
+
+<a href="sell.html">
+Sell
+</a>
+
+<a href="rent.html">
+Rent
+</a>
+
+<a href="interior.html">
+Interior
+</a>
+
+<a href="listing.html">
+Listing
+</a>
+
+<a href="contact.html">
+Contact
+</a>
 
 </p>
+
 
 <hr>
 
+
 <p class="legal-links">
 
-<a href="privacy.html">Privacy Policy</a>
+<a href="privacy.html">
+Privacy Policy
+</a>
 
-<a href="terms.html">Terms & Conditions</a>
+<a href="terms.html">
+Terms & Conditions
+</a>
 
-<a href="disclaimer.html">Disclaimer</a>
+<a href="disclaimer.html">
+Disclaimer
+</a>
 
 </p>
 
+
 <p class="copyright">
+
 © 2026 BharatWorld Properties. All Rights Reserved.
+
 </p>
 
 </footer>
@@ -1082,21 +1441,99 @@ From Bharat to the World.
 
 <script>
 
-/* HOME SEARCH */
+/* =========================================
+   LOGIN / DASHBOARD STATUS
+========================================= */
+
+function updateAuthLink(){
+
+    const authLink =
+    document.getElementById("authLink");
+
+    if(!authLink){
+        return;
+    }
+
+
+    const isLoggedIn =
+    localStorage.getItem("pv_logged_in") === "true";
+
+
+    const currentUser =
+    localStorage.getItem("pv_current_user") || "";
+
+
+    const currentUserId =
+    localStorage.getItem("pv_current_user_id") || "";
+
+
+    /*
+       User is considered logged in only when
+       the session flag exists AND an identity
+       exists.
+    */
+
+    if(
+        isLoggedIn &&
+        (
+            currentUser !== "" ||
+            currentUserId !== ""
+        )
+    ){
+
+        authLink.innerText =
+        "Dashboard";
+
+        authLink.href =
+        "dashboard.html";
+
+    }else{
+
+        authLink.innerText =
+        "Login";
+
+        authLink.href =
+        "login.html";
+
+    }
+
+}
+
+
+/* Run when Home opens */
+
+updateAuthLink();
+
+
+/* =========================================
+   HOME SEARCH
+========================================= */
 
 function searchHomeProperties(){
 
     const location =
-    document.getElementById("homeLocation").value.trim();
+    document
+    .getElementById("homeLocation")
+    .value
+    .trim();
+
 
     const purpose =
-    document.getElementById("homePurpose").value;
+    document
+    .getElementById("homePurpose")
+    .value;
+
 
     const budget =
-    document.getElementById("homeBudget").value;
+    document
+    .getElementById("homeBudget")
+    .value;
+
 
     const type =
-    document.getElementById("homeType").value;
+    document
+    .getElementById("homeType")
+    .value;
 
 
     if(
@@ -1106,7 +1543,10 @@ function searchHomeProperties(){
         type === "Property Type"
     ){
 
-        alert("Please select at least one search option.");
+        alert(
+        "Please select at least one search option."
+        );
+
         return;
 
     }
@@ -1117,15 +1557,18 @@ function searchHomeProperties(){
         location
     );
 
+
     localStorage.setItem(
         "pv_search_purpose",
         purpose
     );
 
+
     localStorage.setItem(
         "pv_search_budget",
         budget
     );
+
 
     localStorage.setItem(
         "pv_search_type",
@@ -1133,61 +1576,50 @@ function searchHomeProperties(){
     );
 
 
-    window.location.href = "listing.html";
+    window.location.href =
+    "listing.html";
 
 }
 
 
-/* FEATURED PROPERTY DETAILS */
+/* =========================================
+   FEATURED PROPERTY DETAILS
+========================================= */
 
-document.querySelectorAll(".featured-details")
+document
+.querySelectorAll(".featured-details")
 .forEach(function(button){
 
-    button.addEventListener("click",function(e){
+    button.addEventListener(
+        "click",
+        function(e){
 
-        e.preventDefault();
-
-
-        const property = {
-
-            title:button.dataset.title,
-
-            price:button.dataset.price,
-
-            city:button.dataset.city,
-
-            type:button.dataset.type,
-
-            bhk:button.dataset.bhk,
-
-            area:button.dataset.area,
-
-            listingType:button.dataset.listing,
-
-            description:button.dataset.description,
-
-            owner:"Property Owner",
-
-            phone:button.dataset.phone
-
-        };
+            e.preventDefault();
 
 
-        localStorage.setItem(
-            "pv_selected_property",
-            JSON.stringify(property)
-        );
+            const property = {
 
+                title:
+                button.dataset.title,
 
-        window.location.href =
-        "property-details.html";
+                price:
+                button.dataset.price,
 
-    });
+                city:
+                button.dataset.city,
 
-});
+                type:
+                button.dataset.type,
 
-</script>
+                bhk:
+                button.dataset.bhk,
 
-</body>
-</html>
+                area:
+                button.dataset.area,
+
+                listingType:
+                button.dataset.listing,
+
+                description:
+                button.dataset
 
