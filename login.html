@@ -348,7 +348,7 @@ Create Account
 
 /* =========================================
    BHARATWORLD PROPERTIES
-   USER LOGIN SYSTEM
+   STABLE USER LOGIN SYSTEM
 ========================================= */
 
 
@@ -438,6 +438,12 @@ JSON.parse(
 localStorage.getItem("users") || "[]"
 );
 
+if(!Array.isArray(users)){
+
+users = [];
+
+}
+
 }catch(error){
 
 users = [];
@@ -454,28 +460,30 @@ users.find(
 function(item){
 
 if(!item){
+
 return false;
+
 }
 
 
-/* Email */
+/* USER EMAIL */
 
 const userEmail =
 String(
 item.email || ""
 )
-.toLowerCase()
-.trim();
+.trim()
+.toLowerCase();
 
 
-/* Phone */
+/* USER PHONE */
 
 const userPhone =
 String(
 item.phone || ""
 )
-.toLowerCase()
-.trim();
+.trim()
+.toLowerCase();
 
 
 return (
@@ -491,7 +499,7 @@ loginValue === userPhone
 
 
 /* =========================================
-   OLD LOGIN SYSTEM FALLBACK
+   LEGACY LOGIN FALLBACK
 ========================================= */
 
 if(!user){
@@ -500,8 +508,8 @@ const savedEmail =
 String(
 localStorage.getItem("pv_email") || ""
 )
-.toLowerCase()
-.trim();
+.trim()
+.toLowerCase();
 
 
 const savedPassword =
@@ -582,11 +590,12 @@ return;
 
 
 /* =========================================
-   ACCOUNT STATUS CHECK
+   ACCOUNT STATUS
 ========================================= */
 
 if(
 String(user.status || "active")
+.trim()
 .toLowerCase() !==
 "active"
 ){
@@ -606,6 +615,25 @@ return;
    SAVE LOGIN SESSION
 ========================================= */
 
+/*
+   IMPORTANT:
+   Save both User ID and normalized Email.
+*/
+
+const finalUserId =
+String(
+user.id || ""
+).trim();
+
+
+const finalUserEmail =
+String(
+user.email || loginValue
+)
+.trim()
+.toLowerCase();
+
+
 localStorage.setItem(
 "pv_logged_in",
 "true"
@@ -614,13 +642,13 @@ localStorage.setItem(
 
 localStorage.setItem(
 "pv_current_user",
-user.email
+finalUserEmail
 );
 
 
 localStorage.setItem(
 "pv_current_user_id",
-user.id || ""
+finalUserId
 );
 
 
@@ -632,16 +660,17 @@ user.name || ""
 
 localStorage.setItem(
 "pv_email",
-user.email || ""
+finalUserEmail
 );
 
 
 /* =========================================
-   SUCCESS
+   SUCCESS MESSAGE
 ========================================= */
 
 successMessage.innerText =
 "✅ Login Successful! Redirecting...";
+
 
 successMessage.style.display =
 "block";
@@ -662,11 +691,12 @@ loginButton.innerText =
 setTimeout(
 function(){
 
-window.location.href =
-"dashboard.html";
+window.location.replace(
+"dashboard.html"
+);
 
 },
-1000
+800
 );
 
 
