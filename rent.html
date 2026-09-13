@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -20,6 +21,7 @@
 <meta property="og:url" content="https://bharatworldproperties.com/rent.html">
 
 <meta property="og:type" content="website">
+
 
 <style>
 
@@ -220,6 +222,8 @@ border-radius:6px;
 text-decoration:none;
 font-weight:bold;
 font-size:14px;
+border:0;
+cursor:pointer;
 }
 
 .details{
@@ -299,6 +303,7 @@ justify-content:center;
 
 </head>
 
+
 <body>
 
 
@@ -329,6 +334,7 @@ justify-content:center;
 </header>
 
 
+
 <section class="hero">
 
 <h1>🏡 Find Your Rental Property</h1>
@@ -338,6 +344,7 @@ Find comfortable homes, apartments and commercial spaces
 </p>
 
 </section>
+
 
 
 <div class="filters">
@@ -375,7 +382,7 @@ placeholder="📍 Search City"
 <option value="">BHK</option>
 <option value="1">1 BHK</option>
 <option value="2">2 BHK</option>
-<option value="3">3">3 BHK</option>
+<option value="3">3 BHK</option>
 <option value="4">4+ BHK</option>
 
 </select>
@@ -393,6 +400,7 @@ onclick="searchRentProperties()">
 </div>
 
 
+
 <div class="container">
 
 
@@ -401,15 +409,17 @@ onclick="searchRentProperties()">
 <h2>🏠 Properties For Rent</h2>
 
 <p style="color:#666;margin-top:8px;">
-Explore verified rental properties
+Explore rental properties
 </p>
 
 </div>
 
 
+
 <div
 class="properties"
-id="rentProperties">
+id="rentProperties"
+>
 
 
 <!-- PROPERTY 1 -->
@@ -419,19 +429,23 @@ class="card"
 data-city="Ahmedabad"
 data-type="apartment"
 data-price="25000"
-data-bhk="2">
+data-bhk="2"
+>
 
 <img
 src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80"
-alt="Modern Apartment">
+alt="Modern 2 BHK Apartment"
+>
 
 <div class="content">
 
 <span class="verified">
-✓ VERIFIED
+✓ SAMPLE PROPERTY
 </span>
 
-<h2>Modern 2 BHK Apartment</h2>
+<h2>
+Modern 2 BHK Apartment
+</h2>
 
 <div class="price">
 ₹25,000 / Month
@@ -450,9 +464,11 @@ alt="Modern Apartment">
 
 <div class="buttons">
 
+
 <a
 href="#"
 class="btn details"
+data-id="RENT001"
 data-title="Modern 2 BHK Apartment"
 data-price="25000"
 data-city="Ahmedabad, Gujarat"
@@ -462,7 +478,9 @@ data-area="1200 Sq.ft"
 data-listing="For Rent"
 data-description="Modern 2 BHK apartment available for rent in Ahmedabad."
 data-owner="Property Owner"
-data-phone="9999999999">
+data-phone="9999999999"
+data-image="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80"
+>
 
 View Details
 
@@ -487,11 +505,13 @@ target="_blank">
 
 </a>
 
-</div>
 
 </div>
 
 </div>
+
+</div>
+
 
 
 <!-- PROPERTY 2 -->
@@ -501,19 +521,23 @@ class="card"
 data-city="Surat"
 data-type="house"
 data-price="38000"
-data-bhk="3">
+data-bhk="3"
+>
 
 <img
 src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80"
-alt="Luxury Home">
+alt="Luxury 3 BHK Home"
+>
 
 <div class="content">
 
 <span class="verified">
-✓ VERIFIED
+✓ SAMPLE PROPERTY
 </span>
 
-<h2>Luxury 3 BHK Home</h2>
+<h2>
+Luxury 3 BHK Home
+</h2>
 
 <div class="price">
 ₹38,000 / Month
@@ -532,9 +556,11 @@ alt="Luxury Home">
 
 <div class="buttons">
 
+
 <a
 href="#"
 class="btn details"
+data-id="RENT002"
 data-title="Luxury 3 BHK Home"
 data-price="38000"
 data-city="Surat, Gujarat"
@@ -544,7 +570,9 @@ data-area="1800 Sq.ft"
 data-listing="For Rent"
 data-description="Luxury 3 BHK home available for rent in Surat."
 data-owner="Property Owner"
-data-phone="9999999999">
+data-phone="9999999999"
+data-image="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80"
+>
 
 View Details
 
@@ -569,11 +597,13 @@ target="_blank">
 
 </a>
 
-</div>
 
 </div>
 
 </div>
+
+</div>
+
 
 
 <!-- PROPERTY 3 -->
@@ -583,19 +613,23 @@ class="card"
 data-city="Vadodara"
 data-type="apartment"
 data-price="22000"
-data-bhk="2">
+data-bhk="2"
+>
 
 <img
 src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80"
-alt="Premium Apartment">
+alt="Premium 2 BHK Apartment"
+>
 
 <div class="content">
 
 <span class="verified">
-✓ VERIFIED
+✓ SAMPLE PROPERTY
 </span>
 
-<h2>Premium 2 BHK Apartment</h2>
+<h2>
+Premium 2 BHK Apartment
+</h2>
 
 <div class="price">
 ₹22,000 / Month
@@ -614,9 +648,11 @@ alt="Premium Apartment">
 
 <div class="buttons">
 
+
 <a
 href="#"
 class="btn details"
+data-id="RENT003"
 data-title="Premium 2 BHK Apartment"
 data-price="22000"
 data-city="Vadodara, Gujarat"
@@ -626,7 +662,9 @@ data-area="1100 Sq.ft"
 data-listing="For Rent"
 data-description="Premium 2 BHK apartment available for rent in Vadodara."
 data-owner="Property Owner"
-data-phone="9999999999">
+data-phone="9999999999"
+data-image="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80"
+>
 
 View Details
 
@@ -651,14 +689,16 @@ target="_blank">
 
 </a>
 
-</div>
 
 </div>
 
 </div>
 
+</div>
+
 
 </div>
+
 
 
 <div
@@ -671,7 +711,10 @@ class="no-results">
 
 
 </div>
-<!-- GUJARAT CITY REAL ESTATE LINKS -->
+
+
+
+<!-- GUJARAT CITY LINKS -->
 
 <section style="
 max-width:1100px;
@@ -739,6 +782,8 @@ Gandhinagar
 
 </section>
 
+
+
 <footer>
 
 <h2>
@@ -768,30 +813,43 @@ Buy • Sell • Rent • Interior
 </footer>
 
 
+
 <script>
 
 
-/* SEARCH RENT PROPERTIES */
+/* =====================================================
+   SEARCH RENT PROPERTIES
+===================================================== */
 
 function searchRentProperties(){
 
 const city =
-document.getElementById("rentCity").value
+document.getElementById("rentCity")
+.value
 .toLowerCase()
 .trim();
 
+
 const type =
-document.getElementById("rentType").value;
+document.getElementById("rentType")
+.value;
+
 
 const budget =
-document.getElementById("rentBudget").value;
+document.getElementById("rentBudget")
+.value;
+
 
 const bhk =
-document.getElementById("rentBhk").value;
+document.getElementById("rentBhk")
+.value;
 
 
 const cards =
-document.querySelectorAll("#rentProperties .card");
+document.querySelectorAll(
+"#rentProperties .card"
+);
+
 
 let found = 0;
 
@@ -802,12 +860,17 @@ const cardCity =
 (card.dataset.city || "")
 .toLowerCase();
 
+
 const cardType =
 (card.dataset.type || "")
 .toLowerCase();
 
+
 const cardPrice =
-parseInt(card.dataset.price || 0);
+parseInt(
+card.dataset.price || 0
+);
+
 
 const cardBhk =
 card.dataset.bhk || "";
@@ -885,18 +948,22 @@ card.style.display = "none";
 
 
 const noResults =
-document.getElementById("noResults");
+document.getElementById(
+"noResults"
+);
 
 
 if(found === 0){
 
-noResults.style.display = "block";
+noResults.style.display =
+"block";
 
 }
 
 else{
 
-noResults.style.display = "none";
+noResults.style.display =
+"none";
 
 }
 
@@ -904,7 +971,9 @@ noResults.style.display = "none";
 
 
 
-/* STATIC PROPERTY DETAILS */
+/* =====================================================
+   STATIC PROPERTY DETAILS
+===================================================== */
 
 document
 .querySelectorAll(".details")
@@ -919,11 +988,17 @@ e.preventDefault();
 
 const property = {
 
+id:
+button.dataset.id,
+
 title:
 button.dataset.title,
 
 price:
 button.dataset.price,
+
+location:
+button.dataset.city,
 
 city:
 button.dataset.city,
@@ -931,11 +1006,17 @@ button.dataset.city,
 type:
 button.dataset.type,
 
+propertyType:
+button.dataset.type,
+
 bhk:
 button.dataset.bhk,
 
 area:
 button.dataset.area,
+
+listing:
+button.dataset.listing,
 
 listingType:
 button.dataset.listing,
@@ -947,17 +1028,17 @@ owner:
 button.dataset.owner,
 
 phone:
-button.dataset.phone
+button.dataset.phone,
+
+image:
+button.dataset.image
 
 };
 
 
 localStorage.setItem(
-
 "pv_selected_property",
-
 JSON.stringify(property)
-
 );
 
 
@@ -972,22 +1053,30 @@ window.location.href =
 
 
 
-/* LOAD USER ADDED RENT PROPERTIES */
+/* =====================================================
+   LOAD USER ADDED RENT PROPERTIES
+===================================================== */
 
 function loadUserRentProperties(){
 
-const properties = JSON.parse(
-localStorage.getItem("pv_properties") || "[]"
+const properties =
+JSON.parse(
+localStorage.getItem(
+"pv_properties"
+) || "[]"
 );
 
 
 const propertiesBox =
-document.getElementById("rentProperties");
+document.getElementById(
+"rentProperties"
+);
 
 
 properties.forEach(function(property){
 
-/* Only show rental properties */
+
+/* ONLY RENT PROPERTIES */
 
 if(
 property.listingType &&
@@ -996,11 +1085,13 @@ property.listingType
 .includes("rent")
 ){
 
+
 const card =
 document.createElement("div");
 
 
-card.className = "card";
+card.className =
+"card";
 
 
 card.dataset.city =
@@ -1030,35 +1121,34 @@ bhkNumber[0] :
 card.innerHTML = `
 
 <img
-src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
-alt="Property">
+src="${
+property.image ||
+"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+}"
+alt="Property"
+>
 
 <div class="content">
 
 <span class="verified">
-
 ✓ PROPERTY LISTED
-
 </span>
 
-
 <h2>
-${property.title}
+${property.title || "Rental Property"}
 </h2>
-
 
 <div class="price">
 
-₹${Number(property.price).toLocaleString()} / Month
+₹${Number(property.price || 0).toLocaleString("en-IN")} / Month
 
 </div>
 
-
 <div class="info">
 
-📍 ${property.city}<br>
+📍 ${property.city || "Location not specified"}<br>
 
-🏢 ${property.type}<br>
+🏢 ${property.type || "Property"}<br>
 
 🛏 ${property.bhk || "Not specified"}<br>
 
@@ -1066,31 +1156,31 @@ ${property.title}
 
 </div>
 
-
 <div class="buttons">
 
 <a
 href="#"
-class="btn details user-details">
+class="btn details user-details"
+>
 
 View Details
 
 </a>
 
-
 <a
-href="tel:+91${property.phone}"
-class="btn call">
+href="tel:+91${property.phone || ""}"
+class="btn call"
+>
 
 📞 Call
 
 </a>
 
-
 <a
-href="https://wa.me/91${property.phone}"
+href="https://wa.me/91${property.phone || ""}"
 class="btn whatsapp"
-target="_blank">
+target="_blank"
+>
 
 💬 WhatsApp
 
@@ -1112,12 +1202,11 @@ function(e){
 e.preventDefault();
 
 
+/* SAVE COMPLETE PROPERTY */
+
 localStorage.setItem(
-
 "pv_selected_property",
-
 JSON.stringify(property)
-
 );
 
 
@@ -1136,6 +1225,7 @@ propertiesBox.appendChild(card);
 });
 
 }
+
 
 
 loadUserRentProperties();
