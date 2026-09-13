@@ -931,7 +931,7 @@ alt="Luxury Villa"
 
 <span class="verified">
 
-✓ RERA VERIFIED
+SAMPLE LISTING
 
 </span>
 
@@ -997,7 +997,7 @@ alt="Premium Villa"
 
 <span class="verified">
 
-✓ VERIFIED
+SAMPLE LISTING
 
 </span>
 
@@ -1063,7 +1063,7 @@ alt="Premium House"
 
 <span class="verified">
 
-✓ VERIFIED
+SAMPLE LISTING
 
 </span>
 
@@ -1256,7 +1256,7 @@ Gandhinagar
 
 <h2 class="section-title">
 
-💬 What Our Customers Say
+💡 Sample User Feedback
 
 </h2>
 
@@ -1581,55 +1581,5 @@ function searchHomeProperties(){
 
 
     localStorage.setItem(
-        "pv_search_type",
-        type
-    );
-
-
-    window.location.href =
-    "listing.html";
-
-}
-
-
-/* =========================================
-   FEATURED PROPERTY DETAILS
-========================================= */
-
-document
-.querySelectorAll(".featured-details")
-.forEach(function(button){
-
-    button.addEventListener(
-        "click",
-        function(e){
-
-            e.preventDefault();
-
-
-            const property = {
-
-                title:
-                button.dataset.title,
-
-                price:
-                button.dataset.price,
-
-                city:
-                button.dataset.city,
-
-                type:
-                button.dataset.type,
-
-                bhk:
-                button.dataset.bhk,
-
-                area:
-                button.dataset.area,
-
-                listingType:
-                button.dataset.listing,
-
-                description:
-                button.dataset
+        
 
