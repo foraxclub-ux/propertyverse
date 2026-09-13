@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -20,7 +21,9 @@
 
 <meta property="og:type" content="website">
 
+
 <style>
+
 *{
   box-sizing:border-box;
 }
@@ -195,6 +198,7 @@ button{
 }
 
 @media(max-width:650px){
+
   .info-grid{
     grid-template-columns:1fr;
   }
@@ -214,11 +218,16 @@ button{
   .content{
     padding:25px;
   }
+
 }
+
 </style>
+
 </head>
 
+
 <body>
+
 
 <header class="header">
 
@@ -234,66 +243,134 @@ button{
 </header>
 
 
+
 <div class="container">
 
 <div class="card">
 
-<img id="propertyImage"
-     class="property-image"
-     src=""
-     alt="Property Image">
+
+<img
+  id="propertyImage"
+  class="property-image"
+  src=""
+  alt="Property Image"
+>
+
 
 <div class="content">
+
 
 <div class="verified">
 ✓ VERIFIED PROPERTY
 </div>
 
-<h1 id="propertyTitle">Loading...</h1>
+
+<h1 id="propertyTitle">
+Loading...
+</h1>
+
 
 <div class="price" id="propertyPrice">
 Loading...
 </div>
 
 
+
 <div class="info-grid">
 
-<div class="info">
-<div class="label">📍 LOCATION</div>
-<div class="value" id="propertyLocation">Loading...</div>
-</div>
 
 <div class="info">
-<div class="label">🏢 PROPERTY TYPE</div>
-<div class="value" id="propertyType">Loading...</div>
+
+<div class="label">
+📍 LOCATION
 </div>
 
-<div class="info">
-<div class="label">🛏️ BHK</div>
-<div class="value" id="propertyBhk">Loading...</div>
-</div>
-
-<div class="info">
-<div class="label">📐 AREA</div>
-<div class="value" id="propertyArea">Loading...</div>
-</div>
-
-<div class="info">
-<div class="label">🏷️ LISTING</div>
-<div class="value" id="propertyListing">Loading...</div>
-</div>
-
-<div class="info">
-<div class="label">🆔 PROPERTY ID</div>
-<div class="value" id="propertyId">Loading...</div>
+<div class="value" id="propertyLocation">
+Loading...
 </div>
 
 </div>
+
+
+
+<div class="info">
+
+<div class="label">
+🏢 PROPERTY TYPE
+</div>
+
+<div class="value" id="propertyType">
+Loading...
+</div>
+
+</div>
+
+
+
+<div class="info">
+
+<div class="label">
+🛏️ BHK
+</div>
+
+<div class="value" id="propertyBhk">
+Loading...
+</div>
+
+</div>
+
+
+
+<div class="info">
+
+<div class="label">
+📐 AREA
+</div>
+
+<div class="value" id="propertyArea">
+Loading...
+</div>
+
+</div>
+
+
+
+<div class="info">
+
+<div class="label">
+🏷️ LISTING
+</div>
+
+<div class="value" id="propertyListing">
+Loading...
+</div>
+
+</div>
+
+
+
+<div class="info">
+
+<div class="label">
+🆔 PROPERTY ID
+</div>
+
+<div class="value" id="propertyId">
+Loading...
+</div>
+
+</div>
+
+
+</div>
+
 
 
 <div class="description">
 
-<h2>📝 Property Description</h2>
+<h2>
+📝 Property Description
+</h2>
 
 <p id="propertyDescription">
 Loading...
@@ -302,19 +379,28 @@ Loading...
 </div>
 
 
+
 <div class="owner">
 
-<h2>👤 Owner Details</h2>
+<h2>
+👤 Owner Details
+</h2>
 
 <p>
 <strong>Property Owner:</strong>
-<span id="ownerName">Loading...</span>
+<span id="ownerName">
+Loading...
+</span>
 </p>
+
 
 <p>
 <strong>Phone:</strong>
-<span id="ownerPhone">Not available</span>
+<span id="ownerPhone">
+Not available
+</span>
 </p>
+
 
 
 <div class="buttons">
@@ -340,13 +426,66 @@ Loading...
 </div>
 
 </div>
+
 </div>
+
 </div>
+
 
 
 <script>
 
+
+/* =====================================================
+   DEMO PROPERTIES
+===================================================== */
+
 const demoProperties = {
+
+  BUY001:{
+    id:"BUY001",
+    title:"Luxury 3 BHK Villa",
+    price:8500000,
+    location:"Ahmedabad, Gujarat",
+    type:"Villa",
+    bhk:"3 BHK",
+    area:"2200 Sq.ft",
+    listing:"For Sale",
+    image:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+    description:"Beautiful luxury 3 BHK villa located in Ahmedabad.",
+    owner:"BharatWorld Properties",
+    phone:"9999999999"
+  },
+
+  BUY002:{
+    id:"BUY002",
+    title:"Premium 4 BHK Villa",
+    price:12000000,
+    location:"Surat, Gujarat",
+    type:"Villa",
+    bhk:"4 BHK",
+    area:"2800 Sq.ft",
+    listing:"For Sale",
+    image:"https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1200&q=80",
+    description:"Premium 4 BHK villa with spacious rooms in Surat.",
+    owner:"BharatWorld Properties",
+    phone:"9999999999"
+  },
+
+  BUY003:{
+    id:"BUY003",
+    title:"Premium House",
+    price:9500000,
+    location:"Vadodara, Gujarat",
+    type:"House",
+    bhk:"3 BHK",
+    area:"1900 Sq.ft",
+    listing:"For Sale",
+    image:"https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1200&q=80",
+    description:"Beautiful premium house located in Vadodara.",
+    owner:"BharatWorld Properties",
+    phone:"9999999999"
+  },
 
   DEMO001:{
     id:"DEMO001",
@@ -355,7 +494,7 @@ const demoProperties = {
     location:"Ahmedabad",
     type:"Villa",
     bhk:"3 BHK",
-    area:"2500 sq.ft",
+    area:"2500 Sq.ft",
     listing:"For Sale",
     image:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
     description:"Beautiful luxury 3 BHK villa in Ahmedabad with premium construction and modern facilities.",
@@ -370,7 +509,7 @@ const demoProperties = {
     location:"Surat",
     type:"Villa",
     bhk:"4 BHK",
-    area:"3200 sq.ft",
+    area:"3200 Sq.ft",
     listing:"For Sale",
     image:"https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80",
     description:"Premium 4 BHK villa in Surat with spacious rooms and modern architecture.",
@@ -385,7 +524,7 @@ const demoProperties = {
     location:"Ahmedabad",
     type:"Apartment",
     bhk:"2 BHK",
-    area:"1200 sq.ft",
+    area:"1200 Sq.ft",
     listing:"For Rent",
     image:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
     description:"Modern 2 BHK apartment available for rent in Ahmedabad.",
@@ -396,191 +535,521 @@ const demoProperties = {
 };
 
 
+
+/* =====================================================
+   GET PROPERTY
+===================================================== */
+
 function getProperty(){
 
-  const params = new URLSearchParams(window.location.search);
+  /* ---------------------------------
+     METHOD 1:
+     URL ID
+     Example:
+     property-details.html?id=BUY001
+  --------------------------------- */
 
-  const id = params.get("id");
+  const params =
+    new URLSearchParams(window.location.search);
 
-  console.log("PROPERTY ID:",id);
+  const urlId =
+    params.get("id");
 
-  if(!id){
-    return null;
+
+  if(urlId){
+
+    console.log("URL PROPERTY ID:",urlId);
+
+
+    if(demoProperties[urlId]){
+
+      return demoProperties[urlId];
+
+    }
+
+
+    const properties =
+      JSON.parse(
+        localStorage.getItem("pv_properties")
+      ) || [];
+
+
+    const found =
+      properties.find(
+        function(p){
+
+          return String(p.id) ===
+                 String(urlId);
+
+        }
+      );
+
+
+    if(found){
+
+      return found;
+
+    }
+
   }
 
 
-  if(demoProperties[id]){
-    return demoProperties[id];
+
+  /* ---------------------------------
+     METHOD 2:
+     localStorage selected property
+     Used by Buy / Rent pages
+  --------------------------------- */
+
+  const selected =
+    localStorage.getItem(
+      "pv_selected_property"
+    );
+
+
+  if(selected){
+
+    try{
+
+      const property =
+        JSON.parse(selected);
+
+
+      if(property && property.id){
+
+        console.log(
+          "LOCAL STORAGE PROPERTY:",
+          property.id
+        );
+
+
+        /* ---------------------------------
+           If property is demo/static property
+           return selected property directly
+        --------------------------------- */
+
+        return property;
+
+      }
+
+    }
+    catch(error){
+
+      console.error(
+        "Selected property error:",
+        error
+      );
+
+    }
+
   }
 
+
+
+  /* ---------------------------------
+     METHOD 3:
+     User posted properties
+  --------------------------------- */
 
   const properties =
-    JSON.parse(localStorage.getItem("pv_properties")) || [];
+    JSON.parse(
+      localStorage.getItem("pv_properties")
+    ) || [];
 
 
-  return properties.find(
-    p => String(p.id) === String(id)
-  ) || null;
+  if(properties.length > 0){
+
+    const selectedId =
+      urlId || null;
+
+
+    if(selectedId){
+
+      const property =
+        properties.find(
+          function(p){
+
+            return String(p.id) ===
+                   String(selectedId);
+
+          }
+        );
+
+
+      if(property){
+
+        return property;
+
+      }
+
+    }
+
+  }
+
+
+
+  return null;
 
 }
 
+
+
+/* =====================================================
+   FORMAT PRICE
+===================================================== */
 
 function formatPrice(price,listing){
 
-  if(price === undefined || price === null || price === ""){
+  if(
+    price === undefined ||
+    price === null ||
+    price === ""
+  ){
+
     return "Price on Request";
+
   }
 
-  const number = Number(price);
 
-  if(listing === "For Rent"){
-    return "₹" + number.toLocaleString("en-IN") + " / Month";
+  const number =
+    Number(price);
+
+
+  if(
+    listing === "For Rent"
+  ){
+
+    return "₹" +
+      number.toLocaleString("en-IN") +
+      " / Month";
+
   }
 
-  return "₹" + number.toLocaleString("en-IN");
+
+  return "₹" +
+    number.toLocaleString("en-IN");
+
 }
 
+
+
+/* =====================================================
+   LOAD PROPERTY
+===================================================== */
 
 function loadProperty(){
 
-  const property = getProperty();
+  const property =
+    getProperty();
+
 
   if(!property){
 
-    document.getElementById("propertyTitle").innerText =
+    document.getElementById(
+      "propertyTitle"
+    ).innerText =
       "Property Not Found";
 
-    document.getElementById("propertyPrice").innerText =
+
+    document.getElementById(
+      "propertyPrice"
+    ).innerText =
       "Please return to Listings";
 
+
     return;
+
   }
 
 
-  document.getElementById("propertyTitle").innerText =
-    property.title || property.name || "Property";
+
+  console.log(
+    "LOADED PROPERTY:",
+    property
+  );
 
 
-  document.getElementById("propertyPrice").innerText =
-    formatPrice(property.price,property.listing);
+
+  document.getElementById(
+    "propertyTitle"
+  ).innerText =
+    property.title ||
+    property.name ||
+    "Property";
 
 
-  document.getElementById("propertyLocation").innerText =
-    property.location || "Not specified";
+
+  document.getElementById(
+    "propertyPrice"
+  ).innerText =
+    formatPrice(
+      property.price,
+      property.listing ||
+      property.listingType
+    );
 
 
-  document.getElementById("propertyType").innerText =
-    property.type || property.propertyType || "Not specified";
+
+  document.getElementById(
+    "propertyLocation"
+  ).innerText =
+    property.location ||
+    property.city ||
+    "Not specified";
 
 
-  document.getElementById("propertyBhk").innerText =
-    property.bhk || "Not specified";
+
+  document.getElementById(
+    "propertyType"
+  ).innerText =
+    property.type ||
+    property.propertyType ||
+    "Not specified";
 
 
-  document.getElementById("propertyArea").innerText =
-    property.area || "Not specified";
+
+  document.getElementById(
+    "propertyBhk"
+  ).innerText =
+    property.bhk ||
+    "Not specified";
 
 
-  document.getElementById("propertyListing").innerText =
-    property.listing || "For Sale";
+
+  document.getElementById(
+    "propertyArea"
+  ).innerText =
+    property.area ||
+    "Not specified";
 
 
-  document.getElementById("propertyId").innerText =
-    property.id || "Not available";
+
+  document.getElementById(
+    "propertyListing"
+  ).innerText =
+    property.listing ||
+    property.listingType ||
+    "For Sale";
 
 
-  document.getElementById("propertyDescription").innerText =
-    property.description || "No description available.";
 
-
-  document.getElementById("ownerName").innerText =
-    property.owner ||
-    property.ownerName ||
-    property.postedBy ||
-    "BharatWorld Properties";
-
-
-  document.getElementById("ownerPhone").innerText =
-    property.phone ||
-    property.ownerPhone ||
+  document.getElementById(
+    "propertyId"
+  ).innerText =
+    property.id ||
     "Not available";
 
 
-  document.getElementById("propertyImage").src =
+
+  document.getElementById(
+    "propertyDescription"
+  ).innerText =
+    property.description ||
+    "No description available.";
+
+
+
+  document.getElementById(
+    "ownerName"
+  ).innerText =
+    property.owner ||
+    property.ownerName ||
+    property.postedBy ||
+    property.ownerUser ||
+    "BharatWorld Properties";
+
+
+
+  document.getElementById(
+    "ownerPhone"
+  ).innerText =
+    property.phone ||
+    property.ownerPhone ||
+    property.ownerPhoneNumber ||
+    "Not available";
+
+
+
+  const image =
     property.image ||
     "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80";
 
+
+  document.getElementById(
+    "propertyImage"
+  ).src = image;
+
 }
 
+
+
+/* =====================================================
+   SAVE PROPERTY
+===================================================== */
 
 function saveProperty(){
 
-  const property = getProperty();
+  const property =
+    getProperty();
+
 
   if(!property){
-    alert("Property not found.");
+
+    alert(
+      "Property not found."
+    );
+
     return;
+
   }
 
+
   const email =
-    localStorage.getItem("pv_current_user") ||
-    localStorage.getItem("pv_email");
+    localStorage.getItem(
+      "pv_current_user"
+    ) ||
+    localStorage.getItem(
+      "pv_email"
+    );
+
 
   if(!email){
 
-    alert("Please login first to save this property.");
+    alert(
+      "Please login first to save this property."
+    );
 
-    window.location.href="login.html";
+
+    window.location.href =
+      "login.html";
+
 
     return;
+
   }
 
 
-  const key = "pv_saved_properties_" + email;
+
+  const key =
+    "pv_saved_properties_" +
+    email;
+
 
   let saved =
-    JSON.parse(localStorage.getItem(key)) || [];
+    JSON.parse(
+      localStorage.getItem(key)
+    ) || [];
 
 
-  if(!saved.includes(property.id)){
+
+  /* ---------------------------------
+     Support both old format:
+     [ "BUY001" ]
+
+     and new object format
+  --------------------------------- */
+
+  const alreadySaved =
+    saved.some(
+      function(item){
+
+        if(
+          typeof item ===
+          "object"
+        ){
+
+          return String(
+            item.id
+          ) ===
+          String(property.id);
+
+        }
+
+
+        return String(item) ===
+               String(property.id);
+
+      }
+    );
+
+
+
+  if(!alreadySaved){
+
     saved.push(property.id);
+
   }
 
 
-  localStorage.setItem(key,JSON.stringify(saved));
 
-  alert("❤️ Property saved successfully!");
+  localStorage.setItem(
+    key,
+    JSON.stringify(saved)
+  );
+
+
+  alert(
+    "❤️ Property saved successfully!"
+  );
 
 }
 
 
+
+/* =====================================================
+   SEND ENQUIRY
+===================================================== */
+
 function sendEnquiry(){
 
-  const property = getProperty();
+  const property =
+    getProperty();
+
 
   if(!property){
-    alert("Property not found.");
+
+    alert(
+      "Property not found."
+    );
+
     return;
+
   }
 
 
+
   const email =
-    localStorage.getItem("pv_current_user") ||
-    localStorage.getItem("pv_email");
+    localStorage.getItem(
+      "pv_current_user"
+    ) ||
+    localStorage.getItem(
+      "pv_email"
+    );
+
 
 
   if(!email){
 
-    alert("Please login first to send an enquiry.");
+    alert(
+      "Please login first to send an enquiry."
+    );
 
-    window.location.href="login.html";
+
+    window.location.href =
+      "login.html";
+
 
     return;
+
   }
 
 
+
   const currentUserId =
-    localStorage.getItem("pv_current_user_id") || "";
+    localStorage.getItem(
+      "pv_current_user_id"
+    ) || "";
+
 
 
   if(
@@ -590,24 +1059,38 @@ function sendEnquiry(){
     property.ownerUserId === currentUserId
   ){
 
-    alert("You cannot send an enquiry to your own property.");
+    alert(
+      "You cannot send an enquiry to your own property."
+    );
 
     return;
+
   }
 
 
+
   let enquiries =
-    JSON.parse(localStorage.getItem("pv_enquiries")) || [];
+    JSON.parse(
+      localStorage.getItem(
+        "pv_enquiries"
+      )
+    ) || [];
+
 
 
   enquiries.push({
 
-    id:"ENQ" + Date.now(),
+    id:
+      "ENQ" +
+      Date.now(),
 
-    propertyId:property.id,
+    propertyId:
+      property.id,
 
     propertyTitle:
-      property.title || property.name || "Property",
+      property.title ||
+      property.name ||
+      "Property",
 
     ownerUser:
       property.postedBy ||
@@ -619,68 +1102,117 @@ function sendEnquiry(){
       property.ownerUserId ||
       "",
 
-    enquiryUser:email,
+    enquiryUser:
+      email,
 
-    createdAt:new Date().toLocaleString("en-IN")
+    createdAt:
+      new Date().toLocaleString(
+        "en-IN"
+      )
 
   });
 
 
+
   localStorage.setItem(
     "pv_enquiries",
-    JSON.stringify(enquiries)
+    JSON.stringify(
+      enquiries
+    )
   );
 
 
-  alert("📩 Enquiry sent successfully!");
+  alert(
+    "📩 Enquiry sent successfully!"
+  );
 
 }
 
+
+
+/* =====================================================
+   CALL OWNER
+===================================================== */
 
 function callOwner(){
 
-  const property = getProperty();
+  const property =
+    getProperty();
 
-  if(!property || !property.phone){
 
-    alert("Owner phone number not available.");
+  if(
+    !property ||
+    !property.phone
+  ){
+
+    alert(
+      "Owner phone number not available."
+    );
 
     return;
+
   }
 
+
   window.location.href =
-    "tel:" + property.phone;
+    "tel:" +
+    property.phone;
 
 }
 
 
+
+/* =====================================================
+   WHATSAPP
+===================================================== */
+
 function whatsappOwner(){
 
-  const property = getProperty();
+  const property =
+    getProperty();
 
-  if(!property || !property.phone){
 
-    alert("Owner WhatsApp number not available.");
+  if(
+    !property ||
+    !property.phone
+  ){
+
+    alert(
+      "Owner WhatsApp number not available."
+    );
 
     return;
+
   }
 
 
   const phone =
-    String(property.phone).replace(/\D/g,"");
+    String(
+      property.phone
+    ).replace(
+      /\D/g,
+      ""
+    );
 
 
   window.open(
-    "https://wa.me/91" + phone,
+    "https://wa.me/91" +
+    phone,
     "_blank"
   );
 
 }
 
 
+
+/* =====================================================
+   START
+===================================================== */
+
 loadProperty();
 
 </script>
 
+
 </body>
-   </html>
+  </html>
