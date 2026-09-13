@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -1146,11 +1146,11 @@ Built around trust, convenience and technology.
 <div class="icon">✅</div>
 
 <h3>
-Verified Properties
+Property Verification
 </h3>
 
 <p>
-A future-ready verification workflow for property listings.
+A planned verification workflow to help improve trust in property listings.
 </p>
 
 </div>
@@ -1176,11 +1176,11 @@ Search properties using location, purpose, budget and type.
 <div class="icon">🏦</div>
 
 <h3>
-Home Loan Support
+Future Loan Assistance
 </h3>
 
 <p>
-Connect users with suitable property and financing assistance.
+Future support for connecting users with suitable property financing options.
 </p>
 
 </div>
@@ -1191,11 +1191,11 @@ Connect users with suitable property and financing assistance.
 <div class="icon">📞</div>
 
 <h3>
-Customer Support
+Platform Support
 </h3>
 
 <p>
-Help buyers, sellers and renters throughout their property journey.
+A planned support experience for buyers, sellers and renters as the platform grows.
 </p>
 
 </div>
@@ -1581,5 +1581,55 @@ function searchHomeProperties(){
 
 
     localStorage.setItem(
-        
+        "pv_search_type",
+        type
+    );
+
+
+    window.location.href =
+    "listing.html";
+
+}
+
+
+/* =========================================
+   FEATURED PROPERTY DETAILS
+========================================= */
+
+document
+.querySelectorAll(".featured-details")
+.forEach(function(button){
+
+    button.addEventListener(
+        "click",
+        function(e){
+
+            e.preventDefault();
+
+
+            const property = {
+
+                title:
+                button.dataset.title,
+
+                price:
+                button.dataset.price,
+
+                city:
+                button.dataset.city,
+
+                type:
+                button.dataset.type,
+
+                bhk:
+                button.dataset.bhk,
+
+                area:
+                button.dataset.area,
+
+                listingType:
+                button.dataset.listing,
+
+                description:
+                button.dataset
 
